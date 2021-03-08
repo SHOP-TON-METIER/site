@@ -16,10 +16,10 @@ body{
 
 
 .avatar{
-    width: 248px;
-    height: 321px;
+    width: 200px;
+    height: 40vh;
     margin: auto;
-    background-color: blanchedalmond;
+    z-index: 99;
 }
 
 h1 {
@@ -69,12 +69,14 @@ span{
 }
 
 .add_panier {
+    display: block;
     width: 250px;
     height: 50px;
     margin: auto;
     margin-top: 105px;
     background-color: #EF4813;
     text-align: center;
+    text-decoration: none;
     color: #fff;
     font-size: 1.25rem;
     font-weight: 600;
