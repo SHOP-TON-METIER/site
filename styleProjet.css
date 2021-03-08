@@ -1,0 +1,52 @@
+body{
+    font-family: "poppins";
+}
+header~h1{
+    background-color: #5d5d5d;
+    text-align: center;
+   margin-top: 7.8125rem;
+}
+
+
+.projet{
+    background-color: aqua;
+    width: 1040px;
+    height: 265px;
+    margin-left: 12.5rem;
+}
+
+.titre1{
+    font-style: italic;
+    Width: 553px;
+    margin-left:  12.5rem;
+    margin-top: 18.6875rem;
+    background-color: blueviolet;
+
+}
+.titre2{
+    font-style: italic;
+    margin-left: 56.7rem;
+    Width: 553px;
+  background-color: blueviolet;
+}
+
+.quiNousSomme{
+    width: 1900px;
+    background-color: darkred;
+   
+}
+ul span{
+    font-family: "poppins";
+    font-style: italic;
+    font-weight: normal;
+   
+    background-color: darkorchid;
+}
+li{
+    display: inline-block;
+    background-color: cyan;
+    font-family: "poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+}
