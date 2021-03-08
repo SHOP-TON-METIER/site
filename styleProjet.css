@@ -96,3 +96,15 @@ input{
     border: none;
 
 }
+
+.back{
+  
+    text-align: right;
+    font-size: 0.875rem;
+    width: 5rem;
+    padding: 1.5rem;
+    border-radius: 90px;
+    background-color: #09192C;
+    color: snow;
+
+}
