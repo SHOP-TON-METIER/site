@@ -22,8 +22,33 @@ body{
     z-index: 99;
 }
 
-h1 {
+.title{
+    margin-left: 6.66%;
     text-align: center;
+}
+
+h1 {
+    text-align: right;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.title:hover .add_button{
+    opacity: 1;    
+}
+
+.add_button{
+    opacity: 0;
+    width: 35px;
+    height: 35px;
+    background-color: #EF4813;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    transition: .25s;
 }
 
 h2{
