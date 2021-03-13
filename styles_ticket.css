@@ -10,12 +10,13 @@ body{
 }
 
 main{
-    width: 624px;
+    width: 630px;
     margin: auto;
-    padding-top: 55px;
+    padding: 55px 35px 40px 35px;
     background-color: whitesmoke;
     text-align: center;
     border: solid red;
+    font-size: 1.25rem;
 }
 
 h1 {
@@ -27,4 +28,53 @@ h1 {
 
 h1 span{
     color: #EF4813;
+}
+
+img{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.infos{
+    display: flex;
+    justify-content: space-between;
+    margin: auto 40px;
+}
+
+.infos p:first-child{
+    text-align: left;
+}
+
+.infos p:nth-child(2){
+    text-align: right;
+}
+
+li {
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    text-align: left;
+}
+
+li span, .conclusion{
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.8rem;
+    margin-left: 70px;
+}
+
+.total {
+    margin: 60px auto 40px 20px;
+    text-align: left;
+}
+
+.total p{
+    width: 70px;
+    margin: 0;
+}
+
+footer {
+    border-top: solid 0.5px black;
+    border-bottom: solid 0.5px black;
+    padding: 20px;
 }
