@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "poppins";
+    margin: 0;
+}
+
+main{
+    width: 624px;
+    margin: auto;
+    padding-top: 55px;
+    background-color: whitesmoke;
+    text-align: center;
+    border: solid red;
+}
+
+h1 {
+    margin: 0;
+    color: #09192C;
+    font-style: italic;
+    font-size: 3rem;
+}
+
+h1 span{
+    color: #EF4813;
+}
