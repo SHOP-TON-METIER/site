@@ -72,8 +72,8 @@ h1{
 
 }
  span{
-
-   font-weight: normal;
+    color: #EF4813;
+   font-weight: bold;
 }
 
 ul{
@@ -108,6 +108,8 @@ section{
     background-color: darkseagreen;
 }
 form{
+    position: relative;
+    top: -80px;
     text-align: center;
 }
 input{
@@ -123,8 +125,15 @@ input{
 
 }
 
+.bouton:hover{
+    transition: 0.6s;
+    background-color: #EF4813;
+}
+
 .back{
-  
+    position: relative;
+    top: 165px;
+    left: 35px;
     text-align: right;
     font-size: 0.875rem;
     width: 5rem;
@@ -133,4 +142,18 @@ input{
     background-color: #09192C;
     color: snow;
 
+}
+.fleche{
+    position: relative;
+    top: 245px;
+    left: 55px;
+    z-index: 1;
+    font-size: 2.5rem;
+    color: white;
+    text-decoration: none;
+    padding: 10px 70px 10px 5px;
+}
+.fleche:hover{
+    color: #EF4813;
+    transition: 0.3s;
 }
