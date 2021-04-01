@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="styles_fiche_metier.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <?php
+
+$link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+
+$sql = 'SELECT * FROM metier WHERE nom = "Graphiste"';
+
+$req = $link -> prepare($sql);
+$req -> execute();
+
+echo '<ul>';
+while($data = $req -> fetch()){
+  echo '<li>'.$data['nom'].' '.'<b>'.$data['salaire'].'</b></li>';
+}
+$req = null;
+
+
+
+$link = null;
+
+?>
+
+
+
 </head>
 
 <body>
