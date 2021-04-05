@@ -36,7 +36,6 @@ if (isset($_POST['id'])) {
     //         AND	etud.id_metier = $id;
     //         ";
 
-
     $req = $link->prepare($sql);
 
     $req->execute();
