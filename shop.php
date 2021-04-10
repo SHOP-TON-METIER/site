@@ -6,7 +6,7 @@ if (isset($_POST['id'])) {
 
     $id = $_POST['id'];
 
-    $sql = "SELECT * from shop WHERE id_shop = $id";
+    $sql = "SELECT * FROM shop AS s WHERE s.id_shop = $id";
     $req = $link->prepare($sql);
 
     $req->execute();
@@ -16,7 +16,7 @@ if (isset($_POST['id'])) {
     while ($data = $req->fetch()) {
 
         $result = array();
-        $result["code"] = $data['code'];
+        $result["code"] = $data['s.code'];
         $datacode = json_encode($result);
         echo $datacode;
     }

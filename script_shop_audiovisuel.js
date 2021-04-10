@@ -1,4 +1,4 @@
-var camera, scene, renderer // ajouter les autres objets ???
+var camera, scene, renderer
 
 // SCENE
 function createScene() {
@@ -10,7 +10,7 @@ function createScene() {
 
     // Camera
     camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT)
-    camera.position.set(0, 0, 7)
+    camera.position.set(0, 0, 15)
     scene.add(camera)
 
     // Renderer
@@ -27,32 +27,57 @@ function createScene() {
     
 
 // CREATE OBJECT
+    // fond vert
 function createGreenScreen(){
     const fondVert = new THREE.Mesh(
-        new THREE.BoxGeometry(10, 7, 0.2),
+        new THREE.BoxGeometry(20, 14, 0.2),
         new THREE.MeshBasicMaterial({color: 'green'})
     )
-    fondVert.position.set(8, 1, -2)
+    fondVert.position.set(18, -1, -3)
     scene.add(fondVert)
-    fondVert.rotation.y = Math.PI
+    // fondVert.rotation.y = Math.PI
 }
 
-function createPhotograph(){
+function createObjects(){
     // le mannequin
     const mannequin = new THREE.Mesh(
-        new THREE.BoxGeometry(1.5, 3.5, 0.1),
+        new THREE.BoxGeometry(2.5, 6, 0.1),
         new THREE.MeshBasicMaterial({color: 'yellow'})
     )
-    mannequin.position.set(7, -1.5, -1)
+    mannequin.position.set(15, -5, -1)
     scene.add(mannequin)
 
     // le photographe
     const photographe  = new THREE.Mesh(
-        new THREE.BoxGeometry(1.5, 2.5, 0.5),
+        new THREE.BoxGeometry(3, 5, 0.5),
         new THREE.MeshBasicMaterial({color: 'red'})
     )
-    photographe.position.set(7, -2, 1.5)
+    photographe.position.set(17, -5, 2.5)
     scene.add(photographe)
+
+    // le vidéaste
+    const videaste  = new THREE.Mesh(
+        new THREE.BoxGeometry(3, 5, 0.5),
+        new THREE.MeshBasicMaterial({color: 'purple'})
+    )
+    videaste.position.set(4, -5, 2)
+    scene.add(videaste)
+
+    // le cadreur-monteur
+    const monteur  = new THREE.Mesh(
+        new THREE.BoxGeometry(7, 5, 2),
+        new THREE.MeshBasicMaterial({color: 'red'})
+    )
+    monteur.position.set(-16, -5, 2.5)
+    scene.add(monteur)
+
+    // l'ingé son
+    const ingeSon  = new THREE.Mesh(
+        new THREE.BoxGeometry(10, 4, 4),
+        new THREE.MeshBasicMaterial({color: 'red'})
+    )
+    ingeSon.position.set(-8, -5, -8)
+    scene.add(ingeSon)
 
 }
 
@@ -73,7 +98,7 @@ function loop() {
 function init() {
     createScene()
     createGreenScreen()
-    createPhotograph()
+    createObjects()
     createControls()
     loop()
 }
