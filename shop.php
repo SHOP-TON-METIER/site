@@ -18,10 +18,6 @@
     <canvas>
     </canvas>
 
-    <div class="exit">
-        <a href="#"><span class="iconify" data-icon="eva:arrow-ios-downward-outline" data-inline="false"></span></a>
-    </div>
-
     <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script>

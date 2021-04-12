@@ -12,25 +12,13 @@
 </head>
 
 <body>
-    <header>
-        <div class="search">
-            <a href="#"><span class="iconify" data-icon="eva:search-fill" data-inline="false"></span></a>
-        </div>
-        <div class="bag">
-            <a href="#"><span class="iconify" data-icon="akar-icons:shopping-bag" data-inline="false"></a>
-        </div>
-    </header>
+    <?php include 'header.php' ?>
 
     <canvas>
     </canvas>
 
-    <div class="exit">
-        <a href="#"><span class="iconify" data-icon="eva:arrow-ios-downward-outline" data-inline="false"></span></a>
-    </div>
-
     <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
-    <script src="js/three.interactive.js"></script>
     <script>
         var camera, scene, renderer
 
@@ -61,71 +49,78 @@
 
 
         // CREATE OBJECT
-        // fond vert
-        function createGreenScreen() {
-            const fondVert = new THREE.Mesh(
-                new THREE.BoxGeometry(20, 14, 0.2),
+        function createObjects() {
+            // table principale avec les métiers d'infographiste, UI designer, UX designer et product designer autour
+            const table = new THREE.Mesh(
+                new THREE.BoxGeometry(15, 4, 3),
                 new THREE.MeshBasicMaterial({
-                    color: 'green'
+                    color: 'red'
                 })
             )
-            fondVert.position.set(18, -1, -3)
-            scene.add(fondVert)
-            // fondVert.rotation.y = Math.PI
-        }
-
-        function createObjects() {
-            // le mannequin
-            const mannequin = new THREE.Mesh(
-                new THREE.BoxGeometry(2.5, 6, 0.1),
+            table.position.set(10, -5, -3)
+            scene.add(table)
+            
+            // UI Designer
+            const uiDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 10, 1),
                 new THREE.MeshBasicMaterial({
                     color: 'yellow'
                 })
             )
-            mannequin.position.set(15, -5, -1)
-            scene.add(mannequin)
+            uiDesigner.position.set(10, -3, -11)
+            scene.add(uiDesigner)
 
-            // le photographe
-            const photographe = new THREE.Mesh(
-                new THREE.BoxGeometry(3, 5, 0.5),
+            // UX Designer    
+            const uxDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 10, 1),
+                new THREE.MeshBasicMaterial({
+                    color: 'yellow'
+                })
+            )
+            uxDesigner.position.set(20, -3, -3)
+            scene.add(uxDesigner)
+
+            const productDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 10, 1),
+                new THREE.MeshBasicMaterial({
+                    color: 'yellow'
+                })
+            )
+            productDesigner.position.set(10, -3, -1)
+            scene.add(productDesigner)
+
+            // Infographiste
+            const infographiste = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 10, 1),
+                new THREE.MeshBasicMaterial({
+                    color: 'yellow'
+                })
+            )
+            infographiste.position.set(0, -3, -3)
+            scene.add(infographiste)
+
+            // web designer
+            const webDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(6, 4, 3),
                 new THREE.MeshBasicMaterial({
                     color: 'red'
                 })
             )
-            photographe.position.set(17, -5, 2.5)
-            scene.add(photographe)
+            webDesigner.position.set(-20, -3, -10)
+            scene.add(webDesigner)
 
-            // le vidéaste
-            const videaste = new THREE.Mesh(
-                new THREE.BoxGeometry(3, 5, 0.5),
-                new THREE.MeshBasicMaterial({
-                    color: 'purple'
-                })
-            )
-            videaste.position.set(4, -5, 2)
-            scene.add(videaste)
-
-            // le cadreur-monteur
-            const monteur = new THREE.Mesh(
-                new THREE.BoxGeometry(7, 5, 2),
+            // web designer
+            const webDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(6, 4, 3),
                 new THREE.MeshBasicMaterial({
                     color: 'red'
                 })
             )
-            monteur.position.set(-16, -5, 2.5)
-            scene.add(monteur)
-
-            // l'ingé son
-            const ingeSon = new THREE.Mesh(
-                new THREE.BoxGeometry(10, 4, 4),
-                new THREE.MeshBasicMaterial({
-                    color: 'red'
-                })
-            )
-            ingeSon.position.set(-8, -5, -8)
-            scene.add(ingeSon)
-
+            webDesigner.position.set(-20, -3, -10)
+            scene.add(webDesigner)
         }
+
+
 
         function createControls() {
             // const controls = new THREE.OrbitControls(camera, renderer.domElement)
@@ -139,31 +134,15 @@
             controls.update()
             renderer.render(scene, camera)
             requestAnimationFrame(loop)
-            // interactionManager.update()
         }
 
         function init() {
             createScene()
-            createGreenScreen()
             createObjects()
             createControls()
-            // createInteractions()
             loop()
-            console.log(photographe)
         }
 
-        // function createInteractions() {
-        //     interactionManager = new THREE.InteractionManager(renderer, camera, renderer.domElement)
-        //     interactionManager.add(photographe)
-        //     interactionManager.add(videaste)
-
-
-        //     //COMMUNICATION
-        //     photographe.addEventListener("click", (event) => {
-        //         console.log('bonjour')
-        //     })
-        // }
-        
         window.addEventListener('load', init, false)
     </script>
 </body>

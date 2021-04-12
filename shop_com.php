@@ -12,26 +12,15 @@
 </head>
 
 <body>
-    <header>
-        <div class="search">
-            <a href="#"><span class="iconify" data-icon="eva:search-fill" data-inline="false"></span></a>
-        </div>
-        <div class="bag">
-            <a href="#"><span class="iconify" data-icon="akar-icons:shopping-bag" data-inline="false"></a>
-        </div>
-    </header>
+    <?php include 'header.php' ?>
 
     <canvas>
     </canvas>
 
-    <div class="exit">
-        <a href="#"><span class="iconify" data-icon="eva:arrow-ios-downward-outline" data-inline="false"></span></a>
-    </div>
-    
     <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script>
-        var camera, scene, renderer // ajouter les autres objets ???
+        var camera, scene, renderer
 
         // SCENE
         function createScene() {
@@ -61,46 +50,58 @@
 
         // CREATE OBJECT
         function createObjects() {
-            // ingénieur 
-            const ingenieur = new THREE.Mesh(
-                new THREE.BoxGeometry(6, 4, 3),
+            // le community manager
+            const communityManager = new THREE.Mesh(
+                new THREE.BoxGeometry(30, 30, 10),
                 new THREE.MeshBasicMaterial({
                     color: 'red'
                 })
             )
-            ingenieur.position.set(15, -5, 0)
-            scene.add(ingenieur)
+            communityManager.position.set(-45, -5, -30)
+            scene.add(communityManager)
 
-            // dev front-end 
-            const devFront = new THREE.Mesh(
-                new THREE.BoxGeometry(6, 4, 3),
+            //chef de projet
+            const chefProjet = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 8, 1),
                 new THREE.MeshBasicMaterial({
                     color: 'red'
                 })
             )
-            devFront.position.set(15, -5, -10)
-            scene.add(devFront)
+            chefProjet.position.set(15, -5, -5)
+            scene.add(chefProjet)
+            
+            //web marketer
+            const webMarketer = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 8, 1),
+                new THREE.MeshBasicMaterial({
+                    color: 'red'
+                })
+            )
+            webMarketer.position.set(25, -5, -5)
+            scene.add(webMarketer)
 
-            // dev back-end 
-            const devBack = new THREE.Mesh(
-                new THREE.BoxGeometry(6, 4, 3),
+            //directeur artistique
+            const dirArtistique = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 8, 1),
                 new THREE.MeshBasicMaterial({
                     color: 'red'
                 })
             )
-            devBack.position.set(-15, -5, -10)
-            scene.add(devBack)
+            dirArtistique.position.set(10, -5, -20)
+            scene.add(dirArtistique)
 
-            // dev full-stack 
-            const devFullStack = new THREE.Mesh(
-                new THREE.BoxGeometry(6, 4, 3),
+            //tableau
+            const tableau = new THREE.Mesh(
+                new THREE.BoxGeometry(30, 20, 1),
                 new THREE.MeshBasicMaterial({
-                    color: 'red'
+                    color: 'yellow'
                 })
             )
-            devFullStack.position.set(-15, -5, 0)
-            scene.add(devFullStack)
+            tableau.position.set(10, 0, -30)
+            scene.add(tableau)
         }
+
+
 
         function createControls() {
             // const controls = new THREE.OrbitControls(camera, renderer.domElement)
@@ -127,4 +128,4 @@
     </script>
 </body>
 
-</html
+</html>
