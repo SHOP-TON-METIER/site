@@ -1,51 +1,26 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
-    <link rel="stylesheet" href="styles_shop_audiovisuel.css">
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
+if (isset($_POST['id'])) {
+    $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
-<body>
 
-    <?php include 'header.php' ?>
+    $id = $_POST['id'];
 
-    <canvas>
-    </canvas>
+    $sql = "SELECT * FROM shop AS s WHERE s.id_shop = $id";
+    $req = $link->prepare($sql);
 
-    <div class="exit">
-        <a href="#"><span class="iconify" data-icon="eva:arrow-ios-downward-outline" data-inline="false"></span></a>
-    </div>
+    $req->execute();
 
-    <script src="js/three.min.js"></script>
-    <script src="js/OrbitControls.js"></script>
-    <script>
-        $(document).ready(function($) {
-            var id = 1;
-            var request = $.ajax({
-                url: "shop.php",
-                method: "POST",
-                data: {
-                    id: id
-                },
-                dataType: "JSON"
-            })
+    $result = [];
 
-            request.done(function(data) {
-                $('body').append(data.code)
-                console.log(data.code)
-            })
+    while ($data = $req->fetch()) {
 
-            request.fail(function(jqXHR, textStatus) {
-                alert("Request failed: " + textStatus)
-            })
-        });
-    </script>
-</body>
+        $result = array();
+        $result["code"] = $data['s.code'];
+        $datacode = json_encode($result);
+        echo $datacode;
+    }
 
-</html>
+    $req = null;
+}
+$link = null;
