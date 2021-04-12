@@ -5,8 +5,8 @@
         <div class="bag">
             <a href="#"><span class="iconify" data-icon="akar-icons:shopping-bag" data-inline="false"></a>
         </div>
-        <p>
-            <a href="#"><span>&lt;</span> Retour</a>
+        <p class="exit">
+            <a href="metier.html"><span>&lt;</span> Retour</a>
         </p>
     </header>');
 ?>

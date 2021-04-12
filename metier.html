@@ -14,9 +14,9 @@
 
 <body>
     <!-- id="popup" à connecter avec le bouton qui fait apparaitre la popup (href="#popup") -->
-    <div class="fiche">
+    <main>
 
-        <<main>
+        <div class="fiche">
             <div class="croix">
                 <a href="test.php"><img src="images/croix.png" alt="fermer"></a>
             </div>
@@ -35,7 +35,13 @@
             <div>
                 <h2>Les compétences nécessaires</h2>
 
-                <ul id="competences"></ul>
+                <ul>
+                    <li>...</li>
+                    <li>...</li>
+                    <li>...</li>
+                    <li>...</li>
+                    <li>...</li>
+                </ul>
             </div>
 
             <div>
@@ -44,7 +50,17 @@
             </div>
             <div>
                 <h2>Les poursuites d'étude</h2>
-                <ul id="formations"></ul>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos excepturi ea molestias libero
+                    quo
+                    repudiandae architecto quia debitis quos harum.
+                </p>
+                <ul>
+                    <li>...</li>
+                    <li>...</li>
+                    <li>...</li>
+                    <li>...</li>
+                </ul>
             </div>
             <div class="ancien">
                 <h2>Avis des anciens MMI</h2>
@@ -177,94 +193,24 @@
         </script>
 
         <script>
-            var id = 2
-
-            function get_metier(data) {
-                console.log(data)
-                var request = $.ajax({
-                    url: "api_metier.php",
-                    method: "GET",
-                    data: {
-                        id: id,
-                        type: "competences"
-                    },
-                    dataType: "JSON"
-                })
-
-                request.done(function(data) {
-                    $.each(data, function(index, item) {
-                        $('#competences').append("<li>" + item.competences + "</li>")
-                    })
-                }, get_competences)
-
-                request.fail(function(jqXHR, textStatus) {
-                    alert("Request failed: " + textStatus)
-                })
-            }
-
-            function get_competences(data) {
-                console.log(data)
-                var request = $.ajax({
-                    url: "api_metier.php",
-                    method: "GET",
-                    data: {
-                        id: id,
-                        type: "formations"
-                    },
-                    dataType: "JSON"
-                })
-
-                request.done(function(data) {
-                    $.each(data, function(index, item) {
-                        $('#formations').append("<li>" + item.formation + "</li>")
-                    })
-                }, get_formations)
-
-                request.fail(function(jqXHR, textStatus) {
-                    alert("Request failed: " + textStatus)
-                })
-            }
-
-            function get_formations(data) {
-                console.log(data)
-                var request = $.ajax({
-                    url: "api_metier.php",
-                    method: "GET",
-                    data: {
-                        id: id,
-                        type: "etudiants"
-                    },
-                    dataType: "JSON"
-                })
-
-                request.done(get_etudiants)
-
-                request.fail(function(jqXHR, textStatus) {
-                    alert("Request failed: " + textStatus)
-                })
-            }
-
-            function get_etudiants(data) {
-                console.log(data)
-            }
             $(document).ready(function($) {
-
+                var id = 1;
                 var request = $.ajax({
                     url: "api_metier.php",
-                    method: "GET",
+                    method: "POST",
                     data: {
-                        id: id,
-                        type: "metier"
+                        id: id
                     },
                     dataType: "JSON"
                 })
 
                 request.done(function(data) {
-                    $('#nom').html(data[0].nom)
-                    $('#metier').html('Le metier de ' + data[0].nom.toLowerCase())
-                    $('#description').html(data[0].description)
-                    $('#salaire').html(data[0].salaire)
-                }, get_metier)
+                    $('#nom').html(data.nom)
+                    $('#metier').html('Le metier de ' + data.nom)
+                    $('#description').html(data.description)
+                    $('#salaire').html(data.salaire)
+                    console.log(data)
+                })
 
                 request.fail(function(jqXHR, textStatus) {
                     alert("Request failed: " + textStatus)

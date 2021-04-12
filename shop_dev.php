@@ -7,26 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles_shop.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="search">
-            <a href="#"><span class="iconify" data-icon="eva:search-fill" data-inline="false"></span></a>
-        </div>
-        <div class="bag">
-            <a href="#"><span class="iconify" data-icon="akar-icons:shopping-bag" data-inline="false"></a>
-        </div>
-    </header>
+    
+    <?php include 'header.php' ?>
 
     <canvas>
     </canvas>
-
-    <div class="exit">
-        <a href="#"><span class="iconify" data-icon="eva:arrow-ios-downward-outline" data-inline="false"></span></a>
-    </div>
     
     <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
@@ -125,6 +117,7 @@
 
         window.addEventListener('load', init, false)
     </script>
+    
 </body>
 
 </html

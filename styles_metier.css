@@ -7,19 +7,37 @@ body{
     margin: 0;
 }
 
-.croix{
-    width: 50px;
-    height: 50px;
-    margin-left: auto;
-    background-color: #09192C;
+main{
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    right: 0;
+    left: 0;
 }
 
+.fiche {
+    width: 940px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+}
 
 .avatar{
     width: 200px;
     height: 40vh;
     margin: auto;
     z-index: 99;
+}
+
+.croix{
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    background-color: #09192C;
+}
+
+.croix img{
+    width: 30px;
 }
 
 .title{
@@ -35,12 +53,7 @@ h1 {
     
 }
 
-.title:hover .add_button{
-    opacity: 1;    
-}
-
-.add_button{
-    opacity: 0;
+.add_metier{
     width: 35px;
     height: 35px;
     background-color: #EF4813;
@@ -60,7 +73,6 @@ h2{
 
 .avis {
     width: 250px;
-    /* border: solid; */
     text-align: center;
     font-weight: 300;
     display: inline-block;
@@ -70,27 +82,9 @@ h2{
 .avis:nth-child(3){
     margin: 0 20px;
 }
+
 span{
     font-weight: 600;
-}
-
-
-.overlay {
-    position: absolute;
-    right: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.7);
-    /* transition: opacity 500ms; */
-    /* visibility: hidden; */
-    /* opacity: 0; */
-}
-
-.popup-content {
-    width: 940px;
-    margin: 30px auto;
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 10px;
 }
 
 .add_panier {

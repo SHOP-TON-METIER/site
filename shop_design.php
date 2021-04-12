@@ -57,7 +57,7 @@
                     color: 'red'
                 })
             )
-            table.position.set(10, -5, -3)
+            table.position.set(10, -5, -10)
             scene.add(table)
             
             // UI Designer
@@ -67,7 +67,7 @@
                     color: 'yellow'
                 })
             )
-            uiDesigner.position.set(10, -3, -11)
+            uiDesigner.position.set(10, -3, -18)
             scene.add(uiDesigner)
 
             // UX Designer    
@@ -77,7 +77,7 @@
                     color: 'yellow'
                 })
             )
-            uxDesigner.position.set(20, -3, -3)
+            uxDesigner.position.set(20, -3, -10)
             scene.add(uxDesigner)
 
             const productDesigner = new THREE.Mesh(
@@ -86,7 +86,7 @@
                     color: 'yellow'
                 })
             )
-            productDesigner.position.set(10, -3, -1)
+            productDesigner.position.set(10, -3, -8)
             scene.add(productDesigner)
 
             // Infographiste
@@ -96,7 +96,7 @@
                     color: 'yellow'
                 })
             )
-            infographiste.position.set(0, -3, -3)
+            infographiste.position.set(0, -3, -10)
             scene.add(infographiste)
 
             // web designer
@@ -106,18 +106,28 @@
                     color: 'red'
                 })
             )
-            webDesigner.position.set(-20, -3, -10)
+            webDesigner.position.set(-20, -3, 0)
             scene.add(webDesigner)
 
-            // web designer
-            const webDesigner = new THREE.Mesh(
+            // graphiste
+            const graphiste = new THREE.Mesh(
                 new THREE.BoxGeometry(6, 4, 3),
                 new THREE.MeshBasicMaterial({
                     color: 'red'
                 })
             )
-            webDesigner.position.set(-20, -3, -10)
-            scene.add(webDesigner)
+            graphiste.position.set(-20, -3, -10)
+            scene.add(graphiste)
+
+            // game designer
+            const gameDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(6, 4, 3),
+                new THREE.MeshBasicMaterial({
+                    color: 'red'
+                })
+            )
+            gameDesigner.position.set(-20, -3, -20)
+            scene.add(gameDesigner)
         }
 
 
