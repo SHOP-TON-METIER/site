@@ -1,33 +1,39 @@
 <?php
 
-if (isset($_POST['id'])) {
+if (isset($_GET['id'])) {
     $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
+    $type = htmlentities($_GET['type']);
 
-    $id = $_POST['id'];
+    $id = htmlentities($_GET['id']);
 
-    $sql = "SELECT * FROM metier as m WHERE m.id_metier = $id UNION ALL SELECT * FROM ancienetudiant AS e WHERE e.id_metier = $id";
-    // $sql. = "SELECT  nom, prenom, promotionMMI, avis, conseil, adjectifs FROM ancienetudiant WHERE id_metier = $id";
+    if ($type == 'metier') {
 
+        $sql = "SELECT * FROM metier  WHERE id_metier = :id";
+    };
+
+    if ($type == 'competences') {
+
+        $sql = "SELECT competences FROM rel_metier_comp WHERE id_metier = :id";
+    };
+
+    if ($type == 'formations') {
+
+        $sql = "SELECT formation FROM rel_form_metier WHERE id_metier = :id";
+    };
+
+    if ($type == 'etudiants') {
+
+        $sql = "SELECT * FROM ancienetudiant WHERE id_metier = :id";
+    };
 
 
     $req = $link->prepare($sql);
 
-    $req->execute();
+    $req->execute(array(":id" => $id));
 
     $result = $req->fetchAll(PDO::FETCH_ASSOC);
 
-
-
-    // while ($data = $req->fetchAll()) {
-
-    // $result["nom"] = $data['nom'];
-    // $result["prenom"] = $data[''];
-
-
-    //     $result["salaire"] = $data['salaire'];
-    //     $result["avis"] = $data['etud_avis'];
-    // }
     $datacode = json_encode($result);
     echo $datacode;
 
