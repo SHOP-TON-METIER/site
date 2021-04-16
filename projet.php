@@ -9,24 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,600&display=swap"
         rel="stylesheet">
-
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <?php include 'styles_header.php' ?>
 </head>
 
 <body>
-    <header>
-        <div class="search"><a href=""><span class="iconify" data-icon="eva:search-fill" data-inline="false"></span></a>
-        </div>
-        <div class="bag"><a href=""><span class="iconify" data-icon="akar-icons:shopping-bag" data-inline="false"></a>
-        </div>
-    </header>
-    <a href=""class="fleche">&lt;</a>
-    <!-- <p class="fleche">&lt;</p> -->
-    <p class="back">retour</p>
+    <?php include 'header.php' ?>
 
-
-    <h1>
-    </p>Le projet <span>SHOP</span>'TON MÉTIER</h1>
+    <h1>Le projet <span>SHOP</span>'TON MÉTIER</h1>
 
     <div>
 

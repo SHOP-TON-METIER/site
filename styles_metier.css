@@ -1,103 +1,94 @@
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
-body{
-    font-family: 'Poppins', sans-serif;
+body {
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+} 
+
+main {
+    width: 80vw;
+    margin: 80px auto 20px auto;
+    padding-top: 30px;
 }
 
-main{
-    background: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    right: 0;
-    left: 0;
+canvas {
+    border: solid red;
+    width: 30vw;
+    height: 74vh;
+    position: fixed;
 }
 
-.fiche {
-    width: 940px;
-    margin: 30px auto;
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 10px;
+section {
+    width: 60%;
+    margin-left: 40%;
 }
 
-.avatar{
-    width: 200px;
-    height: 40vh;
-    margin: auto;
-    z-index: 99;
+.current-domain {
+    color: #EF4813;
 }
 
-.croix{
-    width: 30px;
-    height: 30px;
-    margin-left: auto;
-    background-color: #09192C;
-}
-
-.croix img{
-    width: 30px;
-}
-
-.title{
-    margin-left: 6.66%;
-    text-align: center;
+.fil-Ariane {
+    color: #848C96;
+    font-size: 1.125rem;
+    margin: 0;
 }
 
 h1 {
-    text-align: right;
-    display: inline-block;
+    color: #09192C;
+    font-size: 4rem;
     margin: 0;
-    padding: 0;
-    
 }
 
-.add_metier{
-    width: 35px;
-    height: 35px;
-    background-color: #EF4813;
+h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 10px auto;
+    color: #09192C;
+}
+
+section p, section ul {
+    color: #3A4756;
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.boutons {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    margin : 30px auto;
+}
+
+.ajouter-panier {
     display: inline-block;
-    margin: 0;
-    padding: 0;
-    margin-left: 10px;
-    transition: .25s;
-}
-
-h2{
-    margin-top: 50px;
-}
-.ancien {
-    text-align: center;
-}
-
-.avis {
-    width: 250px;
-    text-align: center;
-    font-weight: 300;
-    display: inline-block;
-    padding: 10px;
-}
-
-.avis:nth-child(3){
-    margin: 0 20px;
-}
-
-span{
-    font-weight: 600;
-}
-
-.add_panier {
-    display: block;
-    width: 250px;
-    height: 50px;
-    margin: auto;
-    margin-top: 105px;
-    background-color: #EF4813;
-    text-align: center;
     text-decoration: none;
-    color: #fff;
+    background-color: #EF4813;
+    color: white;
     font-size: 1.25rem;
     font-weight: 600;
-    padding-top: 10px;
+    padding: 12px 34px;
+    border-radius: 10px;
+    margin-right: 30px;
+}
+
+.like {
+   border: solid 2px #09192C;
+   border-radius: 10px;
+   color: #09192C;
+   font-size: 1.25rem;
+   padding: 12px 18px;
+}
+
+.like img {
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+}
+
+.salaire span {
+    margin-right: 20px;
 }

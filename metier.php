@@ -5,89 +5,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SHOP'TON METIER</title>
     <link rel="stylesheet" href="styles_metier.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <?php include 'styles_header.php' ?>
 </head>
 
 <body>
-    <!-- id="popup" à connecter avec le bouton qui fait apparaitre la popup (href="#popup") -->
-    <div class="fiche">
+    <?php include 'header.php' ?>
+    <main>
+        <canvas>
+        </canvas>
 
-        <<main>
-            <div class="croix">
-                <a href="test.php"><img src="images/croix.png" alt="fermer"></a>
+        <section>
+            <p class="fil-Ariane">
+                <span class="current-domain">Audiovisuel</span>
+                &nbsp;&gt;&nbsp;
+                <!-- <span id="nom"></span> -->
+            </p>
+
+            <h1 id="nom"></h1>
+            <h2>Description</h2>
+
+            <p id="description"></p>
+
+            <div class="boutons">
+                <a href="#" class="ajouter-panier">Ajouter au panier</a>
+                <span href="#" class="like">
+                    <img src="images/coeur.svg" alt="Aimer le métier"> 20
+                </span>
             </div>
-            <div class="avatar"></div>
 
-            <div class="title">
-                <h1 id="nom"></h1>
-                <a class="add_metier" href="#"></a>
-            </div>
+            <h2>Salaire</h2>
 
+            <p class="salaire" id="salaire"></p>
+        
+            <h2>Compétences</h2>
 
-            <div>
-                <h2 id="metier"></h2>
-                <p id="description"></p>
-            </div>
-            <div>
-                <h2>Les compétences nécessaires</h2>
+            <ul id="competences"></ul>
 
-                <ul id="competences"></ul>
-            </div>
+            <h2>Les poursuites d'études</h2>
 
-            <div>
-                <h2>Le salaire</h2>
-                <p id="salaire"></p>
-            </div>
-            <div>
-                <h2>Les poursuites d'étude</h2>
-                <ul id="formations"></ul>
-            </div>
-            <div class="ancien">
-                <h2>Avis des anciens MMI</h2>
+            <ul id="formations"></ul>
 
-                <p class="avis">
-                    <span>Michel</span><br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt mollitia earum neque ullam
-                    reiciendis
-                    labore
-                    exercitationem fugit assumenda ipsa! Explicabo libero quibusdam ad facere enim impedit, facilis
-                    pariatur
-                    sint
+            <h2>Avis des anciens MMI</h2>
+
+            <p class="avis">
+                <span>Michel</span><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt mollitia earum neque ullam reiciendis labore
+                exercitationem fugit assumenda ipsa! Explicabo libero quibusdam ad facere enim impedit, facilis pariatur sint
                 </p>
 
                 <p class="avis">
-                    <span>Michel</span><br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt mollitia earum neque ullam
-                    reiciendis
-                    labore
-                    exercitationem fugit assumenda ipsa! Explicabo libero quibusdam ad facere enim impedit, facilis
-                    pariatur
-                    sint
+                <span>Michel</span><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt mollitia earum neque ullam reiciendis labore
+                exercitationem fugit assumenda ipsa! Explicabo libero quibusdam ad facere enim impedit, facilis pariatur sint
                 </p>
 
                 <p class="avis">
-                    <span>Michel</span><br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt mollitia earum neque ullam
-                    reiciendis
-                    labore
-                    exercitationem fugit assumenda ipsa! Explicabo libero quibusdam ad facere enim impedit, facilis
-                    pariatur
-                    sint
+                <span>Michel</span><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt mollitia earum neque ullam reiciendis labore
+                exercitationem fugit assumenda ipsa! Explicabo libero quibusdam ad facere enim impedit, facilis pariatur sint
                 </p>
-            </div>
 
-            <a href="#" class="add_panier">Ajouter au panier</a>
+        </section>
+    </main>
 
-        </main>
-
-
-
-
-        <script src="js/three.min.js"></script>
+    <script src="js/three.min.js"></script>
         <script src="js/GLTFLoader.js"></script>
         <script src="js/OrbitControls.js"></script>
         <script>
@@ -176,7 +163,7 @@
             window.addEventListener('load', init, false)
         </script>
 
-        <script>
+    <script>
             var id = 2
 
             function get_metier(data) {
