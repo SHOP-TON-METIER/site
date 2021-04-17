@@ -9,21 +9,24 @@ body {
 main {
     width: 80vw;
     max-width: 1400px;
-    margin: auto;
     margin-top: 14vh;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 canvas {
     width: 30%;
+    min-width: 350px;
     height: 80vh;
     border: solid 2px red;
     border-radius: 10vw;
-    position: fixed;
 }
 
 section {
     width: 55%;
-    float: right;
+    min-width: 600px;
+    max-width: 1200px;
 }
 
 .current-domain {
@@ -53,7 +56,6 @@ section p, section ul {
     color: #3A4756;
     margin-top: 0;
     margin-bottom: 30px;
-    width: 100%;
 }
 .boutons {
     height: 50px;

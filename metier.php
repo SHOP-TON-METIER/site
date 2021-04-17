@@ -16,21 +16,73 @@
 
 <body>
     <?php include 'header.php' ?>
+    <?php 
+    // if (isset($_GET['id'])) {
+        $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+
+        $sql = 
+        'SELECT  
+            m.nom AS nom_metier, 
+            m.description, 
+            m.salaire, 
+            m.shop,
+            rmc.competences, 
+            etud.nom AS nom_etud, 
+            etud.prenom AS prenom_etud, 
+            etud.promotionMMI, 
+            etud.avis, 
+            f.nom AS nom_formation, 
+            f.anneesEtudes
+        FROM 
+            metier AS m,
+            rel_metier_comp AS rmc, 
+            ancienetudiant AS etud, 
+            formation AS f,
+            rel_form_metier AS rfm
+        WHERE 
+            m.identifiant = rfm.id_metier
+        AND f.identifiant_formation = rfm.id_formation
+        AND m.identifiant = rmc.id_metier
+        AND m.identifiant = etud.id_metier
+        AND m.identifiant = 1;"';
+
+        $req = $link -> prepare($sql);
+        $req -> execute();
+
+
+    // }    
+    ?>
+
     <main>
         <canvas>
         </canvas>
 
+
+    
         <section>
             <p class="fil-Ariane">
                 <span class="current-domain">Audiovisuel</span>
                 &nbsp;&gt;&nbsp;
-                <!-- <span id="nom"></span> -->
+                <?php
+                    while($data = $req -> fetch()){
+                        echo('<span>'.$data['nom_metier'].'</span>');
+                    
+                ?>
             </p>
 
-            <h1 id="nom"></h1>
-            <h2>Description</h2>
+                <?php 
+                        echo('<h1>'.$data['nom_metier'].'</h1>');
+                ?>
 
-            <p id="description"></p>
+
+            <h2>Description</h2>
+                <?php 
+                        echo('<p>'.$data['description'].'</p>');
+                    }
+                // A mettre à la toute fin
+                $req = null;
+                ?>
+            <!-- <p id="description"></p> -->
 
             <div class="boutons">
                 <a href="#" class="ajouter-panier">Ajouter au panier</a>
@@ -74,7 +126,7 @@
         </section>
     </main>
 
-    <script src="js/three.min.js"></script>
+    <!-- <script src="js/three.min.js"></script>
     <script src="js/GLTFLoader.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script>
@@ -257,7 +309,7 @@
                 alert("Request failed: " + textStatus)
             })
         });
-    </script>
+    </script> -->
 </body>
 
 </html>
