@@ -1,30 +1,29 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
     font-family: 'Poppins', sans-serif;
 } 
 
 main {
     width: 80vw;
-    margin: 80px auto 20px auto;
-    padding-top: 30px;
+    max-width: 1400px;
+    margin: auto;
+    margin-top: 14vh;
 }
 
 canvas {
-    border: solid red;
-    width: 30vw;
-    height: 74vh;
+    width: 30%;
+    height: 80vh;
+    border: solid 2px red;
+    border-radius: 10vw;
     position: fixed;
 }
 
 section {
-    width: 60%;
-    margin-left: 40%;
+    width: 55%;
+    float: right;
 }
 
 .current-domain {
@@ -57,10 +56,11 @@ section p, section ul {
     width: 100%;
 }
 .boutons {
-    height: 70px;
+    height: 50px;
     display: flex;
     align-items: center;
     margin : 30px auto;
+    box-sizing: border-box;
 }
 
 .ajouter-panier {
@@ -87,8 +87,4 @@ section p, section ul {
     position: relative;
     top: 2px;
     margin-right: 10px;
-}
-
-.salaire span {
-    margin-right: 20px;
 }
