@@ -61,7 +61,42 @@
   
         </div>
       </div>
-
+      <div>
+        <canvas id="bacmmi"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const data = {
+      labels: [
+        'Bac S',
+        'Bac Techno',
+        'Bac ES',
+        'Bac L',
+        'Bac Pro-Autres'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [48, 33, 15, 2, 2],
+        backgroundColor: [
+          '#E8442F',
+          '#FFA236',
+          '#2DC6F6',
+          '#5E46F8',
+          '#3A4756'
+        ],
+        hoverOffset: 4
+      }]
+    };
+        const config = {
+      type: 'pie',
+      data: data,
+    };
+          var bacmmi = new Chart(
+          document.getElementById('bacmmi'),
+          config
+        );
+      </script>
+      
 
 
 </body>
