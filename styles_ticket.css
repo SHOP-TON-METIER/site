@@ -10,7 +10,7 @@ body{
 }
 
 main{
-    width: 630px;
+    width: 800px;
     margin: auto;
     padding: 55px 35px 40px 35px;
     background-color: whitesmoke;
@@ -28,11 +28,6 @@ h1 {
 
 h1 span{
     color: #EF4813;
-}
-
-img{
-    margin-top: 30px;
-    margin-bottom: 30px;
 }
 
 .infos{
@@ -56,7 +51,7 @@ li {
     text-align: left;
 }
 
-li span, .conclusion{
+li span, #conclusion{
     font-weight: 300;
     font-style: italic;
     font-size: 0.8rem;

@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+} 
+
+main {
+    width: 80vw;
+    max-width: 1400px;
+    margin: auto;
+    margin-top: 14vh;
+}
+
+canvas {
+    width: 30%;
+    height: 80vh;
+    border: solid 2px red;
+    border-radius: 10vw;
+    position: fixed;
+}
+
+section {
+    width: 55%;
+    float: right;
+}
+
+.current-domain {
+    color: #EF4813;
+}
+
+.fil-Ariane {
+    color: #848C96;
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+h1 {
+    color: #09192C;
+    font-size: 4rem;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 10px auto;
+    color: #09192C;
+}
+
+section p, section ul {
+    color: #3A4756;
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.boutons {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin : 30px auto;
+    box-sizing: border-box;
+}
+
+.ajouter-panier {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #EF4813;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 12px 34px;
+    border-radius: 10px;
+    margin-right: 30px;
+}
+
+.like {
+   border: solid 2px #09192C;
+   border-radius: 10px;
+   color: #09192C;
+   font-size: 1.25rem;
+   padding: 12px 18px;
+}
+
+.like img {
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+}

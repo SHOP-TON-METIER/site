@@ -1,37 +1,26 @@
 <!DOCTYPE html>
-<html lang="css">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles_shop.css">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <?php include 'styles_header.php' ?>
 </head>
 
 <body>
-    <header>
-        <div class="search">
-            <a href="#"><span class="iconify" data-icon="eva:search-fill" data-inline="false"></span></a>
-        </div>
-        <div class="bag">
-            <a href="#"><span class="iconify" data-icon="akar-icons:shopping-bag" data-inline="false"></a>
-        </div>
-    </header>
+    <?php include 'header.php' ?>
 
     <canvas>
     </canvas>
 
-    <div class="exit">
-        <a href="#"><span class="iconify" data-icon="eva:arrow-ios-downward-outline" data-inline="false"></span></a>
-    </div>
-    
     <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script>
-        var camera, scene, renderer // ajouter les autres objets ???
+        var camera, scene, renderer
 
         // SCENE
         function createScene() {
@@ -61,46 +50,87 @@
 
         // CREATE OBJECT
         function createObjects() {
-            // ingénieur 
-            const ingenieur = new THREE.Mesh(
-                new THREE.BoxGeometry(6, 4, 3),
+            // table principale avec les métiers d'infographiste, UI designer, UX designer et product designer autour
+            const table = new THREE.Mesh(
+                new THREE.BoxGeometry(15, 4, 3),
                 new THREE.MeshBasicMaterial({
                     color: 'red'
                 })
             )
-            ingenieur.position.set(15, -7, 0)
-            scene.add(ingenieur)
+            table.position.set(10, -5, -10)
+            scene.add(table)
+            
+            // UI Designer
+            const uiDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 10, 1),
+                new THREE.MeshBasicMaterial({
+                    color: 'yellow'
+                })
+            )
+            uiDesigner.position.set(10, -3, -18)
+            scene.add(uiDesigner)
 
-            // dev front-end 
-            const devFront = new THREE.Mesh(
-                new THREE.BoxGeometry(6, 4, 3),
+            // UX Designer    
+            const uxDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 10, 1),
                 new THREE.MeshBasicMaterial({
-                    color: 'red'
+                    color: 'yellow'
                 })
             )
-            devFront.position.set(15, -7, -10)
-            scene.add(devFront)
+            uxDesigner.position.set(20, -3, -10)
+            scene.add(uxDesigner)
 
-            // dev back-end 
-            const devBack = new THREE.Mesh(
-                new THREE.BoxGeometry(6, 4, 3),
+            const productDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 10, 1),
                 new THREE.MeshBasicMaterial({
-                    color: 'red'
+                    color: 'yellow'
                 })
             )
-            devBack.position.set(-15, -7, -10)
-            scene.add(devBack)
+            productDesigner.position.set(10, -3, -8)
+            scene.add(productDesigner)
 
-            // dev full-stack 
-            const devFullStack = new THREE.Mesh(
+            // Infographiste
+            const infographiste = new THREE.Mesh(
+                new THREE.BoxGeometry(3, 10, 1),
+                new THREE.MeshBasicMaterial({
+                    color: 'yellow'
+                })
+            )
+            infographiste.position.set(0, -3, -10)
+            scene.add(infographiste)
+
+            // web designer
+            const webDesigner = new THREE.Mesh(
                 new THREE.BoxGeometry(6, 4, 3),
                 new THREE.MeshBasicMaterial({
                     color: 'red'
                 })
             )
-            devFullStack.position.set(-15, -7, 0)
-            scene.add(devFullStack)
+            webDesigner.position.set(-20, -3, 0)
+            scene.add(webDesigner)
+
+            // graphiste
+            const graphiste = new THREE.Mesh(
+                new THREE.BoxGeometry(6, 4, 3),
+                new THREE.MeshBasicMaterial({
+                    color: 'red'
+                })
+            )
+            graphiste.position.set(-20, -3, -10)
+            scene.add(graphiste)
+
+            // game designer
+            const gameDesigner = new THREE.Mesh(
+                new THREE.BoxGeometry(6, 4, 3),
+                new THREE.MeshBasicMaterial({
+                    color: 'red'
+                })
+            )
+            gameDesigner.position.set(-20, -3, -20)
+            scene.add(gameDesigner)
         }
+
+
 
         function createControls() {
             // const controls = new THREE.OrbitControls(camera, renderer.domElement)
@@ -127,4 +157,4 @@
     </script>
 </body>
 
-</html
+</html>
