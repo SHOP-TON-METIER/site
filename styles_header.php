@@ -1,10 +1,10 @@
 <?php
 echo ('<style>
             
-    header {
+    header{
         top: 0;
-        height: 80px;
         width: 94vw;
+        height: 80px;
         position: fixed;
         display: flex;
         justify-content: space-between;
@@ -37,7 +37,7 @@ echo ('<style>
         justify-content: space-around;
         align-items: center;
         cursor: text;
-        margin: 0 auto;
+        margin: 0 ;
         padding: 6px 10px;
         border-radius: 24px;
         border: solid 2px #09192C;

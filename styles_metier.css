@@ -15,12 +15,9 @@ main {
     flex-wrap: wrap;
 }
 
-canvas {
-    width: 30%;
+.avatar {
+    width: 30vw;
     min-width: 350px;
-    height: 80vh;
-    border: solid 2px red;
-    border-radius: 10vw;
 }
 
 section {
@@ -37,6 +34,10 @@ section {
     color: #848C96;
     font-size: 1.125rem;
     margin: 0;
+}
+
+.fil-Ariane a{
+    text-decoration: none;
 }
 
 h1 {
