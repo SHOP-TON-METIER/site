@@ -10,10 +10,20 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHOP'TON METIER</title>
     <link rel="stylesheet" href="styles_metier.css">
+
+    <!-- Charger fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Charger JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Charger icones -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+    <!-- Charger swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
     <?php include 'styles_header.php' ?>
 </head>
 
@@ -25,7 +35,8 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
 
         <section>
             <?php
-            $id = htmlentities($_GET['id']);
+            // $id = htmlentities($_GET['id']);
+            $id = 1;
 
             $sql = "SELECT id_shop, shop, nom, description, salaire FROM metier  WHERE id_metier = :id";
             $req = $link->prepare($sql);
@@ -76,24 +87,46 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             $req = null;
             ?>
 
-            <?php
-            $sql = "SELECT * FROM ancienetudiant WHERE id_metier = :id";
-            $req = $link->prepare($sql);
-            $req->execute(array(":id" => $id));
+            <h2>Avis des anciens MMI</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
 
-            echo ("<h2>Avis des anciens MMI</h2>");
-            while ($data = $req->fetch()) {
-                echo ('<p class="avis">
-                <span>' . $data['nom'] . ' ' . $data['prenom'] . '</span><br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt mollitia earum neque ullam reiciendis labore
-                exercitationem fugit assumenda ipsa! Explicabo libero quibusdam ad facere enim impedit, facilis pariatur sint
-            </p>');
-            }
-            $req = null;
-            ?>
+                    <?php
+                        $sql = "SELECT * FROM ancienetudiant WHERE id_metier = :id";
+                        $req = $link->prepare($sql);
+                        $req->execute(array(":id" => $id));
+            
+                        while ($data = $req->fetch()) {
+                            echo ('<div class="avis swiper-slide">
+                                <span class="nom-etudiant">' . $data['nom'] . ' ' . $data['prenom'] . '</span><br>
+                                <span class="adj-etudiant">'.$data['adjectifs'].' Promotion : '.$data['promotionMMI'].'</span>
+                                <p class="avis-etudiant">'.$data['avis'].'</p>
+                                <p class="conseil-etudiant">Conseil : '.$data['conseil'].'</p>
+                            </div>');
+                        }
+                        $req = null;
+                    ?>
+
+                </div>
+
+                <!-- Add pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
 
         </section>
+
     </main>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 10,
+            pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            },
+        });
+    </script>
 
     <script src="js/three.min.js"></script>
     <script src="js/GLTFLoader.js"></script>
@@ -144,24 +177,27 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         //CREATE OBJECT
 
         function createObject() {
-            const loader = new THREE.GLTFLoader();
-            <?php
+            const loader = new THREE.GLTFLoader(); <
+            ?
+            php
 
             $sql = "SELECT code FROM metier WHERE id_metier = :id";
-            $req = $link->prepare($sql);
-            $req->execute(array(":id" => $id));
+            $req = $link - > prepare($sql);
+            $req - > execute(array(":id" => $id));
 
-            while ($data = $req->fetch()) {
-                echo ("const url = 'gltf/" . $data['code'] . "'");
+            while ($data = $req - > fetch()) {
+                echo("const url = 'gltf/".$data['code'].
+                    "'");
             }
             $req = null;
 
-            ?>
+            ?
+            >
 
             loader.load(
                 url,
 
-                function(gltf) {
+                function (gltf) {
                     model = gltf.scene
                     scene.add(model)
                 }

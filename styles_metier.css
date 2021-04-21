@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     width: 100vw;
@@ -49,7 +55,7 @@ h1 {
 h2 {
     font-size: 1.5rem;
     font-weight: 400;
-    margin: 10px auto;
+    margin-top: 30px;
     color: #09192C;
 }
 
@@ -90,4 +96,32 @@ section p, section ul {
     position: relative;
     top: 2px;
     margin-right: 10px;
+}
+
+.avis {
+    border: solid #09192C 2px;
+    border-radius: 10px;
+    padding: 30px 40px;
+    color: #09192C;
+}
+
+.nom-etudiant {
+    font-size: 1.125rem;
+}
+
+.adj-etudiant {
+    color: #848C96;
+    font-size: 0.75rem;
+}
+
+.avis-etudiant {
+    margin-top: 10px;
+    font-size: 0.875rem;
+}
+
+.conseil-etudiant {
+    color: #4FAFF3;
+    font-size: 0.875rem;
+    font-style: italic;
+    margin: 0;
 }
