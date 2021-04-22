@@ -48,7 +48,20 @@ section {
 h1 {
     color: #09192C;
     font-size: 4rem;
-    margin: 0;
+    margin: 20px 0 10px 0;
+    line-height: 60px;
+}
+
+.nom-famille {
+    font-weight: 300;
+    letter-spacing: 10px;
+    font-size: 3rem;
+}
+
+.role {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.5rem;
 }
 
 h2 {
@@ -66,16 +79,15 @@ section p, section ul {
 
 .boutons {
     height: 80px;
-    width: 400px;
+    width: 500px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin : 30px 0;
 }
 
-.ajouter-panier {
+.cv {
     text-decoration: none;
-    background-color: #EF4813;
     color: white;
     font-size: 1.25rem;
     font-weight: 600;
@@ -83,44 +95,17 @@ section p, section ul {
     border-radius: 10px;
 }
 
-.like {
-   border: solid 2px #09192C;
-   border-radius: 10px;
-   color: #09192C;
-   font-size: 1.25rem;
-   padding: 12px 18px;
+.cv-num {
+    background-color: #F14A72;
 }
 
-.like img {
+.cv-trad {
+    background-color: #09E0C7;
+}
+
+.boutons img {
+    width: 50px;
+    height: 50px;
     position: relative;
-    top: 2px;
-    margin-right: 10px;
-}
-
-.avis {
-    border: solid #09192C 2px;
-    border-radius: 10px;
-    padding: 30px 40px;
-    color: #09192C;
-}
-
-.nom-etudiant {
-    font-size: 1.125rem;
-}
-
-.adj-etudiant {
-    color: #848C96;
-    font-size: 0.75rem;
-}
-
-.avis-etudiant {
-    margin-top: 10px;
-    font-size: 0.875rem;
-}
-
-.conseil-etudiant {
-    color: #4FAFF3;
-    font-size: 0.875rem;
-    font-style: italic;
-    margin: 0;
+    top: 4px;
 }

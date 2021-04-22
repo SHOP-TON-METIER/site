@@ -1,16 +1,17 @@
 <?php
 echo ('<style>
             
-    header{
-        top: 0;
-        width: 94vw;
+    header {
+        width: 100vw;
         height: 80px;
         position: fixed;
+        top: 0;
+        padding : 0 5vw;
+        background-color: #ffffff;
+        z-index: 1;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #ffffff;
-        z-index: 1;
     }
 
     .logo {

@@ -24,7 +24,8 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <!-- Charger swiper -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-    <?php include 'styles_header.php' ?>
+    <?php include 'styles_header.php';
+    include 'styles_footer.php'; ?>
 </head>
 
 <body>
@@ -69,10 +70,12 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             $req->execute(array(":id" => $id));
 
             echo ('<h2>Compétences</h2>');
+            echo ('<ul>');
             while ($data = $req->fetch()) {
                 echo ('<li>' . $data['competences'] . '</li>');
             }
             $req = null;
+            echo ('</ul>');
             ?>
 
             <?php
@@ -81,10 +84,12 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             $req->execute(array(":id" => $id));
 
             echo ("<h2>Les poursuites d'études</h2>");
+            echo ('<ul>');
             while ($data = $req->fetch()) {
                 echo ('<li>' . $data['formation'] . '</li>');
             }
             $req = null;
+            echo ('</ul>');
             ?>
 
             <h2>Avis des anciens MMI</h2>
@@ -114,13 +119,16 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             </div>
 
         </section>
-
+        
     </main>
 
+    <?php include 'footer.php' ?>
+
+    <!-- Script pour le swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper('.swiper-container', {
-            spaceBetween: 10,
+            spaceBetween: 30,
             pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -128,6 +136,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         });
     </script>
 
+    <!-- Script pour l'objet 3D -->
     <script src="js/three.min.js"></script>
     <script src="js/GLTFLoader.js"></script>
     <script src="js/OrbitControls.js"></script>
@@ -177,22 +186,20 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         //CREATE OBJECT
 
         function createObject() {
-            const loader = new THREE.GLTFLoader(); <
-            ?
-            php
+            const loader = new THREE.GLTFLoader(); 
+            <?php
 
             $sql = "SELECT code FROM metier WHERE id_metier = :id";
-            $req = $link - > prepare($sql);
-            $req - > execute(array(":id" => $id));
+            $req = $link -> prepare($sql);
+            $req -> execute(array(":id" => $id));
 
-            while ($data = $req - > fetch()) {
+            while ($data = $req -> fetch()) {
                 echo("const url = 'gltf/".$data['code'].
                     "'");
             }
             $req = null;
 
-            ?
-            >
+            ?>
 
             loader.load(
                 url,
@@ -236,7 +243,6 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
 
         window.addEventListener('load', init, false)
     </script>
-
 
 </body>
 
