@@ -1,7 +1,7 @@
 <?php 
 echo ('<style>
     footer {
-        width: 100vw;
+        width: 100%;
         height: 240px;
         margin-top: 30px;
         border-top: solid 1px #848C96;

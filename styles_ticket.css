@@ -1,75 +1,152 @@
 *,
-*::after,
-*::before {
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
-body{
-    font-family: "poppins";
+body {
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.125rem;
+    color: #09192C;
 }
 
-main{
-    width: 800px;
+main {
+    width: 60%;
+    max-width: 795px;
+    min-width: 450px;
     margin: auto;
-    padding: 55px 35px 40px 35px;
-    background-color: whitesmoke;
-    text-align: center;
-    border: solid red;
-    font-size: 1.25rem;
+    margin-top: 15vh; 
 }
 
 h1 {
-    margin: 0;
-    color: #09192C;
+    text-align: center;
+    font-size: 3.5rem;
+}
+
+section {
+    margin: 60px 0;
+    padding: 10% 12.5%;
+    background-color: #FFEEE8;
+    border-radius: 10px;  
+}
+
+h2 {
+    text-align: center;
+    font-size: 3.5rem;
     font-style: italic;
-    font-size: 3rem;
 }
 
-h1 span{
-    color: #EF4813;
+h2 span {
+    color: #FA5014;
 }
 
-.infos{
+.adresse {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #3A4756;
+}
+
+.adresse span {
+    font-weight: 600;
+}
+
+.infos-utilisateur {
     display: flex;
     justify-content: space-between;
-    margin: auto 40px;
+    align-items: center;
+    margin: 30px 0;
 }
 
-.infos p:first-child{
-    text-align: left;
-}
-
-.infos p:nth-child(2){
-    text-align: right;
+ol {
+    margin: 70px 0;
 }
 
 li {
     font-weight: 600;
-    margin-bottom: 20px;
-    padding-left: 10px;
-    text-align: left;
+    margin: 30px 0;
 }
 
-li span, #conclusion{
-    font-weight: 300;
-    font-style: italic;
+li span {
     font-size: 0.8rem;
+    font-weight: normal;
+    font-style: italic;
     margin-left: 70px;
 }
 
 .total {
-    margin: 60px auto 40px 20px;
-    text-align: left;
+    font-weight: 600;
+    margin-bottom: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.total p{
-    width: 70px;
+#stats {
+    display: inline-block;
+    width: 150px;
+    height: 15px;
+    margin: 0 10px;
+    background-color: #FA5014;
+}
+
+.pourcentage {
+    font-size: 1rem;
+}
+
+#domaine-favori {
+    font-size: 1.5rem;
+}
+
+.pied-ticket {
+    text-align: center;
+}
+
+.pied-ticket p {
+    margin-top: 60px;
+    font-weight: 600;
+}
+
+.boutons {
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.telecharger {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #4FAFF3;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.telecharger svg {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+}
+
+.retour-accueil {
+    color: #3A4756;
+    font-size: 2.5rem;
+    font-weight: 200;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.retour-accueil svg {
+    width: 60px;
+    height: 60px;
     margin: 0;
-}
-
-footer {
-    border-top: solid 0.5px black;
-    border-bottom: solid 0.5px black;
-    padding: 20px;
 }

@@ -8,7 +8,7 @@ echo ('<style>
         top: 0;
         padding : 0 5vw;
         background-color: #ffffff;
-        z-index: 1;
+        z-index: 3;
         display: flex;
         justify-content: space-between;
         align-items: center;
