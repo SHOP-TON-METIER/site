@@ -9,31 +9,18 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHOP'TON METIER</title>
-<<<<<<< Updated upstream
-    <link rel="stylesheet" href="styles_metier.css">
-
-    <!-- Charger fonts -->
-=======
     <link rel="stylesheet" href="metier.css">
->>>>>>> Stashed changes
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Charger JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<<<<<<< Updated upstream
 
-    <!-- Charger icones -->
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-
-    <!-- Charger swiper -->
+    <!-- Charger Swiper -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-    <?php include 'styles_header.php';
-    include 'styles_footer.php'; ?>
-=======
-    <?php include 'styles_header.php' ?>
->>>>>>> Stashed changes
 </head>
 
 <body>
@@ -44,8 +31,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
 
         <section>
             <?php
-            // $id = htmlentities($_GET['id']);
-            $id = 1;
+            $id = htmlentities($_GET['id']);
 
             $sql = "SELECT id_shop, shop, nom, description, salaire FROM metier  WHERE id_metier = :id";
             $req = $link->prepare($sql);
@@ -105,19 +91,19 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 <div class="swiper-wrapper">
 
                     <?php
-                        $sql = "SELECT * FROM ancienetudiant WHERE id_metier = :id";
-                        $req = $link->prepare($sql);
-                        $req->execute(array(":id" => $id));
-            
-                        while ($data = $req->fetch()) {
-                            echo ('<div class="avis swiper-slide">
+                    $sql = "SELECT * FROM ancienetudiant WHERE id_metier = :id";
+                    $req = $link->prepare($sql);
+                    $req->execute(array(":id" => $id));
+
+                    while ($data = $req->fetch()) {
+                        echo ('<div class="avis swiper-slide">
                                 <span class="nom-etudiant">' . $data['nom'] . ' ' . $data['prenom'] . '</span><br>
-                                <span class="adj-etudiant">'.$data['adjectifs'].' Promotion : '.$data['promotionMMI'].'</span>
-                                <p class="avis-etudiant">'.$data['avis'].'</p>
-                                <p class="conseil-etudiant">Conseil : '.$data['conseil'].'</p>
+                                <span class="adj-etudiant">' . $data['adjectifs'] . ' Promotion : ' . $data['promotionMMI'] . '</span>
+                                <p class="avis-etudiant">' . $data['avis'] . '</p>
+                                <p class="conseil-etudiant">Conseil : ' . $data['conseil'] . '</p>
                             </div>');
-                        }
-                        $req = null;
+                    }
+                    $req = null;
                     ?>
 
                 </div>
@@ -127,7 +113,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             </div>
 
         </section>
-        
+
     </main>
 
     <?php include 'footer.php' ?>
@@ -138,8 +124,8 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         var swiper = new Swiper('.swiper-container', {
             spaceBetween: 30,
             pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
+                el: '.swiper-pagination',
+                clickable: true,
             },
         });
     </script>
@@ -194,15 +180,14 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         //CREATE OBJECT
 
         function createObject() {
-            const loader = new THREE.GLTFLoader(); 
+            const loader = new THREE.GLTFLoader();
             <?php
-
             $sql = "SELECT code FROM metier WHERE id_metier = :id";
-            $req = $link -> prepare($sql);
-            $req -> execute(array(":id" => $id));
+            $req = $link->prepare($sql);
+            $req->execute(array(":id" => $id));
 
-            while ($data = $req -> fetch()) {
-                echo("const url = 'gltf/".$data['code'].
+            while ($data = $req->fetch()) {
+                echo ("const url = 'gltf/" . $data['code'] .
                     "'");
             }
             $req = null;
@@ -212,7 +197,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             loader.load(
                 url,
 
-                function (gltf) {
+                function(gltf) {
                     model = gltf.scene
                     scene.add(model)
                 }

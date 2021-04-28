@@ -1,6 +1,6 @@
 <?php echo ('<header>
                 <div class="left">
-                    <a class="home" href=""><img class="logo" src="images/logo.svg" alt=""></a>
+                    <a class="home" href=""><img class="logo" src="images/logo.png" alt=""></a>
                 </div>
 
                 <div class="right">
