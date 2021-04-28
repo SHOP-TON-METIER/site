@@ -9,14 +9,19 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHOP'TON METIER</title>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="styles_metier.css">
 
     <!-- Charger fonts -->
+=======
+    <link rel="stylesheet" href="metier.css">
+>>>>>>> Stashed changes
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Charger JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<<<<<<< Updated upstream
 
     <!-- Charger icones -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
@@ -26,6 +31,9 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
 
     <?php include 'styles_header.php';
     include 'styles_footer.php'; ?>
+=======
+    <?php include 'styles_header.php' ?>
+>>>>>>> Stashed changes
 </head>
 
 <body>

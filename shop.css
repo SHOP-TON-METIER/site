@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    overflow: hidden;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.sprite{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.sprite:hover .plus{
+    background-color: #329DFF;
+    transform: scale(1.1);
+}
+
+.sprite:hover .nom{
+    background-color: #329DFF;
+    opacity: 1;
+}
+
+/* .sprite.active .plus{
+    background-color: #329DFF;
+    transform: scale(1.1);
+} */
+
+.sprite.active .nom{
+    opacity: 1;
+}
+
+.sprite .plus{
+    z-index: 2;
+    position: absolute;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #329DFFBB;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    line-height: 40px;
+    transition: 0.3s;
+}
+
+.sprite .nom{
+    z-index: 1;
+    position: absolute;
+    left: 30px;
+    display: inline-block;
+    white-space: nowrap;
+    padding: 20px 20px;
+    border-radius: 10px;
+    background-color: #329DFFBB;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 1.4rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-75%);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
