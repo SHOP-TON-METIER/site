@@ -12,6 +12,11 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <link rel="stylesheet" href="shop.css">
     <link rel="stylesheet" href="header.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        header {
+            background-color: transparent;
+        }
+    </style>
 
 </head>
 
