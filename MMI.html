@@ -4,20 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <title>Document</title>
     <link rel="stylesheet" href="styleMMI.css">
 </head>
 <body>
-    <header>
-        <div class="search"><a href=""><span class="iconify" data-icon="eva:search-fill" data-inline="false"></span></a>
-        </div>
-        <div class="bag"><a href=""><span class="iconify" data-icon="akar-icons:shopping-bag" data-inline="false"></a>
-        </div>
-    </header>
-    <a href=""class="fleche">&lt;</a>
-    <p class="back">retour</p>
-
-
         <h1>Métier du Multimédia et de l'Internet</h1>
     <div>
 
@@ -42,19 +33,40 @@
     <div>
     <h1 class="titre2">Les matières enseignées</h1>
     </div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+         <p>Culture Scientifique</p> <br>
+         <p>Communication & Marketing</p>
+         <p>Culture Artistique</p>
+         <p>Informatique</p>
 
+
+      </div>
+     <div class="swiper-pagination"></div>
+     </div>   
+     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 10,
+            pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            },
+        });
+    </script>
     <div class="maincontainer">
 
         <div class="thecard">
   
-          <div class="thefront"><h1>Réseau</h1><p>This is the front of the card. It contains important information. Please see overleaf for more details.</p></div>
+          <div class="thefront" src="images/croix.png"><h1>Réseau</h1></div>
   
-          <div class="theback"><h1>Back of Card</h1><p>Your use of this site is subject to the terms and conditions governing this and all transactions.</p>
+          <div class="theback"><h1>Réseau</h1><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi laudantium hic cum unde assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae minima illum qui rerum veniam.</p>
           
   
         </div>
       </div>
       <div>
+        <h1 class="titre1">Quelques statistiques</h1>
         <canvas id="bacmmi"class="pie"></canvas>
       </div>
       <p> La formation est accessible à toutes les filières du baccalauréat mais concerne plus particulièrement les filières scientifiques, technologiques (STI2D, STG, STT) et  économiques et sociales. L’inscription est possible uniquement via la plateforme Parcoursup. Les admissions se font sur étude de dossier.
@@ -91,8 +103,34 @@
           config
         );
       </script>
-      
-
+      <canvas id="genre" class="pie"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const data = {
+      labels: [
+        'Femmes',
+        'Hommes',
+        
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [35, 65],
+        backgroundColor: [
+          '#E8442F',
+          '#FFA236'
+        ],
+        hoverOffset: 4
+      }]
+    };
+        const config = {
+      type: 'pie',
+      data: data,
+    };
+          var genre = new Chart(
+          document.getElementById('genre'),
+          config
+        );
+      </script>
       
 
 

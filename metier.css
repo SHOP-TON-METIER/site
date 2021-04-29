@@ -14,7 +14,7 @@ main {
     width: 80vw;
     max-width: 1400px;
     margin: auto;
-    margin-top: 14vh;
+    margin-top: 15vh;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
