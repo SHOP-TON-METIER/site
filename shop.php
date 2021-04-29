@@ -23,11 +23,22 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <?php
     $id = htmlentities($_GET['id']);
 
-    $sql = "SELECT html FROM shop  WHERE id_shop = :id";
+    $sql = "SELECT nom, msgDrone, html FROM shop  WHERE id_shop = :id";
     $req = $link->prepare($sql);
     $req->execute(array(":id" => $id));
 
     while ($data = $req->fetch()) {
+        echo ('<div class="loading">
+        <p class="message-drone">' . $data['msgDrone'] . '</p>
+        <div class="main">
+            <h1>' . $data['nom'] . '</h1>
+            <div class="progressbar">
+                <div class="progressbg"></div>
+                <div class="progress"></div>
+            </div>
+            <p>Allumage des lumières...</p>
+        </div>
+    </div>');
         echo ($data['html']);
     }
     $req = null;
@@ -38,6 +49,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <script src="js/OrbitControls.js"></script>
     <script src="js/three.interactive.js"></script>
     <script src="js/tween.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous"></script>
     <script>
         //Setup
         const canvas = document.querySelector('canvas.webgl')
@@ -83,8 +95,26 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         scene.add(decor)
 
 
-        //Characters
-        const loader = new THREE.GLTFLoader()
+        //Loaders
+
+        const loadingScreen = document.querySelector('.loading')
+        const loadingBar = document.querySelector('.progress')
+
+
+        const loadingManager = new THREE.LoadingManager(
+            () => {
+                gsap.delayedCall(1, () => {
+                    loadingScreen.style.opacity = 0
+                })
+            },
+
+            (itemUrl, itemsLoaded, itemsTotal) => {
+                const progressRatio = 300 * (itemsLoaded / itemsTotal)
+                loadingBar.style.width = `${progressRatio}px`
+                console.log(loadingBar.style.width)
+            }
+        )
+        const loader = new THREE.GLTFLoader(loadingManager)
 
         function modelLoader(src) {
             return new Promise((resolve, reject) => {
@@ -164,6 +194,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             v.sub(controls.target)
             camera.position.sub(v)
         })
+
 
         //Loop
         function Animate(time) {

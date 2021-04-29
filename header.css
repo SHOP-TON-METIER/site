@@ -5,16 +5,11 @@
     top: 0;
     padding : 0 5vw;
     background-color: transparent;
-    z-index: 3;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 10;
  }
-
- /* .logo {
-    width: 68px;
-    height: 40px;
- } */
 
  .right {
     width: 300px;
