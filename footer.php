@@ -1,5 +1,5 @@
 <?php echo('<footer>
-        <img src="images/logo.svg" alt="" class="logo">
+        <img src="images/logo.png" alt="" class="logo">
         <div>
             <p>Retrouvez-nous aussi sur :</p>
             <a href="">

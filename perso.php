@@ -9,7 +9,9 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHOP'TON METIER</title>
+
     <link rel="stylesheet" href="styles_perso.css">
+    <link rel="stylesheet" href="header.css">
 
     <!-- Charger fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,8 +22,6 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
 
     <!-- Charger icones -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-
-    <?php include 'styles_header.php'; ?>
 </head>
 
 <body>
@@ -31,16 +31,37 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         <div class="avatar"></div>
 
         <section>
+            <?php
+            $id = htmlentities($_GET['id']);
 
-            <p class="fil-Ariane">
+            $sql = "SELECT * FROM staff  WHERE id = :id";
+            $req = $link->prepare($sql);
+            $req->execute(array(":id" => $id));
+
+            while ($data = $req->fetch()) {
+                echo ('<p class="fil-Ariane">
                 <a href="./projet.php" class="current-domain">Projet</a>
-                &nbsp &gt &nbsp <span>Clémentine GILAMA</span>
-            </p>
+                &nbsp &gt &nbsp <span>'. $data['prenom'].' '. $data['nom'] .'</span>
+                </p>
+                <h1>'. $data['prenom'].'<br><span class="nom-famille">'. $data['nom'] .'</span></h1>
+                <p class="role">'. $data['roles'].'</p>
+                <h2>Présentation</h2>
+                <p>'. $data['presentation'] .'</p>
+    
+                <div class="boutons">
+                        <a href="'. $data['lienCvNum'] .'" class="cv cv-num">CV interactif</a>
+                        <a href="'. $data['lienCvTrad'] .'" class="cv cv-trad">CV</a>
+                        <a href="'. $data['lienLinkedin'] .'"><img src="images/linkedin_logo.png" alt="Voir son Linkedin"></a>
+                        <a href="'. $data['lienInsta'] .'"><img src="images/insta_logo.png" alt="Voir son Instagram"></a>
+                </div>
+    
+                <h2>Missions</h2>
+                    <ul class="missions" id="missions">'. $data['missions'] .'</ul>');
+            }
+            $req = null;
+            ?>
 
-            <h1>Clémentine <span class="nom-famille">GILAMA</span></h1>
-            <p class="role">Communication et design</p>
-
-            <h2>Présentation</h2>
+            <!-- <h2>Présentation</h2>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut excepturi cumque placeat nisi dolor nesciunt animi aliquam fugit consequuntur esse asperiores possimus sed, quas odio ex minima repellendus dolorum libero, consequatur perspiciatis consectetur atque temporibus? Nisi ipsa similique, provident vel earum nulla reiciendis corrupti dolorum pariatur ut laboriosam. Odio, voluptates?
             </p>
@@ -58,7 +79,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                     <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
                     <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
                     <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                </ul>
+                </ul> -->
 
         </section>
         

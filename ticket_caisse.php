@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <?php include 'styles_header.php' ?>
     <link rel="stylesheet" href="styles_ticket.css">
-    <?php include 'styles_footer.php' ?>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
 
     <!-- Charger fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
