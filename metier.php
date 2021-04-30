@@ -8,19 +8,16 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHOP'TON METIER</title>
-    <link rel="stylesheet" href="metier.css">
+    <title></title>
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="metier.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Charger JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- Charger Swiper -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
 </head>
 
 <body>
@@ -117,6 +114,31 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     </main>
 
     <?php include 'footer.php' ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if (!window.matchMedia)
+                return
+
+            var current = $('head > link[rel="icon"][media]');
+            $.each(current, function(i, icon) {
+                var match = window.matchMedia(icon.media)
+
+                function swap() {
+                    if (match.matches) {
+                        current.remove()
+                        current = $(icon).appendTo('head')
+                    }
+                }
+                match.addListener(swap)
+                swap()
+            })
+        })
+    </script>
+    <!-- Charger JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
     <!-- Script pour le swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

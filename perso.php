@@ -8,20 +8,15 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHOP'TON METIER</title>
-
-    <link rel="stylesheet" href="styles_perso.css">
+    <title></title>
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="header.css">
-
-    <!-- Charger fonts -->
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="perso.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Charger JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- Charger icones -->
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 </head>
 
 <body>
@@ -41,22 +36,22 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             while ($data = $req->fetch()) {
                 echo ('<p class="fil-Ariane">
                 <a href="./projet.php" class="current-domain">Projet</a>
-                &nbsp &gt &nbsp <span>'. $data['prenom'].' '. $data['nom'] .'</span>
+                &nbsp &gt &nbsp <span>' . $data['prenom'] . ' ' . $data['nom'] . '</span>
                 </p>
-                <h1>'. $data['prenom'].'<br><span class="nom-famille">'. $data['nom'] .'</span></h1>
-                <p class="role">'. $data['roles'].'</p>
+                <h1>' . $data['prenom'] . '<br><span class="nom-famille">' . $data['nom'] . '</span></h1>
+                <p class="role">' . $data['roles'] . '</p>
                 <h2>Présentation</h2>
-                <p>'. $data['presentation'] .'</p>
+                <p>' . $data['presentation'] . '</p>
     
                 <div class="boutons">
-                        <a href="'. $data['lienCvNum'] .'" class="cv cv-num">CV interactif</a>
-                        <a href="'. $data['lienCvTrad'] .'" class="cv cv-trad">CV</a>
-                        <a href="'. $data['lienLinkedin'] .'"><img src="images/linkedin_logo.png" alt="Voir son Linkedin"></a>
-                        <a href="'. $data['lienInsta'] .'"><img src="images/insta_logo.png" alt="Voir son Instagram"></a>
+                        <a href="' . $data['lienCvNum'] . '" class="cv cv-num">CV interactif</a>
+                        <a href="' . $data['lienCvTrad'] . '" class="cv cv-trad">CV</a>
+                        <a href="' . $data['lienLinkedin'] . '"><img src="images/linkedin_logo.png" alt="Voir son Linkedin"></a>
+                        <a href="' . $data['lienInsta'] . '"><img src="images/insta_logo.png" alt="Voir son Instagram"></a>
                 </div>
     
                 <h2>Missions</h2>
-                    <ul class="missions" id="missions">'. $data['missions'] .'</ul>');
+                    <ul class="missions" id="missions">' . $data['missions'] . '</ul>');
             }
             $req = null;
             ?>
@@ -82,9 +77,32 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 </ul> -->
 
         </section>
-        
+
     </main>
 
+    <?php include 'footer.php' ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if (!window.matchMedia)
+                return
+
+            var current = $('head > link[rel="icon"][media]');
+            $.each(current, function(i, icon) {
+                var match = window.matchMedia(icon.media)
+
+                function swap() {
+                    if (match.matches) {
+                        current.remove()
+                        current = $(icon).appendTo('head')
+                    }
+                }
+                match.addListener(swap)
+                swap()
+            })
+        })
+    </script>
 
     <!-- Script pour l'objet 3D -->
     <script src="js/three.min.js"></script>
@@ -136,15 +154,15 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         //CREATE OBJECT
 
         function createObject() {
-            const loader = new THREE.GLTFLoader(); 
+            const loader = new THREE.GLTFLoader();
             <?php
 
             $sql = "SELECT code FROM metier WHERE id_metier = :id";
-            $req = $link -> prepare($sql);
-            $req -> execute(array(":id" => $id));
+            $req = $link->prepare($sql);
+            $req->execute(array(":id" => $id));
 
-            while ($data = $req -> fetch()) {
-                echo("const url = 'gltf/".$data['code'].
+            while ($data = $req->fetch()) {
+                echo ("const url = 'gltf/" . $data['code'] .
                     "'");
             }
             $req = null;
@@ -154,7 +172,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             loader.load(
                 url,
 
-                function (gltf) {
+                function(gltf) {
                     model = gltf.scene
                     scene.add(model)
                 }

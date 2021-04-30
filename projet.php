@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styleProjet.css">
+    <title>Projet</title>
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="projet.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,600&display=swap"
-        rel="stylesheet">
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    <?php include 'styles_header.php' ?>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -68,17 +70,36 @@
             <input type="email" id="email" placeholder="EMAIL">
         </div>
         <div>
-            <textarea name="message" id="message" cols="30" rows="10"
-                placeholder="Ecrivez votre message ici..."></textarea>
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Ecrivez votre message ici..."></textarea>
         </div>
         <div>
             <input type="submit" value="envoyer" class="bouton">
         </div>
-
-
-
-
     </form>
+
+    <?php include 'footer.php' ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if (!window.matchMedia)
+                return
+
+            var current = $('head > link[rel="icon"][media]');
+            $.each(current, function(i, icon) {
+                var match = window.matchMedia(icon.media)
+
+                function swap() {
+                    if (match.matches) {
+                        current.remove()
+                        current = $(icon).appendTo('head')
+                    }
+                }
+                match.addListener(swap)
+                swap()
+            })
+        })
+    </script>
 </body>
 
 </html>

@@ -8,22 +8,17 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
-    <link rel="stylesheet" href="shop.css">
+    <title></title>
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="shop.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        header {
-            background-color: transparent;
-        }
-    </style>
-
 </head>
 
 <body>
     <?php include 'header.php' ?>
-
-    <canvas class="webgl"></canvas>
 
     <?php
     $id = htmlentities($_GET['id']);
@@ -33,21 +28,44 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     $req->execute(array(":id" => $id));
 
     while ($data = $req->fetch()) {
-        echo ('<div class="loading">
-        <p class="message-drone">' . $data['msgDrone'] . '</p>
-        <div class="main">
+        echo ('
+        <div class="loading">
+            <p class="message-drone">' . $data['msgDrone'] . '</p>
             <h1>' . $data['nom'] . '</h1>
             <div class="progressbar">
                 <div class="progressbg"></div>
                 <div class="progress"></div>
             </div>
-            <p>Allumage des lumières...</p>
-        </div>
-    </div>');
+            <p class="message-chargement">Allumage des lumières...</p>
+        </div>');
         echo ($data['html']);
     }
     $req = null;
     ?>
+
+    <canvas class="webgl"></canvas>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if (!window.matchMedia)
+                return
+
+            var current = $('head > link[rel="icon"][media]');
+            $.each(current, function(i, icon) {
+                var match = window.matchMedia(icon.media)
+
+                function swap() {
+                    if (match.matches) {
+                        current.remove()
+                        current = $(icon).appendTo('head')
+                    }
+                }
+                match.addListener(swap)
+                swap()
+            })
+        })
+    </script>
 
     <script src="js/three.min.js"></script>
     <script src="js/GLTFLoader.js"></script>
@@ -104,18 +122,20 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
 
         const loadingScreen = document.querySelector('.loading')
         const loadingBar = document.querySelector('.progress')
+        const header = document.querySelector('.right')
 
 
         const loadingManager = new THREE.LoadingManager(
             () => {
                 gsap.delayedCall(1, () => {
                     loadingScreen.style.opacity = 0
+                    header.style.visibility = "visible"
                 })
             },
 
             (itemUrl, itemsLoaded, itemsTotal) => {
-                const progressRatio = 300 * (itemsLoaded / itemsTotal)
-                loadingBar.style.width = `${progressRatio}px`
+                const progressRatio = 20 * (itemsLoaded / itemsTotal)
+                loadingBar.style.width = `${progressRatio}vw`
                 console.log(loadingBar.style.width)
             }
         )

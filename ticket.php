@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link rel="stylesheet" href="styles_ticket.css">
+    <title>Votre commande</title>
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
-
-    <!-- Charger fonts -->
+    <link rel="stylesheet" href="ticket.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-    <!-- Charger icones -->
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-
 </head>
+
 <body>
     <?php include 'header.php' ?>
 
@@ -91,9 +90,32 @@
                 <span class="iconify" data-icon="eva:arrow-ios-downward-fill" data-inline="false"></span>
             </a>
         </div>
-        
+
     </main>
 
     <?php include 'footer.php' ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if (!window.matchMedia)
+                return
+
+            var current = $('head > link[rel="icon"][media]');
+            $.each(current, function(i, icon) {
+                var match = window.matchMedia(icon.media)
+
+                function swap() {
+                    if (match.matches) {
+                        current.remove()
+                        current = $(icon).appendTo('head')
+                    }
+                }
+                match.addListener(swap)
+                swap()
+            })
+        })
+    </script>
 </body>
+
 </html>
