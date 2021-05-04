@@ -8,6 +8,7 @@ body {
     margin: 0;
     width: 100vw;
     font-family: 'Poppins', sans-serif;
+    color: #09192C;
     overflow-x: hidden;
 } 
 
@@ -15,7 +16,7 @@ main {
     width: 80vw;
     max-width: 1400px;
     margin: auto;
-    margin-top: 15vh;
+    margin-top: 100px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -47,7 +48,7 @@ section {
 }
 
 h1 {
-    color: #09192C;
+    /* color: #09192C; */
     font-size: 4rem;
     margin: 0;
 }
@@ -56,7 +57,7 @@ h2 {
     font-size: 1.5rem;
     font-weight: 400;
     margin-top: 30px;
-    color: #09192C;
+    /* color: #09192C; */
 }
 
 section p, section ul {
@@ -87,22 +88,23 @@ section p, section ul {
 .like {
    border: solid 2px #09192C;
    border-radius: 10px;
-   color: #09192C;
+   /* color: #09192C; */
    font-size: 1.25rem;
    padding: 12px 18px;
 }
 
 .like img {
     position: relative;
-    top: 2px;
-    margin-right: 10px;
+    top: 4px;
+    margin-right: 5px;
+    width: 30px;
 }
 
 .avis {
     border: solid #09192C 2px;
     border-radius: 10px;
     padding: 30px 40px;
-    color: #09192C;
+    /* color: #09192C; */
 }
 
 .nom-etudiant {
