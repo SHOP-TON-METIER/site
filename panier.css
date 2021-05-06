@@ -15,7 +15,7 @@ body {
 main {
     width: 80%;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 150px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -52,11 +52,26 @@ h1 {
     max-width: 1200px;
     margin: 25px auto;
     padding: 20px 15px;
-    background-color: #FEE9E8;
     border-radius: 20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+.audiovisuel {
+    background-color: #FEE9E8;
+}
+
+.design {
+    background-color: #CAE7FB;
+}
+
+.com {
+    background-color: #FFF6EB;
+}
+
+.dvpt {
+    background-color: #EFECFE;
 }
 
 .metier h2 {

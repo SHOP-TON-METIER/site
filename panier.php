@@ -36,7 +36,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             <h1>Mon panier</h1>
             <p>4 métiers dans mon panier</p>
 
-            <div class="metier">
+            <div class="metier audiovisuel">
                 <img src="images/drone-light.png" alt="" class="perso-3d">
                 <div>
                     <h2>Photographe</h2>
@@ -50,7 +50,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 <a href=""><img src="images/remove.svg" alt=""></a>
             </div>
 
-            <div class="metier">
+            <div class="metier audiovisuel">
                 <img src="images/drone-light.png" alt="" class="perso-3d">
                 <div>
                     <h2>Cadreur-monteur</h2>
@@ -64,7 +64,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 <a href=""><img src="images/remove.svg" alt=""></a>
             </div>
 
-            <div class="metier">
+            <div class="metier dvpt">
                 <img src="images/drone-light.png" alt="" class="perso-3d">
                 <div>
                     <h2>Développeur full-stack</h2>
@@ -78,7 +78,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 <a href=""><img src="images/remove.svg" alt=""></a>
             </div>
 
-            <div class="metier">
+            <div class="metier com">
                 <img src="images/drone-light.png" alt="" class="perso-3d">
                 <div>
                     <h2>Community Manager</h2>
