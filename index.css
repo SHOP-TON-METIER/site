@@ -8,26 +8,30 @@ body {
     margin: 0;
     overflow: hidden;
     width: 100vw;
+    background-color: white;
 }
 
 /* HEADER */
 
 header{
-    visibility: hidden;
+    display: none;
+    opacity: 0;
+    background-color: transparent;
 }
 
 /* CHARGEMENT */
 
 .loading {
-    position: absolute;
+    z-index: 4;
+
+    position: relative;
 
     height: 100vh;
     width: 100vw;  
-    margin: 0;
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
     font-family: 'Poppins', sans-serif;
@@ -40,7 +44,10 @@ header{
 }
 
 .drone{
-    margin: 20px 0;
+    z-index: 6;
+
+    position: absolute;
+    top: 15vh;
 
     width: 40vw;
     min-width: 400px;
@@ -54,8 +61,13 @@ header{
 }
 
 .messages {
+    z-index: 3;
+
+    position: absolute;
+    top: 120vh;
+
     height: 30vh;
-    overflow: hidden;
+    width: 100vw;
 
     display: flex;
     flex-direction: column;
@@ -63,16 +75,57 @@ header{
 }
 
 .messages p {
+    position: absolute;
+
+    display: inline-block;
+
     width: fit-content;
+    max-width: 40vw;
 
     font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: #D9D9D9;
     color: #09192C;
     padding: 10px 20px;
     border-radius: 30px;
-    
-    text-align: center;
+}
+
+.mask{
+    z-index: 5;
+
+    position: absolute;
+    top: 0;
+    height: 55vh;
+    width: 100vw;
+
+    background: #ffffff;
+
+}
+
+.fade .top{
+    z-index: 4;
+
+    position: absolute;
+    top: 55vh;
+    left: 0;
+
+    height: 20vh;
+    width: 100vw;
+
+    background: linear-gradient(white 20%, transparent);
+}
+
+.fade .bottom{
+    z-index: 4;
+
+    position: absolute;
+    bottom: 0vh;
+    left: 0;
+
+    height: 20vh;
+    width: 100vw;
+
+    background: linear-gradient(transparent 20%, white);
 }
 
 /* THREE JS */
@@ -83,4 +136,62 @@ header{
     top: 0;
     left: 0;
     outline: none;
+}
+
+.sprite{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+
+.sprite:hover .plus{
+    background-color: #329DFF;
+    transform: scale(1.1);
+}
+
+.sprite:hover .nom{
+    background-color: #329DFF;
+    opacity: 1;
+}
+
+.sprite.active .nom{
+    opacity: 1;
+}
+
+.sprite .plus{
+    z-index: 2;
+    position: absolute;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #329DFFBB;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    line-height: 40px;
+    transition: 0.3s;
+}
+
+.sprite .nom{
+    z-index: 1;
+    position: absolute;
+    left: 30px;
+    display: inline-block;
+    white-space: nowrap;
+    padding: 20px 20px;
+    border-radius: 10px;
+    background-color: #329DFFBB;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 1.4rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-75%);
+    pointer-events: none;
+    transition: 0.3s;
 }

@@ -9,9 +9,9 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
-    <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
-    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
+    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="medias/images/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="shop.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -136,7 +136,6 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             (itemUrl, itemsLoaded, itemsTotal) => {
                 const progressRatio = 20 * (itemsLoaded / itemsTotal)
                 loadingBar.style.width = `${progressRatio}vw`
-                console.log(loadingBar.style.width)
             }
         )
         const loader = new THREE.GLTFLoader(loadingManager)
@@ -206,7 +205,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         //Controls
         const controls = new THREE.MapControls(camera, canvas)
         controls.enableDamping = true
-        controls.enableZoom = false
+        controls.enableZoom = true
         controls.enableRotate = false
 
         //Limit Pan
@@ -243,13 +242,8 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             requestAnimationFrame(Animate)
         }
 
-        //Init
-        function Init() {
-            Animate()
-        }
-
         //Load
-        window.addEventListener('load', Init, false)
+        window.addEventListener('load', Animate, false)
     </script>
 
 </body>

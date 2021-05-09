@@ -54,8 +54,7 @@ header .right {
     padding: 10px 20px;
     max-width: 60vw;
 
-    font-size: 0.8vw;
-    font-style: italic;
+    font-size: max(1vw, 1rem);
 
     background-color: #D9D9D9;
     color: #09192C;
@@ -98,7 +97,7 @@ header .right {
 }
 
 .message-chargement {
-    font-size: 1vw;
+    font-size: max(1vw, 1rem);
     font-style: italic;
 
     color: #3A4756;

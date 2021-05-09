@@ -11,6 +11,10 @@
     z-index: 10;
  }
 
+.left{
+   height: auto;
+}
+
  .right {
     width: 300px;
     display: flex;
