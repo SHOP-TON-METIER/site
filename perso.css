@@ -14,14 +14,21 @@ main {
     width: 80vw;
     max-width: 1400px;
     margin: auto;
-    margin-top: 15vh;
+    margin-top: 150px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
+    position: relative;
+}
+
+.retour {
+    position: absolute;
+    top: 0;
+    left: -50px;
 }
 
 .avatar {
-    width: 30vw;
+    width: 30%;
     min-width: 350px;
 }
 
