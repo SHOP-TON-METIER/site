@@ -37,7 +37,7 @@
           ut. Velit pellentesque elementum eleifend orci dictum molestie. In fermentum lacus ultricies nibh elit nunc
           ipsum semper. Fames venenatis adipiscing duis dolor lacus, lobortis vestibulum, vitae.
           Quis arcu volutpat convallis commodo sit vitae. Elit non ullamcorper aliquam leo. Hendrerit non aliquet
-          ultricies magna nisi, faucibus ut egestas. Id porttitor dui, nisi posuere. 
+          ultricies magna nisi, faucibus ut egestas. Id porttitor dui, nisi posuere.
         </p>
 
         <div class="illustration"></div>
@@ -49,161 +49,316 @@
     <section>
       <h2 class="title-right">Quelles sont les matières enseignées ?</h2>
 
-      <div class="swiper-container">
+      <div class="menu">
+        <span id="culture-scientifique" class="active">Culture Scientifique</span>
+        <span id="communication">Communication & Marketing</span>
+        <span id="culture-artistique">Culture Artistique</span>
+        <span id="informatique">Informatique</span>
+      </div>
 
-        <div class="swiper-wrapper">
+      <div class="cards-container culture-scientifique">
 
-          <p>Culture Scientifique</p>
-          <p>Communication & Marketing</p>
-          <p>Culture Artistique</p>
-          <p>Informatique</p>
+        <div class="card">
+
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Réseau</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Réseau</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Sciences</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Sciences</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Gestion de projet</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Gestion de projet</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
+          </div>
 
         </div>
 
       </div>
 
-      <div class="cards-container">
+      <div class="cards-container communication">
 
         <div class="card">
 
-          <div class="card-front" src="images/croix.png">
-
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
-
-          </div>
-
-          <div class="card-back">
-
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi laudantium hic cum unde
-              assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae minima illum qui rerum
-              veniam.
-            </p>
-            
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Anglais</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Anglais</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
           </div>
 
         </div>
 
         <div class="card">
 
-          <div class="card-front" src="images/croix.png">
-
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
-
-          </div>
-
-          <div class="card-back">
-
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi laudantium hic cum unde
-              assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae minima illum qui rerum
-              veniam.
-            </p>
-            
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="card-front" src="images/croix.png">
-
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
-
-          </div>
-
-          <div class="card-back">
-
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi laudantium hic cum unde
-              assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae minima illum qui rerum
-              veniam.
-            </p>
-            
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Marketing</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Marketing</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
           </div>
 
         </div>
 
         <div class="card">
 
-          <div class="card-front" src="images/croix.png">
-
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
-
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Info-Com</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Info-Com</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
           </div>
 
-          <div class="card-back">
+        </div>
 
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
+      </div>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi laudantium hic cum unde
-              assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae minima illum qui rerum
-              veniam.
-            </p>
-            
+      <div class="cards-container culture-artistique">
+
+        <div class="card">
+
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Design</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Design</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
           </div>
 
         </div>
 
         <div class="card">
 
-          <div class="card-front" src="images/croix.png">
-
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
-
-          </div>
-
-          <div class="card-back">
-
-            <img src="images/logo-card.svg" alt="">
-            <h3>Réseau</h3>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi laudantium hic cum unde
-              assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae minima illum qui rerum
-              veniam.
-            </p>
-            
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Vidéo</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Vidéo</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
           </div>
 
         </div>
-      
+
+        <div class="card">
+
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Art</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Art</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="cards-container informatique">
+
+        <div class="card">
+
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Développement</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Développement</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-content">
+            <div class="card-front">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Intégration</h3>
+            </div>
+            <div class="card-back">
+              <img src="images/logo-card.svg" alt="">
+              <h3>Intégration</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam sunt eligendi
+                laudantium hic cum unde
+                assumenda, porro dolorem magnam voluptates doloremque culpa repellat molestiae
+                minima
+                illum qui rerum
+                veniam.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
     </section>
 
 
-    <section>
+    <section class="statistiques">
       <h2>Quelques statistiques ?</h2>
 
-      <canvas id="bacmmi" class="pie"></canvas>
+      <div class="stats-container">
 
-      <p> La formation est accessible à toutes les filières du baccalauréat mais concerne plus particulièrement les
-        filières scientifiques, technologiques (STI2D, STG, STT) et économiques et sociales. L’inscription est possible
-        uniquement via la plateforme Parcoursup. Les admissions se font sur étude de dossier.
-      </p>
-        
-      <canvas id="genre" class="pie"></canvas>
-        
-      <p>La formation est accessible à toutes les filières du baccalauréat mais concerne plus particulièrement les
-        filières
-        scientifiques, technologiques (STI2D, STG, STT) et économiques et sociales. L’inscription est possible uniquement
-        via la plateforme Parcoursup. Les admissions se font sur étude de dossier.
-      </p>
+        <canvas id="bacmmi" class="pie"></canvas>
 
-      </section>
-  
+        <div>
+          <h3>D'où proviennent les étudiants ?</h3>
+          <p> La formation est accessible à toutes les filières du baccalauréat mais concerne plus particulièrement les filières scientifiques, technologiques (STI2D, STG, STT) et économiques et sociales. L’inscription est possible uniquement via la plateforme Parcoursup. Les admissions se font sur étude de dossier.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="stats-container">
+
+        <div>
+          <h3>Des filles et des garçons ?</h3>
+          <p>La formation est accessible à toutes les filières du baccalauréat mais concerne plus particulièrement les filières scientifiques, technologiques (STI2D, STG, STT) et économiques et sociales. L’inscription est possible uniquement via la plateforme Parcoursup. Les admissions se font sur étude de dossier.
+          </p>
+        </div>
+
+        <canvas id="genre" class="pie"></canvas>
+      </div>
+
+      <div class="stats-container">
+
+        <canvas id="" class="pie"></canvas>
+
+        <div>
+          <h3>Des poursuites d'études ?</h3>
+          <p> La formation est accessible à toutes les filières du baccalauréat mais concerne plus particulièrement les filières scientifiques, technologiques (STI2D, STG, STT) et économiques et sociales. L’inscription est possible uniquement via la plateforme Parcoursup. Les admissions se font sur étude de dossier.
+          </p>
+        </div>
+
+      </div>
+
+      <a href="">En savoir plus</a>
+
+    </section>
+
   </main>
 
   <?php include 'footer.php' ?>
@@ -212,17 +367,14 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
   <script>
-
     var swiper = new Swiper('.swiper-container', {
       spaceBetween: 10,
     });
-
   </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <script>
-
     $(document).ready(function () {
       if (!window.matchMedia)
         return
@@ -240,14 +392,26 @@
         match.addListener(swap)
         swap()
       })
-    })
 
+      // Menu des matières en MMI
+
+      $(".culture-artistique, .informatique, .communication").hide();
+
+      $(".menu span").on("click", function () {
+        $('.menu span').removeClass('active');
+
+        $(this).addClass('active');
+
+        $(".culture-scientifique, .culture-artistique, .informatique, .communication").hide();
+        $("." + $(this).attr("id")).fadeIn();
+      })
+
+    })
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
-
     const bacdata = {
       labels: [
         'Bac S',
@@ -284,7 +448,6 @@
       labels: [
         'Femmes',
         'Hommes',
-
       ],
       datasets: [{
         label: 'My First Dataset',
@@ -306,7 +469,6 @@
       document.getElementById('genre'),
       genreconfig
     );
-
   </script>
 
 </body>

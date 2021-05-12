@@ -46,7 +46,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 echo ('<div class="boutons">
                     <a href="#" class="ajouter-panier">Ajouter au panier</a>
                     <span href="#" class="like">
-                        <img src="images/like.svg" alt="Aimer le métier"> 20
+                        <img src="medias/images/like.svg" alt="Aimer le métier"> 20
                     </span></div>');
 
                 echo ('<h2>Salaire</h2>

@@ -27,5 +27,85 @@
                             </g>
                         </svg>
                     </div>
+
+                    <div class="panier">
+                        <h1>Mon panier</h1>
+
+                        <h2>4 métiers</h2>
+
+                        <div class="liste-metiers">
+
+                            <div class="metier audiovisuel">
+                                <img src="medias/images/drone-light.png" alt="" class="perso">
+                                <p>Photographe</p>
+                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72"/>
+                                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="metier audiovisuel">
+                                <img src="medias/images/drone-light.png" alt="" class="perso">
+                                <p>Cadreur-monteur</p>
+                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72"/>
+                                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72"/>
+                                </svg>
+                            </div>
+                            <div class="metier developpement">
+                                <img src="medias/images/drone-light.png" alt="" class="perso">
+                                <p>Développeur Full-stack</p>
+                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72"/>
+                                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72"/>
+                                </svg>
+                            </div>
+                            <div class="metier communication">
+                                <img src="medias/images/drone-light.png" alt="" class="perso">
+                                <p>Community Manager</p>
+                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72"/>
+                                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72"/>
+                                </svg>
+                            </div>
+
+                        </div>
+
+
+                        <div class="domaine-fav">
+                            <p>Domaine favori</p>
+                            <span>Audiovisuel</span>
+                        </div>
+
+                        <a href="panier.php" class="voir-panier">Voir mon panier</a>
+
+                    </div>
+
                 </div>
-        </header>');
+
+                
+        </header>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $("header .panier").hide();
+            $("header .bag").on("click", function(){
+                $("header .panier").toggle();
+                
+            })
+
+
+            // $("body").not($("header .panier")).on("click", function(){ 
+            //     if($("header .panier").is(":visible") == true){
+            //         $("header .panier").hide(); 
+            //         console.log($("header .panier").is(":visible"))
+            //     }
+            // })
+        
+            
+            $(".remove").on("click",function(){
+                $(this).parent().remove();
+            })
+        })
+        </script>');

@@ -24,12 +24,14 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <main>
         <a href="" class="retour">
             <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM2 7H1L1 9H2L2 7Z" fill="#09192C"/>
+                <path
+                    d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM2 7H1L1 9H2L2 7Z"
+                    fill="#09192C" />
             </svg>
 
             <span>Continuer le shopping</span>
-            
-            <img src="images/trolley.svg" alt="">
+
+            <img src="medias/images/trolley.svg" alt="">
         </a>
 
         <section class="metiers-choisis">
@@ -37,7 +39,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             <p>4 métiers dans mon panier</p>
 
             <div class="metier audiovisuel">
-                <img src="images/drone-light.png" alt="" class="perso-3d">
+                <img src="medias/images/drone-light.png" alt="" class="perso-3d">
                 <div>
                     <h2>Photographe</h2>
                     <p class="phrase-metier">
@@ -46,12 +48,17 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                     </p>
                     <a href="" class="lien-fiche-metier">Fiche descriptive</a>
                 </div>
-                <a href=""><img src="images/liked-pink.svg" alt="" class="bouton-like"></a>
-                <a href=""><img src="images/remove.svg" alt=""></a>
+                <img src="medias/images/like.svg" alt="" class="bouton-like">
+
+                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
+                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
+                </svg>
+
             </div>
 
             <div class="metier audiovisuel">
-                <img src="images/drone-light.png" alt="" class="perso-3d">
+                <img src="medias/images/drone-light.png" alt="" class="perso-3d">
                 <div>
                     <h2>Cadreur-monteur</h2>
                     <p class="phrase-metier">
@@ -60,12 +67,15 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                     </p>
                     <a href="" class="lien-fiche-metier">Fiche descriptive</a>
                 </div>
-                <a href=""><img src="images/liked-pink.svg" alt="" class="bouton-like"></a>
-                <a href=""><img src="images/remove.svg" alt=""></a>
+                <img src="medias/images/like.svg" alt="" class="bouton-like">
+                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
+                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
+                </svg>
             </div>
 
-            <div class="metier dvpt">
-                <img src="images/drone-light.png" alt="" class="perso-3d">
+            <div class="metier developpement">
+                <img src="medias/images/drone-light.png" alt="" class="perso-3d">
                 <div>
                     <h2>Développeur full-stack</h2>
                     <p class="phrase-metier">
@@ -74,12 +84,15 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                     </p>
                     <a href="" class="lien-fiche-metier">Fiche descriptive</a>
                 </div>
-                <a href=""><img src="images/like.svg" alt="" class="bouton-like"></a>
-                <a href=""><img src="images/remove.svg" alt=""></a>
+                <img src="medias/images/like.svg" alt="" class="bouton-like">
+                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
+                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
+                </svg>
             </div>
 
-            <div class="metier com">
-                <img src="images/drone-light.png" alt="" class="perso-3d">
+            <div class="metier communication">
+                <img src="medias/images/drone-light.png" alt="" class="perso-3d">
                 <div>
                     <h2>Community Manager</h2>
                     <p class="phrase-metier">
@@ -88,8 +101,11 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                     </p>
                     <a href="" class="lien-fiche-metier">Fiche descriptive</a>
                 </div>
-                <a href=""><img src="images/liked-pink.svg" alt="" class="bouton-like"></a>
-                <a href=""><img src="images/remove.svg" alt=""></a>
+               <img src="medias/images/like.svg" alt="" class="bouton-like">
+                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
+                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
+                </svg>
             </div>
 
         </section>
@@ -149,5 +165,16 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
 
     <?php include 'footer.php' ?>
 </body>
-
+    <script>
+        $(document).ready(function(){
+            $('.bouton-like').on('click', function(){
+                if($(this).attr('src') == 'medias/images/like.svg'){
+                    $(this).attr('src','medias/images/liked-pink.svg')
+                }
+                else{
+                    $(this).attr('src','medias/images/like.svg')
+                }
+            })
+        })
+    </script>
 </html>

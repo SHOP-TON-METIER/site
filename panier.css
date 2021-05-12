@@ -58,22 +58,6 @@ h1 {
     align-items: center;
 }
 
-.audiovisuel {
-    background-color: #FEE9E8;
-}
-
-.design {
-    background-color: #CAE7FB;
-}
-
-.com {
-    background-color: #FFF6EB;
-}
-
-.dvpt {
-    background-color: #EFECFE;
-}
-
 .metier h2 {
     margin: 0;
     font-weight: 600;
@@ -92,6 +76,7 @@ h1 {
     width: 30px;
     height: 30px;
     margin: 0 20px;
+    cursor: pointer;
 }
 
 .metier .perso-3d {
@@ -109,6 +94,7 @@ h1 {
 .infos-utilisateur {
     width: 40%;
     min-width: 400px;
+    height: 700px;
     padding: 0 30px;
     margin-left: 15px;
     background-color: #EEF0F1;
