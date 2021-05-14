@@ -4,114 +4,209 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: "poppins";
     color: #09192C;
     margin: 0;
 }
 
-h1{
-    font-size:3rem;
-    text-align: center;
-    margin-top: 7.8125rem;
-}
-
-
-.projet{
-   font-size: 0.875rem;
-    width: 1040px;
-    height: 265px;
-    margin-left: 15.5rem;
-}
-
-.titre1{
-    font-style: italic;
-    Width: 553px;
-    margin-left:  15.5rem;
-    margin-top: 18.6875rem;
-    font-size: 2.5rem;
-
-}
-.titre2{
-    font-style: italic;
-    margin-left: 49.6375rem;
-    margin-top: 1rem ;
-    Width: 553px;
-    font-size: 2.5rem;
-}
-.titre3{
-    font-style: italic;
-    margin-top: 9.5rem;
-    font-size: 2.5rem;
-}
-
-.nous{
-   font-weight: 600;
-    margin-left: 10.5rem;
-    width: 1100px;
-    
-
-}
- span{
-    color: #EF4813;
-   font-weight: bold;
-}
-
-ul{
-    margin-left: 2.5rem;
-}
-li{
-  
-    display: inline-block;
-    text-align: center;
-    font-style: normal;
-    margin: 0.1rem 2.1rem;
-
-
-}
-
-section{
-    margin-left: 15.5rem;
-    width: 1100px;
- 
-
-}
-   
-
-.objet3D{
-
-    text-align: center;
-    padding: 6.75rem 0.5rem;
-    margin: 0.5rem;
-    /*margin: 1.5rem;*/
-    width:12.5rem;
-    display: inline-block;
-    background-color: darkseagreen;
-}
-form{
+main {
+    width: 80vw;
+    max-width: 1400px;
+    margin: auto;
+    margin-top: 150px;
     position: relative;
-    top: -80px;
+}
+
+.retour {
+    position: absolute;
+    top: 0;
+    left: -50px;
+}
+
+h1 {
+    font-size: 3rem;
     text-align: center;
 }
-form input{
-    margin: 0.6rem;
-    padding: 0.3rem;
-    width: 20rem;
+
+h1 span {
+    color: #EF4813;
+    font-weight: bold;
 }
-.bouton{
-   width: 9.375rem;
-    background-color:#4FAFF3;
-    color: white;
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.projet {
+    justify-content: space-between;
+}
+
+h2 {
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+.projet p {
+    width: 60%;
+    color: #3A4756;
+    text-align: justify;
+    margin: 0;
+}
+
+.illustration {
+    width: 35%;
+    height: 200px;
+    border-radius: 10px;
+    background-color: red;
+}
+
+.presentation {
+    justify-content: space-between;
+}
+
+.presentation h2 {
+    text-align: right;
+}
+
+.membre {
+    border: solid 2px #3A4756;
+    border-radius: 10px;
+    width: 24%;
+    height: 480px;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.perso {
+    width: 100%;
+}
+
+.membre p {
+    height: 75px;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #09192C;
+    margin-bottom: 0;
+}
+
+.membre span {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: #3A4756;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 20px;
+}
+
+.membre a {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 20px;
+    margin: 10px auto;
+    padding: 8px 18px;
+    background-color: #F14A72;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.formulaire {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formulaire img {
+    width: 35%;
+}
+
+form {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formulaire h2{
+    text-align: center;
+    color: #FA5014;
+    font-size: 2.5rem;
+}
+
+form div {
+    width: 45%;
+    margin-bottom: 40px;
+    margin-right: 10px;
+}
+
+label {
+    display: block;
+    font-size: 0.875rem;
+    color: #3A4756;
+}
+
+form input[type="text"], form input[type="mail"], form textarea {
+    padding: 15px 0; 
+    width: 100%;
     border: none;
-
+    border-bottom: solid 2px #848C96;
 }
 
-.bouton:hover{
-    transition: 0.6s;
+form input::placeholder, form textarea::placeholder {
+    font-size: 1.125rem;
+    font-family: "Poppins";
+    color: #848C96;
+}
+
+.titre-motif {
+    width: 100%;
+    font-size: 1.125rem;
+    color: #3A4756;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.radio-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.radio-buttons label {
+    font-size: 0.875rem;
+    color: #3A4756;
+    position: relative;
+    top: 1px;
+    left: -10px;
+}
+
+.bouton {
+    margin-top: 38px;
+    padding: 10px 30px;
+    background-color: #4FAFF3;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+
+    transition: background-color 0.6s ease-out;
+}
+
+.bouton:hover {
     background-color: #EF4813;
 }
 
-.back{
+.button-right {
+    width: 100%;
+    text-align: right;
+}
+
+.back {
     position: relative;
     top: 165px;
     left: 35px;
@@ -124,7 +219,8 @@ form input{
     color: snow;
 
 }
-.fleche{
+
+.fleche {
     position: relative;
     top: 245px;
     left: 55px;
@@ -134,7 +230,8 @@ form input{
     text-decoration: none;
     padding: 10px 70px 10px 5px;
 }
-.fleche:hover{
+
+.fleche:hover {
     color: #EF4813;
     transition: 0.3s;
 }
