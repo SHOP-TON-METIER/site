@@ -20,9 +20,17 @@ main {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    position: relative;
+}
+
+.retour {
+    position: absolute;
+    top: 0;
+    left: -50px;
 }
 
 .avatar {
+    border: solid;
     width: 30vw;
     min-width: 350px;
 }

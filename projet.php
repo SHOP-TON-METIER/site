@@ -12,81 +12,144 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="projet.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <?php include 'header.php' ?>
 
-    <h1>Le projet <span>SHOP</span>'TON MÉTIER</h1>
+    <main>
 
-    <div>
+        <a href="" class="retour">
+            <svg width="34" height="60" viewBox="0 0 34 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.17157 27.1716C-0.390524 28.7337 -0.390524 31.2663 1.17157 32.8284L26.6274 58.2843C28.1895 59.8464 30.7222 59.8464 32.2843 58.2843C33.8464 56.7222 33.8464 54.1895 32.2843 52.6274L9.65685 30L32.2843 7.37258C33.8464 5.81049 33.8464 3.27783 32.2843 1.71573C30.7222 0.153632 28.1895 0.153632 26.6274 1.71573L1.17157 27.1716ZM5 26H4L4 34H5L5 26Z" fill="#09192C"/>
+            </svg>
+        </a>
+        
+        <h1>Le projet <span>SHOP</span>'TON MÉTIER</h1>
 
-        <h1 class="titre1">En quoi consite ce projet ?</h1>
-        <p class="projet"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing lectus penatibus
-            sollicitudin velit aliquam duis vitae lacus sit. Tincidunt sed vestibulum erat non turpis rhoncus tincidunt.
-            Mauris suspendisse sapien eu, at in at convallis. Ultrices hac consequat eros, ut purus, eget sed nisi,
-            nascetur. Tempus habitant fringilla consequat tempor eu lacus blandit curabitur. Cras hac urna, sed massa
-            ut. Velit pellentesque elementum eleifend orci dictum molestie. In fermentum lacus ultricies nibh elit nunc
-            ipsum semper. Fames venenatis adipiscing duis dolor lacus, lobortis vestibulum, vitae.
-            Quis arcu volutpat convallis commodo sit vitae. Elit non ullamcorper aliquam leo. Hendrerit non aliquet
-            ultricies magna nisi, faucibus ut egestas. Id porttitor dui, nisi posuere. Ultricies eget phasellus faucibus
-            risus neque risus libero. Turpis non turpis et diam curabitur id. In nisi purus est id congue urna dolor
-            tortor amet. Metus tincidunt ac nunc, neque augue in tortor orci id. Curabitur eu ipsum elit laoreet in
-            parturient interdum non magna.
-            Dolor gravida non egestas amet at volutpat mauris. Malesuada nullam nibh praesent felis, mattis. Sed mattis
-            nisl sagittis tellus. Quis placerat adipiscing egestas viverra in commodo scelerisque morbi faucibus. Massa,
-            tempus mattis sit vel aliquet facilisis a ipsum. Elit, gravida hendrerit nunc, commodo volutpat quis nullam
-            cum. Feugiat turpis habitant neque gravida volutpat fermentum sit.</p>
-    </div>
-    <h1 class="titre2">Qui sommes-nous ?</h1>
+        <section class="projet">
 
-    <section>
-        <div class="objet3D">clem</div>
-        <div class="objet3D">aurel</div>
-        <div class="objet3D">élo</div>
-        <div class="objet3D">am</div>
-    </section>
-    <div class="nous">
-        <ul>
-            <li>GILAMA Clémentine <br> <span>Communication <br>& Design</span></li>
-            <li>LOUVEL Aurélien <br> <span>Développement Web <br>& Design</span></li>
-            <li>PAN Élodie <br><span>Développement web <br>& Design</span></li>
-            <li>RUBIALES Amélie <br> <span>Chef de projet <br> & Communication</span></li>
-        </ul>
+            <h2>En quoi consite ce projet ?</h2>
 
-    </div>
-    <form action="">
-        <h1 class="titre3">Contactez-nous !</h1>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing lectus penatibus
+                sollicitudin velit aliquam duis vitae lacus sit. Tincidunt sed vestibulum erat non turpis rhoncus
+                tincidunt.
+                Mauris suspendisse sapien eu, at in at convallis. Ultrices hac consequat eros, ut purus, eget sed nisi,
+                nascetur. Tempus habitant fringilla consequat tempor eu lacus blandit curabitur. Cras hac urna, sed
+                massa
+                ut. Velit pellentesque elementum eleifend orci dictum molestie. In fermentum lacus ultricies nibh elit
+                nunc
+                ipsum semper. Fames venenatis adipiscing duis dolor lacus, lobortis vestibulum, vitae.
+                Quis arcu volutpat convallis commodo sit vitae. Elit non ullamcorper aliquam leo. Hendrerit non aliquet
+            </p>
 
-        <div>
+            <div class="illustration"></div>
+        </section>
 
-            <input type="text" id="Nom" placeholder="NOM">
-        </div>
-        <div>
-            <input type="text" id="Prenom" placeholder="PRÉNOM">
-        </div>
-        <div>
-            <input type="email" id="email" placeholder="EMAIL">
-        </div>
-        <div>
-            <textarea name="message" id="message" cols="30" rows="10" placeholder="Ecrivez votre message ici..."></textarea>
-        </div>
-        <div>
-            <input type="submit" value="envoyer" class="bouton">
-        </div>
-    </form>
+
+        <section class="presentation">
+
+            <h2>Qui sommes-nous ?</h2>
+
+            <div class="membre">
+                <img src="medias/images/clementine-logo.png" alt="" class="perso">
+                <p>GILAMA Clémentine<br>
+                    <span>Communication <br>
+                        & Design</span>
+                </p>
+                <a href="">Me découvrir</a>
+            </div>
+
+            <div class="membre">
+                <img src="medias/images/aurelien-logo.png" alt="" class="perso">
+                <p>LOUVEL Aurélien<br>
+                    <span>Développement web <br>
+                        & UX / UI Design</span>
+                </p>
+                <a href="">Me découvrir</a>
+            </div>
+
+            <div class="membre">
+                <img src="medias/images/elodie-logo.png" alt="" class="perso">
+                <p>PAN Élodie<br>
+                    <span>Développement front-end</span>
+                </p>
+                <a href="">Me découvrir</a>
+            </div>
+
+            <div class="membre">
+                <img src="medias/images/amelie-logo.png" alt="" class="perso">
+                <p>RUBIALES Amélie<br>
+                    <span>Chef de projet <br>
+                        & Communication</span>
+                </p>
+                <a href="">Me découvrir</a>
+            </div>
+
+        </section>
+
+        <section class="formulaire">
+
+            <img src="medias/images/drone-light.png" alt="">
+
+            <form action="">
+
+                <h2 class="titre3">Nous contacter !</h2>
+
+                <div>
+                    <label for="prenom">Prénom</label>
+                    <input type="text" required id="prenom" placeholder="Mon prénom...">
+                </div>
+
+                <div>
+                    <label for="nom">Nom</label>
+                    <input type="text" required id="nom" placeholder="Mon nom...">
+                </div>
+
+                <div>
+                    <label for="mail">Mail</label>
+                    <input type="mail" required id="mail" placeholder="Mon adresse mail...">
+                </div>
+
+                <div>
+                    <label for="postal-code">Code Postal</label>
+                    <input type="text" required id="postal-code" placeholder="Mon code postal...">
+                </div>
+
+                <h3 class="titre-motif">Quel est le motif du contact ?</h3>
+                <div class="radio-buttons">
+                    <input type="radio" id="avis" name="motif"><label for="avis">Donner mon avis</label>
+                    <input type="radio" id="infos" name="motif"><label for="infos">Demander des informations</label>
+                    <input type="radio" id="suggestions" name="motif"><label for="suggestions">Suggestions</label>
+                    <input type="radio" id="autres" name="motif"><label for="autres">Autres</label>
+                </div>
+
+                <label for="message">Message</label>
+
+                <textarea name="message" id="message" rows="3" placeholder="Ecrivez votre message ici..."></textarea>
+
+                <div class="button-right">
+                    <input type="submit" value="Envoyer" class="bouton">
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
 
     <?php include 'footer.php' ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             if (!window.matchMedia)
                 return
 
             var current = $('head > link[rel="icon"][media]');
-            $.each(current, function(i, icon) {
+            $.each(current, function (i, icon) {
                 var match = window.matchMedia(icon.media)
 
                 function swap() {

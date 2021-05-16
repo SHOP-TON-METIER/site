@@ -15,6 +15,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="metier.css">
+    <!-- Link Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -24,6 +25,13 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
     <?php include 'header.php' ?>
 
     <main>
+
+        <a href="" class="retour">
+            <svg width="34" height="60" viewBox="0 0 34 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.17157 27.1716C-0.390524 28.7337 -0.390524 31.2663 1.17157 32.8284L26.6274 58.2843C28.1895 59.8464 30.7222 59.8464 32.2843 58.2843C33.8464 56.7222 33.8464 54.1895 32.2843 52.6274L9.65685 30L32.2843 7.37258C33.8464 5.81049 33.8464 3.27783 32.2843 1.71573C30.7222 0.153632 28.1895 0.153632 26.6274 1.71573L1.17157 27.1716ZM5 26H4L4 34H5L5 26Z" fill="#09192C"/>
+            </svg>
+        </a>
+
         <div class="avatar"></div>
 
         <section>
@@ -46,7 +54,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 echo ('<div class="boutons">
                     <a href="#" class="ajouter-panier">Ajouter au panier</a>
                     <span href="#" class="like">
-                        <img src="images/like.svg" alt="Aimer le métier"> 20
+                        <img src="medias/images/like.svg" alt="Aimer le métier"><span data-like="0"></span>
                     </span></div>');
 
                 echo ('<h2>Salaire</h2>
@@ -134,11 +142,29 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 match.addListener(swap)
                 swap()
             })
-        })
-    </script>
-    <!-- Charger JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+            // Click sur le bouton "like"
+            var nb_like = $('.like span').data('like');
+            $('.like span').html(nb_like);
+            
+            var click = false
+
+            $('.like').on('click', function(){
+                if (click == false){
+                    nb_like++;
+                    $('.like span').html(nb_like);
+                    $('.like img').attr('src','medias/images/liked-pink.svg')
+                    click = true;
+                } else {
+                    nb_like--;
+                    $('.like span').html(nb_like);
+                    $('.like img').attr('src','medias/images/like.svg')
+                    click = false;
+                }
+            })
+        })
+
+    </script>
 
     <!-- Script pour le swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -147,8 +173,9 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             spaceBetween: 30,
             pagination: {
                 el: '.swiper-pagination',
-                clickable: true,
+                clickable: true
             },
+            autoHeight : true,
         });
     </script>
 
