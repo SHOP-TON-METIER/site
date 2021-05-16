@@ -251,15 +251,7 @@
       })
     }
 
-    async function createShop({
-      name,
-      src,
-      url,
-      x,
-      y,
-      z,
-      g
-    }) {
+    async function createShop({name, src, url, x, y, z, g}) {
       const gltf = await modelLoader(src)
 
       model = gltf.scene
@@ -267,7 +259,6 @@
       model.rotation.z = g
       model.scale.multiplyScalar(0.2)
       scene.add(model)
-      console.log(model)
 
       interactionManager.add(model)
 
@@ -283,11 +274,7 @@
       model.addEventListener("mouseout", () => {
         document.body.style.cursor = "auto"
         document.querySelector(`.${name}`).classList.remove("active")
-
-
       })
-
-      return model
     }
 
 
@@ -304,7 +291,7 @@
       }),
       Design: createShop({
         name: 'Design',
-        src: 'medias/model/shops/design.gltf',
+        src: 'medias/model/shops/audiovisuel.gltf',
         url: 'shop.php?id=2',
         x: 1,
         y: 1,
@@ -355,28 +342,60 @@
     interactionManager = new THREE.InteractionManager(renderer, camera, canvas)
 
 
-    //Controls
-    const controls = new THREE.MapControls(camera, canvas)
-    controls.enableDamping = true
-    controls.enableZoom = true
-    controls.enableRotate = false
 
-    //Limit Pan
-    const minPan = new THREE.Vector3(-4, -4, -4)
-    const maxPan = new THREE.Vector3(4, 4, 4)
-    const v = new THREE.Vector3()
-    controls.addEventListener("change", function() {
-      v.copy(controls.target)
-      controls.target.clamp(minPan, maxPan)
-      v.sub(controls.target)
-      camera.position.sub(v)
-    })
+    //LERP
+    function lerp(a, b, t) {
+      return ((1 - t) * a + t * b)
+    }
+
+
+    //SCROLL
+
+    let smoothscrool = 0
+
+    const scrollPos = {
+      y: 0,
+      deltaY: 0
+    }
+
+    function onMouseWheel(event) {
+      event.stopImmediatePropagation()
+      event.stopPropagation()
+      event.preventDefault()
+
+      scrollPos.deltaY = event.wheelDeltaY || scrollPos.deltaY * -1
+      scrollPos.deltaY *= -0.5
+
+      scroll(event)
+
+    }
+
+    function scroll(event) {
+
+      if ((scrollPos.y + scrollPos.deltaY) < -(HEIGHT / 15)) {
+        scrollPos.y = -(HEIGHT / 15)
+      } else if ((scrollPos.y + scrollPos.deltaY) > HEIGHT * 0.8) {
+        scrollPos.y = HEIGHT * 0.8
+      } else {
+        scrollPos.y = (scrollPos.y + (scrollPos.deltaY))
+      }
+
+    }
+
+
 
 
     //Loop
     function Animate(time) {
+      window.addEventListener("wheel", onMouseWheel, {
+        passive: false
+      })
 
-      controls.update()
+      smoothscrool = lerp(smoothscrool, scrollPos.y, .025)
+      console.log(smoothscrool)
+      // planet.rotation.x = (smoothscrool / HEIGHT)
+
+      // controls.update()
       interactionManager.update()
       TWEEN.update(time)
 
@@ -398,220 +417,7 @@
     //Load
     window.addEventListener('load', Animate, false)
   </script>
-  <!-- <script>
-    //Setup
-    const canvas = document.querySelector('canvas.webgl')
-    const WIDTH = window.innerWidth
-    const HEIGHT = window.innerHeight
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(80, WIDTH / HEIGHT, 0.1, 1000)
-    camera.position.y = 4
-    camera.position.z = 4
-    camera.rotation.x = -Math.PI / 4
 
-    const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 5)
-    light.position.set(0, 1, 0)
-    scene.add(light)
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvas,
-      antialias: true
-    })
-    renderer.setSize(WIDTH, HEIGHT)
-    renderer.setClearColor(0xCCE7FF)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-
-    //Resize
-    window.addEventListener('resize', () => {
-      const WIDTH = window.innerWidth
-      const HEIGHT = window.innerHeight
-
-      camera.aspect = WIDTH / HEIGHT
-      camera.updateProjectionMatrix()
-
-      renderer.setSize(WIDTH, HEIGHT)
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    })
-
-    //Decor
-    const decorgeometry = new THREE.PlaneGeometry(20, 20, 1)
-    const decormaterial = new THREE.MeshBasicMaterial({
-      color: 0x0007FF,
-      side: THREE.DoubleSide
-    })
-    const decor = new THREE.Mesh(decorgeometry, decormaterial)
-    decor.rotation.x = Math.PI / 2
-    scene.add(decor)
-
-    //Loaders
-
-    // const loadingBar = document.querySelector('.progress')
-
-    const loadingManager = new THREE.LoadingManager(
-      () => {},
-
-      (itemUrl, itemsLoaded, itemsTotal) => {
-        const progressRatio = 20 * (itemsLoaded / itemsTotal)
-        // loadingBar.style.width = `${progressRatio}vw`
-      }
-    )
-    const loader = new THREE.GLTFLoader(loadingManager)
-
-    function modelLoader(src) {
-      return new Promise((resolve, reject) => {
-        loader.load(src, data => resolve(data), null, reject)
-      })
-    }
-
-    async function createShop({
-      name,
-      src,
-      url,
-      x,
-      y,
-      z,
-      g
-    }) {
-      const gltf = await modelLoader(src)
-
-      model = gltf.scene.children[0]
-      model.position.set(x, y, z)
-      model.rotation.z = g
-      model.scale.multiplyScalar(0.01)
-      scene.add(model)
-
-      interactionManager.add(model)
-
-      model.addEventListener("click", () => {
-        window.location.href = `${url}`
-      })
-
-      model.addEventListener("mouseover", () => {
-        document.body.style.cursor = "pointer"
-        document.querySelector(`.${name}`).classList.add("active")
-      })
-
-      model.addEventListener("mouseout", () => {
-        document.body.style.cursor = "auto"
-        document.querySelector(`.${name}`).classList.remove("active")
-
-
-      })
-
-      return model
-    }
-
-    //Interactions
-    interactionManager = new THREE.InteractionManager(renderer, camera, canvas)
-
-    const shops = {
-      Audiovisuel: createShop({
-        name: 'Audiovisuel',
-        src: 'gltf/characters/perso/scene.gltf',
-        url: 'shop.php?id=1',
-        x: -4,
-        y: 1,
-        z: -4,
-        g: 1
-      }),
-      Design: createShop({
-        name: 'Design',
-        src: 'gltf/shops/design/scene.gltf',
-        url: 'shop.php?id=2',
-        x: 1,
-        y: 1,
-        z: -4,
-        g: -1
-      }),
-      Developpement: createShop({
-        name: 'Développement',
-        src: 'gltf/shops/developpement/scene.gltf',
-        url: 'shop.php?id=3',
-        x: 2,
-        y: 1,
-        z: 2,
-        g: 0
-      }),
-      Communication: createShop({
-        name: 'Communication',
-        src: 'gltf/shops/communication/scene.gltf',
-        url: 'shop.php?id=4',
-        x: -1,
-        y: 1,
-        z: 1,
-        g: 1
-      })
-      // MMI: createShop({
-      //   name: 'MMI',
-      //   src: 'gltf/shops/mmi/scene.gltf',
-      //   url: 'mmi.php',
-      //   x: -1,
-      //   y: 1,
-      //   z: 1,
-      //   g: 1
-      // }),
-      // Projet: createShop({
-      //   name: 'Projet',
-      //   src: 'gltf/shops/projet/scene.gltf',
-      //   url: 'projet.php',
-      //   x: -1,
-      //   y: 1,
-      //   z: 1,
-      //   g: 1
-      // })
-    };
-
-    const sprites = [{
-      position: new THREE.Vector3(-4 + .2, 1 + 1.2, -4),
-      element: document.querySelector('.Audiovisuel')
-    }, {
-      position: new THREE.Vector3(1 + .2, 1 + 1.2, -4),
-      element: document.querySelector('.Design')
-    }, {
-      position: new THREE.Vector3(2 + .2, 1 + 1.2, 2),
-      element: document.querySelector('.Developpement')
-    }, {
-      position: new THREE.Vector3(-1 + .2, 1 + 1.2, 1),
-      element: document.querySelector('.Communication')
-    }, {
-      position: new THREE.Vector3(-1 + .2, 1 + 1.2, 1),
-      element: document.querySelector('.MMI')
-    }, {
-      position: new THREE.Vector3(-1 + .2, 1 + 1.2, 1),
-      element: document.querySelector('.Projet')
-    }]
-
-    //Controls
-    const controls = new THREE.MapControls(camera, canvas)
-    controls.enableDamping = true
-    controls.enableZoom = true
-    controls.enableRotate = false
-
-
-
-    //Loop
-    function Animate(time) {
-
-      interactionManager.update()
-      TWEEN.update(time)
-
-      //Sprites
-      for (const sprite of sprites) {
-        const screenPosition = sprite.position.clone()
-        screenPosition.project(camera)
-
-        const translateX = screenPosition.x * window.innerWidth * 0.5
-        const translateY = -screenPosition.y * window.innerHeight * 0.5
-        sprite.element.style.transform = `translate(${translateX}px,${translateY}px)`
-
-      }
-      renderer.render(scene, camera)
-
-      requestAnimationFrame(Animate)
-    }
-
-    //Load
-    window.addEventListener('load', Animate, false)
-  </script> -->
 
 
 
