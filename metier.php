@@ -82,18 +82,18 @@ session_start();
             ?>
 
             <?php
-            // $sql = "SELECT poursuiteEtudes FROM metier WHERE id_metier = :id";
-            // $req = $link->prepare($sql);
-            // $req->execute(array(":id" => $id));
+            $sql = "SELECT poursuiteEtudes FROM metier WHERE id_metier = :id";
+            $req = $link->prepare($sql);
+            $req->execute(array(":id" => $id));
 
-            // echo ("<h2>Les poursuites d'études</h2>");
-            // while ($data = $req->fetch()) {
-            //     echo ('p' . $data['poursuiteEtudes'] . '</p>');
-            // }
-            // $req = null;
+            echo ("<h2>Les poursuites d'études</h2>");
+            while ($data = $req->fetch()) {
+                echo ('<p>' . $data['poursuiteEtudes'] . '</p>');
+            }
+            $req = null;
             ?>
 
-            <h2>Avis des anciens MMI</h2>
+            <h2>Avis et conseils des anciens MMI</h2>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
 
@@ -145,14 +145,14 @@ session_start();
                 swap()
             })
 
-            $('.ajouter-panier').on('click', function(){
+            // $('.ajouter-panier').on('click', function(){
                 
-                <?php
-                $donnees=array("nom"=>"$nom","phrase"=>$phrase);
+            //     <?php
+            //     $donnees=array("nom"=>"$nom","phrase"=>$phrase);
 
-                array_push($_SESSION['panier'],$donnees);
+            //     array_push($_SESSION['panier'],$donnees);
 
-                ?>
+            //     ?>
             })
 
             // Click sur le bouton "like"
@@ -190,6 +190,8 @@ session_start();
             autoHeight : true,
         });
     </script>
+
+    
 
     <!-- Script pour l'objet 3D -->
     <script src="js/three.min.js"></script>

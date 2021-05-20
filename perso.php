@@ -29,7 +29,20 @@
             </svg>
         </a>
 
-        <div class="avatar"></div>
+
+        <?php
+            $id = htmlentities($_GET['id']);
+
+            $sql = "SELECT perso3d FROM staff  WHERE id = :id";
+            $req = $link->prepare($sql);
+            $req->execute(array(":id" => $id));
+            
+            while ($data = $req->fetch()) {
+                echo ('<div class="avatar"><img src="'. $data['perso3d'] .'" alt=""></div>');
+            }
+
+            $req = null;
+        ?>
 
         <section>
             <?php
@@ -50,10 +63,10 @@
                 <p>' . $data['presentation'] . '</p>
     
                 <div class="boutons">
-                        <a href="' . $data['lienCvNum'] . '" class="cv cv-num">CV interactif</a>
-                        <a href="' . $data['lienCvTrad'] . '" class="cv cv-trad">CV</a>
-                        <a href="' . $data['lienLinkedin'] . '"><img src="medias/images/linkedin_logo.png" alt="Voir son Linkedin"></a>
-                        <a href="' . $data['lienInsta'] . '"><img src="medias/images/insta_logo.png" alt="Voir son Instagram"></a>
+                        <a href="' . $data['lienCvNum'] . '" class="cv cv-num" target="_blank">CV interactif</a>
+                        <a href="' . $data['lienCvTrad'] . '" class="cv cv-trad" target="_blank">CV</a>
+                        <a href="' . $data['lienLinkedin'] . '" target="_blank"><img src="medias/images/linkedin_logo.png" alt="Voir son Linkedin"></a>
+                        <a href="' . $data['lienInsta'] . '" target="_blank"><img src="medias/images/insta_logo.png" alt="Voir son Instagram"></a>
                 </div>
     
                 <h2>Missions</h2>
@@ -61,26 +74,6 @@
             }
             $req = null;
             ?>
-
-            <!-- <h2>Présentation</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut excepturi cumque placeat nisi dolor nesciunt animi aliquam fugit consequuntur esse asperiores possimus sed, quas odio ex minima repellendus dolorum libero, consequatur perspiciatis consectetur atque temporibus? Nisi ipsa similique, provident vel earum nulla reiciendis corrupti dolorum pariatur ut laboriosam. Odio, voluptates?
-            </p>
-
-            <div class="boutons">
-                    <a href="" class="cv cv-num">CV interactif</a>
-                    <a href="" class="cv cv-trad">CV</a>
-                    <a href=""><img src="images/linkedin_logo.png" alt="Voir son Linkedin"></a>
-                    <a href=""><img src="images/insta_logo.png" alt="Voir son Instagram"></a>
-            </div>
-
-            <h2>Missions</h2>
-                <ul class="missions" id="missions">
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                </ul> -->
 
         </section>
 

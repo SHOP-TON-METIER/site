@@ -28,7 +28,7 @@ $_SESSION['panier']=array();
   <div class="loading">
     <div class="drone"></div>
     <div class="messages">
-      <p class="msg1">Salut, moi c'est Droninou! Bienvenue sur SHOP'TON METIER.</p>
+      <p class="msg1">Salut, moi c'est Pepito! Bienvenue sur SHOP'TON METIER.</p>
       <p class="msg2">
         Ce site te permettra de découvrir les métiers possibles après avoir
         étudié en MMI.

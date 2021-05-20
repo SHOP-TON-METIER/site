@@ -79,6 +79,8 @@ h2 {
     height: 480px;
     text-align: center;
     padding: 20px 10px;
+
+    position: relative;
 }
 
 .perso {
@@ -86,7 +88,7 @@ h2 {
 }
 
 .membre p {
-    height: 75px;
+    /* height: 75px; */
     font-size: 1.35rem;
     font-weight: 600;
     color: #09192C;
@@ -95,6 +97,7 @@ h2 {
 
 .membre span {
     display: inline-block;
+    padding-top: 10px;
     font-size: 0.875rem;
     color: #3A4756;
     font-style: italic;
@@ -105,12 +108,17 @@ h2 {
 .membre a {
     display: inline-block;
     text-decoration: none;
+    width: 144px;
     border-radius: 20px;
-    margin: 10px auto;
     padding: 8px 18px;
     background-color: #F14A72;
     color: #FFFFFF;
     font-weight: 600;
+
+    position: absolute;
+    bottom: 15px;
+    right: 50%;
+    transform: translateX(50%);
 }
 
 .formulaire {

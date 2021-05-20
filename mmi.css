@@ -40,6 +40,7 @@ section {
 h2 {
     font-weight: 400;
     font-size: 1.5rem;
+    margin-bottom: 0;
 }
 
 h3 {
@@ -48,7 +49,6 @@ h3 {
 
 p {
     color: #3A4756;
-    text-align: justify;
 }
 
 .mmi {
@@ -64,7 +64,7 @@ p {
 
 .illustration {
     width: 40%;
-    height: 250px;
+    height: 200px;
     margin-left: 20px;
     background-color: red;
     border-radius: 10px;
@@ -132,6 +132,9 @@ p {
     height: 100%;
     backface-visibility: hidden;
     padding: 20px 10px;
+    
+    background-color: #FFFFFF;
+    border-radius: 10px;
 }
 
 .card-front {
@@ -142,9 +145,10 @@ p {
 }
 
 .card-front h3 {
+    padding-top: 15px;
     text-align: center;
-    font-size: 1.7rem;
-    width: 100%;
+    font-size: 1.4rem;
+    width: 95%;
 }
 
 .card-back {
@@ -152,16 +156,28 @@ p {
     padding: 25px;
 }
 
-.card-back img {
-    width: 57px;
-    height: 60px;
-    margin: auto;
+.card-back h3 {
+    text-align: left;
 }
 
-.card-back p{
+.icone-matiere {
+    font-size: 70px;
+}
+
+.card-back .icone-matiere {
+    font-size: 50px;
+}
+
+.card-back p, .card-back li{
     font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     text-align: left;
+    margin-bottom: 2px;
+}
+
+.card-back ul {
+    padding-left: 12px;
+    margin: 0;
 }
 
 .stats-container{

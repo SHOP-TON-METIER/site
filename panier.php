@@ -93,19 +93,19 @@ session_start();
                 <h2 class="titre-form">Situation professionnelle</h2>
 
                 <div class="situation-pro">
-                    <label for="lyceen" class="checkbox">
+                <label for="lyceen" class="checkbox">
                         <input type="radio" id="lyceen" name="situtation-pro" value="lyceen">
-                        <span>Lycéen(ne)</span>
-                    </label>
-
-                    <label for="reorientation" class="checkbox">
-                        <input type="radio" id="reorientation" name="situtation-pro" value="reorientation">
-                        <span>En réorientation</span>
+                        <p class="box">Lycéen(ne)</p>
                     </label>
 
                     <label for="mmi" class="checkbox">
-                        <input type="radio" id="mmi" name="situtation-pro" value="mmi">
-                        <span>Etudiant en MMI</span>
+                        <input type="radio" id="mmi" name="situtation-pro" value="reorientation">
+                        <p class="box">Etudiant(e) en MMI</p>
+                    </label>
+
+                    <label for="autre" class="checkbox">
+                        <input type="radio" id="autre" name="situtation-pro" value="mmi">
+                        <p class="box">Autre</p>
                     </label>
                 </div>
 

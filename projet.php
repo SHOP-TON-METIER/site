@@ -56,43 +56,43 @@
             <div class="membre">
                 <img src="medias/images/clementine-logo.png" alt="" class="perso">
                 <p>GILAMA Clémentine<br>
-                    <span>Communication <br>
-                        & Design</span>
+                    <span>Chargée de communication<br>
+                    & Graphiste 3D</span>
                 </p>
-                <a href="">Me découvrir</a>
+                <a href="perso.php?id=1">Me découvrir</a>
             </div>
 
             <div class="membre">
                 <img src="medias/images/aurelien-logo.png" alt="" class="perso">
                 <p>LOUVEL Aurélien<br>
-                    <span>Développement web <br>
-                        & UX / UI Design</span>
+                    <span>Développeur full stack &<br>
+                    Responsable identité visuelle</span>
                 </p>
-                <a href="">Me découvrir</a>
+                <a href="perso.php?id=2">Me découvrir</a>
             </div>
 
             <div class="membre">
                 <img src="medias/images/elodie-logo.png" alt="" class="perso">
                 <p>PAN Élodie<br>
-                    <span>Développement front-end</span>
+                    <span>Développeuse full-stack</span>
                 </p>
-                <a href="">Me découvrir</a>
+                <a href="perso.php?id=3">Me découvrir</a>
             </div>
 
             <div class="membre">
                 <img src="medias/images/amelie-logo.png" alt="" class="perso">
                 <p>RUBIALES Amélie<br>
-                    <span>Chef de projet <br>
-                        & Communication</span>
+                    <span>Cheffe de projet &<br>
+                    Chargée de communication</span>
                 </p>
-                <a href="">Me découvrir</a>
+                <a href="perso.php?id=4">Me découvrir</a>
             </div>
 
         </section>
 
         <section class="formulaire">
 
-            <img src="medias/images/drone-light.png" alt="">
+            <img src="medias/images/drone-form.png" alt="">
 
             <form action="">
 
