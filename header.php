@@ -1,4 +1,6 @@
-<?php echo ('<header>
+<?php 
+session_start();
+echo ('<header>
                 <div class="left">
                     <a class="home" href="index.php"><img class="logo" src="medias/images/logo.png" alt=""></a>
                 </div>
@@ -16,7 +18,7 @@
                         <input type="text" id="searchbar" placeholder="Rechercher">
                     </div>
 
-                    <div class="bag">
+                    <a href="panier.php" class="bag">
                         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36">
                                 <rect width="36" height="36" fill="#09192C" />
@@ -26,86 +28,6 @@
                                 <path d="M11.6782 7.39459C11.8902 6.4759 12.2999 5.61446 12.8787 4.87023C15.4762 1.53057 20.5238 1.53058 23.1213 4.87023C23.7002 5.61446 24.1098 6.4759 24.3218 7.39458L26.3354 16.1199C26.4561 16.6432 26.0587 17.1428 25.5216 17.1428C25.1327 17.1428 24.7952 16.8744 24.7078 16.4955L22.7089 7.8338C22.4367 6.6544 21.7319 5.62007 20.7338 4.93536C19.0865 3.80529 16.9136 3.80529 15.2662 4.93536C14.2681 5.62007 13.5633 6.6544 13.2911 7.8338L11.2923 16.4955C11.2048 16.8744 10.8674 17.1428 10.4785 17.1428C9.94137 17.1428 9.54389 16.6432 9.66466 16.1199L11.6782 7.39459Z" fill="#09192C" />
                             </g>
                         </svg>
-                    </div>
-
-                    <div class="panier">
-                        <h1>Mon panier</h1>
-
-                        <h2>4 métiers</h2>
-
-                        <div class="liste-metiers">
-
-                            <div class="metier audiovisuel">
-                                <img src="medias/images/drone-light.png" alt="" class="perso">
-                                <p>Photographe</p>
-                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72"/>
-                                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72"/>
-                                </svg>
-                            </div>
-                            
-                            <div class="metier audiovisuel">
-                                <img src="medias/images/drone-light.png" alt="" class="perso">
-                                <p>Cadreur-monteur</p>
-                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72"/>
-                                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72"/>
-                                </svg>
-                            </div>
-                            <div class="metier developpement">
-                                <img src="medias/images/drone-light.png" alt="" class="perso">
-                                <p>Développeur Full-stack</p>
-                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72"/>
-                                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72"/>
-                                </svg>
-                            </div>
-                            <div class="metier communication">
-                                <img src="medias/images/drone-light.png" alt="" class="perso">
-                                <p>Community Manager</p>
-                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72"/>
-                                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72"/>
-                                </svg>
-                            </div>
-
-                        </div>
-
-
-                        <div class="domaine-fav">
-                            <p>Domaine favori</p>
-                            <span>Audiovisuel</span>
-                        </div>
-
-                        <a href="panier.php" class="voir-panier">Voir mon panier</a>
-
-                    </div>
-
-                </div>
-
+                    </a>
                 
-        </header>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script>
-        $(document).ready(function(){
-            $("header .panier").hide();
-            $("header .bag").on("click", function(){
-                $("header .panier").toggle();
-                
-            })
-
-
-            // $("body").not($("header .panier")).on("click", function(){ 
-            //     if($("header .panier").is(":visible") == true){
-            //         $("header .panier").hide(); 
-            //         console.log($("header .panier").is(":visible"))
-            //     }
-            // })
-        
-            
-            $(".remove").on("click",function(){
-                $(this).parent().remove();
-            })
-        })
-        </script>');
+        </header>');

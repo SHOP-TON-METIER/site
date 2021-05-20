@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php
-$link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")); ?>
+<?php include 'link.php' ?>
 
 <head>
     <meta charset="UTF-8">

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php
-$link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")); ?>
+<?php include 'link.php' ?>
 
 <head>
     <meta charset="UTF-8">
@@ -67,11 +66,12 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
         })
     </script>
 
-    <script src="js/three.min.js"></script>
-    <script src="js/GLTFLoader.js"></script>
-    <script src="js/OrbitControls.js"></script>
-    <script src="js/three.interactive.js"></script>
-    <script src="js/tween.umd.js"></script>
+    <script src="medias/js/three.min.js"></script>
+    <script src="medias/js/DRACOLoader.js"></script>
+    <script src="medias/js/GLTFLoader.js"></script>
+    <script src="medias/js/OrbitControls.js"></script>
+    <script src="medias/js/three.interactive.js"></script>
+    <script src="medias/js/tween.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous"></script>
     <script>
         //Setup
@@ -138,12 +138,16 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 loadingBar.style.width = `${progressRatio}vw`
             }
         )
-        const loader = new THREE.GLTFLoader(loadingManager)
+        const dracoLoader = new THREE.DRACOLoader();
+        dracoLoader.setDecoderPath('medias/draco/');
+
+        const loader = new THREE.GLTFLoader();
+        loader.setDRACOLoader(dracoLoader);
 
         function modelLoader(src) {
-            return new Promise((resolve, reject) => {
-                loader.load(src, data => resolve(data), null, reject)
-            })
+        return new Promise((resolve, reject) => {
+            loader.load(src, data => resolve(data), null, reject);
+        });
         }
 
         async function createCharacter({

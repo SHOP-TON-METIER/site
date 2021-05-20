@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['panier']=array();
+?>
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,7 +19,6 @@
   <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="index.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 </head>
 
 <body>

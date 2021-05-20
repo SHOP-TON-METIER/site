@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
+    
+<?php include 'link.php' ?>
 
 <head>
     <meta charset="UTF-8">

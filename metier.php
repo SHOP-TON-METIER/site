@@ -1,8 +1,10 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php
-$link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")); ?>
+<?php include 'link.php' ?>
 
 <head>
     <meta charset="UTF-8">
@@ -43,6 +45,8 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             $req->execute(array(":id" => $id));
 
             while ($data = $req->fetch()) {
+                $nom = $data['nom'];
+                $phrase = $data['description'];
                 echo ('<p class="fil-Ariane"><a href="shop.php?id=' . $data['id_shop'] . '" class="current-domain">' . $data['shop'] . '</a>
                     &nbsp &gt &nbsp <span>' . $data['nom'] . '</span></p>');
 
@@ -52,7 +56,7 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                     <p>' . $data['description'] . '</p>');
 
                 echo ('<div class="boutons">
-                    <a href="#" class="ajouter-panier">Ajouter au panier</a>
+                    <a class="ajouter-panier">Ajouter au panier</a>
                     <span href="#" class="like">
                         <img src="medias/images/like.svg" alt="Aimer le métier"><span data-like="0"></span>
                     </span></div>');
@@ -78,17 +82,15 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
             ?>
 
             <?php
-            $sql = "SELECT formation FROM rel_form_metier WHERE id_metier = :id";
-            $req = $link->prepare($sql);
-            $req->execute(array(":id" => $id));
+            // $sql = "SELECT poursuiteEtudes FROM metier WHERE id_metier = :id";
+            // $req = $link->prepare($sql);
+            // $req->execute(array(":id" => $id));
 
-            echo ("<h2>Les poursuites d'études</h2>");
-            echo ('<ul>');
-            while ($data = $req->fetch()) {
-                echo ('<li>' . $data['formation'] . '</li>');
-            }
-            $req = null;
-            echo ('</ul>');
+            // echo ("<h2>Les poursuites d'études</h2>");
+            // while ($data = $req->fetch()) {
+            //     echo ('p' . $data['poursuiteEtudes'] . '</p>');
+            // }
+            // $req = null;
             ?>
 
             <h2>Avis des anciens MMI</h2>
@@ -141,6 +143,16 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
                 }
                 match.addListener(swap)
                 swap()
+            })
+
+            $('.ajouter-panier').on('click', function(){
+                
+                <?php
+                $donnees=array("nom"=>"$nom","phrase"=>$phrase);
+
+                array_push($_SESSION['panier'],$donnees);
+
+                ?>
             })
 
             // Click sur le bouton "like"

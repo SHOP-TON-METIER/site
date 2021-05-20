@@ -1,8 +1,10 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php
-$link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")); ?>
+<?php include 'link.php' ?>
 
 <head>
     <meta charset="UTF-8">
@@ -36,77 +38,50 @@ $link = new PDO('mysql:host=localhost;dbname=shop_ton_metier', 'root', '', array
 
         <section class="metiers-choisis">
             <h1>Mon panier</h1>
-            <p>4 métiers dans mon panier</p>
 
-            <div class="metier audiovisuel">
-                <img src="medias/images/drone-light.png" alt="" class="perso-3d">
-                <div>
-                    <h2>Photographe</h2>
-                    <p class="phrase-metier">
-                        Le professionnel de l’image qui sommeille en toi va pouvoir s’épanouir si tu deviens photographe
-                        !
-                    </p>
-                    <a href="" class="lien-fiche-metier">Fiche descriptive</a>
-                </div>
-                <img src="medias/images/like.svg" alt="" class="bouton-like">
+            <?php
+            if(isset($_SESSION['panier'])){
+                echo (sizeof($_SESSION['panier'])." métiers dans mon panier");
+                echo " <br><a href=cart-remove-all.php>Remove all</a><br>";
+                print_r($_SESSION['panier']);
 
-                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
-                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
-                </svg>
+                $max=sizeof($_SESSION['panier']);
+                for($i=0; $i<$max; $i++) {
+                    
+                    while (list ($key, $val) = each ($_SESSION['cart'][$i])) { 
+                    echo "$key -> $val"; 
+                    echo('<div class="metier audiovisuel">
+                    <img src="medias/images/drone-light.png" alt="" class="perso-3d">
+                    <div>
+                        <h2>'.($_SESSION['panier'][$i]).'</h2>
+                        <p class="phrase-metier">
+                            Le professionnel de l’image qui sommeille en toi va pouvoir s’épanouir si tu deviens photographe
+                            !
+                        </p>
+                        <a href="" class="lien-fiche-metier">Fiche descriptive</a>
+                    </div>
+                    <img src="medias/images/like.svg" alt="" class="bouton-like">
 
-            </div>
+                    <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                        <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
+                        <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
+                    </svg>
 
-            <div class="metier audiovisuel">
-                <img src="medias/images/drone-light.png" alt="" class="perso-3d">
-                <div>
-                    <h2>Cadreur-monteur</h2>
-                    <p class="phrase-metier">
-                        Tu es créatif et tu rêves de faire des montages et être sur les tournages des plus grands films
-                        ? Je crois bien que le métier de cadreur-monteur est fait pour toi !
-                    </p>
-                    <a href="" class="lien-fiche-metier">Fiche descriptive</a>
-                </div>
-                <img src="medias/images/like.svg" alt="" class="bouton-like">
-                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
-                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
-                </svg>
-            </div>
+                </div>');
+                    } // inner array while loop
+                    echo "<br>";
+                    } // outer array for loop
 
-            <div class="metier developpement">
-                <img src="medias/images/drone-light.png" alt="" class="perso-3d">
-                <div>
-                    <h2>Développeur full-stack</h2>
-                    <p class="phrase-metier">
-                        Tu ne sais pas quoi choisir entre front-end et back-end ? Une seule solution, deviens
-                        développeur full-stack pour être les deux !
-                    </p>
-                    <a href="" class="lien-fiche-metier">Fiche descriptive</a>
-                </div>
-                <img src="medias/images/like.svg" alt="" class="bouton-like">
-                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
-                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
-                </svg>
-            </div>
 
-            <div class="metier communication">
-                <img src="medias/images/drone-light.png" alt="" class="perso-3d">
-                <div>
-                    <h2>Community Manager</h2>
-                    <p class="phrase-metier">
-                        Si devenir l’ambassadeur d’une marque, d’une société, d’un produit ou même d’une personnalité,
-                        sur les réseaux sociaux t'intéresse, devient Community Manager !
-                    </p>
-                    <a href="" class="lien-fiche-metier">Fiche descriptive</a>
-                </div>
-               <img src="medias/images/like.svg" alt="" class="bouton-like">
-                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
-                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
-                </svg>
-            </div>
+                
+
+                }else{
+                echo " Session Cart is not created. Visit <a href=cart.php>cart.php</a> page to create the array and add products to it. ";
+            }
+            
+            ?>
+
+            
 
         </section>
 
