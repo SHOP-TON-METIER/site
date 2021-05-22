@@ -16,7 +16,7 @@ main {
     width: 80vw;
     max-width: 1400px;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 120px;
     position: relative;
 }
 
@@ -200,6 +200,10 @@ p {
 canvas {
     width: 45% !important;
     height: 100% !important;
+}
+
+.source {
+    font-size: 0.8rem;
 }
 
 .statistiques a {

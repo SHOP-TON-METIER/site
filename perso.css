@@ -14,7 +14,7 @@ main {
     width: 80vw;
     max-width: 1400px;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 120px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -30,7 +30,6 @@ main {
 .avatar {
     width: 30%;
     min-width: 350px;
-    text-align: center;
 }
 
 .avatar img {

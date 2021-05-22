@@ -33,16 +33,10 @@
 
             <h2>En quoi consite ce projet ?</h2>
 
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing lectus penatibus
-                sollicitudin velit aliquam duis vitae lacus sit. Tincidunt sed vestibulum erat non turpis rhoncus
-                tincidunt.
-                Mauris suspendisse sapien eu, at in at convallis. Ultrices hac consequat eros, ut purus, eget sed nisi,
-                nascetur. Tempus habitant fringilla consequat tempor eu lacus blandit curabitur. Cras hac urna, sed
-                massa
-                ut. Velit pellentesque elementum eleifend orci dictum molestie. In fermentum lacus ultricies nibh elit
-                nunc
-                ipsum semper. Fames venenatis adipiscing duis dolor lacus, lobortis vestibulum, vitae.
-                Quis arcu volutpat convallis commodo sit vitae. Elit non ullamcorper aliquam leo. Hendrerit non aliquet
+            <p> 
+                SHOP’TON MÉTIER est un site qui te permet de découvrir vingt-deux métiers post-MMI dans les domaines du design, de la communication, du développement web et de l’audiovisuel.<br>
+                Difficile de faire un choix ? La plateforme réalisée en quatre mois par une équipe de quatre étudiants en première année de MMI, t’aidera à faire ton choix en te donnant les informations essentielles avec des avis et des conseils d’anciens étudiants MMI exerçant le métier qui t’intéresse.<br>
+                Ce fut un projet fabuleux car nous avons appris et acquis de nouvelles compétences techniques et avons développé notre sens des relations humaines.
             </p>
 
             <div class="illustration"></div>
@@ -65,7 +59,7 @@
             <div class="membre">
                 <img src="medias/images/aurelien-logo.png" alt="" class="perso">
                 <p>LOUVEL Aurélien<br>
-                    <span>Développeur full stack &<br>
+                    <span>Développeur full-stack &<br>
                     Responsable identité visuelle</span>
                 </p>
                 <a href="perso.php?id=2">Me découvrir</a>
@@ -74,7 +68,7 @@
             <div class="membre">
                 <img src="medias/images/elodie-logo.png" alt="" class="perso">
                 <p>PAN Élodie<br>
-                    <span>Développeuse full-stack</span>
+                    <span>Développeuse full-stack<br><br></span>
                 </p>
                 <a href="perso.php?id=3">Me découvrir</a>
             </div>

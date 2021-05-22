@@ -350,7 +350,7 @@
           <p> 
             La formation est accessible à toutes les filières du baccalauréat mais concerne plus particulièrement les filières scientifiques, technologiques (STI2D, STG, STT) et  économiques et sociales. L’inscription est possible uniquement via la plateforme Parcoursup. Les admissions se font sur étude de dossier, un jury d’admission examinera votre dossier, avec votre lettre de motivation, vos notes, votre CV, etc.<br>
             <br>
-            Source :  Promotions MMI Champs sur Marne 2018-2019-2020.
+            <span class="source">Source :  Promotions MMI Champs sur Marne 2018-2019-2020.</span>
           </p>
         </div>
 
@@ -363,7 +363,7 @@
           <p>
             Depuis 2018, le nombre de filles inscrites dans cette formation est en augmentation. Mais le pourcentage de garçons reste plus élevé.<br>
             <br>
-            Source :  Promotions MMI Champs sur Marne 2018-2019-2020.
+            <span class="source">Source :  Promotions MMI Champs sur Marne 2018-2019-2020.</span>
           </p>
         </div>
 
@@ -379,7 +379,7 @@
           <p> 
           La majorité des étudiants MMI poursuivent leurs études en école d’ingénieur, licence générale et professionnelle. Certains préfèrent entrer directement dans le monde du travail.<br>
           <br>
-          Source :  Ministère de l’enseignement supérieur, de la recherche et de l’innovation. Diplômes et Diplômes de DUT MMI 2017.
+          <span class="source">Source :  Ministère de l’enseignement supérieur, de la recherche et de l’innovation. Diplômes et Diplômes de DUT MMI 2017.</span>
           </p>
         </div>
 
@@ -472,8 +472,7 @@
 
     var bacmmi = new Chart(
       document.getElementById('bacmmi'),
-      bacconfig, 
-      
+      bacconfig
     );
 
 // graphique garçons/filles

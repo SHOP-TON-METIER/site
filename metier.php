@@ -34,71 +34,90 @@ session_start();
             </svg>
         </a>
 
-        <div class="avatar"></div>
+        <div class="avatar">
+            <img src="medias/images/aurelien-logo.png" alt="" class="perso">
+        </div>
 
         <section>
             <?php
             $id = htmlentities($_GET['id']);
 
-            $sql = "SELECT id_shop, shop, nom, description, salaire FROM metier  WHERE id_metier = :id";
+            $sql = "SELECT id_shop, shop, nom, description, salaire FROM metier WHERE id = :id";
             $req = $link->prepare($sql);
             $req->execute(array(":id" => $id));
 
             while ($data = $req->fetch()) {
                 $nom = $data['nom'];
                 $phrase = $data['description'];
-                echo ('<p class="fil-Ariane"><a href="shop.php?id=' . $data['id_shop'] . '" class="current-domain">' . $data['shop'] . '</a>
-                    &nbsp &gt &nbsp <span>' . $data['nom'] . '</span></p>');
+                echo ('<p class="fil-Ariane"><a href="shop.php?id=' . $data['id_shop'] . '" class="current-domain">' . $data['shop'] . '</a> &nbsp &gt &nbsp <span>' . $data['nom'] . '</span></p>
+                
+                <h1>' . $data['nom'] . '</h1>
 
-                echo ('<h1>' . $data['nom'] . '</h1>');
+                <h2>Description</h2>
 
-                echo ('<h2>Description</h2>
-                    <p>' . $data['description'] . '</p>');
+                <p>' . $data['description'] . '</p>
 
-                echo ('<div class="boutons">
+                <div class="boutons">
                     <a class="ajouter-panier">Ajouter au panier</a>
+
                     <span href="#" class="like">
                         <img src="medias/images/like.svg" alt="Aimer le métier"><span data-like="0"></span>
-                    </span></div>');
+                    </span>
+                </div>
 
-                echo ('<h2>Salaire</h2>
-                    <p class="salaire" id="salaire">' . $data['salaire'] . '</p>');
+                <h2>Salaire</h2>
+
+                <p class="salaire" id="salaire">' . $data['salaire'] . '</p>
+                ');
+
             }
             $req = null;
             ?>
 
             <?php
-            $sql = "SELECT competences FROM rel_metier_comp WHERE id_metier = :id";
+            $sql = "SELECT competence.nom 
+            FROM competence, rel_metier_comp AS rmc, metier 
+            WHERE rmc.id_metier = metier.id 
+            AND rmc.id_competence = competence.id 
+            AND metier.id = :id 
+            ORDER BY competence.type, competence.nom ASC";
+
             $req = $link->prepare($sql);
             $req->execute(array(":id" => $id));
 
-            echo ('<h2>Compétences</h2>');
-            echo ('<ul>');
+            echo ('<h2>Compétences</h2>
+            <ul>');
             while ($data = $req->fetch()) {
-                echo ('<li>' . $data['competences'] . '</li>');
+                echo ('
+                <li>' . $data['nom'] . '</li>');
             }
             $req = null;
-            echo ('</ul>');
+            echo ('
+            </ul>');
             ?>
 
             <?php
-            $sql = "SELECT poursuiteEtudes FROM metier WHERE id_metier = :id";
+            $sql = "SELECT poursuiteEtudes FROM metier WHERE id = :id";
             $req = $link->prepare($sql);
             $req->execute(array(":id" => $id));
 
-            echo ("<h2>Les poursuites d'études</h2>");
+            echo ('
+            <h2>Les poursuites d’études</h2>');
             while ($data = $req->fetch()) {
-                echo ('<p>' . $data['poursuiteEtudes'] . '</p>');
+                echo ('
+                <p>' . $data['poursuiteEtudes'] . '</p>
+                ');
             }
             $req = null;
             ?>
 
             <h2>Avis et conseils des anciens MMI</h2>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
+            
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
 
                     <?php
-                    $sql = "SELECT * FROM ancienetudiant WHERE id_metier = :id";
+                    $sql = "SELECT * FROM ancienEtudiant WHERE id_metier = :id";
                     $req = $link->prepare($sql);
                     $req->execute(array(":id" => $id));
 
@@ -119,6 +138,7 @@ session_start();
                 <div class="swiper-pagination"></div>
             </div>
 
+            
         </section>
 
     </main>
@@ -153,7 +173,8 @@ session_start();
             //     array_push($_SESSION['panier'],$donnees);
 
             //     ?>
-            })
+            // })
+
 
             // Click sur le bouton "like"
             var nb_like = $('.like span').data('like');
@@ -174,10 +195,11 @@ session_start();
                     click = false;
                 }
             })
+
         })
 
     </script>
-
+    
     <!-- Script pour le swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
@@ -191,12 +213,10 @@ session_start();
         });
     </script>
 
-    
-
     <!-- Script pour l'objet 3D -->
-    <script src="js/three.min.js"></script>
-    <script src="js/GLTFLoader.js"></script>
-    <script src="js/OrbitControls.js"></script>
+    <script src="medias/js/three.min.js"></script>
+    <script src="medias/js/GLTFLoader.js"></script>
+    <script src="medias/js/OrbitControls.js"></script>
     <script>
         var camera, scene, renderer, avatar
 
