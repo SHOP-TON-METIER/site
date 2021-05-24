@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php include 'link.php' ?>
+<?php include 'link.php'; ?>
 
 <head>
     <meta charset="UTF-8">
@@ -17,30 +17,60 @@
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php include 'header.php'; ?>
 
     <?php
     $id = htmlentities($_GET['id']);
 
-    $sql = "SELECT nom, msgDrone, html FROM shop  WHERE id_shop = :id";
+    $sql = 'SELECT nom, msgDrone, html FROM shop  WHERE id_shop = :id';
     $req = $link->prepare($sql);
-    $req->execute(array(":id" => $id));
+    $req->execute([':id' => $id]);
 
     while ($data = $req->fetch()) {
-        echo ('
+        echo '
         <div class="loading">
-            <p class="message-drone">' . $data['msgDrone'] . '</p>
-            <h1>' . $data['nom'] . '</h1>
+            <p class="message-drone">' .
+            $data['msgDrone'] .
+            '</p>
+            <h1>' .
+            $data['nom'] .
+            '</h1>
             <div class="progressbar">
                 <div class="progressbg"></div>
                 <div class="progress"></div>
             </div>
             <p class="message-chargement">Allumage des lumières...</p>
-        </div>');
-        echo ($data['html']);
+        </div>';
+        // echo $data['html'];
     }
     $req = null;
     ?>
+
+    
+    <div class="sprite chargee_com">
+        <a href="metier.php?id=1" class="plus">+</a>
+        <div class="nom">Chargée de communication</div>
+    </div>
+
+    <div class="sprite community_manager">
+        <a href="metier.php?id=2" class="plus">+</a>
+        <div class="nom">Community manager</div>
+    </div>
+
+    <div class="sprite directrice_artistique">
+        <a href="metier.php?id=1" class="plus">+</a>
+        <div class="nom">Directrice artistique</div>
+    </div>
+
+    <div class="sprite webmarketeur">
+        <a href="metier.php?id=1" class="plus">+</a>
+        <div class="nom">Webmarketeur</div>
+    </div>
+
+    <div class="sprite chef_projet">
+        <a href="metier.php?id=1" class="plus">+</a>
+        <div class="nom">Chef de projet</div>
+    </div>
 
     <canvas class="webgl"></canvas>
 
@@ -80,20 +110,40 @@
         const HEIGHT = window.innerHeight
         const scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(80, WIDTH / HEIGHT, 0.1, 1000)
-        camera.position.y = 4
-        camera.position.z = 4
+        camera.position.y = 6
+        camera.position.z = 6
         camera.rotation.x = -Math.PI / 4
 
-        const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 5)
-        light.position.set(0, 1, 0)
-        scene.add(light)
+        const keylight = new THREE.SpotLight(0xffffff, 1);
+        keylight.position.set(-20, 10, 14);
+        keylight.castShadow = true;
+        scene.add(keylight);
+
+        const filllight = new THREE.SpotLight(0xaea2f6, 0.5);
+        filllight.position.set(16, 8, 12);
+        filllight.castShadow = true;
+        scene.add(filllight);
+
+        const filllightbottom = new THREE.SpotLight(0xffffff, 0.5);
+        filllightbottom.position.set(-20, -10, 10);
+        filllightbottom.castShadow = true;
+        scene.add(filllightbottom);
+
+        const backlight = new THREE.SpotLight(0xffffff, 1);
+        backlight.position.set(16, 8, -14);
+        backlight.castShadow = true;
+        scene.add(backlight);
         const renderer = new THREE.WebGLRenderer({
             canvas: canvas,
             antialias: true
         })
         renderer.setSize(WIDTH, HEIGHT)
-        renderer.setClearColor(0xCCE7FF)
+        renderer.setClearColor(0xE0F8FF)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        renderer.shadowMap.enabled = true;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1;
+        renderer.outputEncoding = THREE.sRGBEncoding;
 
         //Resize
         window.addEventListener('resize', () => {
@@ -106,17 +156,6 @@
             renderer.setSize(WIDTH, HEIGHT)
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         })
-
-        //Decor
-        const decorgeometry = new THREE.PlaneGeometry(20, 20, 1)
-        const decormaterial = new THREE.MeshBasicMaterial({
-            color: 0xCCE7FF,
-            side: THREE.DoubleSide
-        })
-        const decor = new THREE.Mesh(decorgeometry, decormaterial)
-        decor.rotation.x = Math.PI / 2
-        scene.add(decor)
-
 
         //Loaders
 
@@ -138,16 +177,27 @@
                 loadingBar.style.width = `${progressRatio}vw`
             }
         )
-        const dracoLoader = new THREE.DRACOLoader();
+        const dracoLoader = new THREE.DRACOLoader(loadingManager);
         dracoLoader.setDecoderPath('medias/draco/');
 
-        const loader = new THREE.GLTFLoader();
+        const loader = new THREE.GLTFLoader(loadingManager);
         loader.setDRACOLoader(dracoLoader);
 
         function modelLoader(src) {
         return new Promise((resolve, reject) => {
             loader.load(src, data => resolve(data), null, reject);
         });
+        }
+        async function createScene(src) {
+            const gltf = await modelLoader(src);
+
+            scenemodel = gltf.scene
+            scenemodel.receiveShadow = true
+            scenemodel.scale.multiplyScalar(0.2)
+            scenemodel.rotation.y = -Math.PI/2
+            scenemodel.castShadow = true
+
+            scene.add(scenemodel);
         }
 
         async function createCharacter({
@@ -161,9 +211,9 @@
         }) {
             const gltf = await modelLoader(src)
 
-            model = gltf.scene.children[0]
+            model = gltf.scene
             model.position.set(x, y, z)
-            model.rotation.z = g
+            model.rotation.y = g
             model.scale.multiplyScalar(0.2)
             scene.add(model)
 
@@ -190,17 +240,35 @@
 
 
         // Data
-        <?php
-        $sql = "SELECT js FROM shop WHERE id_shop = :id";
-        $req = $link->prepare($sql);
-        $req->execute(array(":id" => $id));
+        // <?php
+// $sql = 'SELECT js FROM shop WHERE id_shop = :id';
+// $req = $link->prepare($sql);
+// $req->execute([':id' => $id]);
 
-        while ($data = $req->fetch()) {
-            echo ($data['js']);
-        }
-        $req = null;
+// while ($data = $req->fetch()) {
+//     echo $data['js'];
+// }
+// $req = null;
+//
+?>
+        
+        createScene("medias/model/scene/design/scene.gltf")
 
-        ?>
+        const characters = {
+        Game_designer: createCharacter({name: 'game_designer', src: 'medias/model/scene/design/game_designer.gltf', url: 'metier.php?id=2', x: 0.5, y: 0, z: 2.8, g: -Math.PI/2}),
+        Community_manager: createCharacter({name: 'community_manager', src: 'medias/model/scene/communication/community_manager.gltf', url: 'metier.php?id=1', x: -2, y: 0, z: 1.8, g: -Math.PI/2}),
+        Directrice_artistique: createCharacter({name: 'directrice_artistique', src: 'medias/model/scene/communication/directrice_artistique.gltf', url: 'metier.php?id=1', x: 1.6, y: 0, z: -2.2, g: -Math.PI/2}),
+        Webmarketeur: createCharacter({name: 'webmarketeur', src: 'medias/model/scene/communication/webmarketeur.gltf', url: 'metier.php?id=1', x: 4.2, y: 0, z: 1.2, g: -Math.PI/2}),
+        Chef_projet: createCharacter({name: 'chef_projet', src: 'medias/model/scene/communication/chef_projet.gltf', url: 'metier.php?id=1', x: -3.6, y: 0, z: -1.8, g: -Math.PI/2})
+        };
+
+        const sprites = [
+        {position: new THREE.Vector3(0.5, 2.8, 2.8), element: document.querySelector('.chargee_com')},
+        {position: new THREE.Vector3(-1.8, 2.4, 1.8), element: document.querySelector('.community_manager')},
+        {position: new THREE.Vector3(1.6, 2.8, -2.2), element: document.querySelector('.directrice_artistique')},
+        {position: new THREE.Vector3(4.2, 2.4, 1.2), element: document.querySelector('.webmarketeur')},
+        {position: new THREE.Vector3(-3.6, 2.7, -1.8), element: document.querySelector('.chef_projet')}
+        ]
 
         //Interactions
         interactionManager = new THREE.InteractionManager(renderer, camera, canvas)
@@ -209,12 +277,12 @@
         //Controls
         const controls = new THREE.MapControls(camera, canvas)
         controls.enableDamping = true
-        controls.enableZoom = true
+        controls.enableZoom = false
         controls.enableRotate = false
 
         //Limit Pan
-        const minPan = new THREE.Vector3(-4, -4, -4)
-        const maxPan = new THREE.Vector3(4, 4, 4)
+        const minPan = new THREE.Vector3(-2, -2, -2)
+        const maxPan = new THREE.Vector3(2, 2, 1)
         const v = new THREE.Vector3()
         controls.addEventListener("change", function() {
             v.copy(controls.target)

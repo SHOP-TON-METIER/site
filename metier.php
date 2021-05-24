@@ -1,10 +1,9 @@
-<?php 
-session_start();
-?>
+<?php
+session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php include 'link.php' ?>
+<?php include 'link.php'; ?>
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +23,7 @@ session_start();
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php include 'header.php'; ?>
 
     <main>
 
@@ -42,20 +41,31 @@ session_start();
             <?php
             $id = htmlentities($_GET['id']);
 
-            $sql = "SELECT id_shop, shop, nom, description, salaire FROM metier WHERE id = :id";
+            $sql =
+                'SELECT id_shop, shop, nom, description, salaire FROM metier WHERE id = :id';
             $req = $link->prepare($sql);
-            $req->execute(array(":id" => $id));
+            $req->execute([':id' => $id]);
 
             while ($data = $req->fetch()) {
                 $nom = $data['nom'];
                 $phrase = $data['description'];
-                echo ('<p class="fil-Ariane"><a href="shop.php?id=' . $data['id_shop'] . '" class="current-domain">' . $data['shop'] . '</a> &nbsp &gt &nbsp <span>' . $data['nom'] . '</span></p>
+                echo '<p class="fil-Ariane"><a href="shop.php?id=' .
+                    $data['id_shop'] .
+                    '" class="current-domain">' .
+                    $data['shop'] .
+                    '</a> &nbsp &gt &nbsp <span>' .
+                    $data['nom'] .
+                    '</span></p>
                 
-                <h1>' . $data['nom'] . '</h1>
+                <h1>' .
+                    $data['nom'] .
+                    '</h1>
 
                 <h2>Description</h2>
 
-                <p>' . $data['description'] . '</p>
+                <p>' .
+                    $data['description'] .
+                    '</p>
 
                 <div class="boutons">
                     <a class="ajouter-panier">Ajouter au panier</a>
@@ -67,9 +77,10 @@ session_start();
 
                 <h2>Salaire</h2>
 
-                <p class="salaire" id="salaire">' . $data['salaire'] . '</p>
-                ');
-
+                <p class="salaire" id="salaire">' .
+                    $data['salaire'] .
+                    '</p>
+                ';
             }
             $req = null;
             ?>
@@ -83,30 +94,34 @@ session_start();
             ORDER BY competence.type, competence.nom ASC";
 
             $req = $link->prepare($sql);
-            $req->execute(array(":id" => $id));
+            $req->execute([':id' => $id]);
 
-            echo ('<h2>Compétences</h2>
-            <ul>');
+            echo '<h2>Compétences</h2>
+            <ul>';
             while ($data = $req->fetch()) {
-                echo ('
-                <li>' . $data['nom'] . '</li>');
+                echo '
+                <li>' .
+                    $data['nom'] .
+                    '</li>';
             }
             $req = null;
-            echo ('
-            </ul>');
+            echo '
+            </ul>';
             ?>
 
             <?php
-            $sql = "SELECT poursuiteEtudes FROM metier WHERE id = :id";
+            $sql = 'SELECT poursuiteEtudes FROM metier WHERE id = :id';
             $req = $link->prepare($sql);
-            $req->execute(array(":id" => $id));
+            $req->execute([':id' => $id]);
 
-            echo ('
-            <h2>Les poursuites d’études</h2>');
+            echo '
+            <h2>Les poursuites d’études</h2>';
             while ($data = $req->fetch()) {
-                echo ('
-                <p>' . $data['poursuiteEtudes'] . '</p>
-                ');
+                echo '
+                <p>' .
+                    $data['poursuiteEtudes'] .
+                    '</p>
+                ';
             }
             $req = null;
             ?>
@@ -117,17 +132,29 @@ session_start();
                     <div class="swiper-wrapper">
 
                     <?php
-                    $sql = "SELECT * FROM ancienEtudiant WHERE id_metier = :id";
+                    $sql = 'SELECT * FROM ancienEtudiant WHERE id_metier = :id';
                     $req = $link->prepare($sql);
-                    $req->execute(array(":id" => $id));
+                    $req->execute([':id' => $id]);
 
                     while ($data = $req->fetch()) {
-                        echo ('<div class="avis swiper-slide">
-                                <span class="nom-etudiant">' . $data['nom'] . ' ' . $data['prenom'] . '</span><br>
-                                <span class="adj-etudiant">' . $data['adjectifs'] . ' Promotion : ' . $data['promotionMMI'] . '</span>
-                                <p class="avis-etudiant">' . $data['avis'] . '</p>
-                                <p class="conseil-etudiant">Conseil : ' . $data['conseil'] . '</p>
-                            </div>');
+                        echo '<div class="avis swiper-slide">
+                                <span class="nom-etudiant">' .
+                            $data['nom'] .
+                            ' ' .
+                            $data['prenom'] .
+                            '</span><br>
+                                <span class="adj-etudiant">' .
+                            $data['adjectifs'] .
+                            ' Promotion : ' .
+                            $data['promotionMMI'] .
+                            '</span>
+                                <p class="avis-etudiant">' .
+                            $data['avis'] .
+                            '</p>
+                                <p class="conseil-etudiant">Conseil : ' .
+                            $data['conseil'] .
+                            '</p>
+                            </div>';
                     }
                     $req = null;
                     ?>
@@ -143,7 +170,7 @@ session_start();
 
     </main>
 
-    <?php include 'footer.php' ?>
+    <?php include 'footer.php'; ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -168,11 +195,12 @@ session_start();
             // $('.ajouter-panier').on('click', function(){
                 
             //     <?php
-            //     $donnees=array("nom"=>"$nom","phrase"=>$phrase);
+//     $donnees=array("nom"=>"$nom","phrase"=>$phrase);
 
-            //     array_push($_SESSION['panier'],$donnees);
+//     array_push($_SESSION['panier'],$donnees);
 
-            //     ?>
+//
+?>
             // })
 
 
@@ -265,16 +293,14 @@ session_start();
         function createObject() {
             const loader = new THREE.GLTFLoader();
             <?php
-            $sql = "SELECT code FROM metier WHERE id_metier = :id";
+            $sql = 'SELECT code FROM metier WHERE id_metier = :id';
             $req = $link->prepare($sql);
-            $req->execute(array(":id" => $id));
+            $req->execute([':id' => $id]);
 
             while ($data = $req->fetch()) {
-                echo ("const url = 'gltf/" . $data['code'] .
-                    "'");
+                echo "const url = 'medias/model/metier/" . $data['code'] . "'";
             }
             $req = null;
-
             ?>
 
             loader.load(
