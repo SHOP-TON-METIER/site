@@ -41,36 +41,10 @@
             </div>
             <p class="message-chargement">Allumage des lumières...</p>
         </div>';
-        // echo $data['html'];
+        echo $data['html'];
     }
     $req = null;
     ?>
-
-    
-    <div class="sprite chargee_com">
-        <a href="metier.php?id=1" class="plus">+</a>
-        <div class="nom">Chargée de communication</div>
-    </div>
-
-    <div class="sprite community_manager">
-        <a href="metier.php?id=2" class="plus">+</a>
-        <div class="nom">Community manager</div>
-    </div>
-
-    <div class="sprite directrice_artistique">
-        <a href="metier.php?id=1" class="plus">+</a>
-        <div class="nom">Directrice artistique</div>
-    </div>
-
-    <div class="sprite webmarketeur">
-        <a href="metier.php?id=1" class="plus">+</a>
-        <div class="nom">Webmarketeur</div>
-    </div>
-
-    <div class="sprite chef_projet">
-        <a href="metier.php?id=1" class="plus">+</a>
-        <div class="nom">Chef de projet</div>
-    </div>
 
     <canvas class="webgl"></canvas>
 
@@ -110,8 +84,6 @@
         const HEIGHT = window.innerHeight
         const scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(80, WIDTH / HEIGHT, 0.1, 1000)
-        camera.position.y = 6
-        camera.position.z = 6
         camera.rotation.x = -Math.PI / 4
 
         const keylight = new THREE.SpotLight(0xffffff, 1);
@@ -138,7 +110,6 @@
             antialias: true
         })
         renderer.setSize(WIDTH, HEIGHT)
-        renderer.setClearColor(0xE0F8FF)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         renderer.shadowMap.enabled = true;
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -240,35 +211,18 @@
 
 
         // Data
-        // <?php
-// $sql = 'SELECT js FROM shop WHERE id_shop = :id';
-// $req = $link->prepare($sql);
-// $req->execute([':id' => $id]);
+        <?php
+        $sql = 'SELECT js FROM shop WHERE id_shop = :id';
+        $req = $link->prepare($sql);
+        $req->execute([':id' => $id]);
 
-// while ($data = $req->fetch()) {
-//     echo $data['js'];
-// }
-// $req = null;
-//
-?>
-        
-        createScene("medias/model/scene/design/scene.gltf")
+        while ($data = $req->fetch()) {
+            echo $data['js'];
+        }
+        $req = null;
+        ?>
 
-        const characters = {
-        Game_designer: createCharacter({name: 'game_designer', src: 'medias/model/scene/design/game_designer.gltf', url: 'metier.php?id=2', x: 0.5, y: 0, z: 2.8, g: -Math.PI/2}),
-        Community_manager: createCharacter({name: 'community_manager', src: 'medias/model/scene/communication/community_manager.gltf', url: 'metier.php?id=1', x: -2, y: 0, z: 1.8, g: -Math.PI/2}),
-        Directrice_artistique: createCharacter({name: 'directrice_artistique', src: 'medias/model/scene/communication/directrice_artistique.gltf', url: 'metier.php?id=1', x: 1.6, y: 0, z: -2.2, g: -Math.PI/2}),
-        Webmarketeur: createCharacter({name: 'webmarketeur', src: 'medias/model/scene/communication/webmarketeur.gltf', url: 'metier.php?id=1', x: 4.2, y: 0, z: 1.2, g: -Math.PI/2}),
-        Chef_projet: createCharacter({name: 'chef_projet', src: 'medias/model/scene/communication/chef_projet.gltf', url: 'metier.php?id=1', x: -3.6, y: 0, z: -1.8, g: -Math.PI/2})
-        };
 
-        const sprites = [
-        {position: new THREE.Vector3(0.5, 2.8, 2.8), element: document.querySelector('.chargee_com')},
-        {position: new THREE.Vector3(-1.8, 2.4, 1.8), element: document.querySelector('.community_manager')},
-        {position: new THREE.Vector3(1.6, 2.8, -2.2), element: document.querySelector('.directrice_artistique')},
-        {position: new THREE.Vector3(4.2, 2.4, 1.2), element: document.querySelector('.webmarketeur')},
-        {position: new THREE.Vector3(-3.6, 2.7, -1.8), element: document.querySelector('.chef_projet')}
-        ]
 
         //Interactions
         interactionManager = new THREE.InteractionManager(renderer, camera, canvas)
