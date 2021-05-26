@@ -125,7 +125,7 @@
                 <textarea name="message" id="message" rows="3" placeholder="Ecrivez votre message ici..."></textarea>
 
                 <div class="button-right">
-                    <input type="submit" value="Envoyer" class="bouton">
+                    <input type="submit" name="send" value="Envoyer" class="bouton">
                 </div>
 
             </form>

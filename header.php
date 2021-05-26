@@ -6,7 +6,7 @@ echo ('<header>
                 </div>
 
                 <div class="right">
-                    <div class="searchbar">
+                    <form class="searchbar" action="recherche.php" method="GET">
                         <label for="searchbar" class="search-icon">
                             <div class="icon">
                                 <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,8 +15,8 @@ echo ('<header>
                                 </svg>
                             </div>
                         </label>
-                        <input type="text" id="searchbar" placeholder="Rechercher">
-                    </div>
+                        <input type="search" id="searchbar" name="search" placeholder="Rechercher">
+                    </form>
 
                     <a href="panier.php" class="bag">
                         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,3 +31,4 @@ echo ('<header>
                     </a>
                 
         </header>');
+?>

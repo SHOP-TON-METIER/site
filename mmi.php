@@ -25,7 +25,7 @@
 
   <main>
 
-    <a href="" class="retour">
+    <a href="index.php" class="retour">
             <svg width="34" height="60" viewBox="0 0 34 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.17157 27.1716C-0.390524 28.7337 -0.390524 31.2663 1.17157 32.8284L26.6274 58.2843C28.1895 59.8464 30.7222 59.8464 32.2843 58.2843C33.8464 56.7222 33.8464 54.1895 32.2843 52.6274L9.65685 30L32.2843 7.37258C33.8464 5.81049 33.8464 3.27783 32.2843 1.71573C30.7222 0.153632 28.1895 0.153632 26.6274 1.71573L1.17157 27.1716ZM5 26H4L4 34H5L5 26Z" fill="#09192C"/>
             </svg>
@@ -35,7 +35,7 @@
 
     <section>
 
-      <h2>MMI c'est quoi ?</h2>
+      <h2>MMI c'est quoi&nbsp;?</h2>
 
       <div class="mmi">
 
@@ -346,7 +346,7 @@
         <canvas id="bacmmi" class="pie"></canvas>
 
         <div>
-          <h3>D'où proviennent les étudiants ?</h3>
+          <h3>D'où proviennent les étudiants&nbsp;?</h3>
           <p> 
             La formation est accessible à toutes les filières du baccalauréat mais concerne plus particulièrement les filières scientifiques, technologiques (STI2D, STG, STT) et  économiques et sociales. L’inscription est possible uniquement via la plateforme Parcoursup. Les admissions se font sur étude de dossier, un jury d’admission examinera votre dossier, avec votre lettre de motivation, vos notes, votre CV, etc.<br>
             <br>
@@ -359,7 +359,7 @@
       <div class="stats-container">
 
         <div>
-          <h3>Des filles et des garçons ?</h3>
+          <h3>Des filles et des garçons&nbsp;?</h3>
           <p>
             Depuis 2018, le nombre de filles inscrites dans cette formation est en augmentation. Mais le pourcentage de garçons reste plus élevé.<br>
             <br>
@@ -375,7 +375,7 @@
         <canvas id="etudes" class="pie"></canvas>
 
         <div>
-          <h3>Des poursuites d'études ?</h3>
+          <h3>Des poursuites d'études&nbsp;?</h3>
           <p> 
           La majorité des étudiants MMI poursuivent leurs études en école d’ingénieur, licence générale et professionnelle. Certains préfèrent entrer directement dans le monde du travail.<br>
           <br>

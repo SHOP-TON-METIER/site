@@ -27,12 +27,6 @@ session_start(); ?>
 
     <main>
 
-        <a href="" class="retour">
-            <svg width="34" height="60" viewBox="0 0 34 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.17157 27.1716C-0.390524 28.7337 -0.390524 31.2663 1.17157 32.8284L26.6274 58.2843C28.1895 59.8464 30.7222 59.8464 32.2843 58.2843C33.8464 56.7222 33.8464 54.1895 32.2843 52.6274L9.65685 30L32.2843 7.37258C33.8464 5.81049 33.8464 3.27783 32.2843 1.71573C30.7222 0.153632 28.1895 0.153632 26.6274 1.71573L1.17157 27.1716ZM5 26H4L4 34H5L5 26Z" fill="#09192C"/>
-            </svg>
-        </a>
-
         <div class="avatar"></div>
 
         <section>
@@ -40,7 +34,7 @@ session_start(); ?>
             $id = htmlentities($_GET['id']);
 
             $sql =
-                'SELECT m.id_shop, m.nom, m.description, m.salaire, s.nom AS shop FROM metier AS m, shop as s WHERE m.id = :id AND m.id_shop = s.id';
+                'SELECT m.id_shop, m.nom, m.description, m.salaire, s.nom AS nomShop FROM metier AS m, shop as s WHERE m.id_shop = s.id AND m.id = :id';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 
@@ -56,7 +50,7 @@ session_start(); ?>
                 <p class="fil-Ariane"><a href="shop.php?id=' .
                     $data['id_shop'] .
                     '" class="current-domain">' .
-                    $data['shop'] .
+                    $data['nomShop'] .
                     '</a> &nbsp &gt &nbsp <span>' .
                     $data['nom'] .
                     '</span></p>
@@ -234,7 +228,6 @@ session_start(); ?>
                 el: '.swiper-pagination',
                 clickable: true
             },
-            autoHeight : true,
         });
     </script>
 
