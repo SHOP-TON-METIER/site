@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
     
-<?php include 'link.php' ?>
+<?php include 'link.php'; ?>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votre commande</title>
-    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
-    <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
-    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
+    <title>SHOP'TON MÉTIER</title>
+    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="medias/images/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="ticket.css">
@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php include 'header.php'; ?>
 
     <main>
         <h1>Mon ticket de caisse</h1>
@@ -97,7 +97,7 @@
 
     </main>
 
-    <?php include 'footer.php' ?>
+    <?php include 'footer.php'; ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>

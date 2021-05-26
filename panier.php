@@ -1,19 +1,16 @@
-<?php 
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php include 'link.php' ?>
+<?php include 'link.php'; ?>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
-    <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
-    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
+    <title>SHOP'TON MÉTIER</title>
+    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="medias/images/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="panier.css">
     <link rel="stylesheet" href="footer.css">
@@ -21,7 +18,7 @@ session_start();
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php include 'header.php'; ?>
 
     <main>
         <a href="" class="retour">
@@ -39,50 +36,27 @@ session_start();
         <section class="metiers-choisis">
             <h1>Mon panier</h1>
 
-            <?php
-            if(isset($_SESSION['panier'])){
-                echo (sizeof($_SESSION['panier'])." métiers dans mon panier");
-                echo " <br><a href=cart-remove-all.php>Remove all</a><br>";
-                print_r($_SESSION['panier']);
+            <p>métiers dans mon panier</p>
 
-                $max=sizeof($_SESSION['panier']);
-                for($i=0; $i<$max; $i++) {
-                    
-                    while (list ($key, $val) = each ($_SESSION['cart'][$i])) { 
-                    echo "$key -> $val"; 
-                    echo('<div class="metier audiovisuel">
-                    <img src="medias/images/drone-light.png" alt="" class="perso-3d">
-                    <div>
-                        <h2>'.($_SESSION['panier'][$i]).'</h2>
-                        <p class="phrase-metier">
-                            Le professionnel de l’image qui sommeille en toi va pouvoir s’épanouir si tu deviens photographe
-                            !
-                        </p>
-                        <a href="" class="lien-fiche-metier">Fiche descriptive</a>
-                    </div>
-                    <img src="medias/images/like.svg" alt="" class="bouton-like">
+            <div class="metier audiovisuel">
+                <img src="medias/images/drone-light.png" alt="" class="perso-3d">
+                <div>
+                    <h2>'.($_SESSION['panier'][$i]).'</h2>
+                    <p class="phrase-metier">
+                        Le professionnel de l’image qui sommeille en toi va pouvoir s’épanouir si tu deviens photographe
+                        !
+                    </p>
+                    <a href="" class="lien-fiche-metier">Fiche descriptive</a>
+                </div>
+                <img src="medias/images/like.svg" alt="" class="bouton-like">
 
-                    <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                        <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
-                        <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
-                    </svg>
+                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
+                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
+                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
+                </svg>
 
-                </div>');
-                    } // inner array while loop
-                    echo "<br>";
-                    } // outer array for loop
-
-
-                
-
-                }else{
-                echo " Session Cart is not created. Visit <a href=cart.php>cart.php</a> page to create the array and add products to it. ";
-            }
+            </div>
             
-            ?>
-
-            
-
         </section>
 
         <section class="infos-utilisateur">
@@ -138,7 +112,7 @@ session_start();
         </section>
     </main>
 
-    <?php include 'footer.php' ?>
+    <?php include 'footer.php'; ?>
 </body>
     <script>
         $(document).ready(function(){

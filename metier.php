@@ -9,10 +9,10 @@ session_start(); ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
-    <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
-    <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
+    <title>SHOP'TON MÉTIER</title>
+    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="medias/images/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="metier.css">
@@ -33,23 +33,27 @@ session_start(); ?>
             </svg>
         </a>
 
-        <div class="avatar">
-            <img src="medias/images/aurelien-logo.png" alt="" class="perso">
-        </div>
+        <div class="avatar"></div>
 
         <section>
             <?php
             $id = htmlentities($_GET['id']);
 
             $sql =
-                'SELECT id_shop, shop, nom, description, salaire FROM metier WHERE id = :id';
+                'SELECT m.id_shop, m.nom, m.description, m.salaire, s.nom AS shop FROM metier AS m, shop as s WHERE m.id = :id AND m.id_shop = s.id';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 
             while ($data = $req->fetch()) {
-                $nom = $data['nom'];
-                $phrase = $data['description'];
-                echo '<p class="fil-Ariane"><a href="shop.php?id=' .
+                echo '
+                <a href="shop.php?id=' .
+                    $data['id_shop'] .
+                    '" class="retour">
+                    <svg width="34" height="60" viewBox="0 0 34 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.17157 27.1716C-0.390524 28.7337 -0.390524 31.2663 1.17157 32.8284L26.6274 58.2843C28.1895 59.8464 30.7222 59.8464 32.2843 58.2843C33.8464 56.7222 33.8464 54.1895 32.2843 52.6274L9.65685 30L32.2843 7.37258C33.8464 5.81049 33.8464 3.27783 32.2843 1.71573C30.7222 0.153632 28.1895 0.153632 26.6274 1.71573L1.17157 27.1716ZM5 26H4L4 34H5L5 26Z" fill="#09192C"/>
+                    </svg>
+                </a>
+                <p class="fil-Ariane"><a href="shop.php?id=' .
                     $data['id_shop'] .
                     '" class="current-domain">' .
                     $data['shop'] .
@@ -192,16 +196,9 @@ session_start(); ?>
                 swap()
             })
 
-            // $('.ajouter-panier').on('click', function(){
+            $('.ajouter-panier').on('click', function(){
                 
-            //     <?php
-//     $donnees=array("nom"=>"$nom","phrase"=>$phrase);
-
-//     array_push($_SESSION['panier'],$donnees);
-
-//
-?>
-            // })
+            })
 
 
             // Click sur le bouton "like"

@@ -1,159 +1,160 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    width: 100vw;
-    font-family: 'Poppins', sans-serif;
-    color: #09192C;
-    overflow-x: hidden;
-} 
+  margin: 0;
+  width: 100vw;
+  font-family: 'Poppins', sans-serif;
+  color: #09192c;
+  overflow-x: hidden;
+}
 
 main {
-    width: 80vw;
-    max-width: 1400px;
-    margin: auto;
-    margin-top: 120px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    position: relative;
+  width: 80vw;
+  max-width: 1400px;
+  margin: auto;
+  margin-top: 120px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 .retour {
-    position: absolute;
-    top: 0;
-    left: -50px;
+  position: absolute;
+  top: 0;
+  left: -50px;
 }
 
 .avatar {
-    width: 30vw;
-    min-width: 350px;
+  width: 30vw;
+  min-width: 350px;
 }
 
 .avatar img {
-    width: 100%;
+  width: 100%;
 }
 
 section {
-    width: 55%;
-    min-width: 600px;
-    max-width: 1200px;
+  width: 55%;
+  min-width: 600px;
+  max-width: 1200px;
 }
 
 .current-domain {
-    color: #EF4813;
+  color: #ef4813;
 }
 
 .fil-Ariane {
-    color: #848C96;
-    font-size: 1.125rem;
-    margin: 0;
+  color: #848c96;
+  font-size: 1.125rem;
+  margin: 0;
 }
 
-.fil-Ariane a{
-    text-decoration: none;
+.fil-Ariane a {
+  text-decoration: none;
 }
 
 h1 {
-    /* color: #09192C; */
-    font-size: 4rem;
-    margin: 0;
+  /* color: #09192C; */
+  font-size: 4rem;
+  margin: 0;
 }
 
 h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-top: 30px;
-    /* color: #09192C; */
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 30px;
+  /* color: #09192C; */
 }
 
-section p, section ul {
-    color: #3A4756;
-    margin-top: 0;
-    margin-bottom: 30px;
+section p,
+section ul {
+  color: #3a4756;
+  margin-top: 0;
+  margin-bottom: 30px;
 }
 
 .boutons {
-    height: 80px;
-    width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin : 30px 0;
+  height: 80px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0;
 }
 
 .ajouter-panier {
-    text-decoration: none;
-    background-color: #EF4813;
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 600;
-    padding: 12px 34px;
-    border-radius: 10px;
+  text-decoration: none;
+  background-color: #ef4813;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 12px 34px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .like {
-   border: solid 2px #09192C;
-   border-radius: 10px;
-   /* color: #09192C; */
-   font-size: 1.25rem;
-   padding: 12px 18px;
+  border: solid 2px #09192c;
+  border-radius: 10px;
+  /* color: #09192C; */
+  font-size: 1.25rem;
+  padding: 12px 18px;
 }
 
 .like img {
-    position: relative;
-    top: 4px;
-    margin-right: 5px;
-    width: 30px;
+  position: relative;
+  top: 4px;
+  margin-right: 5px;
+  width: 30px;
 }
 
-
-.menu-avis{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+.menu-avis {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .menu-avis .active {
-    color: #09192C;
-    border-bottom: solid;
+  color: #09192c;
+  border-bottom: solid;
 }
 
-.menu-avis span{
-    padding-bottom: 5px;
-    margin: 0 10px;
-    color: #848C96;
-    text-decoration: none;
-    cursor: pointer;
+.menu-avis span {
+  padding-bottom: 5px;
+  margin: 0 10px;
+  color: #848c96;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .avis {
-    border: solid #09192C 2px;
-    border-radius: 10px;
-    padding: 30px 40px;
+  border: solid #09192c 2px;
+  border-radius: 10px;
+  padding: 30px 40px;
 }
 
 .nom-etudiant {
-    font-size: 1.125rem;
+  font-size: 1.125rem;
 }
 
 .adj-etudiant {
-    color: #848C96;
-    font-size: 0.75rem;
+  color: #848c96;
+  font-size: 0.75rem;
 }
 
 .avis-etudiant {
-    margin-top: 10px;
-    font-size: 0.875rem;
+  margin-top: 10px;
+  font-size: 0.875rem;
 }
 
 .conseil-etudiant {
-    color: #4FAFF3;
-    font-size: 0.875rem;
-    font-style: italic;
-    margin: 0;
-} 
+  color: #4faff3;
+  font-size: 0.875rem;
+  font-style: italic;
+  margin: 0;
+}

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>SHOP'TON MÉTIER</title>
     <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:no-preference)">
     <link rel="icon" type="image/png" href="medias/images/drone-dark.png" media="(prefers-color-scheme:dark)">
     <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:light)">
@@ -22,7 +22,8 @@
     <?php
     $id = htmlentities($_GET['id']);
 
-    $sql = 'SELECT nom, msgDrone, html FROM shop  WHERE id_shop = :id';
+    $sql =
+        'SELECT * FROM chargement WHERE id_shop = :id ORDER BY RAND() LIMIT 1';
     $req = $link->prepare($sql);
     $req->execute([':id' => $id]);
 
@@ -30,9 +31,20 @@
         echo '
         <div class="loading">
             <p class="message-drone">' .
-            $data['msgDrone'] .
+            $data['message'] .
             '</p>
-            <h1>' .
+            ';
+    }
+    $req = null;
+    ?>
+
+    <?php
+    $sql = 'SELECT nom, html FROM shop WHERE id = :id';
+    $req = $link->prepare($sql);
+    $req->execute([':id' => $id]);
+
+    while ($data = $req->fetch()) {
+        echo '<h1>' .
             $data['nom'] .
             '</h1>
             <div class="progressbar">
@@ -45,6 +57,8 @@
     }
     $req = null;
     ?>
+
+    
 
     <canvas class="webgl"></canvas>
 
@@ -212,7 +226,7 @@
 
         // Data
         <?php
-        $sql = 'SELECT js FROM shop WHERE id_shop = :id';
+        $sql = 'SELECT js FROM shop WHERE id = :id';
         $req = $link->prepare($sql);
         $req->execute([':id' => $id]);
 

@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MMI</title>
-  <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:no-preference)">
-  <link rel="icon" type="image/png" href="images/drone-dark.png" media="(prefers-color-scheme:dark)">
-  <link rel="icon" type="image/png" href="images/drone-light.png" media="(prefers-color-scheme:light)">
+  <title>SHOP'TON MÉTIER</title>
+  <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:no-preference)">
+  <link rel="icon" type="image/png" href="medias/images/drone-dark.png" media="(prefers-color-scheme:dark)">
+  <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:light)">
   <link rel="stylesheet" href="mmi.css">
   <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="footer.css">
@@ -21,7 +21,7 @@
 
 <body>
 
-  <?php include 'header.php' ?>
+  <?php include 'header.php'; ?>
 
   <main>
 
@@ -391,7 +391,7 @@
 
   </main>
 
-  <?php include 'footer.php' ?>
+  <?php include 'footer.php'; ?>
 
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
