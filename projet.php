@@ -88,36 +88,36 @@
 
             <img src="medias/images/drone-form.png" alt="">
 
-            <form action="">
+            <form action="" method="POST">
 
                 <h2 class="titre3">Nous contacter !</h2>
 
                 <div>
                     <label for="prenom">Prénom</label>
-                    <input type="text" required id="prenom" placeholder="Mon prénom...">
+                    <input type="text" required id="prenom" name="prenom" placeholder="Mon prénom...">
                 </div>
 
                 <div>
                     <label for="nom">Nom</label>
-                    <input type="text" required id="nom" placeholder="Mon nom...">
+                    <input type="text" required id="nom" name="nom" placeholder="Mon nom...">
                 </div>
 
                 <div>
                     <label for="mail">Mail</label>
-                    <input type="mail" required id="mail" placeholder="Mon adresse mail...">
+                    <input type="mail" required id="mail" name="mail" placeholder="Mon adresse mail...">
                 </div>
 
                 <div>
                     <label for="postal-code">Code Postal</label>
-                    <input type="text" required id="postal-code" placeholder="Mon code postal...">
+                    <input type="text" required id="postal-code" name="postalCode" placeholder="Mon code postal..." maxlength="6">
                 </div>
 
                 <h3 class="titre-motif">Quel est le motif du contact ?</h3>
                 <div class="radio-buttons">
-                    <input type="radio" id="avis" name="motif"><label for="avis">Donner mon avis</label>
-                    <input type="radio" id="infos" name="motif"><label for="infos">Demander des informations</label>
-                    <input type="radio" id="suggestions" name="motif"><label for="suggestions">Suggestions</label>
-                    <input type="radio" id="autres" name="motif"><label for="autres">Autres</label>
+                    <input type="radio" id="avis" name="motif" value="avis"><label for="avis">Donner mon avis</label>
+                    <input type="radio" id="infos" name="motif" value="infos"><label for="infos">Demander des informations</label>
+                    <input type="radio" id="suggestions" name="motif" value="suggestions"><label for="suggestions">Suggestions</label>
+                    <input type="radio" id="autres" name="motif" value="autres"><label for="autres">Autres</label>
                 </div>
 
                 <label for="message">Message</label>
@@ -130,6 +130,27 @@
 
             </form>
 
+            <?php
+            include 'link.php';
+
+            if(isset($_POST['send'])){
+                $nom = htmlentities($_POST['nom']);
+                $prenom = $_POST['prenom'];
+                $codePostal = $_POST['postalCode'];
+                $mail = $_POST['mail'];
+                $motif = $_POST['motif'];
+                $msg = $_POST['message'];
+                $msg = htmlspecialchars($msg, ENT_QUOTES);
+
+                $sql = "INSERT INTO `formulaire`(nom, prenom, codePostal, mail, motifContact, message) VALUES ('$nom','$prenom', '$codePostal', '$mail', '$motif', '$msg')";
+               
+                $req = $link->prepare($sql);
+                $req->execute();
+    
+            } else {
+              http_response_code(500);
+            }
+            ?>
         </section>
 
     </main>

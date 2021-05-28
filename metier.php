@@ -130,7 +130,7 @@ session_start(); ?>
                     <div class="swiper-wrapper">
 
                     <?php
-                    $sql = 'SELECT * FROM ancienEtudiant WHERE id_metier = :id';
+                    $sql = 'SELECT * FROM ancienetudiant WHERE id_metier = :id';
                     $req = $link->prepare($sql);
                     $req->execute([':id' => $id]);
 

@@ -13,8 +13,17 @@ body {
 } 
 
 main {
+    width: 80vw;
+    max-width: 1400px;
+    margin: auto;
     margin-top: 120px;
-    width: 100%;
+    position: relative;
+}
+
+.retour {
+    position: absolute;
+    padding: 2%;
+    left: -8%;
 }
 
 section {
@@ -24,6 +33,13 @@ section {
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 50px;
+}
+
 .metier {
     width: 45%;
     max-width: 1200px;
@@ -36,7 +52,7 @@ section {
     align-items: center;
 }
 
-.metier h1 {
+.metier h2 {
     margin-bottom: 10px;
     font-size: 1.2rem;
     font-weight: 600;
@@ -48,7 +64,7 @@ section {
 
 .metier .perso-3d {
     width: 20%;
-    height: 100%;
+    height: auto;
     border-radius: 50%;
     margin-right: 15px;
 }
