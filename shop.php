@@ -149,12 +149,15 @@
         const header = document.querySelector('.right')
 
 
+        let cameraready = false
+
         const loadingManager = new THREE.LoadingManager(
             () => {
                 gsap.delayedCall(1, () => {
                     loadingScreen.style.opacity = 0
                     header.style.visibility = "visible"
                 })
+                cameraready = true
             },
 
             (itemUrl, itemsLoaded, itemsTotal) => {
@@ -259,9 +262,27 @@
             camera.position.sub(v)
         })
 
+        function cameraintro(){
+            const coords = {
+            y: camera.position.y,
+            z: camera.position.z
+        }
+        new TWEEN.Tween(coords).to({
+                y: 5,
+                z: 5,
+            }, 500)
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .onUpdate(() =>
+                camera.position.set(0, coords.y, coords.z)).start()
+        }
+
 
         //Loop
         function Animate(time) {
+
+            if(cameraready == true){
+                cameraintro()
+            }
 
             controls.update()
             interactionManager.update()
