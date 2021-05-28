@@ -17,31 +17,31 @@ main {
   max-width: 1400px;
   margin: auto;
   margin-top: 120px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
   position: relative;
 }
 
 .retour {
-  position: absolute;
-  top: 0;
-  left: -50px;
+  position: fixed;
+  top: 20vh;
+  left: 10vw;
+  transform: translate(-50%, -50%);
 }
 
 .avatar {
+  position: fixed;
   width: 30vw;
+  height: 80vh;
   min-width: 350px;
-}
-
-.avatar img {
-  width: 100%;
+  background-color: red;
+  border-radius: 100vh;
 }
 
 section {
+  float: right;
   width: 55%;
   min-width: 600px;
   max-width: 1200px;
+  right: 0;
 }
 
 .current-domain {
@@ -113,29 +113,14 @@ section ul {
   width: 30px;
 }
 
-.menu-avis {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.menu-avis .active {
-  color: #09192c;
-  border-bottom: solid;
-}
-
-.menu-avis span {
-  padding-bottom: 5px;
-  margin: 0 10px;
-  color: #848c96;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .avis {
-  border: solid #09192c 2px;
-  border-radius: 10px;
-  padding: 30px 40px;
+  width: 80%;
+  padding: 4vh 0;
+  border-bottom: solid 1px #848c96;
+}
+
+.avis:last-child {
+  border-bottom: none;
 }
 
 .nom-etudiant {

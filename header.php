@@ -1,13 +1,13 @@
-<?php 
+<?php
 session_start();
-echo ('<header>
+echo '<header>
                 <div class="left">
                     <a class="home" href="index.php"><img class="logo" src="medias/images/logo.png" alt=""></a>
                 </div>
 
                 <div class="right">
                     <form class="searchbar" action="recherche.php" method="GET">
-                        <label for="searchbar" class="search-icon">
+                        <label type="submit" for="searchbar" class="search-icon">
                             <div class="icon">
                                 <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M17.7571 14.839C15.3114 17.2978 11.2992 17.2959 8.79546 14.8053C6.2917 12.3147 6.26846 8.30247 8.71417 5.84367C11.1599 3.38488 15.1721 3.38682 17.6758 5.8774C20.1796 8.36798 20.2028 12.3802 17.7571 14.839Z" stroke="#848C96" stroke-width="2" />
@@ -15,7 +15,7 @@ echo ('<header>
                                 </svg>
                             </div>
                         </label>
-                        <input type="search" id="searchbar" name="search" placeholder="Rechercher">
+                        <input type="text" id="searchbar" name="search" placeholder="Rechercher">
                     </form>
 
                     <a href="panier.php" class="bag">
@@ -30,5 +30,5 @@ echo ('<header>
                         </svg>
                     </a>
                 
-        </header>');
+        </header>';
 ?>

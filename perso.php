@@ -31,23 +31,6 @@
 
         <div class="avatar"></div>
 
-
-        <?php
-// $id = htmlentities($_GET['id']);
-
-// $sql = 'SELECT perso3d FROM staff  WHERE id = :id';
-// $req = $link->prepare($sql);
-// $req->execute([':id' => $id]);
-
-// while ($data = $req->fetch()) {
-//     echo '<div class="avatar"><img src="' .
-//         $data['perso3d'] .
-//         '" alt=""></div>';
-// }
-
-// $req = null;
-?>
-
         <section>
             <?php
             $id = htmlentities($_GET['id']);

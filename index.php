@@ -19,7 +19,7 @@
   <?php include 'header.php'; ?>
   <canvas class="webgl"></canvas>
 
-  <div class="loading">
+  <!-- <div class="loading">
     <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM2 7H1L1 9H2L2 7Z" fill="#09192C" />
     </svg>
@@ -52,35 +52,35 @@
       <div class="top"></div>
       <div class="bottom"></div>
     </div>
-  </div>
+  </div> -->
 
 
-  <div class="sprite Audiovisuel">
+  <div class="sprite audiovisuel">
     <a href="shop.php?id=1" class="plus">+</a>
     <div class="nom">Audiovisuel</div>
   </div>
 
-  <div class="sprite Design">
+  <div class="sprite design">
     <a href="shop.php?id=2" class="plus">+</a>
     <div class="nom">Design</div>
   </div>
 
-  <div class="sprite Developpement">
+  <div class="sprite developpement">
     <a href="shop.php?id=3" class="plus">+</a>
     <div class="nom">Développement</div>
   </div>
 
-  <div class="sprite Communication">
+  <div class="sprite communication">
     <a href="shop.php?id=4" class="plus">+</a>
     <div class="nom">Communication</div>
   </div>
 
-  <div class="sprite MMI">
+  <div class="sprite mmi">
     <a href="shop.php?id=4" class="plus">+</a>
     <div class="nom">MMI</div>
   </div>
 
-  <div class="sprite Projet">
+  <div class="sprite projet">
     <a href="shop.php?id=4" class="plus">+</a>
     <div class="nom">Projet</div>
   </div>
@@ -183,20 +183,37 @@
     const HEIGHT = window.innerHeight
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(80, WIDTH / HEIGHT, 0.1, 1000)
-    camera.position.y = 4
-    camera.position.z = 4
-    camera.rotation.x = -Math.PI / 4
+    camera.position.y = 3.6
+    camera.position.z = 1.6
+    camera.rotation.x = 0,10472
 
-    const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 5)
-    light.position.set(0, 1, 0)
-    scene.add(light)
+    hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, .9)
+    shadowLight = new THREE.DirectionalLight(0xffffff, .9)
+    shadowLight.position.set(150, 350, 350)
+    shadowLight.castShadow = true
+    shadowLight.shadow.camera.left = -400
+    shadowLight.shadow.camera.right = 400
+    shadowLight.shadow.camera.top = 400
+    shadowLight.shadow.camera.bottom = -400
+    shadowLight.shadow.camera.near = 1
+    shadowLight.shadow.camera.far = 1000
+    shadowLight.shadow.mapSize.width = 2048
+    shadowLight.shadow.mapSize.height = 2048
+
+    scene.add(hemisphereLight)
+    scene.add(shadowLight)
+
     const renderer = new THREE.WebGLRenderer({
-      canvas: canvas,
-      antialias: true
+        canvas: canvas,
+        antialias: true
     })
     renderer.setSize(WIDTH, HEIGHT)
-    renderer.setClearColor(0xCCE7FF)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setClearColor(0xE2F2FD)
+    renderer.shadowMap.enabled = true;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1;
+    renderer.outputEncoding = THREE.sRGBEncoding;
 
     //Resize
     window.addEventListener('resize', () => {
@@ -209,16 +226,6 @@
       renderer.setSize(WIDTH, HEIGHT)
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
-
-    //Decor
-    const decorgeometry = new THREE.PlaneGeometry(20, 20, 1)
-    const decormaterial = new THREE.MeshBasicMaterial({
-      color: 0xCCE7FF,
-      side: THREE.DoubleSide
-    })
-    const decor = new THREE.Mesh(decorgeometry, decormaterial)
-    decor.rotation.x = Math.PI / 2
-    scene.add(decor)
 
 
     //Loaders
@@ -241,17 +248,30 @@
         // loadingBar.style.width = `${progressRatio}vw`
       }
     )
-    const DracoLoader = new THREE.DRACOLoader()
-    DracoLoader.setDecoderPath('medias/draco')
-    const GLTFloader = new THREE.GLTFLoader(loadingManager)
-    GLTFloader.setDRACOLoader(DracoLoader)
+    const dracoLoader = new THREE.DRACOLoader(loadingManager);
+    dracoLoader.setDecoderPath('medias/draco/');
+
+    const loader = new THREE.GLTFLoader(loadingManager);
+    loader.setDRACOLoader(dracoLoader);
 
 
     function modelLoader(src) {
       return new Promise((resolve, reject) => {
-        GLTFloader.load(src, data => resolve(data), null, reject)
+        loader.load(src, data => resolve(data), null, reject)
       })
     }
+
+    async function createScene(src) {
+            const gltf = await modelLoader(src);
+
+            scenemodel = gltf.scene
+            scenemodel.receiveShadow = true
+            scenemodel.scale.multiplyScalar(0.2)
+            scenemodel.rotation.y = -Math.PI/2
+            scenemodel.castShadow = true
+
+            planet.add(scenemodel);
+        }
 
     async function createShop({name, src, url, x, y, z, g}) {
       const gltf = await modelLoader(src)
@@ -260,7 +280,7 @@
       model.position.set(x, y, z)
       model.rotation.z = g
       model.scale.multiplyScalar(0.2)
-      scene.add(model)
+      planet.add(model)
 
       interactionManager.add(model)
 
@@ -279,12 +299,17 @@
       })
     }
 
+    planet = new THREE.Group()
+    scene.add(planet)
+
+
+    createScene('medias/model/shop/planet.gltf')
 
     // Data
     const shops = {
       Audiovisuel: createShop({
-        name: 'Audiovisuel',
-        src: 'medias/model/shops/audiovisuel.gltf',
+        name: 'audiovisuel',
+        src: 'medias/model/shop/audiovisuel.gltf',
         url: 'shop.php?id=1',
         x: -4,
         y: 1,
@@ -292,8 +317,8 @@
         g: 1
       }),
       Design: createShop({
-        name: 'Design',
-        src: 'medias/model/shops/audiovisuel.gltf',
+        name: 'design',
+        src: 'medias/model/shop/audiovisuel.gltf',
         url: 'shop.php?id=2',
         x: 1,
         y: 1,
@@ -301,8 +326,8 @@
         g: -1
       }),
       Developpement: createShop({
-        name: 'Développement',
-        src: 'medias/model/shops/developpement.gltf',
+        name: 'developpement',
+        src: 'medias/model/shop/developpement.gltf',
         url: 'shop.php?id=3',
         x: 2,
         y: 1,
@@ -310,8 +335,8 @@
         g: 0
       }),
       Communication: createShop({
-        name: 'Communication',
-        src: 'medias/model/shops/communication.gltf',
+        name: 'communication',
+        src: 'medias/model/shop/communication.gltf',
         url: 'shop.php?id=4',
         x: -1,
         y: 1,
@@ -322,28 +347,26 @@
 
     const sprites = [{
       position: new THREE.Vector3(-4 + .2, 1 + 1.2, -4),
-      element: document.querySelector('.Audiovisuel')
+      element: document.querySelector('.audiovisuel')
     }, {
       position: new THREE.Vector3(1 + .2, 1 + 1.2, -4),
-      element: document.querySelector('.Design')
+      element: document.querySelector('.design')
     }, {
       position: new THREE.Vector3(2 + .2, 1 + 1.2, 2),
-      element: document.querySelector('.Developpement')
+      element: document.querySelector('.developpement')
     }, {
       position: new THREE.Vector3(-1 + .2, 1 + 1.2, 1),
-      element: document.querySelector('.Communication')
+      element: document.querySelector('.communication')
     }, {
       position: new THREE.Vector3(-1 + .2, 1 + 1.2, 1),
-      element: document.querySelector('.MMI')
+      element: document.querySelector('.mmi')
     }, {
       position: new THREE.Vector3(-1 + .2, 1 + 1.2, 1),
-      element: document.querySelector('.Projet')
+      element: document.querySelector('.projet')
     }]
 
     //Interactions
     interactionManager = new THREE.InteractionManager(renderer, camera, canvas)
-
-
 
     //LERP
     function lerp(a, b, t) {
@@ -394,7 +417,7 @@
       })
 
       smoothscrool = lerp(smoothscrool, scrollPos.y, .025)
-      console.log(smoothscrool)
+      planet.rotation.x = (smoothscrool / HEIGHT)
       // planet.rotation.x = (smoothscrool / HEIGHT)
 
       // controls.update()

@@ -68,38 +68,38 @@
             </div>
 
             <div class="pied-ticket">
-                <img src="images/code barre.svg" alt="Code barre" class="code-barre">
+                <img src="medias/images/code barre.svg" alt="" class="code-barre">
 
                 <p>
                     MERCI POUR VOTRE VISITE<br>
-                    A BIENTOT<br>
+                    À BIENTÔT<br>
                     <br>
-                    N'HESITEZ PAS A RENOUVELER L'EXPERIENCE !
+                    N'HÉSITEZ PAS  À RENOUVELER L'EXPÉRIENCE !
                 </p>
 
             </div>
 
         </section>
 
-        <div class="boutons">
-            <a href="" class="telecharger">
-                Télécharger
-                <span class="iconify" data-icon="akar-icons:arrow-down" data-inline="false"></span>
-            </a>
+        <a class="telecharger">
+            Télécharger
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.49977 12H10.4998C10.6898 12.0001 10.8727 12.0722 11.0116 12.202C11.1504 12.3317 11.2348 12.5093 11.2478 12.6989C11.2607 12.8885 11.2013 13.0759 11.0813 13.2233C10.9614 13.3707 10.79 13.4671 10.6018 13.493L10.4998 13.5H1.49977C1.30975 13.4999 1.12683 13.4278 0.98798 13.298C0.849129 13.1683 0.764697 12.9907 0.751745 12.8011C0.738793 12.6115 0.798287 12.4241 0.918204 12.2767C1.03812 12.1293 1.20952 12.0329 1.39777 12.007L1.49977 12H10.4998H1.49977ZM5.89777 0.00699997L5.99977 0C6.18101 7.6429e-06 6.35611 0.0656428 6.4927 0.184767C6.62929 0.303892 6.71812 0.468446 6.74277 0.648L6.74977 0.75V8.438L9.00477 6.184C9.13194 6.05687 9.30056 5.97966 9.47989 5.96645C9.65922 5.95323 9.83734 6.00489 9.98177 6.112L10.0658 6.184C10.1929 6.31117 10.2701 6.47979 10.2833 6.65912C10.2965 6.83845 10.2449 7.01657 10.1378 7.161L10.0658 7.245L6.52977 10.78C6.40278 10.907 6.23443 10.9842 6.05532 10.9976C5.87621 11.011 5.69824 10.9597 5.55377 10.853L5.46977 10.78L1.93377 7.245C1.79958 7.11117 1.72102 6.93151 1.7139 6.74213C1.70678 6.55274 1.77162 6.36768 1.89538 6.22416C2.01915 6.08063 2.19266 5.98928 2.38103 5.96848C2.5694 5.94767 2.75867 5.99895 2.91077 6.112L2.99477 6.184L5.24977 8.44V0.75C5.24978 0.568762 5.31541 0.393658 5.43454 0.257069C5.55366 0.120481 5.71822 0.0316483 5.89777 0.00699997L5.99977 0L5.89777 0.00699997Z" fill="white"/>
+            </svg>
 
-            <a href="" class="retour-accueil">
-                Retourner à l'accueil
-                <svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.5858 16.4142C14.3668 17.1953 15.6332 17.1953 16.4142 16.4142L29.1421 3.68629C29.9232 2.90524 29.9232 1.63891 29.1421 0.857864C28.3611 0.0768156 27.0948 0.0768156 26.3137 0.857864L15 12.1716L3.68629 0.857864C2.90524 0.0768156 1.63891 0.0768156 0.857864 0.857864C0.0768156 1.63891 0.0768156 2.90524 0.857864 3.68629L13.5858 16.4142ZM13 11V15H17V11H13Z" fill="#3A4756"/>
-                </svg>
-            </a>
-        </div>
+        </a>
+
+        <a href="index.php" class="retour-accueil">
+            Retourner à l'accueil
+            <svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5858 16.4142C14.3668 17.1953 15.6332 17.1953 16.4142 16.4142L29.1421 3.68629C29.9232 2.90524 29.9232 1.63891 29.1421 0.857864C28.3611 0.0768156 27.0948 0.0768156 26.3137 0.857864L15 12.1716L3.68629 0.857864C2.90524 0.0768156 1.63891 0.0768156 0.857864 0.857864C0.0768156 1.63891 0.0768156 2.90524 0.857864 3.68629L13.5858 16.4142ZM13 11V15H17V11H13Z" fill="#3A4756"/>
+            </svg>
+        </a>
+
 
     </main>
-
-    <?php include 'footer.php'; ?>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
     <script>
         $(document).ready(function() {
             if (!window.matchMedia)
@@ -118,6 +118,21 @@
                 match.addListener(swap)
                 swap()
             })
+
+            $(".telecharger").on("click", function(){
+                
+                var ticket = $("section").html()
+                var opt = {
+                margin:       [0,1],
+                filename:     "SHOP'TON MÉTIER.pdf",
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+
+                html2pdf().set(opt).from(ticket).save()
+            })
+
+
         })
     </script>
 </body>

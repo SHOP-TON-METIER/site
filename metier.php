@@ -1,5 +1,3 @@
-<?php
-session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,8 +14,6 @@ session_start(); ?>
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="metier.css">
-    <!-- Link Swiper CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -125,44 +121,34 @@ session_start(); ?>
             ?>
 
             <h2>Avis et conseils des anciens MMI</h2>
-            
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
 
-                    <?php
-                    $sql = 'SELECT * FROM ancienetudiant WHERE id_metier = :id';
-                    $req = $link->prepare($sql);
-                    $req->execute([':id' => $id]);
+            <?php
+            $sql = 'SELECT * FROM ancienEtudiant WHERE id_metier = :id';
+            $req = $link->prepare($sql);
+            $req->execute([':id' => $id]);
 
-                    while ($data = $req->fetch()) {
-                        echo '<div class="avis swiper-slide">
-                                <span class="nom-etudiant">' .
-                            $data['nom'] .
-                            ' ' .
-                            $data['prenom'] .
-                            '</span><br>
-                                <span class="adj-etudiant">' .
-                            $data['adjectifs'] .
-                            ' Promotion : ' .
-                            $data['promotionMMI'] .
-                            '</span>
-                                <p class="avis-etudiant">' .
-                            $data['avis'] .
-                            '</p>
-                                <p class="conseil-etudiant">Conseil : ' .
-                            $data['conseil'] .
-                            '</p>
-                            </div>';
-                    }
-                    $req = null;
-                    ?>
-
-                </div>
-
-                <!-- Add pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-
+            while ($data = $req->fetch()) {
+                echo '<div class="avis">
+                        <span class="nom-etudiant">' .
+                    $data['nom'] .
+                    ' ' .
+                    $data['prenom'] .
+                    '</span><br>
+                        <span class="adj-etudiant">' .
+                    $data['adjectifs'] .
+                    ' Promotion : ' .
+                    $data['promotionMMI'] .
+                    '</span>
+                        <p class="avis-etudiant">' .
+                    $data['avis'] .
+                    '</p>
+                        <p class="conseil-etudiant">Conseil : ' .
+                    $data['conseil'] .
+                    '</p>
+                    </div>';
+            }
+            $req = null;
+            ?>
             
         </section>
 
@@ -219,18 +205,6 @@ session_start(); ?>
 
     </script>
     
-    <!-- Script pour le swiper -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            spaceBetween: 30,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-        });
-    </script>
-
     <!-- Script pour l'objet 3D -->
     <script src="medias/js/three.min.js"></script>
     <script src="medias/js/GLTFLoader.js"></script>
