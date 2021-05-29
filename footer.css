@@ -34,7 +34,8 @@ footer .liens {
 footer a {
   display: inline-block;
   text-decoration: none;
-  margin: 6%;
+  margin: 0 6%;
+  margin-bottom: 4vh;
   text-align: center;
 }
 

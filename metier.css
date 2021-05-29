@@ -43,6 +43,7 @@ section {
   float: right;
   width: 60%;
   max-width: 1200px;
+  margin-bottom: 2vh;
 }
 
 .current-domain {
@@ -60,7 +61,6 @@ section {
 }
 
 h1 {
-  /* color: #09192C; */
   font-size: 4rem;
   margin: 0;
 }
@@ -69,14 +69,13 @@ h2 {
   font-size: 1.5rem;
   font-weight: 400;
   margin-top: 30px;
-  /* color: #09192C; */
 }
 
 section p,
 section ul {
   color: #3a4756;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 4vh;
 }
 
 .boutons {
@@ -116,7 +115,8 @@ section ul {
 
 .avis {
   width: 80%;
-  padding: 4vh 0;
+  margin-bottom: 4vh;
+  padding-bottom: 4vh;
   border-bottom: solid 1px #848c96;
 }
 

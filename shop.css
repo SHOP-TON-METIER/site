@@ -8,6 +8,10 @@ body {
   margin: 0;
   overflow: hidden;
   width: 100vw;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 /* HEADER */
@@ -111,8 +115,7 @@ header .right {
   top: 0;
   left: 0;
   outline: none;
-  /* cursor: -webkit-grab;
-  cursor: grab; */
+  pointer-events: none;
 }
 
 .sprite {
