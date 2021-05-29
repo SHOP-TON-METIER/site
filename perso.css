@@ -28,7 +28,9 @@ main {
   position: fixed;
   width: 26vw;
   height: 80vh;
-  /* background-color: red; */
+}
+
+.avatar canvas {
   border-radius: 100vh;
 }
 

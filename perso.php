@@ -29,7 +29,7 @@
             </svg>
         </a>
 
-        <canvas class="avatar"></canvas>
+        <div class="avatar"></div>
 
         <section>
             <?php
@@ -152,10 +152,10 @@
 
 
         const renderer = new THREE.WebGLRenderer({
-            canvas: avatar,
             antialias: true,
             alpha: true
         })
+        avatar.appendChild( renderer.domElement );
         renderer.setSize(WIDTH, HEIGHT)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         renderer.shadowMap.enabled = true;
@@ -173,9 +173,6 @@
             renderer.setSize(WIDTH, HEIGHT)
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         })
-
-        //CREATE OBJECT
-        // const loadingManager = new THREE.LoadingManager()
 
         const dracoLoader = new THREE.DRACOLoader();
         dracoLoader.setDecoderPath('medias/draco/');
