@@ -63,26 +63,8 @@
     <canvas class="webgl"></canvas>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            if (!window.matchMedia)
-                return
+    <script src="medias/js/ajax.js"></script>
 
-            var current = $('head > link[rel="icon"][media]');
-            $.each(current, function(i, icon) {
-                var match = window.matchMedia(icon.media)
-
-                function swap() {
-                    if (match.matches) {
-                        current.remove()
-                        current = $(icon).appendTo('head')
-                    }
-                }
-                match.addListener(swap)
-                swap()
-            })
-        })
-    </script>
 
     <script src="medias/js/three.min.js"></script>
     <script src="medias/js/DRACOLoader.js"></script>
@@ -149,15 +131,13 @@
         const header = document.querySelector('.right')
 
 
-        let cameraready = false
-
         const loadingManager = new THREE.LoadingManager(
             () => {
                 gsap.delayedCall(1, () => {
                     loadingScreen.style.opacity = 0
                     header.style.visibility = "visible"
                 })
-                cameraready = true
+                cameraintro()
             },
 
             (itemUrl, itemsLoaded, itemsTotal) => {
@@ -270,7 +250,7 @@
         new TWEEN.Tween(coords).to({
                 y: 5,
                 z: 5,
-            }, 500)
+            }, 5000)
             .easing(TWEEN.Easing.Quadratic.InOut)
             .onUpdate(() =>
                 camera.position.set(0, coords.y, coords.z)).start()
@@ -279,11 +259,6 @@
 
         //Loop
         function Animate(time) {
-
-            if(cameraready == true){
-                cameraintro()
-            }
-
             controls.update()
             interactionManager.update()
             TWEEN.update(time)
@@ -305,6 +280,27 @@
 
         //Load
         window.addEventListener('load', Animate, false)
+    </script>
+
+    <script>
+    $(document).ready(function () {
+        if (!window.matchMedia)
+            return
+
+        var current = $('head > link[rel="icon"][media]');
+        $.each(current, function (i, icon) {
+            var match = window.matchMedia(icon.media)
+
+            function swap() {
+                if (match.matches) {
+                    current.remove()
+                    current = $(icon).appendTo('head')
+                }
+            }
+            match.addListener(swap)
+            swap()
+        })
+    })     
     </script>
 
 </body>

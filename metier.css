@@ -29,19 +29,16 @@ main {
 
 .avatar {
   position: fixed;
-  width: 30vw;
+  width: 26vw;
   height: 80vh;
-  min-width: 350px;
   background-color: red;
   border-radius: 100vh;
 }
 
 section {
   float: right;
-  width: 55%;
-  min-width: 600px;
+  width: 60%;
   max-width: 1200px;
-  right: 0;
 }
 
 .current-domain {

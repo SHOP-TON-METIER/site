@@ -169,6 +169,7 @@
     })
   </script>
 
+  <script src="medias/js/app.js"></script>
   <script src="medias/js/three.min.js"></script>
   <script src="medias/js/DRACOLoader.js"></script>
   <script src="medias/js/GLTFLoader.js"></script>

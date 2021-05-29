@@ -403,26 +403,8 @@
   </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+  <script src="medias/js/app.js"></script>
   <script>
-    $(document).ready(function () {
-      if (!window.matchMedia)
-        return
-
-      var current = $('head > link[rel="icon"][media]');
-      $.each(current, function (i, icon) {
-        var match = window.matchMedia(icon.media)
-
-        function swap() {
-          if (match.matches) {
-            current.remove()
-            current = $(icon).appendTo('head')
-          }
-        }
-        match.addListener(swap)
-        swap()
-      })
-
       // Menu des matières en MMI
 
       $(".culture-artistique, .informatique, .com-marketing").hide();

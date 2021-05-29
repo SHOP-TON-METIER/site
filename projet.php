@@ -133,7 +133,7 @@
             <?php
             include 'link.php';
 
-            if(isset($_POST['send'])){
+            if (isset($_POST['send'])) {
                 $nom = htmlentities($_POST['nom']);
                 $prenom = $_POST['prenom'];
                 $codePostal = $_POST['postalCode'];
@@ -143,12 +143,11 @@
                 $msg = htmlspecialchars($msg, ENT_QUOTES);
 
                 $sql = "INSERT INTO `formulaire`(nom, prenom, codePostal, mail, motifContact, message) VALUES ('$nom','$prenom', '$codePostal', '$mail', '$motif', '$msg')";
-               
+
                 $req = $link->prepare($sql);
                 $req->execute();
-    
             } else {
-              http_response_code(500);
+                http_response_code(500);
             }
             ?>
         </section>
@@ -158,26 +157,7 @@
     <?php include 'footer.php'; ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            if (!window.matchMedia)
-                return
-
-            var current = $('head > link[rel="icon"][media]');
-            $.each(current, function (i, icon) {
-                var match = window.matchMedia(icon.media)
-
-                function swap() {
-                    if (match.matches) {
-                        current.remove()
-                        current = $(icon).appendTo('head')
-                    }
-                }
-                match.addListener(swap)
-                swap()
-            })
-        })
-    </script>
+    <script src="medias/js/app.js"></script>
 </body>
 
 </html>
