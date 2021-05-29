@@ -8,9 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHOP'TON MÉTIER</title>
-    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:no-preference)">
-    <link rel="icon" type="image/png" href="medias/images/drone-dark.png" media="(prefers-color-scheme:dark)">
-    <link rel="icon" type="image/png" href="medias/images/drone-light.png" media="(prefers-color-scheme:light)">
+    <link rel="icon" type="image/png" href="medias/drone-light.png" media="(prefers-color-scheme:no-preference)">
+    <link rel="icon" type="image/png" href="medias/drone-dark.png" media="(prefers-color-scheme:dark)">
+    <link rel="icon" type="image/png" href="medias/drone-light.png" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="shop.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -63,8 +63,7 @@
     <canvas class="webgl"></canvas>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="medias/js/ajax.js"></script>
-
+    <script src="medias/js/app.js"></script>
 
     <script src="medias/js/three.min.js"></script>
     <script src="medias/js/DRACOLoader.js"></script>
@@ -280,27 +279,6 @@
 
         //Load
         window.addEventListener('load', Animate, false)
-    </script>
-
-    <script>
-    $(document).ready(function () {
-        if (!window.matchMedia)
-            return
-
-        var current = $('head > link[rel="icon"][media]');
-        $.each(current, function (i, icon) {
-            var match = window.matchMedia(icon.media)
-
-            function swap() {
-                if (match.matches) {
-                    current.remove()
-                    current = $(icon).appendTo('head')
-                }
-            }
-            match.addListener(swap)
-            swap()
-        })
-    })     
     </script>
 
 </body>
