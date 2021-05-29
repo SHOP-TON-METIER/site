@@ -25,13 +25,17 @@ main {
   top: 20vh;
   left: 10vw;
   transform: translate(-50%, -50%);
+  z-index: 6;
 }
 
 .avatar {
   position: fixed;
   width: 26vw;
   height: 80vh;
-  background-color: red;
+  z-index: 5;
+}
+
+.avatar canvas {
   border-radius: 100vh;
 }
 

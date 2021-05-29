@@ -186,18 +186,17 @@
     
     <!-- Script pour l'objet 3D -->
     <script src="medias/js/three.min.js"></script>
+    <script src="medias/js/DRACOLoader.js"></script>
     <script src="medias/js/GLTFLoader.js"></script>
     <script src="medias/js/OrbitControls.js"></script>
     <script>
-    //CREATE SCENE
-
     const avatar = document.querySelector(".avatar")
 
     const WIDTH = avatar.offsetWidth
     const HEIGHT = avatar.offsetHeight
 
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 0.1, 1000)
+    const camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 0.001, 100)
 
     const keylight = new THREE.SpotLight(0xffac93, 1);
     keylight.position.set(-8, 12, 8);
@@ -215,16 +214,15 @@
     scene.add(filllightbottom);
 
     const backlight = new THREE.SpotLight(0xffac93, 1);
-    backlight.position.set(8, 4, -8);
+    backlight.position.set(8, 4, -14);
     backlight.castShadow = true;
     scene.add(backlight);
 
-
     const renderer = new THREE.WebGLRenderer({
-        canvas: avatar,
-        antialias: true,
-        alpha: true
+    antialias: true,
+    alpha: true
     })
+    avatar.appendChild( renderer.domElement );
     renderer.setSize(WIDTH, HEIGHT)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.shadowMap.enabled = true;
@@ -233,18 +231,15 @@
     renderer.outputEncoding = THREE.sRGBEncoding;
 
     window.addEventListener('resize', () => {
-        const WIDTH = avatar.offsetWidth
-        const HEIGHT = avatar.offsetHeight
+    const WIDTH = avatar.offsetWidth
+    const HEIGHT = avatar.offsetHeight
 
-        camera.aspect = WIDTH / HEIGHT
-        camera.updateProjectionMatrix()
+    camera.aspect = WIDTH / HEIGHT
+    camera.updateProjectionMatrix()
 
-        renderer.setSize(WIDTH, HEIGHT)
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setSize(WIDTH, HEIGHT)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
-
-    //CREATE OBJECT
-    // const loadingManager = new THREE.LoadingManager()
 
     const dracoLoader = new THREE.DRACOLoader();
     dracoLoader.setDecoderPath('medias/draco/');
@@ -253,76 +248,79 @@
     loader.setDRACOLoader(dracoLoader);
 
     <?php
-    $sql = 'SELECT perso3D FROM staff WHERE id = :id';
+    $sql = 'SELECT id FROM metier WHERE id = :id';
     $req = $link->prepare($sql);
     $req->execute([':id' => $id]);
 
     while ($data = $req->fetch()) {
-        echo "const url = 'medias/model/staff/" . $data['perso3D'] . "'";
+        echo "const url = 'medias/model/metier/" . $data['id'] . ".gltf'";
     }
     $req = null;
     ?>
 
     loader.load(
-        url,
+    url,
 
-        function(gltf) {
-            model = gltf.scene
-            // model.position.y = -1.4
-            // model.scale.multiplyScalar(0.2)
-            scene.add(model)
+    function(gltf) {
+        model = gltf.scene
+        scene.add(model)
 
-            const boundingBox = new THREE.Box3()
-            boundingBox.setFromObject(model)
+        const boundingBox = new THREE.Box3()
+        boundingBox.setFromObject(model)
 
-            const center = new THREE.Vector3()
-            boundingBox.getCenter(center)
+        const center = new THREE.Vector3()
+        boundingBox.getCenter(center)
 
-            center.y = center.y +2
+        center.y = center.y +2
 
-            camera.position.y = center.y
-            camera.position.x = center.x
-            camera.updateProjectionMatrix()
+        camera.position.y = center.y
+        camera.position.x = center.x
+        camera.updateProjectionMatrix()
 
-            const size = new THREE.Vector3()
-            boundingBox.getSize(size)
+        const size = new THREE.Vector3()
+        boundingBox.getSize(size)
 
-            const fov = camera.fov * (Math.PI / 180)
-            const maxDim = Math.max(size.x, size.y, size.z)
-            let cameraZ = Math.abs((maxDim / 4) * Math.tan(fov * 2))
+        const fov = camera.fov * (Math.PI / 180)
+        const maxDim = Math.max(size.x, size.y, size.z)
+        let cameraZ = Math.abs((maxDim / 4) * Math.tan(fov * 2))
 
-            camera.position.z = cameraZ*3.6
-            camera.updateProjectionMatrix()
+        camera.position.z = cameraZ*3.6
+        camera.updateProjectionMatrix()
 
-            camera.lookAt(center)
-        }
+        camera.lookAt(center)
+    }
     )
 
-
-    //LERP
     function lerp(a, b, t) {
-        return ((1 - t) * a + t * b)
+    return ((1 - t) * a + t * b)
     }
 
     let scroll = 0
 
-
-
-    //Loop
-
     function Animate() {
+    scroll = lerp(scroll, document.documentElement.scrollTop, .1)          
+    scene.rotation.y = 2*Math.PI * scroll / (document.documentElement.scrollHeight-document.documentElement.clientHeight)
 
-        scroll = lerp(scroll, document.documentElement.scrollTop, .1)          
-        scene.rotation.y = 2*Math.PI * scroll / (document.documentElement.scrollHeight-document.documentElement.clientHeight)
-
-        renderer.render(scene, camera)
-        requestAnimationFrame(Animate)
-
+    renderer.render(scene, camera)
+    requestAnimationFrame(Animate)
     }
-
-
     window.addEventListener('load', Animate, false)
     </script>
+    <script>
+    $(document).ready(function() {
+
+        $(window).scroll(function() {
+            var winTop = $(window).scrollTop();
+            var winBottom = winTop + $(window).height();
+            var top = $('footer').offset().top
+
+            var translate = winBottom-top
+
+            if(top <= winBottom){
+                $(".avatar").css("transform", "translateY(-"+translate+"px)")
+            }
+        });
+    })     
     </script>
 </body>
 
