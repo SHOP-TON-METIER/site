@@ -216,8 +216,8 @@
     controls.enableRotate = false
 
     //Limit Pan
-    const minPan = new THREE.Vector3(-2, -2, -2)
-    const maxPan = new THREE.Vector3(3, 3, 2)
+    const minPan = new THREE.Vector3(-4, -4, -2)
+    const maxPan = new THREE.Vector3(4, 4, 1)
     const v = new THREE.Vector3()
     controls.addEventListener("change", function() {
     v.copy(controls.target)

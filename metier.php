@@ -62,11 +62,12 @@
                     '</p>
 
                 <div class="boutons">
-                    <a class="ajouter-panier">Ajouter au panier</a>
+                    <div class="ajouter-panier">Ajouter au panier</div>
+                    <div class="supprimer-panier">Supprimer du panier</div>
 
-                    <span href="#" class="like">
+                    <div class="like">
                         <img src="medias/images/like.svg" alt="Aimer le métier"><span data-like="0"></span>
-                    </span>
+                    </div>
                 </div>
 
                 <h2>Salaire</h2>
@@ -80,12 +81,12 @@
             ?>
 
             <?php
-            $sql = "SELECT competence.nom 
-            FROM competence, rel_metier_comp AS rmc, metier 
-            WHERE rmc.id_metier = metier.id 
-            AND rmc.id_competence = competence.id 
-            AND metier.id = :id 
-            ORDER BY competence.type, competence.nom ASC";
+            $sql = "SELECT c.nom 
+            FROM competence AS c, rel_metier_comp AS rmc, metier AS m
+            WHERE rmc.id_metier = m.id 
+            AND rmc.id_competence = c.id 
+            AND m.id = :id 
+            ORDER BY c.type, m.nom ASC";
 
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
@@ -160,26 +161,87 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="medias/js/app.js"></script>
     <script>
-        $(document).ready(function() {
-            // Click sur le bouton "like"
-            var nb_like = $('.like span').data('like');
-            $('.like span').html(nb_like);
-            
-            var click = false
+    $(document).ready(function() {
 
-            $('.like').on('click', function(){
-                if (click == false){
-                    nb_like++;
-                    $('.like span').html(nb_like);
-                    $('.like img').attr('src','medias/images/liked-pink.svg')
-                    click = true;
-                } else {
-                    nb_like--;
-                    $('.like span').html(nb_like);
-                    $('.like img').attr('src','medias/images/like.svg')
-                    click = false;
-                }
+        // Click sur le bouton "like"
+        const nb_like = $('.like span').data('like');
+        $('.like span').html(nb_like);
+        
+        const click = false
+
+        $('.like').on('click', function(){
+            if (click == false){
+                nb_like++;
+                $('.like span').html(nb_like);
+                $('.like img').attr('src','medias/images/liked-pink.svg')
+                click = true;
+            } else {
+                nb_like--;
+                $('.like span').html(nb_like);
+                $('.like img').attr('src','medias/images/like.svg')
+                click = false;
+            }
+        })
+
+        if(!localStorage.getItem('shoptonmetier')) {
+            localStorage.setItem('shoptonmetier','[]')
+        }
+
+        let idmetier = <?php echo $id; ?>
+
+        if (JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id === idmetier).length !== 0){
+            $('.ajouter-panier').css("display", "none")
+            $('.supprimer-panier').css("display", "block")
+
+        }       
+
+        $('.ajouter-panier').on('click', function(){
+
+            const panier = [];
+
+            if(localStorage.getItem('shoptonmetier')){
+                panier = JSON.parse(localStorage.getItem('shoptonmetier'));
+            }
+            
+            <?php
+            $sql =
+                'SELECT id, id_shop, nom, phraseAchat FROM metier WHERE id = :id';
+            $req = $link->prepare($sql);
+            $req->execute([':id' => $id]);
+
+            while ($data = $req->fetch()) {
+                echo 'panier.push({id : ' .
+                    $data['id'] .
+                    ', nom : "' .
+                    $data['nom'] .
+                    '", phrase : ' .
+                    $data['phraseAchat'] .
+                    ', shop : "' .
+                    $data['id_shop'] .
+                    '"})';
+            }
+
+            $req = null;
+            ?>
+            
+            localStorage.setItem('shoptonmetier', JSON.stringify(panier));
+
+            $('.ajouter-panier').css("display", "none")
+            $('.supprimer-panier').css("display", "block")
+        })
+
+        $('.supprimer-panier').click(function(){
+
+            let metierid = <?php echo $id; ?>
+
+            const panier = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== metierid)
+            
+            localStorage.setItem('shoptonmetier', JSON.stringify(panier));
+
+            $('.ajouter-panier').css("display", "block")
+            $('.supprimer-panier').css("display", "none")
             })
+
 
         })
     </script>
@@ -188,7 +250,6 @@
     <script src="medias/js/three.min.js"></script>
     <script src="medias/js/DRACOLoader.js"></script>
     <script src="medias/js/GLTFLoader.js"></script>
-    <script src="medias/js/OrbitControls.js"></script>
     <script>
     const avatar = document.querySelector(".avatar")
 

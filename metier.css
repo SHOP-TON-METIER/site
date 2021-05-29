@@ -80,11 +80,13 @@ section ul {
 
 .boutons {
   height: 80px;
-  width: 400px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 30px 0;
+  gap: 26px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .ajouter-panier {
@@ -93,23 +95,42 @@ section ul {
   color: white;
   font-size: 1.25rem;
   font-weight: 600;
-  padding: 12px 34px;
+  padding: 18px 34px;
   border-radius: 10px;
   cursor: pointer;
 }
 
+.supprimer-panier {
+  text-decoration: none;
+  background-color: #f14a72;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 18px 34px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: none;
+}
+
 .like {
+  display: flex;
+  align-items: center;
   border: solid 2px #09192c;
   border-radius: 10px;
-  /* color: #09192C; */
   font-size: 1.25rem;
   padding: 12px 18px;
+  cursor: pointer;
+  gap: 6px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.like:hover {
+  background-color: #fff5fa;
 }
 
 .like img {
-  position: relative;
-  top: 4px;
-  margin-right: 5px;
   width: 30px;
 }
 

@@ -1,75 +1,76 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    width: 100vw;
-    font-family: 'Poppins', sans-serif;
-    color: #09192C;
-    overflow-x: hidden;
-} 
+  margin: 0;
+  width: 100vw;
+  font-family: 'Poppins', sans-serif;
+  color: #09192c;
+  overflow-x: hidden;
+}
 
 main {
-    width: 80%;
-    margin: auto;
-    margin-top: 120px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .retour {
-    width: 100%;
-    text-decoration: none;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  text-decoration: none;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .retour span {
-    margin: 0 20px;
-    color: #09192C;
+  margin: 0 20px;
+  color: #09192c;
 }
 
 .metiers-choisis {
-    width: 58%;
-    min-width: 550px;
+  width: 58%;
+  min-width: 550px;
 }
 
 h1 {
-    margin-bottom: 0;
-    font-size: 2rem;
+  margin-bottom: 0;
+  font-size: 2rem;
 }
 
 .metiers-choisis p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 .metier {
-    max-width: 1200px;
-    margin: 25px auto;
-    padding: 20px 15px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  max-width: 1200px;
+  margin: 25px auto;
+  padding: 20px 15px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .metier h2 {
-    margin: 0;
-    font-weight: 600;
+  margin: 0;
+  font-weight: 600;
 }
 
 .metier div {
-    width: 100%;
+  width: 100%;
 }
 
 .phrase-metier {
-    font-size: 0.8rem;
-    color: #3A4756;
+  font-size: 0.8rem;
+  color: #3a4756;
 }
 
 /* .bouton-like {
@@ -80,131 +81,151 @@ h1 {
 } */
 
 .metier .perso-3d {
-    width: 20%;
-    height: 100%;
-    border-radius: 50%;
-    margin-right: 15px;
+  width: 20%;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
 .lien-fiche-metier {
-    text-decoration: none;
-    color: #FA5014;
+  text-decoration: none;
+  color: #fa5014;
 }
 
 .infos-utilisateur {
-    width: 40%;
-    min-width: 400px;
-    height: 700px;
-    padding: 0 30px;
-    margin-left: 15px;
-    background-color: #EEF0F1;
-    border-radius: 20px;
+  width: 40%;
+  min-width: 400px;
+  height: 700px;
+  padding: 0 30px;
+  margin-left: 15px;
+  background-color: #eef0f1;
+  border-radius: 20px;
 }
 
 .titre-form {
-    display: block;
-    color: #3A4756;
-    font-size: 0.9rem;
-    margin-top: 20px;
-    font-weight: 400;
+  display: block;
+  color: #3a4756;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  font-weight: 400;
 }
 
 .infos-utilisateur .situation-pro {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
 }
 
 .checkbox {
-    width: 30%;
-    max-width: 120px;
-    height: 90px;
+  width: 30%;
+  max-width: 120px;
+  height: 90px;
 
-    cursor: pointer;
-    border-radius: 10px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .checkbox p {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 5px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 5px;
 
-    border: 2px solid #848C96;
-    border-radius: 10px;
+  border: 2px solid #848c96;
+  border-radius: 10px;
 
-    text-align: center;
-    color: #848C96;
-    font-size: 0.9rem;
-    font-weight: 600;
+  text-align: center;
+  color: #848c96;
+  font-size: 0.9rem;
+  font-weight: 600;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.infos-utilisateur input[type="radio"]{
-    visibility: hidden;
-    position: absolute;
+.infos-utilisateur input[type='radio'] {
+  visibility: hidden;
+  position: absolute;
 }
 
 .checkbox input:checked + p {
-    border-color: #FA5014;
-    color: #FA5014;
+  border-color: #fa5014;
+  color: #fa5014;
 }
 
 .infos-utilisateur label {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .infos-utilisateur input {
-    background-color: #E3E5E8;
-    border: none;
-    border-radius: 10px;
-    padding: 15px;
-    width: 100%;
+  background-color: #e3e5e8;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  width: 100%;
 }
 
 .infos-utilisateur input:focus {
-    outline-color: #FA5014;
+  outline-color: #fa5014;
+}
+
+.infos-utilisateur input::-webkit-input-placeholder {
+  font-family: 'Poppins';
+  color: #848c96;
+}
+
+.infos-utilisateur input::-moz-placeholder {
+  font-family: 'Poppins';
+  color: #848c96;
+}
+
+.infos-utilisateur input:-ms-input-placeholder {
+  font-family: 'Poppins';
+  color: #848c96;
+}
+
+.infos-utilisateur input::-ms-input-placeholder {
+  font-family: 'Poppins';
+  color: #848c96;
 }
 
 .infos-utilisateur input::placeholder {
-    font-family: 'Poppins';
-    color: #848C96;
+  font-family: 'Poppins';
+  color: #848c96;
 }
 
 .age-postal-inputs {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-.age-postal-inputs div{
-    width: 45%;
+.age-postal-inputs div {
+  width: 45%;
 }
 
 .domaine-fav {
-    color: #3A4756;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
+  color: #3a4756;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
 }
 
 .domaine-fav span {
-    color: #FA5014;
-    font-weight: 300;
+  color: #fa5014;
+  font-weight: 300;
 }
 
 .infos-utilisateur .bouton-valider {
-    display: block;
-    margin: auto;
-    background-color: #FA5014;
+  display: block;
+  margin: auto;
+  background-color: #fa5014;
 
-    font-family: 'Poppins';
-    color: #FFFFFF;
-    font-size: 1.25rem;
-    font-weight: 600;
+  font-family: 'Poppins';
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
