@@ -42,24 +42,24 @@
 
         <section class="coordonnees">
 
-            <form action="">
+            <form action="" class="donnees">
                 <h1>Mes informations</h1>
 
                 <h2 class="titre-form">Situation professionnelle</h2>
 
                 <div class="situation-pro">
                 <label for="lyceen" class="checkbox">
-                        <input type="radio" id="lyceen" name="situtation-pro" value="lyceen">
+                        <input type="radio" id="lyceen" name="situtationpro" value="lyceen">
                         <p class="box">Lycéen(ne)</p>
                     </label>
 
                     <label for="mmi" class="checkbox">
-                        <input type="radio" id="mmi" name="situtation-pro" value="reorientation">
+                        <input type="radio" id="mmi" name="situtationpro" value="reorientation">
                         <p class="box">Etudiant(e) en MMI</p>
                     </label>
 
                     <label for="autre" class="checkbox">
-                        <input type="radio" id="autre" name="situtation-pro" value="mmi">
+                        <input type="radio" id="autre" name="situtationpro" value="mmi">
                         <p class="box">Autre</p>
                     </label>
                 </div>
@@ -76,8 +76,8 @@
                         <input type="text" id="age" name="age" required placeholder="Mon âge...">
                     </div>
                     <div>
-                        <label for="code-postal" class="titre-form">Code postal</label>
-                        <input type="text" id="code-postal" name="code-postal" required
+                        <label for="codepostal" class="titre-form">Code postal</label>
+                        <input type="text" id="codepostal" name="codepostal" required
                             placeholder="Mon code postal...">
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                 </div>
 
                 <input type="submit" name="valider" value="Valider ma commande !" class="bouton-valider">
-            </form>
+</form>
 
 </section>
     </main>
@@ -150,6 +150,31 @@
 
             getpanier()
 
+            $('.donnees').submit(function(event){
+                event.preventDefault();
+                const form = $(this).serializeArray()
+                const metiers = localStorage.getItem('shoptonmetier')
+
+                const domainefavori = "Audiovisuel"
+                $.ajax({
+                    url: 'sendpanier.php',
+                    type: "POST",
+                    data: {
+                        nom : form[1].value,
+                        prenom: form[2].value,
+                        age: form[3].value,
+                        codepostal: form[4].value,
+                        situationpro: form[0].value,
+                        domainefavori: domainefavori,
+                        panier: metiers },
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+
+                    }
+                });           
+            })
+            
             $(window).scroll(function() {
             var winTop = $(window).scrollTop();
             var winBottom = winTop + $(window).height();
