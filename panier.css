@@ -37,6 +37,7 @@ main {
 .panier {
   width: 60%;
   max-width: 1200px;
+  min-height: 80vh;
 }
 
 h1 {

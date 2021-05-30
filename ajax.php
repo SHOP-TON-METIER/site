@@ -1,14 +1,8 @@
 <?php
 include_once 'link.php';
 $output = '';
-$search = htmlentities($_POST['search']);
+$search = $_POST['search'];
 $sql = "(SELECT m.nom, m.id, s.nom AS nomShop
-        FROM metier AS m, shop AS s
-        WHERE s.nom LIKE '%{$search}%'
-        AND m.id_shop = s.id
-        ORDER BY m.nom ASC)
-        UNION
-        (SELECT m.nom, m.id, s.nom AS nomShop
         FROM metier AS m, shop AS s
         WHERE m.nom LIKE '%{$search}%'
         AND m.id_shop = s.id

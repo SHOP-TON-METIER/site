@@ -84,7 +84,7 @@
 
                 <div class="domaine-fav">
                     <p>Domaine favori</p>
-                    <span>Audiovisuel</span>
+                    <span></span>
                 </div>
 
                 <input type="submit" name="valider" value="Valider ma commande !" class="bouton-valider">
@@ -100,15 +100,33 @@
     <script>
         $(document).ready(function(){
 
+            function domaine(id_shop) {
+                var uniqs = {};
+
+                for(var i = 0; i < id_shop.length; i++) {
+                    uniqs[id_shop[i]] = (uniqs[id_shop[i]] || 0) + 1;
+                }
+
+                var domaine = { id: id_shop[0], count: 1 };
+                for(var u in uniqs) {
+                    if(domaine.count < uniqs[u]) { domaine = { id: u, count: uniqs[u] }; }
+                }
+
+                return domaine.id;
+            }
+
             function getpanier(){
                 $('.metier').remove()
 
-                const panier = localStorage.getItem('shoptonmetier')
+                let panierdata = localStorage.getItem('shoptonmetier')
 
                 let nombre = 0
 
-                $.each(JSON.parse(panier) , function( index, metier ) {
-                    const lool = '<div class="metier '+metier.shop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")+' '+metier.id+' metier'+metier.id+'">\
+                let metiers = [];
+                let domaines =[];
+
+                $.each(JSON.parse(panierdata) , function( index, metier ) {
+                    const div = '<div class="metier '+metier.shop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")+' '+metier.id+' metier'+metier.id+'">\
                     <div>\
                     <img src="medias/images/metier/'+metier.id+'" alt="" class="perso-3d">\
                     <h2>'+metier.nom+'</h2>\
@@ -120,9 +138,40 @@
                     </svg>\
                     </div>\
                     </div>'
-                    $('.panier').append(lool)
+                    $('.panier').append(div)
+                    metiers.push(metier.nom)
+                    domaines.push(metier.id_shop)
                     nombre++
                 });
+
+                let panier = []
+                panier.push(metiers)
+
+                let domaineid = parseInt(domaine(domaines))
+
+                var domainefavori
+
+                if(domaineid == 1){
+                    domainefavori = "Audiovisuel"
+                    $('.domaine-fav span').text(domainefavori)
+                }
+                if(domaineid == 2){
+                    domainefavori = "Design"
+                    $('.domaine-fav span').text(domainefavori)
+                }
+                if(domaineid == 3){
+                    domainefavori = "Développement"
+                    $('.domaine-fav span').text(domainefavori)
+                }
+                if(domaineid == 4){
+                    domainefavori = "Communication"
+                    $('.domaine-fav span').text(domainefavori)
+                }
+                // if(panier[0] == 1){
+                //     const domainefavori = "Audiovisuel"
+                // }
+                panier.push(domainefavori)
+               
 
                 if(nombre > 1){
                     $('.nombre').text(nombre+" métiers dans mon panier")
@@ -138,35 +187,51 @@
                     let metierid = parseInt($(this).parent().parent().attr('class').split(' ')[2])
                     let metierclass = $(this).parent().parent().attr('class').split(' ')[3]
 
-                    let panier = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== metierid)
+                    let panierdata = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== metierid)
 
-                    localStorage.setItem('shoptonmetier', JSON.stringify(panier));
+                    localStorage.setItem('shoptonmetier', JSON.stringify(panierdata));
 
                     $('.'+metierclass).remove()
 
-                    getpanier()
+                    const metiers = getpanier()
+                    
                 })
-            }
 
-            getpanier()
+                return panier
+            }
+            
+            const panier = getpanier()
 
             $('.donnees').submit(function(event){
                 event.preventDefault();
                 const form = $(this).serializeArray()
-                const metiers = localStorage.getItem('shoptonmetier')
 
-                const domainefavori = "Audiovisuel"
+                const ticket = {
+                    nom : form[1].value,
+                    prenom : form[2].value,
+                    age: form[3].value,
+                    codepostal: form[4].value,
+                    situation: form[0].value,
+                    domainefavori: panier[1],
+                    panier:panier[0]
+                }
+
+                localStorage.setItem('shoptonmetierticket', JSON.stringify(ticket))
+                localStorage.removeItem('shoptonmetier')
+
+                window.location.replace("ticket.php");
+                
                 $.ajax({
                     url: 'sendpanier.php',
                     type: "POST",
                     data: {
-                        nom : form[1].value,
-                        prenom: form[2].value,
-                        age: form[3].value,
-                        codepostal: form[4].value,
-                        situationpro: form[0].value,
-                        domainefavori: domainefavori,
-                        panier: metiers },
+                        nom : ticket.nom,
+                        prenom: ticket.prenom,
+                        age: ticket.age,
+                        codepostal: ticket.codepostal,
+                        situation: ticket.situation,
+                        domainefavori: ticket.domainefavori,
+                        panier: ticket.panier },
                     dataType: 'json',
                     success: function (data) {
                         console.log(data);

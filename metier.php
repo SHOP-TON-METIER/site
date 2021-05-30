@@ -162,8 +162,6 @@
     <script src="medias/js/app.js"></script>
     <script>
     $(document).ready(function() {
-        // localStorage.clear();
-
         // Click sur le bouton "like"
         const nb_like = $('.like span').data('like');
         $('.like span').html(nb_like);
@@ -206,7 +204,7 @@
             
             <?php
             $sql =
-                'SELECT m.id, m.nom, m.phraseAchat, s.nom AS shop FROM metier AS m, shop as s WHERE m.id_shop = s.id AND m.id = :id';
+                'SELECT m.id, m.nom, m.phraseAchat, m.id_shop, s.nom AS shop FROM metier AS m, shop as s WHERE m.id_shop = s.id AND m.id = :id';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 
@@ -219,7 +217,9 @@
                     $data['phraseAchat'] .
                     ', shop : "' .
                     $data['shop'] .
-                    '"})';
+                    '", id_shop :' .
+                    $data['id_shop'] .
+                    '})';
             }
 
             $req = null;

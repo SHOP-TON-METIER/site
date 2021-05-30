@@ -13,13 +13,15 @@ $(function () {
         match.addListener(swap)
         swap()
       })
+  
+      $(".results").hide()
     
-    $("#searchbar").keyup(function(){
+    $(".searchbar").keyup(function(){
         var query = $(this).val()
 
         if(query==""){
-
-            $("#results").html("")
+          $(".results").hide()
+          $(".results").html("")
 
         }else{
 
@@ -29,7 +31,7 @@ $(function () {
                 data: {
                     search: query
                 }, success: function(data) {
-                    $("#results").html(data).show()
+                    $(".results").html(data).show()
                 }
             })
 

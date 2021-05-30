@@ -184,3 +184,9 @@ header .domaine-fav span {
   text-decoration: none;
   font-weight: 600;
 }
+
+.results {
+  background-color: #e11e1e;
+  width: 200px;
+  height: 20px;
+}
