@@ -186,7 +186,28 @@ header .domaine-fav span {
 }
 
 .results {
-  background-color: #e11e1e;
-  width: 200px;
-  height: 20px;
+  width: 300px;
+  max-height: 70vh;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #FFFFFF;
+  border: solid 2px #09192c;
+  border-radius: 10px;
+  overflow-y: scroll;
+
+  position: absolute;
+  top: 100%;
+  right: 20%;
+}
+
+.results-items {
+  display: block;
+  padding: 5px;
+  margin: 5px auto;
+  color: #09192c;
+  border-radius: 5px;
+
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-align: center;
 }

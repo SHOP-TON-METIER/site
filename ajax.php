@@ -25,8 +25,11 @@ $sql = "(SELECT m.nom, m.id, s.nom AS nomShop
 $req = $link->prepare($sql);
 $req->execute();
 while ($data = $req->fetch()) {
+    $shop = strtolower($data['nomShop']);
+    $shop = htmlentities($shop);
+    $shop = preg_replace('/&([a-z])[a-z]+;/i', '$1', $shop);
     $output .=
-        '<a href="metier.php?id=' . $data['id'] . '">' . $data['nom'] . '</a>';
+        '<a href="metier.php?id=' . $data['id'] . '" class="results-items '. $shop.'">' . $data['nom'] . '</a>';
 }
 
 echo $output;

@@ -88,7 +88,7 @@
 
             <img src="medias/images/drone-form.png" alt="">
 
-            <form action="" method="POST">
+            <form action="" method="POST" class="contact-form">
 
                 <h2 class="titre3">Nous contacter !</h2>
 
@@ -125,22 +125,25 @@
                 <textarea name="message" id="message" rows="3" placeholder="Ecrivez votre message ici..."></textarea>
 
                 <div class="button-right">
-                    <input type="submit" name="send" value="Envoyer" class="bouton">
+                    <input type="submit" name="send" value="Envoyer" class="bouton-envoyer">
                 </div>
 
             </form>
+
+            <!-- <div class="pop-up">
+                <p>Votre message a bien été envoyé !</p>
+            </div> -->
 
             <?php
             include 'link.php';
 
             if (isset($_POST['send'])) {
-                $nom = htmlentities($_POST['nom']);
-                $prenom = $_POST['prenom'];
-                $codePostal = $_POST['postalCode'];
-                $mail = $_POST['mail'];
-                $motif = $_POST['motif'];
-                $msg = $_POST['message'];
-                $msg = htmlspecialchars($msg, ENT_QUOTES);
+                $nom = htmlentities($_POST['nom'], ENT_QUOTES);
+                $prenom = htmlentities($_POST['prenom'], ENT_QUOTES);
+                $codePostal = htmlentities($_POST['postalCode'], ENT_QUOTES);
+                $mail = htmlentities($_POST['mail'], ENT_QUOTES);
+                $motif = htmlentities($_POST['motif'], ENT_QUOTES);
+                $msg = htmlentities($_POST['message'], ENT_QUOTES);
 
                 $sql = "INSERT INTO `formulaire`(nom, prenom, codePostal, mail, motifContact, message) VALUES ('$nom','$prenom', '$codePostal', '$mail', '$motif', '$msg')";
 
@@ -158,6 +161,13 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="medias/js/app.js"></script>
+
+    <script>
+        // pop-up formulaire
+        $('.contact-form').on('submit', function(){
+            alert('Votre message a bien été envoyé !')
+        })
+    </script>
 </body>
 
 </html>
