@@ -23,9 +23,9 @@
 
     <main>
 
-        <div class="avatar"></div>
+        <section class="avatar"></section>
 
-        <section>
+        <section class="fiche">
             <?php
             $id = htmlentities($_GET['id']);
 

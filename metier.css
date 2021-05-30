@@ -39,7 +39,7 @@ main {
   border-radius: 100vh;
 }
 
-section {
+.fiche {
   float: right;
   width: 60%;
   max-width: 1200px;
@@ -71,8 +71,8 @@ h2 {
   margin-top: 30px;
 }
 
-section p,
-section ul {
+.fiche p,
+.fiche ul {
   color: #3a4756;
   margin-top: 0;
   margin-bottom: 4vh;

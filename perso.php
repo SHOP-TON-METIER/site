@@ -29,7 +29,7 @@
             </svg>
         </a>
 
-        <div class="avatar"></div>
+        <section class="avatar"></section>
 
         <section>
             <?php

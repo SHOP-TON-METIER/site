@@ -12,20 +12,10 @@ body {
   overflow-x: hidden;
 }
 
-main {
-  width: 80%;
-  margin: auto;
-  margin-top: 120px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .retour {
-  width: 100%;
   text-decoration: none;
   font-size: 1.5rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
 }
@@ -35,9 +25,18 @@ main {
   color: #09192c;
 }
 
+main {
+  width: 80vw;
+  max-width: 1400px;
+  margin: auto;
+  margin-top: calc(4vh + 100px);
+  position: relative;
+  margin-bottom: calc(6vh + 30px);
+}
+
 .panier {
-  width: 58%;
-  min-width: 550px;
+  width: 60%;
+  max-width: 1200px;
 }
 
 h1 {
@@ -92,14 +91,18 @@ h1 {
   color: #fa5014;
 }
 
-.infos-utilisateur {
-  width: 40%;
+.coordonnees {
+  top: 20vh;
+  right: 20vh;
+  width: 26vw;
   min-width: 400px;
-  height: 700px;
-  padding: 0 30px;
-  margin-left: 15px;
+  padding: 30px;
   background-color: #eef0f1;
   border-radius: 20px;
+  position: fixed;
+}
+.coordonnees h1 {
+  margin: 0;
 }
 
 .titre-form {
@@ -110,7 +113,7 @@ h1 {
   font-weight: 400;
 }
 
-.infos-utilisateur .situation-pro {
+.coordonnees .situation-pro {
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -146,7 +149,7 @@ h1 {
   align-items: center;
 }
 
-.infos-utilisateur input[type='radio'] {
+.coordonnees input[type='radio'] {
   visibility: hidden;
   position: absolute;
 }
@@ -156,11 +159,11 @@ h1 {
   color: #fa5014;
 }
 
-.infos-utilisateur label {
+.coordonnees label {
   cursor: pointer;
 }
 
-.infos-utilisateur input {
+.coordonnees input {
   background-color: #e3e5e8;
   border: none;
   border-radius: 10px;
@@ -168,31 +171,31 @@ h1 {
   width: 100%;
 }
 
-.infos-utilisateur input:focus {
+.coordonnees input:focus {
   outline-color: #fa5014;
 }
 
-.infos-utilisateur input::-webkit-input-placeholder {
+.coordonnees input::-webkit-input-placeholder {
   font-family: 'Poppins';
   color: #848c96;
 }
 
-.infos-utilisateur input::-moz-placeholder {
+.coordonnees input::-moz-placeholder {
   font-family: 'Poppins';
   color: #848c96;
 }
 
-.infos-utilisateur input:-ms-input-placeholder {
+.coordonnees input:-ms-input-placeholder {
   font-family: 'Poppins';
   color: #848c96;
 }
 
-.infos-utilisateur input::-ms-input-placeholder {
+.coordonnees input::-ms-input-placeholder {
   font-family: 'Poppins';
   color: #848c96;
 }
 
-.infos-utilisateur input::placeholder {
+.coordonnees input::placeholder {
   font-family: 'Poppins';
   color: #848c96;
 }
@@ -219,7 +222,7 @@ h1 {
   font-weight: 300;
 }
 
-.infos-utilisateur .bouton-valider {
+.coordonnees .bouton-valider {
   display: block;
   margin: auto;
   background-color: #fa5014;

@@ -21,26 +21,26 @@
     <?php include 'header.php'; ?>
 
     <main>
-        <div onclick="window.history.back()" class="retour">
-            <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM2 7H1L1 9H2L2 7Z"
-                    fill="#09192C" />
-            </svg>
-
-            <span>Continuer le shopping</span>
-
-            <img src="medias/images/trolley.svg" alt="">
-        </div>
-
         <section class="panier">
+            <div onclick="window.history.back()" class="retour">
+                <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM2 7H1L1 9H2L2 7Z"
+                        fill="#09192C" />
+                </svg>
+
+                <span>Continuer le shopping</span>
+
+                <img src="medias/images/trolley.svg" alt="">
+            </div>
+
             <h1>Mon panier</h1>
 
             <p class="nombre"></p>
             
         </section>
 
-        <section class="infos-utilisateur">
+        <section class="coordonnees">
 
             <form action="">
                 <h1>Mes informations</h1>
@@ -90,7 +90,7 @@
                 <input type="submit" name="valider" value="Valider ma commande !" class="bouton-valider">
             </form>
 
-        </section>
+</section>
     </main>
 
     <?php include 'footer.php'; ?>
@@ -112,7 +112,7 @@
                     <div>\
                     <img src="medias/images/metier/'+metier.id+'" alt="" class="perso-3d">\
                     <h2>'+metier.nom+'</h2>\
-                    <p class="phrase-metier">'+metier.phraseAchat+'</p>\
+                    <p class="phrase-metier">'+metier.phrase+'</p>\
                     <a href="metier.php?id='+metier.id+'" class="lien-fiche-metier">Fiche descriptive</a>\
                     <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">\
                     <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />\
@@ -124,13 +124,13 @@
                     nombre++
                 });
 
-                if(nombre>1){
+                if(nombre > 1){
                     $('.nombre').text(nombre+" métiers dans mon panier")
                 }
-                if(nombre==1){
+                if(nombre == 1){
                     $('.nombre').text("1 métier dans mon panier")
                 }
-                else{
+                if(nombre == 0){
                     $('.nombre').text("Le panier est vide 😥")
                 }
 
@@ -149,6 +149,18 @@
             }
 
             getpanier()
+
+            $(window).scroll(function() {
+            var winTop = $(window).scrollTop();
+            var winBottom = winTop + $(window).height();
+            var top = $('footer').offset().top
+
+            var translate = winBottom-top
+
+            if(top <= winBottom){
+                $(".coordonnees").css("transform", "translateY(-"+translate+"px)")
+            }
+        });
 
         })
     </script>
