@@ -48,7 +48,7 @@
             <h2>Qui sommes-nous ?</h2>
 
             <div class="membre">
-                <img src="medias/images/clementine-logo.png" alt="" class="perso">
+                <img src="medias/images/staff/clementine-logo.png" alt="" class="perso">
                 <p>GILAMA Clémentine<br>
                     <span>Chargée de communication<br>
                     & Graphiste 3D</span>
@@ -57,7 +57,7 @@
             </div>
 
             <div class="membre">
-                <img src="medias/images/aurelien-logo.png" alt="" class="perso">
+                <img src="medias/images/staff/aurelien-logo.png" alt="" class="perso">
                 <p>LOUVEL Aurélien<br>
                     <span>Développeur full-stack &<br>
                     Responsable identité visuelle</span>
@@ -66,7 +66,7 @@
             </div>
 
             <div class="membre">
-                <img src="medias/images/elodie-logo.png" alt="" class="perso">
+                <img src="medias/images/staff/elodie-logo.png" alt="" class="perso">
                 <p>PAN Élodie<br>
                     <span>Développeuse full-stack<br><br></span>
                 </p>
@@ -74,7 +74,7 @@
             </div>
 
             <div class="membre">
-                <img src="medias/images/amelie-logo.png" alt="" class="perso">
+                <img src="medias/images/staff/amelie-logo.png" alt="" class="perso">
                 <p>RUBIALES Amélie<br>
                     <span>Cheffe de projet &<br>
                     Chargée de communication</span>

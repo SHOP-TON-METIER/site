@@ -162,6 +162,7 @@
     <script src="medias/js/app.js"></script>
     <script>
     $(document).ready(function() {
+        // localStorage.clear();
 
         // Click sur le bouton "like"
         const nb_like = $('.like span').data('like');
@@ -197,7 +198,7 @@
 
         $('.ajouter-panier').on('click', function(){
 
-            const panier = [];
+            let panier = [];
 
             if(localStorage.getItem('shoptonmetier')){
                 panier = JSON.parse(localStorage.getItem('shoptonmetier'));
@@ -205,7 +206,7 @@
             
             <?php
             $sql =
-                'SELECT id, id_shop, nom, phraseAchat FROM metier WHERE id = :id';
+                'SELECT m.id, m.nom, m.phraseAchat, s.nom AS shop FROM metier AS m, shop as s WHERE m.id_shop = s.id AND m.id = :id';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 
@@ -217,7 +218,7 @@
                     '", phrase : ' .
                     $data['phraseAchat'] .
                     ', shop : "' .
-                    $data['id_shop'] .
+                    $data['shop'] .
                     '"})';
             }
 
@@ -234,13 +235,13 @@
 
             let metierid = <?php echo $id; ?>
 
-            const panier = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== metierid)
+            let panier = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== metierid)
             
             localStorage.setItem('shoptonmetier', JSON.stringify(panier));
 
             $('.ajouter-panier').css("display", "block")
             $('.supprimer-panier').css("display", "none")
-            })
+        })
 
 
         })

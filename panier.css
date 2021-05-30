@@ -35,7 +35,7 @@ main {
   color: #09192c;
 }
 
-.metiers-choisis {
+.panier {
   width: 58%;
   min-width: 550px;
 }
@@ -45,7 +45,7 @@ h1 {
   font-size: 2rem;
 }
 
-.metiers-choisis p {
+.panier p {
   margin: 5px 0;
 }
 

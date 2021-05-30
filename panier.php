@@ -33,28 +33,10 @@
             <img src="medias/images/trolley.svg" alt="">
         </div>
 
-        <section class="metiers-choisis">
+        <section class="panier">
             <h1>Mon panier</h1>
 
-            <p>métiers dans mon panier</p>
-
-            <div class="metier audiovisuel">
-                <img src="medias/drone-light.png" alt="" class="perso-3d">
-                <div>
-                    <h2>Le j c le s</h2>
-                    <p class="phrase-metier">
-                        Le professionnel de l’image qui sommeille en toi va pouvoir s’épanouir si tu deviens photographe
-                        !
-                    </p>
-                    <a href="" class="lien-fiche-metier">Fiche descriptive</a>
-                </div>
-
-                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">
-                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />
-                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />
-                </svg>
-
-            </div>
+            <p class="nombre"></p>
             
         </section>
 
@@ -117,8 +99,57 @@
 <script src="medias/js/app.js"></script>
     <script>
         $(document).ready(function(){
-            const panier = localStorage.getItem('shoptonmetier')
-            console.log(panier)
+
+            function getpanier(){
+                $('.metier').remove()
+
+                const panier = localStorage.getItem('shoptonmetier')
+
+                let nombre = 0
+
+                $.each(JSON.parse(panier) , function( index, metier ) {
+                    const lool = '<div class="metier '+metier.shop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")+' '+metier.id+' metier'+metier.id+'">\
+                    <div>\
+                    <img src="medias/images/metier/'+metier.id+'" alt="" class="perso-3d">\
+                    <h2>'+metier.nom+'</h2>\
+                    <p class="phrase-metier">'+metier.phraseAchat+'</p>\
+                    <a href="metier.php?id='+metier.id+'" class="lien-fiche-metier">Fiche descriptive</a>\
+                    <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">\
+                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />\
+                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />\
+                    </svg>\
+                    </div>\
+                    </div>'
+                    $('.panier').append(lool)
+                    nombre++
+                });
+
+                if(nombre>1){
+                    $('.nombre').text(nombre+" métiers dans mon panier")
+                }
+                if(nombre==1){
+                    $('.nombre').text("1 métier dans mon panier")
+                }
+                else{
+                    $('.nombre').text("Le panier est vide 😥")
+                }
+
+                $('.metier svg').click(function(){
+                    let metierid = parseInt($(this).parent().parent().attr('class').split(' ')[2])
+                    let metierclass = $(this).parent().parent().attr('class').split(' ')[3]
+
+                    let panier = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== metierid)
+
+                    localStorage.setItem('shoptonmetier', JSON.stringify(panier));
+
+                    $('.'+metierclass).remove()
+
+                    getpanier()
+                })
+            }
+
+            getpanier()
+
         })
     </script>
 </html>
