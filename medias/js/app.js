@@ -31,7 +31,13 @@ $(function () {
                 data: {
                     search: query
                 }, success: function(data) {
-                    $(".results").html(data).show()
+                  $(".results").html(data).show()
+
+                  if (data=== '') {
+                    $(".results").html("Aucun métier trouvé")
+                  }
+              }, error: function () {
+                $(".results").html("Erreur 404")
                 }
             })
 
