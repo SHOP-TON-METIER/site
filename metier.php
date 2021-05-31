@@ -168,7 +168,19 @@
             localStorage.setItem('shoptonmetierlikes','[]')
         }
 
-        let nb_like = $('.like span').data('like');
+        
+        <?php
+        $sql = 'SELECT likedata FROM metier WHERE id = ' . $id . '';
+        $req = $link->prepare($sql);
+        $req->execute();
+
+        while ($data = $req->fetch()) {
+            echo 'let nb_like = ' . $data['likedata'];
+        }
+
+        $req = null;
+        ?>
+        
         $('.like span').html(nb_like);
         
         let click = false
@@ -195,6 +207,9 @@
                 nb_like++;
                 $('.like span').html(nb_like);
                 $('.like img').attr('src','medias/images/liked-pink.svg')
+
+                //AJAX UPDATE data id
+
                 click = true;
             } else {
 
@@ -205,6 +220,10 @@
                 nb_like--;
                 $('.like span').html(nb_like);
                 $('.like img').attr('src','medias/images/like.svg')
+
+
+                //AJAX UPDATE data id
+
                 click = false;
             }
         })
