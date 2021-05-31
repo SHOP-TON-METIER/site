@@ -44,10 +44,10 @@ $(function () {
                   $(".results").html(data).show()
 
                   if (data=== '') {
-                    $(".results").html("Aucun métier trouvé")
+                    $(".results").html("<p class='results-items'>Aucun métier trouvé</p>")
                   }
               }, error: function () {
-                $(".results").html("Erreur 404")
+                $(".results").html("<p class='results-items'>Erreur 404</p>")
                 }
             })
 

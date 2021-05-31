@@ -50,6 +50,7 @@ h1 {
 }
 
 .metier {
+  position: relative;
   max-width: 1200px;
   margin: 25px auto;
   padding: 20px 15px;
@@ -64,21 +65,14 @@ h1 {
   font-weight: 600;
 }
 
-.metier div {
+/* .metier div {
   width: 100%;
-}
+} */
 
 .phrase-metier {
   font-size: 0.8rem;
   color: #3a4756;
 }
-
-/* .bouton-like {
-    width: 30px;
-    height: 30px;
-    margin: 0 20px;
-    cursor: pointer;
-} */
 
 .metier .perso-3d {
   width: 20%;
@@ -90,6 +84,10 @@ h1 {
 .lien-fiche-metier {
   text-decoration: none;
   color: #fa5014;
+}
+
+.metier svg {
+  margin: 0 2vw;
 }
 
 .coordonnees {

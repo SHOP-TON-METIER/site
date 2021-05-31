@@ -187,12 +187,11 @@ header .domaine-fav span {
 .results {
   width: 288px;
   max-height: 50vh;
-  /* padding: 10px; */
   background-color: rgba(240, 240, 240, 0.8);
-  /* border: solid 2px #09192c; */
   border-radius: 10px;
   position: absolute;
   top: 100%;
+  font-family: 'Poppins';
 }
 
 .results-items {
@@ -205,6 +204,7 @@ header .domaine-fav span {
   text-align: center;
   transition: 0.3s;
   background-color: transparent;
+  font-family: 'Poppins';
 }
 
 .results-items.audiovisuel:hover {
