@@ -139,7 +139,7 @@
                     </div>\
                     </div>'
                     $('.panier').append(div)
-                    metiers.push(metier.nom)
+                    metiers.push([metier.nom, metier.phrase])
                     domaines.push(metier.id_shop)
                     nombre++
                 });
@@ -200,7 +200,13 @@
                 return panier
             }
             
+
             const panier = getpanier()
+            let paniermetier = []
+            $.each(panier[0], function(key, value){
+                paniermetier.push(value[0])
+                
+            })
 
             $('.donnees').submit(function(event){
                 event.preventDefault();
@@ -213,13 +219,10 @@
                     codepostal: form[4].value,
                     situation: form[0].value,
                     domainefavori: panier[1],
-                    panier:panier[0]
+                    panier:paniermetier,
+                    ticket: panier[0]
                 }
-
-                localStorage.setItem('shoptonmetierticket', JSON.stringify(ticket))
-                localStorage.removeItem('shoptonmetier')
-
-                window.location.replace("ticket.php");
+                
                 
                 $.ajax({
                     url: 'sendpanier.php',
@@ -234,10 +237,11 @@
                         panier: ticket.panier },
                     dataType: 'json',
                     success: function (data) {
-                        console.log(data);
-
                     }
-                });           
+                })
+                localStorage.setItem('shoptonmetierticket', JSON.stringify(ticket))
+               
+                window.location.replace("ticket.php");
             })
             
             $(window).scroll(function() {

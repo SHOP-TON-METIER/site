@@ -14,7 +14,7 @@ echo '<header>
                         </svg>
                     </div>
                 </label>
-                <input type="text" class="searchbar" name="search" placeholder="Rechercher">       
+                <input type="text" class="searchbar" name="search" placeholder="Rechercher un métier...">       
             </form>
             <div class="results"></div>
 

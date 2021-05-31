@@ -14,7 +14,17 @@ $(function () {
         swap()
       })
   
-      $(".results").hide()
+  $(".results").hide()
+
+  searchposition = $(".searchbar").offset()
+  $(".results").css("left", searchposition+"px")
+  
+  $(window).on('resize', function(){
+    searchposition = $(".searchbar").offset()
+    $(".results").css("left", searchposition+"px")
+});
+
+
     
     $(".searchbar").keyup(function(){
         var query = $(this).val()

@@ -34,30 +34,10 @@
             <?php
             include_once 'link.php';
             $search = $_POST['search'];
-            $sql = "(SELECT m.nom, m.id, s.nom AS nomShop
+            $sql = $sql = "(SELECT m.nom, m.id, s.nom AS nomShop
             FROM metier AS m, shop AS s
-            WHERE s.nom LIKE '%{$search}%'
+            WHERE m.nom LIKE '{$search}%'
             AND m.id_shop = s.id
-            ORDER BY m.nom ASC)
-            UNION
-            (SELECT m.nom, m.id, s.nom AS nomShop
-            FROM metier AS m, shop AS s
-            WHERE m.nom LIKE '%{$search}%'
-            AND m.id_shop = s.id
-            ORDER BY m.nom ASC)
-            UNION
-            (SELECT m.nom, m.id, s.nom AS nomShop
-            FROM metier AS m, shop AS s, ancienetudiant AS e
-            WHERE m.id_shop = s.id
-            AND e.id_metier = m.id
-            AND e.nom LIKE '%{$search}%'
-            ORDER BY m.nom ASC)
-            UNION
-            (SELECT m.nom, m.id, s.nom AS nomShop
-            FROM metier AS m, shop AS s, ancienetudiant AS e
-            WHERE m.id_shop = s.id
-            AND e.id_metier = m.id
-            AND e.prenom LIKE '%{$search}%'
             ORDER BY m.nom ASC)";
 
             $req = $link->prepare($sql);

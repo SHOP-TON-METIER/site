@@ -20,11 +20,11 @@ header {
 }
 
 .right {
-  width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  gap: 2vw;
 }
 
 .bag {
@@ -41,18 +41,17 @@ header {
   cursor: text;
   margin: 0;
   padding: 6px 10px;
-  border-radius: 24px;
+  border-radius: 100vw;
   border: solid 2px #09192c;
 }
 
 .searchbar input {
   box-sizing: border-box;
-  margin-left: 10px;
-  width: 120px;
   border-color: transparent;
   background-color: transparent;
   font-size: 0.875rem;
   font-family: 'Poppins';
+  margin: 0 20px;
 }
 
 .searchbar input:focus {
@@ -186,28 +185,40 @@ header .domaine-fav span {
 }
 
 .results {
-  width: 300px;
-  max-height: 70vh;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #FFFFFF;
-  border: solid 2px #09192c;
+  width: 288px;
+  max-height: 50vh;
+  /* padding: 10px; */
+  background-color: rgba(240, 240, 240, 0.8);
+  /* border: solid 2px #09192c; */
   border-radius: 10px;
-  overflow-y: scroll;
-
   position: absolute;
   top: 100%;
-  right: 20%;
 }
 
 .results-items {
   display: block;
-  padding: 5px;
-  margin: 5px auto;
+  padding: 12px 6px;
   color: #09192c;
-  border-radius: 5px;
-
+  border-radius: 6px;
   font-size: 0.9rem;
   text-decoration: none;
   text-align: center;
+  transition: 0.3s;
+  background-color: transparent;
+}
+
+.results-items.audiovisuel:hover {
+  background-color: #fee9e8;
+}
+
+.results-items.design:hover {
+  background-color: #cae7fb;
+}
+
+.results-items.communication:hover {
+  background-color: #fff6eb;
+}
+
+.results-items.developpement:hover {
+  background-color: #efecfe;
 }

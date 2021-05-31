@@ -25,13 +25,12 @@
     <main>
         <h1>Mon ticket de caisse</h1>
 
-        <section>
+        <section class="html2pdf__page-break">
+            <div class="ticket">
+            <div class="background"></div>
             <h2><span>SHOP'</span>TON MÉTIER</h2>
 
-            <p class="adresse">
-                1 Avenue du web<br>
-                <span>20 300 FRANCE</span>
-            </p>
+            <p class="adresse">1 Avenue du Web</br><span>20 300 FRANCE</span></p>
 
             <div class="infos-utilisateur">
                 <p>
@@ -41,30 +40,18 @@
                 </p>
 
                 <p>
-                    Date : <span id="date">27/04/2021</span>
+                    Date : <span id="date"></span>
                     <br>
-                    Heure : <span id="heure">11:38</span>
+                    Heure : <span id="heure"></span>
                 </p>
             </div>
 
-            <ol id="metiers">
-                <li>
-                    Chargé de communication<br>
-                    <span>Diffuser une image positive de l'entreprise</span>
-                </li>
-                <li>
-                    Développeur web<br>
-                    <span>Développer des plateformes web</span>
-                </li>
-            </ol>
+            <div id="metiers">
+            </div>
 
-            <div class="total">
-                <p>Total
-                    <span id="stats"></span>
-                    <span class="pourcentage">80%</span>
-                </p>
-
-                <span id="domaine-favori">Communication</span>
+            <div class="domaine-favori">
+                <p>Domaine favori :</p>
+                <span id="domaine-favori"></span>
             </div>
 
             <div class="pied-ticket">
@@ -76,6 +63,8 @@
                     <br>
                     N'HÉSITEZ PAS  À RENOUVELER L'EXPÉRIENCE !
                 </p>
+
+            </div>
 
             </div>
 
@@ -100,18 +89,74 @@
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="medias/js/app.js"></script>
-    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <!-- <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script> -->
     <script>
         $(document).ready(function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position){
+                    $.getJSON("https://eu1.locationiq.com/v1/reverse.php?key=pk.75cfb86f8bd1942b69d9e7508e54280d&lat="+position.coords.latitude+"&lon="+position.coords.longitude +"&format=json")
+                        .done(function(data){
+                            $(".adresse").html(data.address.county+"<br>\
+                            <span>"+data.address.postcode+" "+data.address.country+"</span>")
+                    
+                        })
+                })
+                
+            }
+            let ticketdata = localStorage.getItem('shoptonmetierticket')
+
+            let nombre = 0
+            const ticket = JSON.parse(ticketdata)
+
+            $('.infos-utilisateur #utilisateur').append(ticket.nom+ ' '+ticket.prenom)
+            $('.infos-utilisateur #num_ticket').append(Math.floor(Math.random() * 10000) *10000)
+
+            var now = new Date();
+            var date = [
+            now.getDate(),
+            '/',
+            now.getMonth() + 1,
+            '/',
+            now.getFullYear(),
+            ' ',
+            ].join('');
+
+            var heure = [
+            now.getHours(),
+            ':',
+            now.getMinutes() ,
+            ' ',
+            ].join('');
+
+            $("#date").append(date)
+            $("#heure").append(heure)
+
+            $.each(ticket.ticket, function(index, data){
+                const div = '<div class="metier">'+data[0]+'<br><span>'+data[1]+'</span></div>'
+
+                $('#metiers').append(div)
+
+                console.log(data[0])
+            })
+
+            $("#domaine-favori").append(ticket.domainefavori)
+
+            $.getScript("https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js");
+
 
             $(".telecharger").on("click", function(){
+                localStorage.setItem('shoptonmetier','[]')
+
+                let height = parseInt($("section").height())
+                let width = parseInt($("section").width())
+                width = width-(width*0.01)
                 
                 var ticket = $("section").html()
                 var opt = {
-                margin:       [0,1],
+                margin: 0,
                 filename:     "SHOP'TON MÉTIER.pdf",
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                html2canvas:  { scale: 4 },
+                jsPDF:        { unit: 'px', format: [width, height], orientation: 'portrait'},
                 };
 
                 html2pdf().set(opt).from(ticket).save()
