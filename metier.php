@@ -181,13 +181,13 @@
         $req = null;
         ?>
         
-        $('.like span').html(nb_like);
+        $('.like span').html(parseInt(nb_like));
         
         let click = false
 
         if(JSON.parse(localStorage.getItem('shoptonmetierlikes')).filter(metier => metier.id === idmetier).length !== 0){
             click = true
-            nb_like++;
+            nb_like;
             $('.like span').html(nb_like);
             $('.like img').attr('src','medias/images/liked-pink.svg')
         }
@@ -199,31 +199,41 @@
                 if(localStorage.getItem('shoptonmetierlikes')){
                     likes = JSON.parse(localStorage.getItem('shoptonmetierlikes'));
                 }
-
                 likes.push({id: idmetier})
-
                 localStorage.setItem('shoptonmetierlikes', JSON.stringify(likes));
+                nb_like++;            
+                $.ajax({
+                    url: "addlike.php",
+                    type: "POST",
+                    data: { id: idmetier, nb: nb_like},
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data)
+                        
 
-                nb_like++;
-                $('.like span').html(nb_like);
+                    }
+                });
+
                 $('.like img').attr('src','medias/images/liked-pink.svg')
-
-                //AJAX UPDATE data id
-
+                $('.like span').html(nb_like);    
                 click = true;
             } else {
-
                 let likes = JSON.parse(localStorage.getItem('shoptonmetierlikes')).filter(metier => metier.id !== idmetier)
-            
-                localStorage.setItem('shoptonmetierlikes', JSON.stringify(likes));
+                localStorage.setItem('shoptonmetierlikes', JSON.stringify(likes))
+                nb_like--
+                $.ajax({
+                    url: "addlike.php",
+                    type: "POST",
+                    data: { id: idmetier, nb: nb_like},
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data)
+                        
 
-                nb_like--;
+                    }
+                });
                 $('.like span').html(nb_like);
                 $('.like img').attr('src','medias/images/like.svg')
-
-
-                //AJAX UPDATE data id
-
                 click = false;
             }
         })
