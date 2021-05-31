@@ -9,9 +9,9 @@ body {
   overflow: hidden;
   width: 100vw;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* HEADER */
@@ -22,6 +22,14 @@ header {
 
 header .right {
   visibility: hidden;
+}
+
+.retour {
+  position: fixed;
+  top: 20vh;
+  left: 10vw;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 /* CHARGEMENT */
