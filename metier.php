@@ -162,19 +162,46 @@
     <script src="medias/js/app.js"></script>
     <script>
     $(document).ready(function() {
-        // Click sur le bouton "like"
-        const nb_like = $('.like span').data('like');
+        let idmetier = <?php echo $id; ?>
+
+        if(!localStorage.getItem('shoptonmetierlikes')) {
+            localStorage.setItem('shoptonmetierlikes','[]')
+        }
+
+        let nb_like = $('.like span').data('like');
         $('.like span').html(nb_like);
         
-        const click = false
+        let click = false
 
+        if(JSON.parse(localStorage.getItem('shoptonmetierlikes')).filter(metier => metier.id === idmetier).length !== 0){
+            click = true
+            nb_like++;
+            $('.like span').html(nb_like);
+            $('.like img').attr('src','medias/images/liked-pink.svg')
+        }
+        
         $('.like').on('click', function(){
             if (click == false){
+                let likes = [];
+
+                if(localStorage.getItem('shoptonmetierlikes')){
+                    likes = JSON.parse(localStorage.getItem('shoptonmetierlikes'));
+                }
+
+                likes.push({id: idmetier})
+
+                localStorage.setItem('shoptonmetierlikes', JSON.stringify(likes));
+
                 nb_like++;
                 $('.like span').html(nb_like);
                 $('.like img').attr('src','medias/images/liked-pink.svg')
                 click = true;
             } else {
+
+                let likes = JSON.parse(localStorage.getItem('shoptonmetierlikes')).filter(metier => metier.id !== idmetier)
+            
+                localStorage.setItem('shoptonmetierlikes', JSON.stringify(likes));
+
                 nb_like--;
                 $('.like span').html(nb_like);
                 $('.like img').attr('src','medias/images/like.svg')
@@ -186,12 +213,9 @@
             localStorage.setItem('shoptonmetier','[]')
         }
 
-        let idmetier = <?php echo $id; ?>
-
         if (JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id === idmetier).length !== 0){
             $('.ajouter-panier').css("display", "none")
             $('.supprimer-panier').css("display", "block")
-
         }       
 
         $('.ajouter-panier').on('click', function(){
@@ -233,9 +257,7 @@
 
         $('.supprimer-panier').click(function(){
 
-            let metierid = <?php echo $id; ?>
-
-            let panier = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== metierid)
+            let panier = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== idmetier)
             
             localStorage.setItem('shoptonmetier', JSON.stringify(panier));
 
@@ -243,8 +265,7 @@
             $('.supprimer-panier').css("display", "none")
         })
 
-
-        })
+    })
     </script>
     
     <!-- Script pour l'objet 3D -->
