@@ -29,12 +29,15 @@ $(function () {
 
   $(".searchbar").keyup(function () {
     var query = $(this).val()
+    
 
     if (query == "") {
       $(".results").hide()
       $(".results").html("")
 
     } else {
+      query = query+"%"
+    console.log(query)
 
       var request = $.ajax({
         url: "ajax.php",
@@ -50,7 +53,6 @@ $(function () {
         
         $('.results').append('<p>Métiers trouvés : </p>')
         $.each(donnees, function(index, value){
-          console.log(value.nom);
           $(".results").append('<a href="metier.php?id='+ value.id + '" class="results-items ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'">' +
           value.nom + '</a>').show()
     
@@ -78,7 +80,6 @@ $(function () {
       request.done(function (data) {
         $('.results').append('<p>Domaines trouvés : </p>')
         $.each(donnees, function(index, value){
-          console.log(value);
           $(".results").append('<a href="metier.php?id='+ value.id + '" class="results-items ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'">' +
           value.nom + '</a>').show()
     
@@ -112,7 +113,5 @@ $(function () {
     }
     
   })
-
-  
 
 })
