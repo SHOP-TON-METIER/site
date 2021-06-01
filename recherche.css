@@ -21,14 +21,6 @@ main {
   margin-bottom: calc(6vh + 30px);
 }
 
-.retour {
-  position: fixed;
-  top: 20vh;
-  left: 10vw;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
 section {
   width: 85%;
   margin: auto;

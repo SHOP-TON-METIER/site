@@ -24,18 +24,10 @@ header .right {
   visibility: hidden;
 }
 
-.retour {
-  position: fixed;
-  top: 20vh;
-  left: 10vw;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
 /* CHARGEMENT */
 
 .loading {
-  z-index: 3;
+  z-index: 5;
 
   position: absolute;
 

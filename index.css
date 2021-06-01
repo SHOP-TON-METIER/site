@@ -24,7 +24,8 @@ header {
 .intro {
   z-index: 4;
 
-  position: relative;
+  position: absolute;
+  top: 0;
 
   height: 100vh;
   width: 100vw;
@@ -43,7 +44,10 @@ header {
   pointer-events: none;
 }
 
-.drone {
+.intro .drone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 6;
 
   position: absolute;
@@ -52,15 +56,27 @@ header {
   width: 40vw;
   min-width: 400px;
   height: 40vh;
-  background-color: tomato;
-
-  /* background-image: url(https://media.giphy.com/media/lrEGEHrw0fEGXH18m9/source.gif);   */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-.messages {
+.intro .skip {
+  z-index: 8;
+  position: absolute;
+  top: 20vh;
+  right: 4vw;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #fa5014;
+  padding: 20px 40px;
+  border-radius: 100vw;
+  cursor: pointer;
+  pointer-events: visible;
+  transform: translate(-50%, -50%);
+}
+
+.intro .messages {
   z-index: 3;
 
   position: absolute;
@@ -74,7 +90,7 @@ header {
   align-items: center;
 }
 
-.messages p {
+.intro .messages p {
   position: absolute;
 
   display: inline-block;
@@ -94,7 +110,7 @@ header {
   border-radius: 30px;
 }
 
-.mask {
+.intro .mask {
   z-index: 5;
 
   position: absolute;
@@ -105,7 +121,7 @@ header {
   background: #ffffff;
 }
 
-.fade .top {
+.intro .fade .top {
   z-index: 4;
 
   position: absolute;
@@ -118,7 +134,7 @@ header {
   background: linear-gradient(white 20%, transparent);
 }
 
-.fade .bottom {
+.intro .fade .bottom {
   z-index: 4;
 
   position: absolute;
@@ -155,7 +171,7 @@ header {
   pointer-events: none;
 }
 
-.message-drone {
+.loading .message-drone {
   position: absolute;
 
   top: 8vh;
@@ -178,7 +194,7 @@ header {
   font-size: 5vw;
 }
 
-.progress {
+.loading .progress {
   margin: 0;
   margin-bottom: 4vh;
 
@@ -193,7 +209,7 @@ header {
   transition: width 0.5s;
 }
 
-.progressbg {
+.loading .progressbg {
   margin-top: 2vw;
   margin-bottom: -2vh;
 
@@ -206,7 +222,7 @@ header {
   border-radius: 2vw;
 }
 
-.message-chargement {
+.loading .message-chargement {
   font-size: max(1vw, 1rem);
   font-style: italic;
 

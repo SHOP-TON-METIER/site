@@ -8,20 +8,17 @@ body {
   font-family: 'poppins';
   color: #09192c;
   margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 main {
+  position: relative;
   width: 80vw;
   max-width: 1400px;
   margin: auto;
   margin-top: 120px;
   position: relative;
-}
-
-.retour {
-  position: absolute;
-  padding: 2%;
-  left: -8%;
 }
 
 h1 {
@@ -209,16 +206,38 @@ label {
   background-color: #25a4ff;
 }
 
-/* .pop-up {
-  padding: 20px;
+.pop-up {
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin: auto;
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 1% 2%;
+  background-color: #24d977;
   border-radius: 10px;
-  color: #ef4813;
+  display: inline-flex;
+  align-items: center;
+  gap: 4%;
+  white-space: nowrap;
+  transform: translate(-50%, -100%) scale(0.4);
+  transition: 1s;
+}
 
-  position: absolute;
-  bottom: 2%;
-  right: 0;
-  display: none;
-} */
+.mask {
+  top: 0;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #e3e5e8;
+  pointer-events: none;
+  opacity: 0;
+  transition: 1s;
+}
 
 textarea:focus,
 input:focus {
