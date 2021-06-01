@@ -112,7 +112,7 @@ $(function () {
         k=0
         $.each(donnees, function(index, value){
           $(".results").append('<a href="metier.php?id='+ value.id + '" class="results-items ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'">' +
-          value.nom + '</a>').show()
+          value.prenom +' '+value.nom+'</a>').show()
           k++
         })
         if (k >! 1) {
