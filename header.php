@@ -17,6 +17,8 @@ echo '<header>
                 <input type="text" class="searchbar" name="search" placeholder="Rechercher&hellip;">       
             </form>
             <div class="results">
+            <div class="found"></div>
+            <div class="notfound"></div>
             </div>
 
             <a href="panier.php" class="bag">

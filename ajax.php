@@ -27,7 +27,7 @@ if ($category == 'domaine') {
 
 $req = $link->prepare($sql);
 $req->execute([
-    ':search' => $_POST['search'],
+    ':search' => $_POST['search'] . '%',
     //     ':category' => $_POST['category'],
 ]);
 $result = $req->fetchAll(PDO::FETCH_ASSOC);

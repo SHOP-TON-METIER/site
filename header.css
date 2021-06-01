@@ -201,13 +201,13 @@ header .domaine-fav span {
   display: none;
 }
 
-.results p {
+.found p {
   font-weight: 600;
   margin-top: 10px;
   margin-left: 20px;
 }
 
-.results-items {
+.found a {
   display: block;
   padding: 12px 6px;
   color: #09192c;
@@ -220,22 +220,28 @@ header .domaine-fav span {
   font-family: 'Poppins';
 }
 
-.results-items.audiovisuel:hover {
+.found a.audiovisuel:hover {
   background-color: #fee9e8;
 }
 
-.results-items.design:hover {
+.found a.design:hover {
   background-color: #cae7fb;
 }
 
-.results-items.communication:hover {
+.found a.communication:hover {
   background-color: #fff6eb;
 }
 
-.results-items.developpement:hover {
+.found a.developpement:hover {
   background-color: #efecfe;
 }
 
 .search {
   display: none;
+}
+
+.notfound p {
+  font-weight: 600;
+  margin: 10px 0;
+  margin-left: 20px;
 }
