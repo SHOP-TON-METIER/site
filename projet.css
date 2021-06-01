@@ -152,10 +152,12 @@ label {
 .contact-form input[type='text'],
 .contact-form input[type='mail'],
 .contact-form textarea {
+  font-size: 1.125rem;
   padding: 15px 0;
   width: 100%;
   border: none;
   border-bottom: solid 2px #848c96;
+  font-family: 'Poppins';
 }
 
 .contact-form input::-webkit-input-placeholder,
@@ -164,7 +166,6 @@ label {
   font-family: 'Poppins';
   color: #848c96;
 }
-
 
 .titre-motif {
   width: 100%;
@@ -189,24 +190,23 @@ label {
 
 .bouton-envoyer {
   margin-top: 38px;
+  margin-left: auto;
+  order: 2;
   padding: 10px 30px;
   background-color: #4faff3;
   color: white;
+  font-family: 'Poppins';
   font-size: 1.25rem;
   font-weight: 600;
   border: none;
   border-radius: 10px;
 
   transition: background-color 0.6s ease-out;
+  cursor: pointer;
 }
 
 .bouton-envoyer:hover {
-  background-color: #ef4813;
-}
-
-.button-right {
-  width: 100%;
-  text-align: right;
+  background-color: #25a4ff;
 }
 
 /* .pop-up {
@@ -219,3 +219,8 @@ label {
   right: 0;
   display: none;
 } */
+
+textarea:focus,
+input:focus {
+  outline: none;
+}

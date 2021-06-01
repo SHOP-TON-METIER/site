@@ -136,7 +136,7 @@
                     <div>\
                     <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">\
                     <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />\
-                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#F14A72" />\
+                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#ff314a" />\
                     </svg>\
                     </div>\
                     </div>'
@@ -251,10 +251,13 @@
             var winBottom = winTop + $(window).height();
             var top = $('footer').offset().top
 
-            var translate = winBottom-top
+            var height = parseInt($('.coordonnees').css("height"))/2
+            var width = parseInt($('.coordonnees').css("width"))/2
+
+            var translate = winBottom-top+height
 
             if(top <= winBottom){
-                $(".coordonnees").css("transform", "translateY(-"+translate+"px)")
+                $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)")
             }
         });
 

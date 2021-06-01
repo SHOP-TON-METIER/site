@@ -311,24 +311,29 @@
     const camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 0.001, 100)
 
     const keylight = new THREE.SpotLight(0xffac93, 1);
-    keylight.position.set(-8, 12, 8);
+    keylight.position.set(-20, 14, 14);
     keylight.castShadow = true;
     scene.add(keylight);
 
     const filllight = new THREE.SpotLight(0xaea2f6, .8);
-    filllight.position.set(6, 8, 8);
+    filllight.position.set(16, 20, 16);
     filllight.castShadow = true;
     scene.add(filllight);
 
     const filllightbottom = new THREE.SpotLight(0xaea2f6, .5);
-    filllightbottom.position.set(-6, -4, 8);
+    filllightbottom.position.set(-20, -16, 16);
     filllightbottom.castShadow = true;
     scene.add(filllightbottom);
 
     const backlight = new THREE.SpotLight(0xffac93, 1);
-    backlight.position.set(8, 4, -14);
+    backlight.position.set(16, 10, -20);
     backlight.castShadow = true;
     scene.add(backlight);
+
+    const backlight2 = new THREE.SpotLight(0xffac93, 1);
+    backlight2.position.set(-16, 10, -20);
+    backlight2.castShadow = true;
+    scene.add(backlight2);
 
     const renderer = new THREE.WebGLRenderer({
     antialias: true,
@@ -339,7 +344,7 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.shadowMap.enabled = true;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.6;
+    renderer.toneMappingExposure = 2;
     renderer.outputEncoding = THREE.sRGBEncoding;
 
     window.addEventListener('resize', () => {

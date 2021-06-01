@@ -143,7 +143,6 @@
 
             $.getScript("https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js");
 
-
             $(".telecharger").on("click", function(){
                 localStorage.setItem('shoptonmetier','[]')
 
@@ -161,8 +160,6 @@
 
                 html2pdf().set(opt).from(ticket).save()
             })
-
-
         })
     </script>
 </body>

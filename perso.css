@@ -104,16 +104,26 @@ section ul {
   color: white;
   font-size: 1.25rem;
   font-weight: 600;
-  padding: 12px 34px;
+  padding: 18px 34px;
   border-radius: 10px;
 }
 
 .cv-num {
-  background-color: #f14a72;
+  background-color: #ff3f6d;
+  transition: 0.3s;
+}
+
+.cv-num:hover {
+  background-color: #fc3664;
 }
 
 .cv-trad {
-  background-color: #09e0c7;
+  background-color: #00d9cc;
+  transition: 0.3s;
+}
+
+.cv-trad:hover {
+  background-color: #02ddce;
 }
 
 .boutons svg {

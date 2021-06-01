@@ -91,18 +91,23 @@ h2 {
 
 .ajouter-panier {
   text-decoration: none;
-  background-color: #ef4813;
+  background-color: #fa5014;
   color: white;
   font-size: 1.25rem;
   font-weight: 600;
   padding: 18px 34px;
   border-radius: 10px;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.ajouter-panier:hover {
+  background-color: #ff4300;
 }
 
 .supprimer-panier {
   text-decoration: none;
-  background-color: #f14a72;
+  background-color: #ff314a;
   color: white;
   font-size: 1.25rem;
   font-weight: 600;
@@ -110,6 +115,11 @@ h2 {
   border-radius: 10px;
   cursor: pointer;
   display: none;
+  transition: 0.3s;
+}
+
+.supprimer-panier:hover {
+  background-color: #e82f45;
 }
 
 .like {
@@ -127,7 +137,7 @@ h2 {
 }
 
 .like:hover {
-  background-color: #fff5fa;
+  background-color: #f9f5ff;
 }
 
 .like img {

@@ -91,14 +91,15 @@ h1 {
 }
 
 .coordonnees {
-  top: 20vh;
-  right: 20vh;
-  width: 26vw;
+  top: 55vh;
+  right: -4vh;
+  width: 24vw;
   min-width: 400px;
   padding: 30px;
   background-color: #eef0f1;
   border-radius: 20px;
   position: fixed;
+  transform: translate(-50%, -50%);
 }
 .coordonnees h1 {
   margin: 0;

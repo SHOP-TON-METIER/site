@@ -19,7 +19,7 @@
   <?php include 'header.php'; ?>
   <canvas class="webgl"></canvas>
 
-  <!-- <div class="loading">
+  <div class="intro">
     <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM2 7H1L1 9H2L2 7Z" fill="#09192C" />
     </svg>
@@ -52,7 +52,17 @@
       <div class="top"></div>
       <div class="bottom"></div>
     </div>
-  </div> -->
+  </div>
+
+  <div class="loading">
+    <h1>SHOP'TON MÉTIER</h1>
+    <p class="message-drone">Cc ca va ?</p>
+    <div class="progressbar">
+        <div class="progressbg"></div>
+        <div class="progress"></div>
+    </div>
+    <p class="message-chargement">Allumage des lumières...</p>
+  </div>
 
 
   <div class="sprite audiovisuel">
@@ -86,26 +96,6 @@
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      if (!window.matchMedia)
-        return
-
-      var current = $('head > link[rel="icon"][media]');
-      $.each(current, function(i, icon) {
-        var match = window.matchMedia(icon.media)
-
-        function swap() {
-          if (match.matches) {
-            current.remove()
-            current = $(icon).appendTo('head')
-          }
-        }
-        match.addListener(swap)
-        swap()
-      })
-    })
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
 
   <script>
@@ -121,43 +111,43 @@
       targets: '.msg1',
       scale: '1',
       translateY: '-100vh'
-    }, '+=2000').add({
+    }, '+=3000').add({
       targets: '.msg2',
       scale: '1.2',
       translateY: '-40vh'
-    }, '-=2000').add({
+    }, '-=3000').add({
       targets: '.msg2',
       scale: '1',
       translateY: '-100vh'
-    }, '+=2000').add({
+    }, '+=3000').add({
       targets: '.msg3',
       scale: '1.2',
       translateY: '-40vh'
-    }, '-=2000').add({
+    }, '-=3000').add({
       targets: '.msg3',
       scale: '1',
       translateY: '-100vh'
-    }, '+=2000').add({
+    }, '+=3000').add({
       targets: '.msg4',
       scale: '1.2',
       translateY: '-40vh'
-    }, '-=2000').add({
+    }, '-=3000').add({
       targets: '.msg4',
       scale: '1',
       translateY: '-100vh'
-    }, '+=3000').add({
+    }, '+=4000').add({
       targets: '.msg5',
       scale: '1.2',
       translateY: '-40vh'
-    }, '-=2000').add({
+    }, '-=3000').add({
       targets: '.msg5',
       scale: '1',
       translateY: '-100vh'
-    }, '+=3000').add({
+    }, '+=4000').add({
       targets: '.msg6',
       scale: '1.2',
       translateY: '-40vh'
-    }, '-=2000').add({
+    }, '-=3000').add({
       targets: '.loading',
       opacity: '0'
     }).add({
@@ -168,7 +158,16 @@
       }
     })
   </script>
+<script>
+  $(function(){
+    if(!localStorage.getItem('shoptonmetier')) {
+      $(".intro").css("display", "flex")
+      localStorage.setItem('shoptonmetier','[]')
+      }
 
+  })
+  
+</script>
   <script src="medias/js/app.js"></script>
   <script src="medias/js/three.min.js"></script>
   <script src="medias/js/DRACOLoader.js"></script>
@@ -178,39 +177,41 @@
   <script src="medias/js/tween.umd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous"></script>
   <script>
-    //Setup
-    const canvas = document.querySelector('canvas.webgl')
+      //Setup
+    const canvas = document.querySelector('.webgl')
     const WIDTH = window.innerWidth
     const HEIGHT = window.innerHeight
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(80, WIDTH / HEIGHT, 0.1, 1000)
-    camera.position.y = 3.6
-    camera.position.z = 1.6
-    camera.rotation.x = 0,10472
+    camera.rotation.x = -Math.PI / 4
+    scene.add(camera)
 
-    hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, .9)
-    shadowLight = new THREE.DirectionalLight(0xffffff, .9)
-    shadowLight.position.set(150, 350, 350)
-    shadowLight.castShadow = true
-    shadowLight.shadow.camera.left = -400
-    shadowLight.shadow.camera.right = 400
-    shadowLight.shadow.camera.top = 400
-    shadowLight.shadow.camera.bottom = -400
-    shadowLight.shadow.camera.near = 1
-    shadowLight.shadow.camera.far = 1000
-    shadowLight.shadow.mapSize.width = 2048
-    shadowLight.shadow.mapSize.height = 2048
+    const keylight = new THREE.SpotLight(0xffffff, 1);
+    keylight.position.set(-20, 10, 14);
+    keylight.castShadow = true;
+    scene.add(keylight);
 
-    scene.add(hemisphereLight)
-    scene.add(shadowLight)
+    const filllight = new THREE.SpotLight(0xaea2f6, 0.5);
+    filllight.position.set(16, 8, 12);
+    filllight.castShadow = true;
+    scene.add(filllight);
 
+    const filllightbottom = new THREE.SpotLight(0xffffff, 0.5);
+    filllightbottom.position.set(-20, -10, 10);
+    filllightbottom.castShadow = true;
+    scene.add(filllightbottom);
+
+    const backlight = new THREE.SpotLight(0xffffff, 1);
+    backlight.position.set(16, 8, -14);
+    backlight.castShadow = true;
+    scene.add(backlight);
     const renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: true
     })
     renderer.setSize(WIDTH, HEIGHT)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    renderer.setClearColor(0xE2F2FD)
+    renderer.setClearColor(0xffffff)
     renderer.shadowMap.enabled = true;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1;
@@ -218,36 +219,39 @@
 
     //Resize
     window.addEventListener('resize', () => {
-      const WIDTH = window.innerWidth
-      const HEIGHT = window.innerHeight
+        const WIDTH = window.innerWidth
+        const HEIGHT = window.innerHeight
 
-      camera.aspect = WIDTH / HEIGHT
-      camera.updateProjectionMatrix()
+        camera.aspect = WIDTH / HEIGHT
+        camera.updateProjectionMatrix()
 
-      renderer.setSize(WIDTH, HEIGHT)
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        renderer.setSize(WIDTH, HEIGHT)
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
-
 
     //Loaders
 
-    // const loadingScreen = document.querySelector('.loading')
-    // const loadingBar = document.querySelector('.progress')
-    // const header = document.querySelector('.right')
+    const loadingScreen = document.querySelector('.loading')
+    const loadingBar = document.querySelector('.progress')
+    const header = document.querySelector('.right')
 
 
     const loadingManager = new THREE.LoadingManager(
-      () => {
-        gsap.delayedCall(1, () => {
-          // loadingScreen.style.opacity = 0
-          // header.style.visibility = "visible"
-        })
-      },
+        () => {
+            gsap.delayedCall(1, () => {
+                loadingScreen.style.opacity = 0
+                header.style.visibility = "visible"
+            })
+            cameraintro()
+            window.setTimeout(function(){
+                canvas.style.pointerEvents="visible"
+            },3000)
+        },
 
-      (itemUrl, itemsLoaded, itemsTotal) => {
-        const progressRatio = 20 * (itemsLoaded / itemsTotal)
-        // loadingBar.style.width = `${progressRatio}vw`
-      }
+        (itemUrl, itemsLoaded, itemsTotal) => {
+            const progressRatio = 20 * (itemsLoaded / itemsTotal)
+            loadingBar.style.width = `${progressRatio}vw`
+        }
     )
     const dracoLoader = new THREE.DRACOLoader(loadingManager);
     dracoLoader.setDecoderPath('medias/draco/');
@@ -255,58 +259,76 @@
     const loader = new THREE.GLTFLoader(loadingManager);
     loader.setDRACOLoader(dracoLoader);
 
-
     function modelLoader(src) {
-      return new Promise((resolve, reject) => {
-        loader.load(src, data => resolve(data), null, reject)
-      })
+    return new Promise((resolve, reject) => {
+        loader.load(src, data => resolve(data), null, reject);
+    });
     }
-
     async function createScene(src) {
-            const gltf = await modelLoader(src);
+        const gltf = await modelLoader(src);
 
-            scenemodel = gltf.scene
-            scenemodel.receiveShadow = true
-            scenemodel.scale.multiplyScalar(0.2)
-            scenemodel.rotation.y = -Math.PI/2
-            scenemodel.castShadow = true
+        scenemodel = gltf.scene
+        scenemodel.receiveShadow = true
+        scenemodel.scale.multiplyScalar(0.2)
+        scenemodel.rotation.y = -Math.PI/2
+        scenemodel.castShadow = true
 
-            planet.add(scenemodel);
-        }
-
-    async function createShop({name, src, url, x, y, z, g}) {
-      const gltf = await modelLoader(src)
-
-      model = gltf.scene
-      model.position.set(x, y, z)
-      model.rotation.z = g
-      model.scale.multiplyScalar(0.2)
-      planet.add(model)
-
-      interactionManager.add(model)
-
-      model.addEventListener("click", () => {
-        window.location.href = `${url}`
-      })
-
-      model.addEventListener("mouseover", () => {
-        document.body.style.cursor = "pointer"
-        document.querySelector(`.${name}`).classList.add("active")
-      })
-
-      model.addEventListener("mouseout", () => {
-        document.body.style.cursor = "auto"
-        document.querySelector(`.${name}`).classList.remove("active")
-      })
+        scene.add(scenemodel);
     }
 
-    planet = new THREE.Group()
-    scene.add(planet)
+    async function createShop({
+        name,
+        src,
+        url,
+        x,
+        y,
+        z,
+        g
+    }) {
+        const gltf = await modelLoader(src)
+
+        model = gltf.scene
+        model.position.set(x, y, z)
+        model.rotation.y = g
+        model.scale.multiplyScalar(0.2)
+        scene.add(model)
+
+        interactionManager.add(model)
+
+        model.addEventListener("click", () => {
+            window.location.href = `${url}`
+        })
+
+        model.addEventListener("mouseover", () => {
+            document.body.style.cursor = "pointer"
+            document.querySelector(`.${name}`).classList.add("active")
+        })
+
+        model.addEventListener("mouseout", () => {
+            document.body.style.cursor = "auto"
+            document.querySelector(`.${name}`).classList.remove("active")
 
 
-    createScene('medias/model/shop/planet.gltf')
+        })
+    }
+    //Interactions
+    interactionManager = new THREE.InteractionManager(renderer, camera, canvas)
 
     // Data
+    function cameraintro(){
+      const coords = {
+      y: 10,
+      z: 10
+      }
+      new TWEEN.Tween(coords).to({
+              y: 4,
+              z: 4,
+          }, 3000)
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .onUpdate(() =>
+              camera.position.set(0, coords.y, coords.z)).start()
+    }
+
     const shops = {
       Audiovisuel: createShop({
         name: 'audiovisuel',
@@ -314,8 +336,8 @@
         url: 'shop.php?id=1',
         x: -4,
         y: 1,
-        z: -4,
-        g: 1
+        z: -2,
+        g: 0
       }),
       Design: createShop({
         name: 'design',
@@ -324,7 +346,7 @@
         x: 1,
         y: 1,
         z: -4,
-        g: -1
+        g: 0
       }),
       Developpement: createShop({
         name: 'developpement',
@@ -342,7 +364,7 @@
         x: -1,
         y: 1,
         z: 1,
-        g: 1
+        g: 0
       })
     }
 
@@ -366,83 +388,32 @@
       element: document.querySelector('.projet')
     }]
 
-    //Interactions
-    interactionManager = new THREE.InteractionManager(renderer, camera, canvas)
-
-    //LERP
-    function lerp(a, b, t) {
-      return ((1 - t) * a + t * b)
-    }
-
-
-    //SCROLL
-
-    let smoothscrool = 0
-
-    const scrollPos = {
-      y: 0,
-      deltaY: 0
-    }
-
-    function onMouseWheel(event) {
-      event.stopImmediatePropagation()
-      event.stopPropagation()
-      event.preventDefault()
-
-      scrollPos.deltaY = event.wheelDeltaY || scrollPos.deltaY * -1
-      scrollPos.deltaY *= -0.5
-
-      scroll(event)
-
-    }
-
-    function scroll(event) {
-
-      if ((scrollPos.y + scrollPos.deltaY) < -(HEIGHT / 15)) {
-        scrollPos.y = -(HEIGHT / 15)
-      } else if ((scrollPos.y + scrollPos.deltaY) > HEIGHT * 0.8) {
-        scrollPos.y = HEIGHT * 0.8
-      } else {
-        scrollPos.y = (scrollPos.y + (scrollPos.deltaY))
-      }
-
-    }
-
-
+    //Drone
 
 
     //Loop
-    function Animate(time) {
-      window.addEventListener("wheel", onMouseWheel, {
-        passive: false
-      })
-
-      smoothscrool = lerp(smoothscrool, scrollPos.y, .025)
-      planet.rotation.x = (smoothscrool / HEIGHT)
-      // planet.rotation.x = (smoothscrool / HEIGHT)
-
-      // controls.update()
+  function Animate(time) {
       interactionManager.update()
       TWEEN.update(time)
 
       //Sprites
       for (const sprite of sprites) {
-        const screenPosition = sprite.position.clone()
-        screenPosition.project(camera)
+          const screenPosition = sprite.position.clone()
+          screenPosition.project(camera)
 
-        const translateX = screenPosition.x * window.innerWidth * 0.5
-        const translateY = -screenPosition.y * window.innerHeight * 0.5
-        sprite.element.style.transform = `translate(${translateX}px,${translateY}px)`
+          const translateX = screenPosition.x * window.innerWidth * 0.5
+          const translateY = -screenPosition.y * window.innerHeight * 0.5
+          sprite.element.style.transform = `translate(${translateX}px,${translateY}px)`
 
       }
       renderer.render(scene, camera)
 
       requestAnimationFrame(Animate)
-    }
-
+  }
     //Load
-    window.addEventListener('load', Animate, false)
-  </script>
+  window.addEventListener('load', Animate, false)
+
+</script>
 
 
 
