@@ -102,12 +102,12 @@ $(function () {
       })
     
       request.done(function (data) {
-        donnees = JSON.parse(data);
+        donnees = JSON.parse(data)
         $('.found').append('<p class="searchetudiant"></p>')
         i=0
         $.each(donnees, function(index, value){
           $(".found").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
-          value.prenom +' '+value.nom+'</a>').show()
+          value.prenom +' '+value.nom.toLowerCase().charAt(0).toUpperCase()+value.nom.toLowerCase().slice(1)+'</a>').show()
           i++
         })
         if (i>! 1) {

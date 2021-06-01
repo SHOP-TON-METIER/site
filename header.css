@@ -209,12 +209,12 @@ header .domaine-fav span {
 
 .found a {
   display: block;
-  padding: 12px 6px;
+  padding: 12px 20px;
   color: #09192c;
   border-radius: 6px;
   font-size: 0.9rem;
   text-decoration: none;
-  text-align: center;
+  text-align: left;
   transition: 0.3s;
   background-color: transparent;
   font-family: 'Poppins';
