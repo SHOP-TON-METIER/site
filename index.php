@@ -168,7 +168,7 @@
   </script>
 <script>
   $(function(){
-    localStorage.removeItem('shoptonmetier')
+
     if(!localStorage.getItem('shoptonmetier')) {
       $(".intro").css("display", "flex")
       $(".loading").css("display", "none")
