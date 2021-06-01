@@ -1,76 +1,106 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    width: 100vw;
-    font-family: 'Poppins', sans-serif;
-    color: #09192C;
-    overflow-x: hidden;
-} 
+  margin: 0;
+  width: 100vw;
+  font-family: 'Poppins', sans-serif;
+  color: #09192c;
+  overflow-x: hidden;
+}
 
 main {
-    width: 80vw;
-    max-width: 1400px;
-    margin: auto;
-    margin-top: 120px;
-    position: relative;
+  width: 80vw;
+  max-width: 1400px;
+  margin: auto;
+  position: relative;
+  margin-top: calc(4vh + 100px);
+  margin-bottom: calc(6vh + 30px);
 }
 
 .retour {
-    position: absolute;
-    padding: 2%;
-    left: -8%;
+  position: fixed;
+  top: 20vh;
+  left: 10vw;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 section {
-    width: 85%;
-    margin: auto;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+section .found {
+  display: block !important;
+
+  width: 100%;
+}
+
+section .found .content {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 h1 {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 50px;
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 50px;
 }
 
 .metier {
-    width: 45%;
-    max-width: 1200px;
-    margin: 10px 20px;
-    padding: 20px 15px;
-    border-radius: 20px;
+  width: 45%;
+  max-width: 1200px;
+  margin: 10px 0;
+  padding: 20px 15px;
+  border-radius: 20px;
 
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.metier h2 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    font-weight: 600;
+.metier h3 {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .metier div {
-    width: 100%;
+  width: 100%;
 }
 
 .metier .perso-3d {
-    width: 20%;
-    height: auto;
-    border-radius: 50%;
-    margin-right: 15px;
+  width: 20%;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
 .lien-fiche-metier {
-    text-decoration: none;
-    color: #FA5014;
+  text-decoration: none;
+  color: #fa5014;
 }
 
+main .notfound {
+  width: 80vw;
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+
+.avisetud {
+  padding: 2% 6%;
+}

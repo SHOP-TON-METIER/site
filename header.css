@@ -11,15 +11,15 @@ header {
   z-index: 10;
 }
 
-.left {
+header .left {
   height: auto;
 }
 
-.home {
+header .home {
   display: block;
 }
 
-.right {
+header .right {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,14 +27,14 @@ header {
   gap: 2vw;
 }
 
-.bag {
+header .bag {
   width: 36px;
   height: 36px;
   color: #09192c;
   cursor: pointer;
 }
 
-.searchbar {
+header .searchbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -45,7 +45,7 @@ header {
   border: solid 2px #09192c;
 }
 
-.searchbar input {
+header .searchbar input {
   box-sizing: border-box;
   border-color: transparent;
   background-color: transparent;
@@ -54,7 +54,7 @@ header {
   margin: 0 20px;
 }
 
-.searchbar input:focus {
+header .searchbar input:focus {
   outline: none;
   color: #09192c;
 }
@@ -171,7 +171,7 @@ header .domaine-fav span {
   font-size: 0.7rem;
 }
 
-.voir-panier {
+header .voir-panier {
   display: block;
   width: 100%;
   padding: 8px 30px;
@@ -184,7 +184,7 @@ header .domaine-fav span {
   font-weight: 600;
 }
 
-.results {
+header .results {
   width: 288px;
   max-height: 50vh;
   background-color: rgba(240, 240, 240, 0.8);
@@ -201,13 +201,17 @@ header .domaine-fav span {
   display: none;
 }
 
-.found p {
+header .found {
+  display: block !important;
+}
+
+header .found p {
   font-weight: 600;
   margin-top: 10px;
   margin-left: 20px;
 }
 
-.found a {
+header .found a {
   display: block;
   padding: 12px 20px;
   color: #09192c;
@@ -220,19 +224,19 @@ header .domaine-fav span {
   font-family: 'Poppins';
 }
 
-.found a.audiovisuel:hover {
+header .found a.audiovisuel:hover {
   background-color: #fee9e8;
 }
 
-.found a.design:hover {
+header .found a.design:hover {
   background-color: #cae7fb;
 }
 
-.found a.communication:hover {
+header .found a.communication:hover {
   background-color: #fff6eb;
 }
 
-.found a.developpement:hover {
+header .found a.developpement:hover {
   background-color: #efecfe;
 }
 
@@ -240,7 +244,7 @@ header .domaine-fav span {
   display: none;
 }
 
-.notfound p {
+header .nofound p {
   font-weight: 600;
   margin: 10px 0;
   margin-left: 20px;

@@ -15,28 +15,27 @@ $(function () {
     swap()
   })
 
-  $(".found").hide()
+  $("header .found").hide()
 
   searchposition = $(".searchbar").offset()
-  $(".found").css("left", searchposition + "px")
+  $("header .found").css("left", searchposition + "px")
 
   $(window).on('resize', function () {
     searchposition = $(".searchbar").offset()
-    $(".found").css("left", searchposition + "px")
+    $("header .found").css("left", searchposition + "px")
   });
 
   $(".searchbar").keyup(function () {
     var query = $(this).val()  
 
     if (query == "") {
-      $(".found").html("")
-      $(".notfound").html("")
+      $("header .found").html("")
+      $(".noheader .found").html("")
 
     } else {
-      query = query
 
       var request = $.ajax({
-        url: "ajax.php",
+        url: "search.php",
         method: "POST",
         data: {
             search : query,
@@ -45,18 +44,18 @@ $(function () {
     })
     request.done(function(data) {
       donnees = JSON.parse(data);        
-      $('.found').append('<p class="searchmetier"></p>')
+      $('header .found').append('<div class="searchmetier"><p></p><div class="content"></div></div>')
       i = 0
       $.each(donnees, function(index, value){
-        $(".found").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+        $("header .found .searchmetier .content").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
         value.nom + '</a>').show()
         i++
       })
       if (i >! 1) {
-        $(".found .searchmetier").html('Métiers trouvés')
+        $("header .found .searchmetier p").html('Métiers trouvés')
       }
       if (i == 1) {
-        $(".found .searchmetier").html('Métier trouvé')
+        $("header .found .searchmetier p").html('Métier trouvé')
       }
     }, domaine)
 
@@ -64,7 +63,7 @@ $(function () {
 
     function domaine() {
       var request = $.ajax({
-        url: "ajax.php",
+        url: "search.php",
         method: "POST",
         data: {
          search : query,
@@ -74,18 +73,18 @@ $(function () {
     
       request.done(function (data) {
         donnees = JSON.parse(data);
-        $('.found').append('<p class="searchdomaine"></p>')
+        $('header .found').append('<div class="searchdomaine"><p></p><div class="content"></div></div>')
         i = 0
         $.each(donnees, function(index, value){
-          $(".found").append('<a href="shop.php?id='+ value.id + '" class = ' + value.nom.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+          $("header .found .searchdomaine .content").append('<a href="shop.php?id='+ value.id + '" class = ' + value.nom.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
           value.nom + '</a>').show()
           i++
         })
         if (i >! 1) {
-          $(".found .searchdomaine").html('Domaines trouvés')
+          $("header .found .searchdomaine p").html('Domaines trouvés')
         }
         if (i == 1) {
-          $(".found .searchdomaine").html('Domaine trouvé')
+          $("header .found .searchdomaine p").html('Domaine trouvé')
         }
       }, etudiant)
     
@@ -93,7 +92,7 @@ $(function () {
     
     function etudiant() {
       var request = $.ajax({
-        url: "ajax.php",
+        url: "search.php",
         method: "POST",
         data: {
          search : query,
@@ -103,28 +102,28 @@ $(function () {
     
       request.done(function (data) {
         donnees = JSON.parse(data)
-        $('.found').append('<p class="searchetudiant"></p>')
+        $('header .found').append('<div class="searchetudiant"><p></p><div class="content"></div></div>')
         i=0
         $.each(donnees, function(index, value){
-          $(".found").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+          $("header .found .searchetudiant .content").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
           value.prenom +' '+value.nom.toLowerCase().charAt(0).toUpperCase()+value.nom.toLowerCase().slice(1)+'</a>').show()
           i++
         })
         if (i>! 1) {
-          $(".found .searchetudiant").html('Étudiants trouvés')
+          $("header .found .searchetudiant p").html('Étudiants trouvés')
         }
         if (i == 1) {
-          $(".found .searchetudiant").html('Étudiant trouvé')
+          $("header .found .searchetudiant p").html('Étudiant trouvé')
         }
       }, check)
 
 
       function check() {
-        $('.notfound').html("")
+        $('header .notfound').html("")
 
-        if ($('.found').children().length < 4) {
-          $('.notfound').html("<p class='aucunresultat'>Nous n'avons rien trouvé 😥</p>")
-     }
+    //     if ($('.found').children().length < 4) {
+    //       $('.notfound').html("<p class='aucunresultat'>Nous n'avons rien trouvé 😥</p>")
+    //  }
       } 
     }
    

@@ -8,10 +8,10 @@
     <title>SHOP’TON MÉTIER</title>
     <link rel="icon" type="image/png" href="medias/drone-light.png" media="(prefers-color-scheme:no-preference)">
     <link rel="icon" type="image/png" href="medias/drone-dark.png" media="(prefers-color-scheme:dark)">
-    <link rel="icon" type="image/png" href="medias/drone-light.png" media="(prefers-color-scheme:light)">
-    <link rel="stylesheet" href="recherche.css">
+    <link rel="icon" type="image/png" href="medias/drone-light.png" media="(prefers-color-scheme:light)">    
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="recherche.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -28,55 +28,128 @@
             </svg>
         </a>
 
-        <h1>Mes résultats</h1>
-
+        <h1>Voici ce que nous avons trouvé !</h1>
         <section>
-            <?php
-            include_once 'link.php';
-            $sql = $sql = "(SELECT m.nom, m.id, s.nom AS nomShop
-            FROM metier AS m, shop AS s
-            WHERE m.nom LIKE {$search}
-            AND m.id_shop = s.id
-            ORDER BY m.nom ASC)";
-
-            $req = $link->prepare($sql);
-            $req->execute([':search' => $_POST['search']]);
-
-            $a = null;
-
-            while ($data = $req->fetch()) {
-                $shop = strtolower($data['nomShop']);
-                $shop = htmlentities($shop);
-                $shop = preg_replace('/&([a-z])[a-z]+;/i', '$1', $shop);
-                if ($a != $data['nom']) {
-                    $a = $data['nom'];
-                    echo '<div class="metier ' .
-                        $shop .
-                        '">
-                <img src="medias/images/metier' .
-                        $data['id'] .
-                        '" alt="" class="perso-3d">
-                <div>
-                    <h2>' .
-                        $data['nom'] .
-                        '</h2>
-                    <a href="metier.php?id=' .
-                        $data['id'] .
-                        '" class="lien-fiche-metier">Lien vers la fiche descriptive</a>
-                </div>
-            </div>';
-                }
-            }
-
-            $req = null;
-            ?>
+        <div class="found"></div>
+        <div class="notfound"></div>
 
         </section>
-    </main>
+</main>
 
     <?php include 'footer.php'; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="medias/js/app.js"></script>
+    <script>
+    $(function(){
+
+    <?php
+    $search = $_GET['search'];
+    echo 'var query = "' . $search . '"';
+    ?>       
+
+    var request = $.ajax({
+    url: "search.php",
+    method: "POST",
+    data: {
+        search : query,
+        category : 'metier'
+    }
+    })
+    request.done(function(data) {
+      donnees = JSON.parse(data);        
+      $('main .found').append('<div class="searchmetier"><h2></h2><div class="content"></div></div>')
+      i = 0
+      $.each(donnees, function(index, value){
+        $("main .found .searchmetier .content").append('<div class="metier '+ value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'"><img src="medias/images/metier/'+ value.id+'.png" alt="" class="perso-3d"><div><h3>'+value.nom+'</h3><a href="metier.php?id='+ value.id + '" class = "lien-fiche-metier">Allez vers la fiche métier</a></div></div>').show()
+        i++
+      })
+      if (i >! 1) {
+        $("main .found .searchmetier h2").html('Métiers trouvés')
+      }
+      if (i == 1) {
+        $("main .found .searchmetier h2").html('Métier trouvé')
+      }
+    }, domaine)
+
+
+    function domaine() {
+      var request = $.ajax({
+        url: "search.php",
+        method: "POST",
+        data: {
+         search : query,
+         category : 'domaine'
+        }
+      })
+    
+      request.done(function (data) {
+        donnees = JSON.parse(data);
+        $('main .found').append('<div class="searchdomaine"><h2></h2><div class="content"></div></div>')
+        i = 0
+        $.each(donnees, function(index, value){
+            // console.log(value)
+          $("main .found .searchdomaine .content").append('<div class="metier '+ value.nom.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'"><img src="medias/images/shop/'+ value.id+'.png" alt="" class="perso-3d"><div><h3>'+ value.nom +'</h3><a href="shop.php?id='+ value.id + '" class = "lien-fiche-metier">Aller vers le shop</a></div></div>').show()
+          i++
+        })
+        if (i >! 1) {
+          $("main .found .searchdomaine h2").html('Domaines trouvés')
+        }
+        if (i == 1) {
+          $("main .found .searchdomaine h2").html('Domaine trouvé')
+        }
+      }, etudiant)
+    
+    }
+    
+    function etudiant() {
+      var request = $.ajax({
+        url: "search.php",
+        method: "POST",
+        data: {
+         search : query,
+         category : 'etudiant'
+        }
+      })
+    
+      request.done(function (data) {
+        donnees = JSON.parse(data)
+        $('main .found').append('<div class="searchetudiant"><h2></h2><div class="content"></div></div>')
+        i=0
+        $.each(donnees, function(index, value){
+          $("main .found .searchetudiant .content").append('<div class="metier '+ value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'"><div class="avisetud"><h3>'+ value.prenom +' '+value.nom+'</h3><a href="metier.php?id='+ value.id + '" class = "lien-fiche-metier">Lire son avis</a></div></div>')
+          i++
+        })
+        if (i>! 1) {
+          $("main .found .searchetudiant h2").html('Étudiants trouvés')
+        }
+        if (i == 1) {
+          $("main .found .searchetudiant h2").html('Étudiant trouvé')
+        }
+      }, check)
+
+
+      function check() {
+
+        if ($('main .content').children().length == 0) {
+          $('h1').html("Nous n'avons rien trouvé 😥")
+          $('main .found').remove()
+
+          $.ajax ({
+            url: "//api.giphy.com/v1/gifs/random?api_key=0UTRbFtkMxAplrohufYco5IY74U8hOes&tag=sad&rating=pg-13",
+            type: "GET",
+            success: function(response) {
+            imgSrc = response.data.image_url;
+            $('main .notfound').css('background-image', 'url("'+imgSrc+'")')
+            
+            }
+          })
+        } else{
+            $('main .notfound').remove()
+        }
+    }
+    }
+    })
+    </script>
 </body>
 
 </html>
