@@ -242,9 +242,11 @@ header .found a.developpement:hover {
 
 .search {
   display: none;
+  transition: 5s;
 }
 
-header .nofound p {
+header .notfound p {
+  padding: 4% 6%;
   font-weight: 600;
   margin: 10px 0;
   margin-left: 20px;

@@ -43,7 +43,7 @@
     $(function(){
 
     <?php
-    $search = $_GET['search'];
+    $search = $_POST['search'];
     echo 'var query = "' . $search . '"';
     ?>       
 

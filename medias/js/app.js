@@ -26,12 +26,9 @@ $(function () {
   });
 
   $(".searchbar").keyup(function () {
-    var query = $(this).val()  
-
+    var query = $(this).val()
     if (query == "") {
       $("header .found").html("")
-      $(".noheader .found").html("")
-
     } else {
 
       var request = $.ajax({
@@ -44,18 +41,18 @@ $(function () {
     })
     request.done(function(data) {
       donnees = JSON.parse(data);        
-      $('header .found').append('<div class="searchmetier"><p></p><div class="content"></div></div>')
+      $('header .found').append('<p class="searchmetier"></p>')
       i = 0
       $.each(donnees, function(index, value){
-        $("header .found .searchmetier .content").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+        $("header .found").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
         value.nom + '</a>').show()
         i++
       })
       if (i >! 1) {
-        $("header .found .searchmetier p").html('Métiers trouvés')
+        $("header .found .searchmetier").html('Métiers trouvés')
       }
       if (i == 1) {
-        $("header .found .searchmetier p").html('Métier trouvé')
+        $("header .found .searchmetier").html('Métier trouvé')
       }
     }, domaine)
 
@@ -73,18 +70,18 @@ $(function () {
     
       request.done(function (data) {
         donnees = JSON.parse(data);
-        $('header .found').append('<div class="searchdomaine"><p></p><div class="content"></div></div>')
+        $('header .found').append('<p class="searchdomaine"></p>')
         i = 0
         $.each(donnees, function(index, value){
-          $("header .found .searchdomaine .content").append('<a href="shop.php?id='+ value.id + '" class = ' + value.nom.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+          $("header .found").append('<a href="shop.php?id='+ value.id + '" class = ' + value.nom.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
           value.nom + '</a>').show()
           i++
         })
         if (i >! 1) {
-          $("header .found .searchdomaine p").html('Domaines trouvés')
+          $("header .found .searchdomaine").html('Domaines trouvés')
         }
         if (i == 1) {
-          $("header .found .searchdomaine p").html('Domaine trouvé')
+          $("header .found .searchdomaine").html('Domaine trouvé')
         }
       }, etudiant)
     
@@ -102,28 +99,27 @@ $(function () {
     
       request.done(function (data) {
         donnees = JSON.parse(data)
-        $('header .found').append('<div class="searchetudiant"><p></p><div class="content"></div></div>')
+        $('header .found').append('<p class="searchetudiant"></p>')
         i=0
         $.each(donnees, function(index, value){
-          $("header .found .searchetudiant .content").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
-          value.prenom +' '+value.nom.toLowerCase().charAt(0).toUpperCase()+value.nom.toLowerCase().slice(1)+'</a>').show()
+          $("header .found").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+          value.prenom +' '+value.nom+'</a>').show()
           i++
         })
         if (i>! 1) {
-          $("header .found .searchetudiant p").html('Étudiants trouvés')
+          $("header .found .searchetudiant").html('Étudiants trouvés')
         }
         if (i == 1) {
-          $("header .found .searchetudiant p").html('Étudiant trouvé')
+          $("header .found .searchetudiant").html('Étudiant trouvé')
         }
       }, check)
 
 
       function check() {
         $('header .notfound').html("")
-
-    //     if ($('.found').children().length < 4) {
-    //       $('.notfound').html("<p class='aucunresultat'>Nous n'avons rien trouvé 😥</p>")
-    //  }
+            if ($('.found').children().length < 4) {
+              $('.notfound').html("<p class='aucunresultat'>Nous n'avons rien trouvé 😥</p>")
+         }
       } 
     }
    
