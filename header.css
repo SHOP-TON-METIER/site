@@ -192,6 +192,13 @@ header .domaine-fav span {
   position: absolute;
   top: 100%;
   font-family: 'Poppins';
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.results::-webkit-scrollbar {
+  display: none;
 }
 
 .results p {
