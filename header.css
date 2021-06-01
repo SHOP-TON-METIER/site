@@ -202,6 +202,7 @@ header .domaine-fav span {
 }
 
 .results p {
+  font-weight: 600;
   margin-top: 10px;
   margin-left: 20px;
 }
@@ -233,4 +234,8 @@ header .domaine-fav span {
 
 .results-items.developpement:hover {
   background-color: #efecfe;
+}
+
+.search {
+  display: none;
 }

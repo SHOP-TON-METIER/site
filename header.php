@@ -16,7 +16,8 @@ echo '<header>
                 </label>
                 <input type="text" class="searchbar" name="search" placeholder="Rechercher&hellip;">       
             </form>
-            <div class="results"></div>
+            <div class="results">
+            </div>
 
             <a href="panier.php" class="bag">
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">

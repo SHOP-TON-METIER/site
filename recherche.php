@@ -33,15 +33,14 @@
         <section>
             <?php
             include_once 'link.php';
-            $search = $_POST['search'];
             $sql = $sql = "(SELECT m.nom, m.id, s.nom AS nomShop
             FROM metier AS m, shop AS s
-            WHERE m.nom LIKE '{$search}%'
+            WHERE m.nom LIKE {$search}
             AND m.id_shop = s.id
             ORDER BY m.nom ASC)";
 
             $req = $link->prepare($sql);
-            $req->execute();
+            $req->execute([':search' => $_POST['search']]);
 
             $a = null;
 
