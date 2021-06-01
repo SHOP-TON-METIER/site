@@ -11,17 +11,16 @@ if ($category == 'metier') {
      ORDER BY m.nom ASC";
 }
 if ($category == 'etudiant') {
-    $sql = "SELECT ancienetudiant.nom, m.id, s.nom AS nomShop
-      FROM metier AS m, shop AS s, ancienetudiant
-      WHERE ancienetudiant.nom LIKE :search
+    $sql = "SELECT a.nom, m.id, s.nom AS nomShop
+      FROM metier AS m, shop AS s, ancienetudiant AS a
+      WHERE a.nom LIKE :search
       AND m.id_shop = s.id
-      AND ancienetudiant.id_metier = m.id";
+      AND a.id_metier = m.id";
 }
 if ($category == 'domaine') {
-    $sql = "SELECT m.id, s.nom
-      FROM metier AS m, shop AS s
-      WHERE s.nom LIKE :search
-      AND m.id_shop = s.id";
+    $sql = "SELECT s.nom, s.id
+      FROM shop AS s
+      WHERE s.nom LIKE :search";
 }
 
 $req = $link->prepare($sql);

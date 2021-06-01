@@ -37,7 +37,7 @@ $(function () {
 
     } else {
       query = query+"%"
-    console.log(query)
+      console.log(query)
 
       var request = $.ajax({
         url: "ajax.php",
@@ -51,13 +51,13 @@ $(function () {
         donnees = JSON.parse(data);
 
         
-        $('.results').append('<p>Métiers trouvés : </p>')
+        $('.results').append('<p class="searchmetier">Métiers trouvés : </p>')
         $.each(donnees, function(index, value){
           $(".results").append('<a href="metier.php?id='+ value.id + '" class="results-items ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'">' +
           value.nom + '</a>').show()
     
         if (value === '') {
-          $(".results").html("Aucun métier trouvé")
+          $('.searchmetier').remove();
         }
 
         })
@@ -78,13 +78,16 @@ $(function () {
       })
     
       request.done(function (data) {
-        $('.results').append('<p>Domaines trouvés : </p>')
+        donnees = JSON.parse(data);
+        
+        console.log(donnees);
+        $('.results').append('<p class="domaine">Domaines trouvés : </p>')
         $.each(donnees, function(index, value){
-          $(".results").append('<a href="metier.php?id='+ value.id + '" class="results-items ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'">' +
+          $(".results").append('<a href="shop.php?id='+ value.id + '" class="results-items ' + value.nom.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'">' +
           value.nom + '</a>').show()
     
         if (value === '') {
-          $(".results").html("Aucun métier trouvé")
+          $('.domaine').hide();
         }
 
         })
@@ -104,6 +107,18 @@ $(function () {
       })
     
       request.done(function (data) {
+        donnees = JSON.parse(data);
+
+        $('.results').append('<p class="etudiant">Etudiants trouvés : </p>')
+        $.each(donnees, function(index, value){
+          $(".results").append('<a href="metier.php?id='+ value.id + '" class="results-items ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'">' +
+          value.nom + '</a>').show()
+    
+        if (value === '') {
+          $('.etudiant').hide();
+        } 
+        })
+
       }, etudiant)
 
     

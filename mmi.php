@@ -417,8 +417,6 @@
         $(".culture-scientifique, .culture-artistique, .informatique, .com-marketing").hide();
         $("." + $(this).attr("id")).fadeIn();
       })
-
-    })
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
