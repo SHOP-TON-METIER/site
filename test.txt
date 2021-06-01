@@ -1,0 +1,51 @@
+while ($data = $req->fetch()) {
+    $shop = strtolower($data['nomShop']);
+    $shop = htmlentities($shop);
+    $shop = preg_replace('/&([a-z])[a-z]+;/i', '$1', $shop);
+    $output .=
+        '<a href="metier.php?id=' .
+        $data['id'] .
+        '" class="results-items ' .
+        $shop .
+        '">' .
+        $data['nom'] .
+        '</a>';
+}
+
+
+$.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: {
+          search: query
+        },
+        success: function (data) {
+          $(".results").html('<p>Métiers trouvés : </p>' + data).show()
+
+          if (data === '') {
+            $(".results").html("Aucun métier trouvé")
+          }
+        },
+        error: function () {
+          $(".results").html("Erreur 404")
+        }
+})
+
+// $.ajax({
+      //   type: "POST",
+      //   url: "ajax-etudiant.php",
+      //   data: {
+      //     search: query
+      //   },
+      //   success: function (data) {
+      //     $(".results").html('<p>Etudiants trouvés : </p>' + data).show()
+
+      //     if (data === '') {
+      //       $(".results").html("Aucun métier trouvé")
+      //     }
+      //   },
+      //   error: function () {
+      //     $(".results").html("Erreur 404")
+      //   }
+
+      // })

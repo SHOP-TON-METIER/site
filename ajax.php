@@ -1,29 +1,34 @@
 <?php
 include_once 'link.php';
-$output = '';
+
+$category = htmlentities($_POST['category']);
 $search = $_POST['search'];
-$sql = "(SELECT m.nom, m.id, s.nom AS nomShop
-        FROM metier AS m, shop AS s
-        WHERE m.nom LIKE '{$search}%'
-        AND m.id_shop = s.id
-        ORDER BY m.nom ASC)";
+if ($category == 'metier') {
+     $sql = "SELECT m.nom, m.id, s.nom AS nomShop
+     FROM metier AS m, shop AS s
+     WHERE m.nom LIKE '{$search}%'
+     AND m.id_shop = s.id
+     ORDER BY m.nom ASC";
+};
+if ($category == 'etudiant') {
+      $sql = "SELECT ancienetudiant.nom, m.id, s.nom AS nomShop
+      FROM metier AS m, shop AS s, ancienetudiant
+      WHERE ancienetudiant.nom LIKE '{$search}%'
+      AND m.id_shop = s.id
+      AND ancienetudiant.id_metier = m.id";
+};
+if ($category == 'domaine') {
+      $sql = "SELECT m.id, s.nom
+      FROM metier AS m, shop AS s
+      WHERE s.nom LIKE '{$search}%'
+      AND m.id_shop = s.id";
+};
+  
 
 $req = $link->prepare($sql);
 $req->execute();
-while ($data = $req->fetch()) {
-    $shop = strtolower($data['nomShop']);
-    $shop = htmlentities($shop);
-    $shop = preg_replace('/&([a-z])[a-z]+;/i', '$1', $shop);
-    $output .=
-        '<a href="metier.php?id=' .
-        $data['id'] .
-        '" class="results-items ' .
-        $shop .
-        '">' .
-        $data['nom'] .
-        '</a>';
-}
-
-echo $output;
+$result = $req->fetchAll(PDO::FETCH_ASSOC);
+$data = JSON_ENCODE($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+echo $data;
 
 ?>

@@ -194,6 +194,11 @@ header .domaine-fav span {
   font-family: 'Poppins';
 }
 
+.results p {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
 .results-items {
   display: block;
   padding: 12px 6px;
