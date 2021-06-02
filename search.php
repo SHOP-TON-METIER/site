@@ -10,13 +10,20 @@ if ($category == 'metier') {
      AND m.id_shop = s.id
      ORDER BY m.nom ASC";
 }
-if ($category == 'etudiant') {
+if ($category == 'etudiantnom') {
     $sql = "SELECT a.nom, a.prenom, m.id, s.nom AS nomShop
     FROM metier AS m, shop AS s, ancienetudiant AS a
     WHERE m.id_shop = s.id
     AND a.id_metier = m.id
     AND a.nom LIKE :search
-    OR a.prenom LIKE :search
+    GROUP BY a.nom";
+}
+if ($category == 'etudiantprenom') {
+    $sql = "SELECT a.nom, a.prenom, m.id, s.nom AS nomShop
+    FROM metier AS m, shop AS s, ancienetudiant AS a
+    WHERE m.id_shop = s.id
+    AND a.id_metier = m.id
+    AND a.prenom LIKE :search
     GROUP BY a.nom";
 }
 if ($category == 'domaine') {

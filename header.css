@@ -78,63 +78,6 @@ input:-webkit-autofill:active {
   vertical-align: middle;
 }
 
-header .panier {
-  position: absolute;
-  top: 65px;
-  right: 0;
-  width: 240px;
-  height: 335px;
-  border: solid 2px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  padding: 20px;
-}
-
-header h1 {
-  text-align: left;
-  font-size: 1.2rem;
-  margin: 0;
-}
-
-header h2 {
-  margin-top: 5px;
-  color: #fa5014;
-  font-size: 0.75rem;
-  font-weight: 500;
-  margin: 0;
-}
-
-header .liste-metiers {
-  height: 160px;
-  overflow-y: auto;
-}
-
-header .metier {
-  width: 100%;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px auto;
-  padding: 10px;
-}
-
-header .perso {
-  height: 24px;
-  width: 24px;
-}
-
-header p {
-  margin: 0;
-}
-
-header .metier p {
-  font-size: 0.75rem;
-  color: #09192c;
-  width: 60%;
-}
-
 .audiovisuel {
   background-color: #fee9e8;
 }
@@ -155,35 +98,7 @@ header .metier p {
   cursor: pointer;
 }
 
-header .domaine-fav {
-  font-weight: 600;
-  font-size: 0.75rem;
-  color: #3a4756;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 8px;
-  margin-bottom: 18px;
-}
-
-header .domaine-fav span {
-  color: #e11e1e;
-  font-weight: 300;
-  font-size: 0.7rem;
-}
-
-header .voir-panier {
-  display: block;
-  width: 100%;
-  padding: 8px 30px;
-  margin: auto;
-  border-radius: 10px;
-  background-color: #fa5014;
-  color: #ffffff;
-  text-align: center;
-  text-decoration: none;
-  font-weight: 600;
-}
+/* RESULTATS BARRE DE RECHERCHE */
 
 header .results {
   display: flex;
@@ -215,10 +130,10 @@ header .notfound {
   width: 100%;
 }
 
-header .found p {
+header h2 {
+  font-size: 1rem;
   font-weight: 600;
-  margin-top: 10px;
-  margin-left: 20px;
+  margin: 10px 20px;
 }
 
 header .found a {
@@ -250,16 +165,11 @@ header .found a.developpement:hover {
   background-color: #efecfe;
 }
 
-.search {
-  display: none;
-  transition: 5s;
-}
-
-header .notfound p {
-  font-weight: 500;
-  margin: 10px 20px;
+header .notfound h2 {
   margin-bottom: 20px;
 }
+
+/* RETOUR */
 
 .retour {
   position: fixed;

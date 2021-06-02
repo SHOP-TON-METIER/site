@@ -97,17 +97,17 @@
         if (i == 1) {
           $("main .found .searchdomaine h2").html('Domaine trouvé')
         }
-      }, etudiant)
+      }, etudiantnom)
     
     }
     
-    function etudiant() {
+    function etudiantnom() {
       var request = $.ajax({
         url: "search.php",
         method: "POST",
         data: {
          search : query,
-         category : 'etudiant'
+         category : 'etudiantnom'
         }
       })
     
@@ -125,7 +125,35 @@
         if (i == 1) {
           $("main .found .searchetudiant h2").html('Étudiant trouvé')
         }
+      }, etudiantprenom)
+
+    }
+
+    function etudiantprenom() {
+      var request = $.ajax({
+        url: "search.php",
+        method: "POST",
+        data: {
+         search : query,
+         category : 'etudiantprenom'
+        }
+      })    
+      request.done(function (data) {
+        donnees = JSON.parse(data)
+        i=$('main .searchetudiant .content').children().length
+        $.each(donnees, function(index, value){
+          $("main .found .searchetudiant .content").append('<div class="metier '+ value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'"><div class="avisetud"><h3>'+ value.prenom +' '+value.nom+'</h3><a href="metier.php?id='+ value.id + '#'+ value.nom +'" class = "lien-fiche-metier">Lire son avis</a></div></div>')
+          i++
+        })
+        if (i>! 1) {
+          $("main .found .searchetudiant h2").html('Étudiants trouvés')
+        }
+        if (i == 1) {
+          $("main .found .searchetudiant h2").html('Étudiant trouvé')
+        }
       }, check)
+
+    }
 
 
       function check() {
@@ -146,7 +174,6 @@
         } else{
             $('main .notfound').remove()
         }
-    }
     }
     })
     </script>

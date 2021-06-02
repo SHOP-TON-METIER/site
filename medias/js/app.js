@@ -43,18 +43,18 @@ $(function () {
     })
     request.done(function(data) {
       donnees = JSON.parse(data);        
-      $('header .found').append('<p class="searchmetier"></p>')
+      $('header .found').append('<div class="searchmetier"><h2></h2><div class="content"></div></div>')
       i = 0
       $.each(donnees, function(index, value){
-        $("header .found").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+        $("header .found .searchmetier .content").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
         value.nom + '</a>').show()
         i++
       })
       if (i >! 1) {
-        $("header .found .searchmetier").html('Métiers trouvés')
+        $("header .found .searchmetier h2").html('Métiers trouvés')
       }
       if (i == 1) {
-        $("header .found .searchmetier").html('Métier trouvé')
+        $("header .found .searchmetier h2").html('Métier trouvé')
       }
     }, domaine)
 
@@ -72,59 +72,86 @@ $(function () {
     
       request.done(function (data) {
         donnees = JSON.parse(data);
-        $('header .found').append('<p class="searchdomaine"></p>')
+        $('header .found').append('<div class="searchdomaine"><h2></h2><div class="content"></div></div>')
         i = 0
         $.each(donnees, function(index, value){
-          $("header .found").append('<a href="shop.php?id='+ value.id + '" class = ' + value.nom.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+          $("header .found .searchdomaine .content").append('<a href="shop.php?id='+ value.id + '" class = ' + value.nom.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
           value.nom + '</a>').show()
           i++
         })
         if (i >! 1) {
-          $("header .found .searchdomaine").html('Domaines trouvés')
+          $("header .found .searchdomaine h2").html('Domaines trouvés')
         }
         if (i == 1) {
-          $("header .found .searchdomaine").html('Domaine trouvé')
+          $("header .found .searchdomaine h2").html('Domaine trouvé')
         }
-      }, etudiant)
+      }, etudiantnom)
     
     }
     
-    function etudiant() {
+    function etudiantnom() {
       var request = $.ajax({
         url: "search.php",
         method: "POST",
         data: {
          search : query,
-         category : 'etudiant'
+         category : 'etudiantnom'
         }
       })
     
       request.done(function (data) {
         donnees = JSON.parse(data)
-        $('header .found').append('<p class="searchetudiant"></p>')
+        $('header .found').append('<div class="searchetudiant"><h2></h2><div class="content"></div></div>')
         i=0
         $.each(donnees, function(index, value){
-          $("header .found").append('<a href="metier.php?id='+ value.id + '#'+ value.nom +'" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+          $("header .found .searchetudiant .content").append('<a href="metier.php?id='+ value.id + '#'+ value.nom +'" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
           value.prenom +' '+value.nom+'</a>').show()
           i++
         })
         if (i>! 1) {
-          $("header .found .searchetudiant").html('Étudiants trouvés')
+          $("header .found .searchetudiant h2").html('Étudiants trouvés')
         }
         if (i == 1) {
-          $("header .found .searchetudiant").html('Étudiant trouvé')
+          $("header .found .searchetudiant h2").html('Étudiant trouvé')
+        }
+      }, etudiantprenom)
+
+    }
+
+    function etudiantprenom() {
+      var request = $.ajax({
+        url: "search.php",
+        method: "POST",
+        data: {
+         search : query,
+         category : 'etudiantprenom'
+        }
+      })
+    
+      request.done(function (data) {
+        donnees = JSON.parse(data)
+        i=$('main .searchetudiant .content').children().length
+        $.each(donnees, function(index, value){
+          $("header .found .searchetudiant .content").append('<a href="metier.php?id='+ value.id + '#'+ value.nom +'" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+          value.prenom +' '+value.nom+'</a>').show()
+          i++
+        })
+        if (i>! 1) {
+          $("header .found .searchetudiant h2").html('Étudiants trouvés')
+        }
+        if (i == 1) {
+          $("header .found .searchetudiant h2").html('Étudiant trouvé')
         }
       }, check)
 
+    }
 
       function check() {
         $('header .notfound').html("")
-            if ($('header .found').children().length < 4) {
-              $('header .notfound').html("<p class='aucunresultat'>Nous n'avons rien trouvé 😥</p>")
-         }
+        if ($('header .content').children().length == 0) {
+              $('header .notfound').html("<h2 class='aucunresultat'>Nous n'avons rien trouvé 😥</h2>")
+        }
       } 
-    }
+    })
    
   })
-
-})
