@@ -24,7 +24,7 @@ header .right {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  gap: 2vw;
+  width: 340px;
 }
 
 header .bag {
@@ -36,22 +36,23 @@ header .bag {
 
 header .searchbar {
   display: flex;
-  justify-content: space-around;
   align-items: center;
   cursor: text;
   margin: 0;
-  padding: 6px 10px;
+  padding: 10px 14px;
   border-radius: 100vw;
   border: solid 2px #09192c;
+  width: 280px;
+  gap: 10px;
 }
 
 header .searchbar input {
-  box-sizing: border-box;
+  display: inline;
+  width: 180px;
   border-color: transparent;
   background-color: transparent;
   font-size: 0.875rem;
   font-family: 'Poppins';
-  margin: 0 20px;
 }
 
 header .searchbar input:focus {
@@ -185,7 +186,10 @@ header .voir-panier {
 }
 
 header .results {
-  width: 288px;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  margin: 0;
   max-height: 50vh;
   background-color: rgba(240, 240, 240, 0.8);
   border-radius: 10px;
@@ -203,6 +207,12 @@ header .results {
 
 header .found {
   display: block !important;
+  width: 100%;
+}
+
+header .notfound {
+  display: block !important;
+  width: 100%;
 }
 
 header .found p {
@@ -246,10 +256,9 @@ header .found a.developpement:hover {
 }
 
 header .notfound p {
-  padding: 4% 6%;
-  font-weight: 600;
-  margin: 10px 0;
-  margin-left: 20px;
+  font-weight: 500;
+  margin: 10px 20px;
+  margin-bottom: 20px;
 }
 
 .retour {

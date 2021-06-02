@@ -14,13 +14,12 @@ echo '<header>
                         </svg>
                     </div>
                 </label>
-                <input type="text" class="searchbar" name="search" placeholder="Shop ce que tu veux&hellip;">       
+                <input type="text" class="searchtext" name="search" placeholder="Shop ce que tu veux&hellip;">       
             </form>
             <div class="results">
             <div class="found"></div>
             <div class="notfound"></div>
             </div>
-
             <a href="panier.php" class="bag">
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36">

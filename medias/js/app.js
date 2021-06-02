@@ -15,21 +15,23 @@ $(function () {
     swap()
   })
 
-  $("header .found").hide()
+  // $("header .results").hide()
 
   searchposition = $(".searchbar").offset()
-  $("header .found").css("left", searchposition + "px")
+  $("header .results").css("width", searchposition + "px")
 
   $(window).on('resize', function () {
     searchposition = $(".searchbar").offset()
-    $("header .found").css("left", searchposition + "px")
+    $("header .results").css("width", searchposition + "px")
   });
 
-  $(".searchbar").keyup(function () {
+  $(".searchtext").keyup(function () {
+    $("header .found").html("")
+    
     var query = $(this).val()
     if (query == "") {
       $("header .found").html("")
-    } else {
+    } else {    
 
       var request = $.ajax({
         url: "search.php",

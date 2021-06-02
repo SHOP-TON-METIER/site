@@ -150,12 +150,15 @@ h2 {
 .avis {
   width: 80%;
   margin-bottom: 4vh;
+  padding: 2%;
   padding-bottom: 4vh;
-  border-bottom: solid 1px #848c96;
+  background-color: #f1f7fc;
+  border-radius: 20px;
+  transition: 0.3s ease-in-out;
 }
 
-.avis:last-child {
-  border-bottom: none;
+.avis:hover {
+  background-color: #ebf6ff;
 }
 
 .nom-etudiant {
@@ -172,8 +175,8 @@ h2 {
   font-size: 0.875rem;
 }
 
-.conseil-etudiant {
-  color: #4faff3;
+p.conseil-etudiant {
+  color: #1b95ec;
   font-size: 0.875rem;
   font-style: italic;
   margin: 0;
