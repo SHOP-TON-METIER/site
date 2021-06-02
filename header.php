@@ -5,7 +5,7 @@ echo '<header>
         </div>
 
         <div class="right">
-            <form class="searchbar" action="recherche.php" method="POST">
+            <form class="searchbar" action="recherche.php" method="GET">
                 <label type="submit" for="searchbar" class="search-icon">
                     <div class="icon">
                         <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +14,7 @@ echo '<header>
                         </svg>
                     </div>
                 </label>
-                <input type="text" class="searchbar" name="search" placeholder="Rechercher&hellip;">       
+                <input type="text" class="searchbar" name="search" placeholder="Shop ce que tu veux&hellip;">       
             </form>
             <div class="results">
             <div class="found"></div>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<?php include 'link.php'; ?>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,9 +63,26 @@
     </div>
   </div>
 
-  <div class="loading">
+  
+    <?php
+    $id = 0;
+
+    $sql =
+        'SELECT * FROM chargement WHERE id_shop = :id ORDER BY RAND() LIMIT 1';
+    $req = $link->prepare($sql);
+    $req->execute([':id' => $id]);
+
+    while ($data = $req->fetch()) {
+        echo '
+        <div class="loading">
+            <p class="message-drone">' .
+            $data['message'] .
+            '</p>
+            ';
+    }
+    $req = null;
+    ?>
     <h1>SHOP'TON MÉTIER</h1>
-    <p class="message-drone">Cc ca va ?</p>
     <div class="progressbar">
         <div class="progressbg"></div>
         <div class="progress"></div>

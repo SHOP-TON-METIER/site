@@ -102,7 +102,7 @@ $(function () {
         $('header .found').append('<p class="searchetudiant"></p>')
         i=0
         $.each(donnees, function(index, value){
-          $("header .found").append('<a href="metier.php?id='+ value.id + '" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
+          $("header .found").append('<a href="metier.php?id='+ value.id + '#'+ value.nom +'" class = ' + value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'>' +
           value.prenom +' '+value.nom+'</a>').show()
           i++
         })
@@ -117,8 +117,8 @@ $(function () {
 
       function check() {
         $('header .notfound').html("")
-            if ($('.found').children().length < 4) {
-              $('.notfound').html("<p class='aucunresultat'>Nous n'avons rien trouvé 😥</p>")
+            if ($('header .found').children().length < 4) {
+              $('header .notfound').html("<p class='aucunresultat'>Nous n'avons rien trouvé 😥</p>")
          }
       } 
     }

@@ -21,7 +21,7 @@ main {
   position: fixed;
   width: 26vw;
   height: 80vh;
-  z-index: 5;
+  z-index: 3;
 }
 
 .avatar canvas {

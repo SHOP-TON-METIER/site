@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="projet.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -87,7 +86,7 @@
 
             <img src="medias/images/drone-form.png" alt="">
 
-            <form action="" method="POST" class="contact-form">
+            <form action="" method="GET" class="contact-form">
 
                 <h2 class="titre3">Nous contacter !</h2>
 

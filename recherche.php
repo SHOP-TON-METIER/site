@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="recherche.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
     $(function(){
 
     <?php
-    $search = $_POST['search'];
+    $search = $_GET['search'];
     echo 'var query = "' . $search . '"';
     ?>       
 
@@ -116,7 +116,7 @@
         $('main .found').append('<div class="searchetudiant"><h2></h2><div class="content"></div></div>')
         i=0
         $.each(donnees, function(index, value){
-          $("main .found .searchetudiant .content").append('<div class="metier '+ value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'"><div class="avisetud"><h3>'+ value.prenom +' '+value.nom+'</h3><a href="metier.php?id='+ value.id + '" class = "lien-fiche-metier">Lire son avis</a></div></div>')
+          $("main .found .searchetudiant .content").append('<div class="metier '+ value.nomShop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "") +'"><div class="avisetud"><h3>'+ value.prenom +' '+value.nom+'</h3><a href="metier.php?id='+ value.id + '#'+ value.nom +'" class = "lien-fiche-metier">Lire son avis</a></div></div>')
           i++
         })
         if (i>! 1) {
@@ -135,7 +135,7 @@
           $('main .found').remove()
 
           $.ajax ({
-            url: "//api.giphy.com/v1/gifs/random?api_key=0UTRbFtkMxAplrohufYco5IY74U8hOes&tag=sad&rating=pg-13",
+            url: "//api.giphy.com/v1/gifs/random?api_key=0UTRbFtkMxAplrohufYco5IY74U8hOes&tag=sad%20face&rating=g",
             type: "GET",
             success: function(response) {
             imgSrc = response.data.image_url;

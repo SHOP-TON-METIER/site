@@ -130,7 +130,9 @@
             $req->execute([':id' => $id]);
 
             while ($data = $req->fetch()) {
-                echo '<div class="avis">
+                echo '<div class="avis" id="' .
+                    $data['nom'] .
+                    '">
                         <span class="nom-etudiant">' .
                     $data['nom'] .
                     ' ' .
