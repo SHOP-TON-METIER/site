@@ -65,7 +65,7 @@
                 <div class="boutons">
                         <a href="' .
                     $data['lienCvNum'] .
-                    '" class="cv cv-num" target="_blank">CV intéractif</a>
+                    '" class="cv cv-num" target="_blank">CV interactif</a>
                         <a href="medias/cv/' .
                     $data['lienCvTrad'] .
                     '" class="cv cv-trad" target="_blank">CV</a>

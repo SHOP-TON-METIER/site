@@ -22,10 +22,21 @@
 <body>
     <?php include 'header.php'; ?>
 
+    <div class="loading">
+       <h1>Création du ticket de caisse</h1>
+       <div class="progressbar">
+           <div class="progressbg"></div>
+           <div class="progress"></div>
+      </div>
+    </div>
+
     <main>
+
         <h1>Mon ticket de caisse</h1>
 
         <section class="html2pdf__page-break">
+            <div class="cache"></div>
+
             <div class="ticket">
             <div class="background"></div>
             <h2><span>SHOP'</span>TON MÉTIER</h2>
@@ -89,9 +100,27 @@
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="medias/js/app.js"></script>
+    <script src="medias/js/DRACOLoader.js"></script>
     <!-- <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script> -->
     <script>
         $(document).ready(function() {
+           
+            // Animation création du ticket
+            $('main').hide()
+
+            // Chargement de la page
+            $('.progress').animate({
+                width : '100%'
+            }, 1500, function(){
+                $('.loading').hide();
+                $('main').show()
+
+                // Effet d'impression du ticket
+                $('.cache').animate({
+                    height : 0
+                }, 7000)
+            })      
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position){
                     $.getJSON("https://eu1.locationiq.com/v1/reverse.php?key=pk.75cfb86f8bd1942b69d9e7508e54280d&lat="+position.coords.latitude+"&lon="+position.coords.longitude +"&format=json")
@@ -160,6 +189,7 @@
 
                 html2pdf().set(opt).from(ticket).save()
             })
+           
         })
     </script>
 </body>
