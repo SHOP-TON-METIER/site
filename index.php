@@ -228,6 +228,7 @@
     const HEIGHT = window.innerHeight
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(54, WIDTH / HEIGHT, 0.1, 1000)
+    camera.position.y = 0.3
 
     <?php
     $id = htmlentities($_GET['id']);
@@ -345,7 +346,7 @@
     function modelLoader(src) {
     return new Promise((resolve, reject) => {
         loader.load(src, data => resolve(data), null, reject);
-    });
+    })
     }
     async function createScene(src) {
         const gltf = await modelLoader(src);
@@ -358,41 +359,64 @@
 
         scene.add(scenemodel);
     }
-
-    async function createShop({
-        name,
-        src,
-        url,
-        x,
-        y,
-        z,
-        g
-    }) {
+    async function createShop(name, src, url, x, y, z, g){
         const gltf = await modelLoader(src)
+        name = gltf.scene
+        name.scale.multiplyScalar(0.2)
+        name.position.set(x, y, z)
+        name.rotation.y = g
+        
 
-        model = gltf.scene
-        model.scale.multiplyScalar(0.2)
-        model.position.set(x, y, z)
-        model.rotation.y = g
-        scene.add(model)
+        interactionManager.add(name)
 
-        interactionManager.add(model)
-
-        model.addEventListener("click", () => {
+        name.addEventListener("click", () => {
             window.location.href = `${url}`
         })
 
-        model.addEventListener("mouseover", () => {
-            document.body.style.cursor = "pointer"
-            document.querySelector(`.${name}`).classList.add("active")
-        })
+        name.addEventListener("mouseover", () => {
+        document.body.style.cursor = "pointer"
+        console.log("loo")
+        const coords = {
+          i: name.scale.x,
+          j: name.scale.y,
+          k: name.scale.z
+        };
+        new TWEEN.Tween(coords)
+          .to(
+            {
+              i: 0.22,
+              j: 0.22,
+              k: 0.22
+            },
+            500
+          )
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .onUpdate(() => name.scale.set(coords.i, coords.j, coords.k))
+          .start();
+      });
 
-        model.addEventListener("mouseout", () => {
-            document.body.style.cursor = "auto"
-            document.querySelector(`.${name}`).classList.remove("active")
+      name.addEventListener("mouseout", () => {
+        document.body.style.cursor = "auto";
+        const coords = {
+          i: name.scale.x,
+          j: name.scale.y,
+          k: name.scale.z
+        };
+        new TWEEN.Tween(coords)
+          .to(
+            {
+              i: 0.2,
+              j: 0.2,
+              k: 0.2
+            },
+            500
+          )
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .onUpdate(() => name.scale.set(coords.i, coords.j, coords.k))
+          .start();
+      });
 
-
-        })
+      scene.add(name)
     }
     //Interactions
     interactionManager = new THREE.InteractionManager(renderer, camera, canvas)
@@ -409,20 +433,6 @@
     })
 
     // Data
-    function cameraintro(){
-      const coords = {
-      y: 4,
-      z: 4
-      }
-      new TWEEN.Tween(coords).to({
-              y: 0.3,
-              z: 0,
-          }, 3000)
-          .easing(TWEEN.Easing.Quadratic.InOut)
-          .onUpdate(() =>
-              camera.position.set(0, coords.y, coords.z)).start()
-    }
-
     function left(){
       leftclick.style.pointerEvents="none"
       rightclick.style.pointerEvents="none"
@@ -462,63 +472,15 @@
 
 
     const shops = {
-      Audiovisuel: createShop({
-        name: 'audiovisuel',
-        src: 'medias/model/accueil/audiovisuel.gltf',
-        url: 'shop.php?id=1',
-        x: (1/2)*1.4,
-        y: 0,
-        z: (Math.sqrt(3)/2)*1.4,
-        g: Math.PI/6 + Math.PI/2
-      }),
-      Design: createShop({
-        name: 'design',
-        src: 'medias/model/accueil/design.gltf',
-        url: 'shop.php?id=2',
-        x: (-1/2)*1.4,
-        y: 0,
-        z: (Math.sqrt(3)/2)*1.4,
-        g: Math.PI/3
-      }),
-      Developpement: createShop({
-        name: 'developpement',
-        src: 'medias/model/accueil/developpement.gltf',
-        url: 'shop.php?id=3',
-        x:(-1)*1.4,
-        y: 0,
-        z: 0,
-        g: 0
-      }),
-      Communication: createShop({
-        name: 'communication',
-        src: 'medias/model/accueil/communication.gltf',
-        url: 'shop.php?id=4',
-        x: (-1/2)*1.4,
-        y: 0,
-        z: (-Math.sqrt(3)/2)*1.4,
-        g: -Math.PI/3
-      }),
-      MMI: createShop({
-        name: 'mmi',
-        src: 'medias/model/accueil/communication.gltf',
-        url: 'mmi.php?',
-        x: (1/2)*1.4,
-        y: 0,
-        z: (-Math.sqrt(3)/2)*1.4,
-        g: -Math.PI/6 + Math.PI/2 + Math.PI
-      }),
-      Projet: createShop({
-        name: 'projet',
-        src: 'medias/model/accueil/communication.gltf',
-        url: 'projet.php',
-        x: (1)*1.4,
-        y: 0,
-        z: 0,
-        g: Math.PI
-      })
+      Audiovisuel: createShop('audiovisuel', 'medias/model/accueil/audiovisuel.gltf','shop.php?id=1', (1/2)*1.4, 0, (Math.sqrt(3)/2)*1.4, Math.PI/6 + Math.PI/2),
+      Design: createShop('design', 'medias/model/accueil/design.gltf','shop.php?id=2',(-1/2)*1.4, 0, (Math.sqrt(3)/2)*1.4, Math.PI/3),
+      Developpement: createShop('developpement','medias/model/accueil/developpement.gltf', 'shop.php?id=3', (-1)*1.4, 0, 0, 0),
+      Communication: createShop('communication', 'medias/model/accueil/communication.gltf', 'shop.php?id=4', (-1/2)*1.4, 0, (-Math.sqrt(3)/2)*1.4, -Math.PI/3),
+      MMI: createShop('mmi', 'medias/model/accueil/communication.gltf', 'mmi.php?', (1/2)*1.4, 0, (-Math.sqrt(3)/2)*1.4, -Math.PI/6 + Math.PI/2 + Math.PI),
+      Projet: createShop('projet', 'medias/model/accueil/communication.gltf', 'projet.php', (1)*1.4, 0, 0, Math.PI)
     }
 
-    createScene('medias/model/accueil/scene1.gltf')
+    createScene('medias/model/accueil/scene.gltf')
 
     const sprites = [{
       position: new THREE.Vector3(-4 + .2, 1 + 1.2, -4),
