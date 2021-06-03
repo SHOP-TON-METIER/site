@@ -33,5 +33,12 @@ echo '<header>
             </a>                
         </header>
         <div class="navbar-border"></div>
+        <div class="mobile-warning">
+                <h1>Oups&hellip;</h1>
+                <p>
+                    Cet écran n’est pas adapté pour visualiser notre site de façon optimale. La version desktop est conseillée pour avoir une meilleure expérience.<br>
+                    Au plaisir de te revoir cette fois-ci depuis un ordinateur&nbsp;!
+                 </p>
+        </div>
         ';
 ?>

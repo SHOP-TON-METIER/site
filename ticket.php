@@ -111,14 +111,14 @@
             // Chargement de la page
             $('.progress').animate({
                 width : '100%'
-            }, 1500, function(){
+            }, 3000, function(){
                 $('.loading').hide();
                 $('main').show()
 
                 // Effet d'impression du ticket
                 $('.cache').animate({
                     height : 0
-                }, 7000)
+                }, 6000)
             })      
 
             if (navigator.geolocation) {
