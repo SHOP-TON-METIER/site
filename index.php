@@ -227,7 +227,7 @@
     const WIDTH = window.innerWidth
     const HEIGHT = window.innerHeight
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(66, WIDTH / HEIGHT, 0.1, 1000)
+    const camera = new THREE.PerspectiveCamera(54, WIDTH / HEIGHT, 0.1, 1000)
 
     <?php
     $id = htmlentities($_GET['id']);
@@ -241,11 +241,12 @@
     }
 
     if(id == 2){
-      camera.rotation.y = Math.PI/6-Math.PI/3
+      camera.rotation.y = Math.PI/6+3*Math.PI/3
     }
 
     if(id == 3){
-      camera.rotation.y = Math.PI/6
+      camera.rotation.y = Math.PI/6+2*Math.PI/3
+      
     }
 
     if(id == 4){
@@ -253,11 +254,11 @@
     }
 
     if(id == 5){
-      camera.rotation.y = Math.PI/6+2*Math.PI/3
+      camera.rotation.y = Math.PI/6
     }
 
     if(id == 6){
-      camera.rotation.y = Math.PI/6+3*Math.PI/3
+      camera.rotation.y = Math.PI/6-Math.PI/3
     }
 
     scene.add(camera)
@@ -296,7 +297,7 @@
     renderer.setClearColor(0xffffff)
     renderer.shadowMap.enabled = true;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 2;
+    renderer.toneMappingExposure = 1;
     renderer.outputEncoding = THREE.sRGBEncoding;
 
     //Resize
@@ -370,6 +371,7 @@
         const gltf = await modelLoader(src)
 
         model = gltf.scene
+        model.scale.multiplyScalar(0.2)
         model.position.set(x, y, z)
         model.rotation.y = g
         scene.add(model)
@@ -459,44 +461,62 @@
 
 
 
-    // const shops = {
-    //   Audiovisuel: createShop({
-    //     name: 'audiovisuel',
-    //     src: 'medias/model/accueil/audiovisuel.gltf',
-    //     url: 'shop.php?id=1',
-    //     x: -4,
-    //     y: 1,
-    //     z: -2,
-    //     g: 0
-    //   }),
-    //   Design: createShop({
-    //     name: 'design',
-    //     src: 'medias/model/accueil/audiovisuel.gltf',
-    //     url: 'shop.php?id=2',
-    //     x: 1,
-    //     y: 1,
-    //     z: -4,
-    //     g: 0
-    //   }),
-    //   Developpement: createShop({
-    //     name: 'developpement',
-    //     src: 'medias/model/accueil/developpement.gltf',
-    //     url: 'shop.php?id=3',
-    //     x: 2,
-    //     y: 1,
-    //     z: 2,
-    //     g: 0
-    //   }),
-    //   Communication: createShop({
-    //     name: 'communication',
-    //     src: 'medias/model/accueil/communication.gltf',
-    //     url: 'shop.php?id=4',
-    //     x: -1,
-    //     y: 1,
-    //     z: 1,
-    //     g: 0
-    //   })
-    // }
+    const shops = {
+      Audiovisuel: createShop({
+        name: 'audiovisuel',
+        src: 'medias/model/accueil/audiovisuel.gltf',
+        url: 'shop.php?id=1',
+        x: (1/2)*1.4,
+        y: 0,
+        z: (Math.sqrt(3)/2)*1.4,
+        g: Math.PI/6 + Math.PI/2
+      }),
+      Design: createShop({
+        name: 'design',
+        src: 'medias/model/accueil/design.gltf',
+        url: 'shop.php?id=2',
+        x: (-1/2)*1.4,
+        y: 0,
+        z: (Math.sqrt(3)/2)*1.4,
+        g: Math.PI/3
+      }),
+      Developpement: createShop({
+        name: 'developpement',
+        src: 'medias/model/accueil/developpement.gltf',
+        url: 'shop.php?id=3',
+        x:(-1)*1.4,
+        y: 0,
+        z: 0,
+        g: 0
+      }),
+      Communication: createShop({
+        name: 'communication',
+        src: 'medias/model/accueil/communication.gltf',
+        url: 'shop.php?id=4',
+        x: (-1/2)*1.4,
+        y: 0,
+        z: (-Math.sqrt(3)/2)*1.4,
+        g: -Math.PI/3
+      }),
+      MMI: createShop({
+        name: 'mmi',
+        src: 'medias/model/accueil/communication.gltf',
+        url: 'mmi.php?',
+        x: (1/2)*1.4,
+        y: 0,
+        z: (-Math.sqrt(3)/2)*1.4,
+        g: -Math.PI/6 + Math.PI/2 + Math.PI
+      }),
+      Projet: createShop({
+        name: 'projet',
+        src: 'medias/model/accueil/communication.gltf',
+        url: 'projet.php',
+        x: (1)*1.4,
+        y: 0,
+        z: 0,
+        g: Math.PI
+      })
+    }
 
     createScene('medias/model/accueil/scene1.gltf')
 
