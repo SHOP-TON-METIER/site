@@ -260,7 +260,10 @@
         if(top <= winBottom){
             $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)")
         }
+
     });
+
+    }
 
     })
 </script>
