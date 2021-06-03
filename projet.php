@@ -32,7 +32,7 @@
             <h2>En quoi consite ce projet ?</h2>
 
             <p> 
-                SHOP’TON MÉTIER est un site qui te permet de découvrir vingt-deux métiers post-MMI dans les domaines du design, de la communication, du développement web et de l’audiovisuel.<br>
+                SHOP’TON MÉTIER est un site qui te permet de découvrir vingt-et-un métiers post-MMI dans les domaines du design, de la communication, du développement web et de l’audiovisuel.<br>
                 Difficile de faire un choix ? La plateforme réalisée en quatre mois par une équipe de quatre étudiants en première année de MMI, t’aidera à faire ton choix en te donnant les informations essentielles avec des avis et des conseils d’anciens étudiants MMI exerçant le métier qui t’intéresse.<br>
                 Ce fut un projet fabuleux car nous avons appris et acquis de nouvelles compétences techniques et avons développé notre sens des relations humaines.
             </p>
@@ -112,10 +112,22 @@
 
                 <h3 class="titre-motif">Quel est le motif du contact ?</h3>
                 <div class="radio-buttons">
-                    <input type="radio" id="avis" name="motif" value="avis"><label for="avis">Donner mon avis</label>
-                    <input type="radio" id="infos" name="motif" value="infos"><label for="infos">Demander des informations</label>
-                    <input type="radio" id="suggestions" name="motif" value="suggestions"><label for="suggestions">Suggestions</label>
-                    <input type="radio" id="autres" name="motif" value="autres"><label for="autres">Autres</label>
+                    <div>
+                        <input type="radio" id="avis" name="motif" value="avis">
+                        <label for="avis">Donner mon avis</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="infos" name="motif" value="infos">
+                        <label for="infos">Demander des informations</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="suggestions" name="motif" value="suggestions">
+                        <label for="suggestions">Suggestions</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="autres" name="motif" value="autres">
+                        <label for="autres">Autres</label>
+                    </div>                                       
                 </div>
 
                 <label for="message">Message</label>
@@ -139,6 +151,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="medias/js/app.js"></script>
+    <script src="medias/js/navbar.js"></script>
 
     <script>
     $( document ).ready(function(){
@@ -152,6 +165,8 @@
                 $('.pop-up').css('transform', 'translate(-50%, -100%) scale(0.6)')
                 $('.pop-up').css('top', '0')
                 $('.mask').css('opacity', '0')
+                $('.contact-form').trigger("reset");
+                
             }, 3000);
 
         }
@@ -180,10 +195,7 @@
                     msg: formulaire.msg},
                 dataType: 'json'
             })
-            popup()
-                
-            
-            
+            popup()               
         })
 
 

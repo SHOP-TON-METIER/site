@@ -15,8 +15,6 @@ $(function () {
     swap()
   })
 
-  // $("header .results").hide()
-
   searchposition = $(".searchbar").offset()
   $("header .results").css("width", searchposition + "px")
 

@@ -166,7 +166,7 @@ label {
 
 .titre-motif {
   width: 100%;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   color: #3a4756;
   margin-bottom: 15px;
   font-weight: 400;
@@ -175,28 +175,43 @@ label {
 .contact-form .radio-buttons {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 2%;
+}
+
+.radio-buttons div {
+  margin: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .radio-buttons label {
   position: relative;
-  top: 1px;
-  left: -10px;
+  font-size: 1rem;
+}
+
+.radio-buttons input {
+  margin: 0;
+  height: 14px;
+  width: 14px;
 }
 
 .bouton-envoyer {
-  margin-top: 38px;
+  margin-top: 30px;
   margin-left: auto;
   order: 2;
-  padding: 10px 30px;
+  padding: 16px 60px;
   background-color: #4faff3;
   color: white;
   font-family: 'Poppins';
   font-size: 1.25rem;
   font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 14px;
 
   transition: background-color 0.6s ease-out;
   cursor: pointer;
@@ -239,7 +254,17 @@ label {
   transition: 1s;
 }
 
+input {
+  background-color: transparent;
+}
+
 textarea:focus,
 input:focus {
   outline: none;
+  background-color: transparent;
+}
+
+textarea {
+  height: 20vh;
+  resize: none;
 }

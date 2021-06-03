@@ -124,78 +124,76 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
 
-  <script>
-    let animationmessages = anime.timeline({
-      duration: 1500,
-      easing: 'easeInOutSine',
-    })
-    animationmessages.add({
-      targets: '.msg1',
-      scale: '1.2',
-      translateY: '-40vh'
-    }).add({
-      targets: '.msg1',
-      scale: '1',
-      translateY: '-100vh'
-    }, '+=2500').add({
-      targets: '.msg2',
-      scale: '1.2',
-      translateY: '-40vh'
-    }, '-=1000').add({
-      targets: '.msg2',
-      scale: '1',
-      translateY: '-100vh'
-    }, '+=3500').add({
-      targets: '.msg3',
-      scale: '1.2',
-      translateY: '-40vh'
-    }, '-=1000').add({
-      targets: '.msg3',
-      scale: '1',
-      translateY: '-100vh'
-    }, '+=3500').add({
-      targets: '.msg4',
-      scale: '1.2',
-      translateY: '-40vh'
-    }, '-=1000').add({
-      targets: '.msg4',
-      scale: '1',
-      translateY: '-100vh'
-    }, '+=4500').add({
-      targets: '.msg5',
-      scale: '1.2',
-      translateY: '-40vh'
-    }, '-=1000').add({
-      targets: '.msg5',
-      scale: '1',
-      translateY: '-100vh'
-    }, '+=4500').add({
-      targets: '.msg6',
-      scale: '1.2',
-      translateY: '-40vh'
-    }, '-=1000').add({
-      targets: '.intro',
-      opacity: '0'
-    },'+=1000').add({
-      duration: 500,
-      targets: 'header',
-      opacity: '1',
-      begin: function() {
-        document.querySelector('header').style.display = 'flex';
-      }
-    })
-  </script>
 <script>
   $(function(){
-
     if(!localStorage.getItem('shoptonmetier')) {
       $(".intro").css("display", "flex")
       $(".loading").css("display", "none")
       localStorage.setItem('shoptonmetier','[]')
+        let animationmessages = anime.timeline({
+          duration: 1500,
+          easing: 'easeInOutSine',
+        })
+        animationmessages.add({
+          targets: '.msg1',
+          scale: '1.2',
+          translateY: '-40vh'
+        }).add({
+          targets: '.msg1',
+          scale: '1',
+          translateY: '-100vh'
+        }, '+=2500').add({
+          targets: '.msg2',
+          scale: '1.2',
+          translateY: '-40vh'
+        }, '-=1000').add({
+          targets: '.msg2',
+          scale: '1',
+          translateY: '-100vh'
+        }, '+=3500').add({
+          targets: '.msg3',
+          scale: '1.2',
+          translateY: '-40vh'
+        }, '-=1000').add({
+          targets: '.msg3',
+          scale: '1',
+          translateY: '-100vh'
+        }, '+=3500').add({
+          targets: '.msg4',
+          scale: '1.2',
+          translateY: '-40vh'
+        }, '-=1000').add({
+          targets: '.msg4',
+          scale: '1',
+          translateY: '-100vh'
+        }, '+=4500').add({
+          targets: '.msg5',
+          scale: '1.2',
+          translateY: '-40vh'
+        }, '-=1000').add({
+          targets: '.msg5',
+          scale: '1',
+          translateY: '-100vh'
+        }, '+=4500').add({
+          targets: '.msg6',
+          scale: '1.2',
+          translateY: '-40vh'
+        }, '-=1000').add({
+          targets: '.intro',
+          opacity: '0'
+        },'+=1000').add({
+          duration: 500,
+          targets: 'header',
+          opacity: '1',
+          begin: function() {
+            $('header').css("display", "flex")
+          }
+        })
       }
 
     $('.skip').on("click", function(){
       $(".intro").css("opacity", "0")
+      $(".intro").css("pointerEvents", "none")
     })
 
   })

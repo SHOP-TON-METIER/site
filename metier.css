@@ -31,15 +31,21 @@ main {
   position: relative;
 }
 
-.avatar {
+.maskavatar {
   position: fixed;
   width: 26vw;
   height: 80vh;
-  z-index: 5;
+  z-index: 3;
+  overflow: hidden;
+  border-radius: 100vh;
 }
 
-.avatar canvas {
-  border-radius: 100vh;
+.avatar {
+  position: absolute;
+  top: calc(0.5 * 80vh - 0.7 * 80vh);
+  left: calc(0.5 * 26vw - 0.7 * 26vw);
+  width: 26vw;
+  height: 80vh;
 }
 
 .fiche {

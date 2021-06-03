@@ -32,5 +32,6 @@ echo '<header>
                 </svg>
             </a>                
         </header>
+        <div class="navbar-border"></div>
         ';
 ?>

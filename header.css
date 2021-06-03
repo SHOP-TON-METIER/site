@@ -169,6 +169,19 @@ header .notfound h2 {
   margin-bottom: 20px;
 }
 
+.navbar-border {
+  top: 99px;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 1px;
+  background-color: #848c96;
+  pointer-events: none;
+  box-shadow: 0px 4px 20px 1px #000000ff;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
 /* RETOUR */
 
 .retour {

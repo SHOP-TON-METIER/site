@@ -94,173 +94,175 @@
     </main>
 
     <?php include 'footer.php'; ?>
-</body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="medias/js/app.js"></script>
-    <script>
-        $(document).ready(function(){
+<script src="medias/js/navbar.js"></script>
+<script>
+    $(document).ready(function(){
 
-            function domaine(id_shop) {
-                var uniqs = {};
+        function domaine(id_shop) {
+            var uniqs = {};
 
-                for(var i = 0; i < id_shop.length; i++) {
-                    uniqs[id_shop[i]] = (uniqs[id_shop[i]] || 0) + 1;
-                }
-
-                var domaine = { id: id_shop[0], count: 1 };
-                for(var u in uniqs) {
-                    if(domaine.count < uniqs[u]) { domaine = { id: u, count: uniqs[u] }; }
-                }
-
-                return domaine.id;
+            for(var i = 0; i < id_shop.length; i++) {
+                uniqs[id_shop[i]] = (uniqs[id_shop[i]] || 0) + 1;
             }
 
-            function getpanier(){
-                $('.metier').remove()
-
-                let panierdata = localStorage.getItem('shoptonmetier')
-
-                let nombre = 0
-
-                let metiers = [];
-                let domaines =[];
-
-                $.each(JSON.parse(panierdata) , function( index, metier ) {
-                    const div = '<div class="metier '+metier.shop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")+' '+metier.id+' metier'+metier.id+'">\
-                    <img src="medias/images/metier/'+metier.id+'.png" alt="" class="perso-3d">\
-                    <div>\
-                    <h2>'+metier.nom+'</h2>\
-                    <p class="phrase-metier">'+metier.phrase+'</p>\
-                    <a href="metier.php?id='+metier.id+'" class="lien-fiche-metier">Fiche descriptive</a>\
-                    </div>\
-                    <div>\
-                    <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">\
-                    <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />\
-                    <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#ff314a" />\
-                    </svg>\
-                    </div>\
-                    </div>'
-                    $('.panier').append(div)
-                    metiers.push([metier.nom, metier.phrase])
-                    domaines.push(metier.id_shop)
-                    nombre++
-                });
-
-                let panier = []
-                panier.push(metiers)
-
-                let domaineid = parseInt(domaine(domaines))
-
-                var domainefavori
-
-                if(domaineid == 1){
-                    domainefavori = "Audiovisuel"
-                    $('.domaine-fav span').text(domainefavori)
-                }
-                if(domaineid == 2){
-                    domainefavori = "Design"
-                    $('.domaine-fav span').text(domainefavori)
-                }
-                if(domaineid == 3){
-                    domainefavori = "Développement"
-                    $('.domaine-fav span').text(domainefavori)
-                }
-                if(domaineid == 4){
-                    domainefavori = "Communication"
-                    $('.domaine-fav span').text(domainefavori)
-                }
-                // if(panier[0] == 1){
-                //     const domainefavori = "Audiovisuel"
-                // }
-                panier.push(domainefavori)
-               
-
-                if(nombre > 1){
-                    $('.nombre').text(nombre+" métiers dans mon panier")
-                }
-                if(nombre == 1){
-                    $('.nombre').text("1 métier dans mon panier")
-                }
-                if(nombre == 0){
-                    $('.nombre').text("Le panier est vide 😥")
-                }
-
-                $('.metier svg').click(function(){
-                    let metierid = parseInt($(this).parent().parent().attr('class').split(' ')[2])
-                    let metierclass = $(this).parent().parent().attr('class').split(' ')[3]
-
-                    let panierdata = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== metierid)
-
-                    localStorage.setItem('shoptonmetier', JSON.stringify(panierdata));
-
-                    $('.'+metierclass).remove()
-
-                    const metiers = getpanier()
-                    
-                })
-
-                return panier
+            var domaine = { id: id_shop[0], count: 1 };
+            for(var u in uniqs) {
+                if(domaine.count < uniqs[u]) { domaine = { id: u, count: uniqs[u] }; }
             }
+
+            return domaine.id;
+        }
+
+        function getpanier(){
+            $('.metier').remove()
+
+            let panierdata = localStorage.getItem('shoptonmetier')
+
+            let nombre = 0
+
+            let metiers = [];
+            let domaines =[];
+
+            $.each(JSON.parse(panierdata) , function( index, metier ) {
+                const div = '<div class="metier '+metier.shop.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")+' '+metier.id+' metier'+metier.id+'">\
+                <img src="medias/images/metier/'+metier.id+'.png" alt="" class="perso-3d">\
+                <div>\
+                <h2>'+metier.nom+'</h2>\
+                <p class="phrase-metier">'+metier.phrase+'</p>\
+                <a href="metier.php?id='+metier.id+'" class="lien-fiche-metier">Fiche descriptive</a>\
+                </div>\
+                <div>\
+                <svg width="55" height="55" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="remove">\
+                <rect x="5.25" y="6.5" width="2" height="16" rx="1" transform="rotate(-45 5.25 6.5)" fill="#F14A72" />\
+                <rect x="16.5" y="5" width="2" height="16" rx="1" transform="rotate(45 16.5 5)" fill="#ff314a" />\
+                </svg>\
+                </div>\
+                </div>'
+                $('.panier').append(div)
+                metiers.push([metier.nom, metier.phrase])
+                domaines.push(metier.id_shop)
+                nombre++
+            });
+
+            let panier = []
+            panier.push(metiers)
+
+            let domaineid = parseInt(domaine(domaines))
+
+            var domainefavori
+
+            if(domaineid == 1){
+                domainefavori = "Audiovisuel"
+                $('.domaine-fav span').text(domainefavori)
+            }
+            if(domaineid == 2){
+                domainefavori = "Design"
+                $('.domaine-fav span').text(domainefavori)
+            }
+            if(domaineid == 3){
+                domainefavori = "Développement"
+                $('.domaine-fav span').text(domainefavori)
+            }
+            if(domaineid == 4){
+                domainefavori = "Communication"
+                $('.domaine-fav span').text(domainefavori)
+            }
+            // if(panier[0] == 1){
+            //     const domainefavori = "Audiovisuel"
+            // }
+            panier.push(domainefavori)
             
 
-            const panier = getpanier()
-            let paniermetier = []
-            $.each(panier[0], function(key, value){
-                paniermetier.push(value[0])
+            if(nombre > 1){
+                $('.nombre').text(nombre+" métiers dans mon panier")
+            }
+            if(nombre == 1){
+                $('.nombre').text("1 métier dans mon panier")
+            }
+            if(nombre == 0){
+                $('.nombre').text("Le panier est vide 😥")
+            }
+
+            $('.metier svg').click(function(){
+                let metierid = parseInt($(this).parent().parent().attr('class').split(' ')[2])
+                let metierclass = $(this).parent().parent().attr('class').split(' ')[3]
+
+                let panierdata = JSON.parse(localStorage.getItem('shoptonmetier')).filter(metier => metier.id !== metierid)
+
+                localStorage.setItem('shoptonmetier', JSON.stringify(panierdata));
+
+                $('.'+metierclass).remove()
+
+                const metiers = getpanier()
                 
             })
 
-            $('.donnees').submit(function(event){
-                event.preventDefault();
-                const form = $(this).serializeArray()
+            return panier
+        }
+        
 
-                const ticket = {
-                    nom : form[1].value,
-                    prenom : form[2].value,
-                    age: form[3].value,
-                    codepostal: form[4].value,
-                    situation: form[0].value,
-                    domainefavori: panier[1],
-                    panier:paniermetier,
-                    ticket: panier[0]
-                }
-                
-                
-                $.ajax({
-                    url: 'sendpanier.php',
-                    type: "POST",
-                    data: {
-                        nom : ticket.nom,
-                        prenom: ticket.prenom,
-                        age: ticket.age,
-                        codepostal: ticket.codepostal,
-                        situation: ticket.situation,
-                        domainefavori: ticket.domainefavori,
-                        panier: ticket.panier },
-                    dataType: 'json',
-                    success: function (data) {
-                    }
-                })
-                localStorage.setItem('shoptonmetierticket', JSON.stringify(ticket))
-               
-                window.location.replace("ticket.php");
-            })
+        const panier = getpanier()
+        let paniermetier = []
+        $.each(panier[0], function(key, value){
+            paniermetier.push(value[0])
             
-            $(window).scroll(function() {
-            var winTop = $(window).scrollTop();
-            var winBottom = winTop + $(window).height();
-            var top = $('footer').offset().top
-
-            var height = parseInt($('.coordonnees').css("height"))/2
-            var width = parseInt($('.coordonnees').css("width"))/2
-
-            var translate = winBottom-top+height
-
-            if(top <= winBottom){
-                $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)")
-            }
-        });
-
         })
-    </script>
+
+        $('.donnees').submit(function(event){
+            event.preventDefault();
+            const form = $(this).serializeArray()
+
+            const ticket = {
+                nom : form[1].value,
+                prenom : form[2].value,
+                age: form[3].value,
+                codepostal: form[4].value,
+                situation: form[0].value,
+                domainefavori: panier[1],
+                panier:paniermetier,
+                ticket: panier[0]
+            }
+            
+            
+            $.ajax({
+                url: 'sendpanier.php',
+                type: "POST",
+                data: {
+                    nom : ticket.nom,
+                    prenom: ticket.prenom,
+                    age: ticket.age,
+                    codepostal: ticket.codepostal,
+                    situation: ticket.situation,
+                    domainefavori: ticket.domainefavori,
+                    panier: ticket.panier },
+                dataType: 'json',
+                success: function (data) {
+                }
+            })
+            localStorage.setItem('shoptonmetierticket', JSON.stringify(ticket))
+            
+            window.location.replace("ticket.php");
+        })
+        
+        $(window).scroll(function() {
+        var winTop = $(window).scrollTop();
+        var winBottom = winTop + $(window).height();
+        var top = $('footer').offset().top
+
+        var height = parseInt($('.coordonnees').css("height"))/2
+        var width = parseInt($('.coordonnees').css("width"))/2
+
+        var translate = winBottom-top+height
+
+        if(top <= winBottom){
+            $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)")
+        }
+    });
+
+    })
+</script>
+</body>
 </html>

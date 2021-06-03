@@ -23,7 +23,9 @@
 
     <main>
 
-        <section class="avatar"></section>
+        <section class="maskavatar">
+            <canvas class="avatar"></canvas>
+        </section>
 
         <section class="fiche">
             <?php
@@ -162,6 +164,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="medias/js/app.js"></script>
+    <script src="medias/js/navbar.js"></script>
     <script>
     $(document).ready(function() {
         let idmetier = <?php echo $id; ?>
@@ -306,11 +309,12 @@
     <script>
     const avatar = document.querySelector(".avatar")
 
-    const WIDTH = avatar.offsetWidth
-    const HEIGHT = avatar.offsetHeight
+    const WIDTH = avatar.offsetWidth*1.4
+    const HEIGHT = avatar.offsetHeight*1.4
 
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 0.001, 100)
+    const camera = new THREE.PerspectiveCamera(65, WIDTH / HEIGHT, 0.001, 100)
+    camera.position.z = 4
 
     const keylight = new THREE.SpotLight(0xffac93, 1);
     keylight.position.set(-20, 14, 14);
@@ -318,46 +322,46 @@
     scene.add(keylight);
 
     const filllight = new THREE.SpotLight(0xaea2f6, .8);
-    filllight.position.set(16, 20, 16);
+    filllight.position.set(16, 10, 14);
     filllight.castShadow = true;
     scene.add(filllight);
 
     const filllightbottom = new THREE.SpotLight(0xaea2f6, .5);
-    filllightbottom.position.set(-20, -16, 16);
+    filllightbottom.position.set(-20, -16, 14);
     filllightbottom.castShadow = true;
     scene.add(filllightbottom);
 
     const backlight = new THREE.SpotLight(0xffac93, 1);
-    backlight.position.set(16, 10, -20);
+    backlight.position.set(16, 10, -14);
     backlight.castShadow = true;
     scene.add(backlight);
 
     const backlight2 = new THREE.SpotLight(0xffac93, 1);
-    backlight2.position.set(-16, 10, -20);
+    backlight2.position.set(-16, 10, -14);
     backlight2.castShadow = true;
     scene.add(backlight2);
 
     const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true
+        canvas: avatar,
+        antialias: true,
+        alpha: true
     })
-    avatar.appendChild( renderer.domElement );
     renderer.setSize(WIDTH, HEIGHT)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio*1.6, 2))
     renderer.shadowMap.enabled = true;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 2;
     renderer.outputEncoding = THREE.sRGBEncoding;
 
     window.addEventListener('resize', () => {
-    const WIDTH = avatar.offsetWidth
-    const HEIGHT = avatar.offsetHeight
+        const WIDTH = 0.364*window.innerWidth
+        const HEIGHT = 1.12*window.innerHeight
 
-    camera.aspect = WIDTH / HEIGHT
-    camera.updateProjectionMatrix()
+        camera.aspect = WIDTH / HEIGHT
+        camera.updateProjectionMatrix()
 
-    renderer.setSize(WIDTH, HEIGHT)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        renderer.setSize(WIDTH, HEIGHT)
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
 
     const dracoLoader = new THREE.DRACOLoader();
@@ -366,68 +370,36 @@
     const loader = new THREE.GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
 
-    <?php
-    $sql = 'SELECT id FROM metier WHERE id = :id';
-    $req = $link->prepare($sql);
-    $req->execute([':id' => $id]);
-
-    while ($data = $req->fetch()) {
-        echo "const url = 'medias/model/metier/" . $data['id'] . ".gltf'";
-    }
-    $req = null;
-    ?>
+    <?php echo "const url = 'medias/model/metier/" . $id . ".gltf'"; ?>
 
     loader.load(
-    url,
+        url,
 
-    function(gltf) {
-        model = gltf.scene
-        scene.add(model)
-
-        const boundingBox = new THREE.Box3()
-        boundingBox.setFromObject(model)
-
-        const center = new THREE.Vector3()
-        boundingBox.getCenter(center)
-
-        center.y = center.y +2
-
-        camera.position.y = center.y
-        camera.position.x = center.x
-        camera.updateProjectionMatrix()
-
-        const size = new THREE.Vector3()
-        boundingBox.getSize(size)
-
-        const fov = camera.fov * (Math.PI / 180)
-        const maxDim = Math.max(size.x, size.y, size.z)
-        let cameraZ = Math.abs((maxDim / 4) * Math.tan(fov * 2))
-
-        camera.position.z = cameraZ*3.6
-        camera.updateProjectionMatrix()
-
-        camera.lookAt(center)
-    }
+        function(gltf) {
+            model = gltf.scene
+            model.scale.multiplyScalar(0.28)
+            model.position.y= -2
+            scene.add(model)
+        }
     )
 
     function lerp(a, b, t) {
-    return ((1 - t) * a + t * b)
+        return ((1 - t) * a + t * b)
     }
 
     let scroll = 0
 
     function Animate() {
-    scroll = lerp(scroll, document.documentElement.scrollTop, .1)          
-    scene.rotation.y = 2*Math.PI * scroll / (document.documentElement.scrollHeight-document.documentElement.clientHeight)
+        scroll = lerp(scroll, document.documentElement.scrollTop, .1)          
+        scene.rotation.y = 2*Math.PI * scroll / (document.documentElement.scrollHeight-document.documentElement.clientHeight)
 
-    renderer.render(scene, camera)
-    requestAnimationFrame(Animate)
+        renderer.render(scene, camera)
+        requestAnimationFrame(Animate)
     }
     window.addEventListener('load', Animate, false)
     </script>
     <script>
     $(document).ready(function() {
-
         $(window).scroll(function() {
             var winTop = $(window).scrollTop();
             var winBottom = winTop + $(window).height();
@@ -436,7 +408,7 @@
             var translate = winBottom-top
 
             if(top <= winBottom){
-                $(".avatar").css("transform", "translateY(-"+translate+"px)")
+                $(".maskavatar").css("transform", "translateY(-"+translate+"px)")
             }
         });
     })     
