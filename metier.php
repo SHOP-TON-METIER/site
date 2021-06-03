@@ -400,6 +400,15 @@
     </script>
     <script>
     $(document).ready(function() {
+        var winTop = $(window).scrollTop();
+            var winBottom = winTop + $(window).height();
+            var top = $('footer').offset().top
+
+            var translate = winBottom-top
+
+            if(top <= winBottom){
+                $(".maskavatar").css("transform", "translateY(-"+translate+"px)")
+            }
         $(window).scroll(function() {
             var winTop = $(window).scrollTop();
             var winBottom = winTop + $(window).height();
