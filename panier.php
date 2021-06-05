@@ -240,7 +240,7 @@
             
             window.location.replace("ticket.php");
         })
-        
+
         $(window).scroll(function() {
             var winTop = $(window).scrollTop();
             var winBottom = winTop + $(window).height();
@@ -251,14 +251,11 @@
 
             var translate = winBottom-top+height
 
-            if(top <= winBottom){
-                
-                if($(window) < 800){
-                    $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px) scale(0.8)"
-                } else {
-                    $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)")
-                }
-                
+            if(top <= winBottom){                
+              $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)") 
+              if($(window).height() < 800){
+                $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px) scale(0.8)")    
+              }
             }
         })
     })
