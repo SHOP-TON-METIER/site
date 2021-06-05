@@ -212,7 +212,7 @@ canvas {
   width: 20%;
   display: block;
   margin: auto;
-  padding: 10px 30px;
+  padding: 18px 20px;
   border-radius: 10px;
   background-color: #f14a72;
   color: #ffffff;
@@ -220,4 +220,8 @@ canvas {
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.pie {
+  font-size: 3rem;
 }

@@ -416,6 +416,16 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
+
+    const options = {
+      responsive: false,
+      plugins: {
+        legend: {
+            display: false,
+        }
+      }
+    }
+
 // graphique types de bac
     const bacdata = {
       labels: [
@@ -442,7 +452,8 @@
     const bacconfig = {
       type: 'pie',
       data: bacdata,
-    };
+      options: options
+    }
 
     var bacmmi = new Chart(
       document.getElementById('bacmmi'),
@@ -469,6 +480,7 @@
     const genreconfig = {
       type: 'pie',
       data: genredata,
+      options: options
     };
 
     var genre = new Chart(
@@ -496,12 +508,12 @@
     const etudesconfig = {
       type: 'pie',
       data: etudesdata,
+      options: options
     };
 
     var etudes = new Chart(
       document.getElementById('etudes'),
       etudesconfig, 
-      
     );
   </script>
   <!-- Script pour l'objet 3D -->
