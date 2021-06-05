@@ -39,6 +39,7 @@ section {
 }
 
 .projet {
+  flex-wrap: nowrap;
   justify-content: space-between;
 }
 
@@ -48,17 +49,17 @@ h2 {
 }
 
 .projet p {
-  width: 60%;
+  width: 100%;
   color: #3a4756;
   text-align: justify;
   margin: 0;
 }
 
-.illustration {
-  width: 35%;
-  height: 200px;
+.shop {
+  width: 40%;
+  height: 120%;
   border-radius: 10px;
-  background-color: red;
+  background-color: transparent;
 }
 
 .presentation {

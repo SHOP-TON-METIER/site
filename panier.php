@@ -101,18 +101,15 @@
 <script>
     $(document).ready(function(){
 
-        function domaine(id_shop) {
+        function domaine(id_shop){
             var uniqs = {};
-
             for(var i = 0; i < id_shop.length; i++) {
                 uniqs[id_shop[i]] = (uniqs[id_shop[i]] || 0) + 1;
             }
-
             var domaine = { id: id_shop[0], count: 1 };
             for(var u in uniqs) {
                 if(domaine.count < uniqs[u]) { domaine = { id: u, count: uniqs[u] }; }
             }
-
             return domaine.id;
         }
 
@@ -145,7 +142,7 @@
                 metiers.push([metier.nom, metier.phrase])
                 domaines.push(metier.id_shop)
                 nombre++
-            });
+            })
 
             let panier = []
             panier.push(metiers)
@@ -170,9 +167,7 @@
                 domainefavori = "Communication"
                 $('.domaine-fav span').text(domainefavori)
             }
-            // if(panier[0] == 1){
-            //     const domainefavori = "Audiovisuel"
-            // }
+
             panier.push(domainefavori)
             
 
@@ -199,22 +194,18 @@
                 const metiers = getpanier()
                 
             })
-
             return panier
         }
-        
 
         const panier = getpanier()
         let paniermetier = []
         $.each(panier[0], function(key, value){
-            paniermetier.push(value[0])
-            
+            paniermetier.push(value[0])            
         })
 
         $('.donnees').submit(function(event){
             event.preventDefault();
             const form = $(this).serializeArray()
-
             const ticket = {
                 nom : form[1].value,
                 prenom : form[2].value,
@@ -224,9 +215,7 @@
                 domainefavori: panier[1],
                 panier:paniermetier,
                 ticket: panier[0]
-            }
-            
-            
+            }            
             $.ajax({
                 url: 'sendpanier.php',
                 type: "POST",
@@ -248,23 +237,19 @@
         })
         
         $(window).scroll(function() {
-        var winTop = $(window).scrollTop();
-        var winBottom = winTop + $(window).height();
-        var top = $('footer').offset().top
+            var winTop = $(window).scrollTop();
+            var winBottom = winTop + $(window).height();
+            var top = $('footer').offset().top
 
-        var height = parseInt($('.coordonnees').css("height"))/2
-        var width = parseInt($('.coordonnees').css("width"))/2
+            var height = parseInt($('.coordonnees').css("height"))/2
+            var width = parseInt($('.coordonnees').css("width"))/2
 
-        var translate = winBottom-top+height
+            var translate = winBottom-top+height
 
-        if(top <= winBottom){
-            $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)")
-        }
-
-    });
-
-    }
-
+            if(top <= winBottom){
+                $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)")
+            }
+        })
     })
 </script>
 </body>
