@@ -252,7 +252,13 @@
             var translate = winBottom-top+height
 
             if(top <= winBottom){
-                $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)")
+                
+                if($(window) < 800){
+                    $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px) scale(0.8)"
+                } else {
+                    $(".coordonnees").css("transform", "translate(-"+width+"px, -"+translate+"px)")
+                }
+                
             }
         })
     })
