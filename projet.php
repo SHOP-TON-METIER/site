@@ -92,7 +92,7 @@
                 </div>
                 <div>
                     <label for="postal-code">Code Postal</label>
-                    <input type="text" required id="postal-code" name="postalCode" placeholder="Mon code postal..." maxlength="6">
+                    <input type="text" pattern="[0-9]{5}" required id="postal-code" name="postalCode" placeholder="Mon code postal..." maxlength="6">
                 </div>
                 <h3 class="titre-motif">Quel est le motif du contact ?</h3>
                 <div class="radio-buttons">
@@ -246,6 +246,9 @@
     const loader = new THREE.GLTFLoader();
     loader.setDRACOLoader(dracoLoader)
 
+    const shoprotation = new THREE.Group()
+    scene.add(shoprotation)
+
     loader.load('medias/model/accueil/projet.gltf',
 
         function(gltf) {
@@ -253,11 +256,32 @@
             model.scale.multiplyScalar(0.3)
             model.position.y =-0.38
             model.rotation.y= -Math.PI/2
-            scene.add(model)
+            shoprotation.add(model)
         }
     )
 
+    function lerp(a, b, t) {
+        return ((1 - t) * a + t * b)
+    }
+
+    let smoothmouse = 0
+
+    const mousePos = {
+        x: 0,
+        y: 0
+    }
+
+    function handleMouseMove(event) {
+        mousePos.x = (-1 + (event.clientX / window.innerWidth) * 2)
+        mousePos.x *= 0.8
+    }
+
     function Animate() {
+        document.addEventListener('mousemove', handleMouseMove, {
+            passive: false
+        })
+        smoothmouse = lerp(smoothmouse, mousePos.x, .025)
+        shoprotation.rotation.y = smoothmouse
         renderer.render(scene, camera)
         requestAnimationFrame(Animate)
     }

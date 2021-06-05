@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
     
-<?php include 'link.php'; ?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +9,6 @@
     <link rel="icon" type="image/png" href="medias/drone-light.png" media="(prefers-color-scheme:no-preference)">
     <link rel="icon" type="image/png" href="medias/drone-dark.png" media="(prefers-color-scheme:dark)">
     <link rel="icon" type="image/png" href="medias/drone-light.png" media="(prefers-color-scheme:light)">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="ticket.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
@@ -20,8 +16,6 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
-
     <div class="loading">
        <h1>Création du ticket de caisse</h1>
        <div class="progressbar">
@@ -100,8 +94,6 @@
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="medias/js/app.js"></script>
-    <script src="medias/js/DRACOLoader.js"></script>
-    <!-- <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script> -->
     <script>
         $(document).ready(function() {
            
@@ -174,6 +166,7 @@
 
             $(".telecharger").on("click", function(){
                 localStorage.setItem('shoptonmetier','[]')
+                localStorage.setItem('shoptonmetierticket','[]')
 
                 let height = parseInt($("section").height())
                 let width = parseInt($("section").width())

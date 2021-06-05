@@ -33,23 +33,16 @@
 
     <h1>Métiers du Multimédia et de l'Internet</h1>
 
-    <section>
-
-      <h2>MMI c'est quoi&nbsp;?</h2>
-
-      <div class="mmi">
-
+    <section class="mmi">
+      <div>
+        <h2>MMI c'est quoi&nbsp;?</h2>
         <p>
           MMI signifie Métier du Multimédia et de l'Internet, c’est une formation polyvalente et pluridisciplinaire en 3 ans qui te permet d’acquérir de nombreuses compétences dans les domaines de la communication, du développement web, de l’audiovisuel et du design.
           C’est une formation professionnalisante qui donnera lieu à la mise en pratique de tes compétences et de tes connaissances acquises durant les projets tutorés et de te confronter aux métiers lors des stages en entreprise. 
           La formation est possible en alternance et est la seule formation publique postbac dans le domaine de la communication digitale et de l'internet.
-
         </p>
-
-        <div class="illustration"></div>
-
       </div>
-
+      <canvas class="shop"></canvas>
     </section>
 
     <section>
@@ -511,6 +504,115 @@
       
     );
   </script>
+  <!-- Script pour l'objet 3D -->
+  <script src="medias/js/three.min.js"></script>
+    <script src="medias/js/DRACOLoader.js"></script>
+    <script src="medias/js/GLTFLoader.js"></script>
+    <script>
+    const shop = document.querySelector(".shop")
+
+    const WIDTH = shop.offsetWidth
+    const HEIGHT = shop.offsetHeight*1.5
+
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 0.001, 100)
+    camera.position.z = 1
+
+    const keylight = new THREE.SpotLight(0xffac93, 1);
+    keylight.position.set(-20, 14, 14);
+    keylight.castShadow = true;
+    scene.add(keylight);
+
+    const filllight = new THREE.SpotLight(0xaea2f6, .8);
+    filllight.position.set(16, 10, 14);
+    filllight.castShadow = true;
+    scene.add(filllight);
+
+    const filllightbottom = new THREE.SpotLight(0xaea2f6, .5);
+    filllightbottom.position.set(-20, -16, 14);
+    filllightbottom.castShadow = true;
+    scene.add(filllightbottom);
+
+    const backlight = new THREE.SpotLight(0xffac93, 1);
+    backlight.position.set(16, 10, -14);
+    backlight.castShadow = true;
+    scene.add(backlight);
+
+    const backlight2 = new THREE.SpotLight(0xffac93, 1);
+    backlight2.position.set(-16, 10, -14);
+    backlight2.castShadow = true;
+    scene.add(backlight2);
+
+    const renderer = new THREE.WebGLRenderer({
+        canvas: shop,
+        antialias: true,
+        alpha: true
+    })
+    renderer.setSize(WIDTH, HEIGHT)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.shadowMap.enabled = true;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 2.4;
+    renderer.outputEncoding = THREE.sRGBEncoding;
+
+    window.addEventListener('resize', () => {
+        const WIDTH = shop.offsetWidth
+        const HEIGHT = shop.offsetHeight
+
+        camera.aspect = WIDTH / HEIGHT
+        camera.updateProjectionMatrix()
+
+        renderer.setSize(WIDTH, HEIGHT)
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    })
+
+    const dracoLoader = new THREE.DRACOLoader();
+    dracoLoader.setDecoderPath('medias/draco/');
+
+    const loader = new THREE.GLTFLoader();
+    loader.setDRACOLoader(dracoLoader)
+
+    const shoprotation = new THREE.Group()
+    scene.add(shoprotation)
+
+    loader.load('medias/model/accueil/mmi.gltf',
+
+        function(gltf) {
+            model = gltf.scene
+            model.scale.multiplyScalar(0.3)
+            model.position.y =-0.38
+            model.rotation.y= -Math.PI/2
+            shoprotation.add(model)
+        }
+    )
+
+    function lerp(a, b, t) {
+        return ((1 - t) * a + t * b)
+    }
+
+    let smoothmouse = 0
+
+    const mousePos = {
+        x: 0,
+        y: 0
+    }
+
+    function handleMouseMove(event) {
+      mousePos.x = (-1 + (event.clientX / window.innerWidth) * 2)
+      mousePos.x *= 0.8
+    }
+
+    function Animate() {
+        document.addEventListener('mousemove', handleMouseMove, {
+            passive: false
+        })
+        smoothmouse = lerp(smoothmouse, mousePos.x, .025)
+        shoprotation.rotation.y = smoothmouse
+        renderer.render(scene, camera)
+        requestAnimationFrame(Animate)
+    }
+    window.addEventListener('load', Animate, false)
+    </script>
 
 </body>
 

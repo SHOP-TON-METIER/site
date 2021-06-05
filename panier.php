@@ -48,8 +48,8 @@
                 <h2 class="titre-form">Situation professionnelle</h2>
 
                 <div class="situation-pro">
-                <label for="lyceen" class="checkbox">
-                        <input type="radio" id="lyceen" name="situtationpro" value="lyceen">
+                    <label for="lyceen" class="checkbox">
+                        <input type="radio" id="lyceen" name="situtationpro" value="lyceen" required>
                         <p class="box">Lycéen(ne)</p>
                     </label>
 
@@ -73,11 +73,11 @@
                 <div class="age-postal-inputs">
                     <div>
                         <label for="age" class="titre-form">Age</label>
-                        <input type="text" id="age" name="age" required placeholder="Mon âge...">
+                        <input type="number" size="6" min="8" max="120" id="age" name="age" required placeholder="Mon âge...">
                     </div>
                     <div>
                         <label for="codepostal" class="titre-form">Code postal</label>
-                        <input type="text" id="codepostal" name="codepostal" required
+                        <input pattern="[0-9]{5}" type="text" id="codepostal" name="codepostal" required
                             placeholder="Mon code postal...">
                     </div>
                 </div>
@@ -204,6 +204,11 @@
         })
 
         $('.donnees').submit(function(event){
+            const panier = getpanier()
+            let paniermetier = []
+            $.each(panier[0], function(key, value){
+                paniermetier.push(value[0])            
+            })
             event.preventDefault();
             const form = $(this).serializeArray()
             const ticket = {
@@ -231,7 +236,7 @@
                 success: function (data) {
                 }
             })
-            localStorage.setItem('shoptonmetierticket', JSON.stringify(ticket))
+            localStorage.setItem('shoptonmetierticket', JSON.stringify(ticket))          
             
             window.location.replace("ticket.php");
         })

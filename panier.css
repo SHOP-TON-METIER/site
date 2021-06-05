@@ -173,6 +173,7 @@ h1 {
 }
 
 .coordonnees input:focus {
+  border-radius: 10px;
   outline-color: #fa5014;
 }
 
@@ -235,6 +236,10 @@ h1 {
   cursor: pointer;
 }
 
+input {
+  font-family: 'Poppins';
+}
+
 @media screen and (max-width: 1400px) {
   .coordonnees {
     right: -6vw;
@@ -266,7 +271,7 @@ h1 {
   }
 }
 
-@media screen and (max-height : 800px) {
+@media screen and (max-height: 800px) {
   .coordonnees {
     transform: translate(-200px, -322.328px) scale(0.8);
   }
