@@ -104,6 +104,7 @@
     if(!localStorage.getItem('shoptonmetier')) {
       $(".intro").css("display", "flex")
       $(".loading").css("display", "none")
+      $(".intro").css("cursor", "default")
       localStorage.setItem('shoptonmetier','[]')
       let animationmessages = anime.timeline({
         duration: 1500,
