@@ -97,6 +97,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="medias/js/app.js"></script>
+<script src="medias/js/pastille.js"></script>
 <script src="medias/js/navbar.js"></script>
 <script>
     $(document).ready(function(){
@@ -182,6 +183,11 @@
             }
 
             $('.metier svg').click(function(){
+                nombre--
+                $('.pastille').html(nombre)
+                if (nombre === 0) {
+                $('.pastille').hide()
+                }
                 let metierid = parseInt($(this).parent().parent().attr('class').split(' ')[2])
                 let metierclass = $(this).parent().parent().attr('class').split(' ')[3]
 
