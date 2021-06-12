@@ -27,7 +27,7 @@
       <div class="drone"></div>
       <div class="skip">Passer l'intro ></div>
       <div class="messages">
-        <p class="msg1">Salut, moi c'est Pepito! Bienvenue sur SHOP'TON METIER.</p>
+        <p class="msg1">Salut, moi c'est Pepito&nbsp;! Bienvenue sur SHOP'TON MÉTIER.</p>
         <p class="msg2">
           Ce site te permettra de découvrir les métiers possibles après avoir
           étudié en MMI.
@@ -38,14 +38,14 @@
         </p>
         <p class="msg4">
           Clique sur un magasin pour y entrer et ainsi découvrir les différents
-          métiers incarnés par les personnages !
+          métiers incarnés par les personnages&nbsp;!
         </p>
         <p class="msg5">
           Tu as la possibilité de cliquer sur ces personnages pour voir la fiche
           métier correspondante et aussi d'acheter ceux que tu préfères.
         </p>
         <p class="msg6">Tu connaîtras alors quel domaine te correspond le mieux !</p>
-        <p>Je te souhaite une bonne visite !</p>
+        <p>Je te souhaite une bonne visite&nbsp;!</p>
       </div>
 
       <div class="mask"></div>

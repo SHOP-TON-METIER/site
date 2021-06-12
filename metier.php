@@ -127,7 +127,7 @@
 
             <?php
             $sql =
-                'SELECT * FROM ancienEtudiant WHERE id_metier = :id ORDER BY nom';
+                'SELECT * FROM ancienetudiant WHERE id_metier = :id ORDER BY nom';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 
