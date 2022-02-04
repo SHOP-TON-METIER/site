@@ -25,7 +25,7 @@
     $id = htmlentities($_GET['id']);
 
     $sql =
-        'SELECT * FROM chargement WHERE id_shop = :id ORDER BY RAND() LIMIT 1';
+        'SELECT * FROM shoptonmetier_chargement WHERE id_shop = :id ORDER BY RAND() LIMIT 1';
     $req = $link->prepare($sql);
     $req->execute([':id' => $id]);
 
@@ -47,7 +47,7 @@
     ?>
 
     <?php
-    $sql = 'SELECT nom, html FROM shop WHERE id = :id';
+    $sql = 'SELECT nom, html FROM shoptonmetier_shop WHERE id = :id';
     $req = $link->prepare($sql);
     $req->execute([':id' => $id]);
 
@@ -235,7 +235,7 @@
 
     // Data
     <?php
-    $sql = 'SELECT js FROM shop WHERE id = :id';
+    $sql = 'SELECT js FROM shoptonmetier_shop WHERE id = :id';
     $req = $link->prepare($sql);
     $req->execute([':id' => $id]);
 

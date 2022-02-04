@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Les différents métiers post MMI regroupés dans un site avec une naviguation expérientielle !">
+  <meta name="description" content="Les différents métiers post MMI regroupés dans un site avec une navigation expérientielle !">
   <title>SHOP'TON MÉTIER</title>
   <link rel="icon" type="image/png" href="medias/drone-light.png" media="(prefers-color-scheme:no-preference)">
   <link rel="icon" type="image/png" href="medias/drone-dark.png" media="(prefers-color-scheme:dark)">
@@ -72,7 +72,7 @@
       $id = 0;
 
       $sql =
-          'SELECT * FROM chargement WHERE id_shop = :id ORDER BY RAND() LIMIT 1';
+          'SELECT * FROM shoptonmetier_chargement WHERE id_shop = :id ORDER BY RAND() LIMIT 1';
       $req = $link->prepare($sql);
       $req->execute([':id' => $id]);
 

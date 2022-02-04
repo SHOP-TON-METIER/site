@@ -5,14 +5,14 @@ $category = $_POST['category'];
 
 if ($category == 'metier') {
     $sql = "SELECT m.nom, m.id, s.nom AS nomShop
-     FROM metier AS m, shop AS s
+     FROM shoptonmetier_metier AS m, shoptonmetier_shop AS s
      WHERE m.nom LIKE :search
      AND m.id_shop = s.id
      ORDER BY m.nom ASC";
 }
 if ($category == 'etudiantnom') {
     $sql = "SELECT a.nom, a.prenom, m.id, s.nom AS nomShop
-    FROM metier AS m, shop AS s, ancienetudiant AS a
+    FROM shoptonmetier_metier AS m, shoptonmetier_shop AS s, shoptonmetier_ancienetudiant AS a
     WHERE m.id_shop = s.id
     AND a.id_metier = m.id
     AND a.nom LIKE :search
@@ -20,7 +20,7 @@ if ($category == 'etudiantnom') {
 }
 if ($category == 'etudiantprenom') {
     $sql = "SELECT a.nom, a.prenom, m.id, s.nom AS nomShop
-    FROM metier AS m, shop AS s, ancienetudiant AS a
+    FROM shoptonmetier_metier AS m, shoptonmetier_shop AS s, shoptonmetier_ancienetudiant AS a
     WHERE m.id_shop = s.id
     AND a.id_metier = m.id
     AND a.prenom LIKE :search
@@ -28,7 +28,7 @@ if ($category == 'etudiantprenom') {
 }
 if ($category == 'domaine') {
     $sql = "SELECT s.nom, s.id
-      FROM shop AS s
+      FROM shoptonmetier_shop AS s
       WHERE s.nom LIKE :search";
 }
 

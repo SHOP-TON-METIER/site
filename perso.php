@@ -36,7 +36,7 @@
             <?php
             $id = htmlentities($_GET['id']);
 
-            $sql = 'SELECT * FROM staff  WHERE id = :id';
+            $sql = 'SELECT * FROM shoptonmetier_staff  WHERE id = :id';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 
@@ -185,7 +185,7 @@
     loader.setDRACOLoader(dracoLoader);
 
     <?php
-    $sql = 'SELECT perso3D FROM staff WHERE id = :id';
+    $sql = 'SELECT perso3D FROM shoptonmetier_staff WHERE id = :id';
     $req = $link->prepare($sql);
     $req->execute([':id' => $id]);
 

@@ -32,7 +32,7 @@
             $id = htmlentities($_GET['id']);
 
             $sql =
-                'SELECT m.id_shop, m.nom, m.description, m.salaire, s.nom AS nomShop FROM metier AS m, shop as s WHERE m.id_shop = s.id AND m.id = :id';
+                'SELECT m.id_shop, m.nom, m.description, m.salaire, s.nom AS nomShop FROM shoptonmetier_metier AS m, shoptonmetier_shop as s WHERE m.id_shop = s.id AND m.id = :id';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 
@@ -84,7 +84,7 @@
 
             <?php
             $sql = "SELECT c.nom 
-            FROM competence AS c, rel_metier_comp AS rmc, metier AS m
+            FROM shoptonmetier_competence AS c, shoptonmetier_rel_metier_comp AS rmc, shoptonmetier_metier AS m
             WHERE rmc.id_metier = m.id 
             AND rmc.id_competence = c.id 
             AND m.id = :id 
@@ -107,7 +107,7 @@
             ?>
 
             <?php
-            $sql = 'SELECT poursuiteEtudes FROM metier WHERE id = :id';
+            $sql = 'SELECT poursuiteEtudes FROM shoptonmetier_metier WHERE id = :id';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 
@@ -127,7 +127,7 @@
 
             <?php
             $sql =
-                'SELECT * FROM ancienetudiant WHERE id_metier = :id ORDER BY nom';
+                'SELECT * FROM shoptonmetier_ancienetudiant WHERE id_metier = :id ORDER BY nom';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 
@@ -176,7 +176,7 @@
 
         
         <?php
-        $sql = 'SELECT likedata FROM metier WHERE id = ' . $id . '';
+        $sql = 'SELECT likedata FROM shoptonmetier_metier WHERE id = ' . $id . '';
         $req = $link->prepare($sql);
         $req->execute();
 
@@ -263,7 +263,7 @@
             
             <?php
             $sql =
-                'SELECT m.id, m.nom, m.phraseAchat, m.id_shop, s.nom AS shop FROM metier AS m, shop as s WHERE m.id_shop = s.id AND m.id = :id';
+                'SELECT m.id, m.nom, m.phraseAchat, m.id_shop, s.nom AS shop FROM shoptonmetier_metier AS m, shoptonmetier_shop as s WHERE m.id_shop = s.id AND m.id = :id';
             $req = $link->prepare($sql);
             $req->execute([':id' => $id]);
 

@@ -8,17 +8,18 @@ $motif = $_POST['motif'];
 $msg = $_POST['msg'];
 
 $sql =
-    'INSERT INTO `formulaire`(nom, prenom, codePostal, mail, motifContact, message) VALUES (:nom,:prenom, :codepostal, :mail, :motif, :msg)';
+    'INSERT INTO `shoptonmetier_formulaire`(nom, prenom, codePostal, mail, motifContact, message) VALUES (:nom,:prenom, :codepostal, :mail, :motif, :msg)';
 
 $req = $link->prepare($sql);
-$req->execute([
-    ':nom' => $nom,
-    ':prenom' => $prenom,
-    ':codepostal' => $codepostal,
-    ':mail' => $mail,
-    ':motif' => $motif,
-    ':msg' => $msg,
-]);
+$req = $link->prepare($sql);
+$req -> bindValue(':nom', $nom);
+$req -> bindValue(':prenom', $prenom);
+$req -> bindValue(':codepostal', $codepostal);
+$req -> bindValue(':mail', $mail);
+$req -> bindValue(':motif', $motif);
+$req -> bindValue(':msg', $msg);
+$req->execute();
+
 echo $sql;
 $req = null;
 ?>
